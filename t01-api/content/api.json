@@ -1,0 +1,202 @@
+{
+  "id": "t01-api",
+  "title": "What Is an API? The Explanation That Finally Makes It Click",
+  "series": "How It Works",
+  "keyword": "what is an api",
+  "keyNoun": "API",
+  "promise": "Watch a real API call happen — and finally understand how the internet talks to itself.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#FF3E7F",
+  "sources": [
+    { "id": "mdn-http", "label": "MDN — HTTP request methods", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" },
+    { "id": "mdn-status", "label": "MDN — HTTP response status codes", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" },
+    { "id": "mdn-json", "label": "MDN — JSON", "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON" },
+    { "id": "nws-api", "label": "US National Weather Service API", "url": "https://www.weather.gov/documentation/services-web-api" },
+    { "id": "mdn-rest", "label": "MDN — REST", "url": "https://developer.mozilla.org/en-US/docs/Glossary/REST" },
+    { "id": "graphql", "label": "GraphQL — official site", "url": "https://graphql.org/" },
+    { "id": "grpc", "label": "gRPC — official site", "url": "https://grpc.io/" },
+    { "id": "mqtt", "label": "MQTT — official site", "url": "https://mqtt.org/" }
+  ],
+
+  "youtube": {
+    "titles": [
+      "What Is an API? You're Using One Right Now (Finally Explained)",
+      "What Is an API? The 5-Minute Explanation That Finally Clicks",
+      "You Use 100 APIs a Day and Never Notice — Here's How They Work",
+      "APIs Explained: The Analogy Nobody Ever Told You"
+    ],
+    "primaryTitle": "What Is an API? You're Using One Right Now (Finally Explained)",
+    "tags": [
+      "what is an api", "api", "api explained", "apis explained", "api for beginners",
+      "what is an api in programming", "how apis work", "rest api", "api tutorial",
+      "application programming interface", "api meaning", "web api", "api call",
+      "json", "http", "graphql", "grpc", "programming basics", "coding for beginners",
+      "software engineering", "tech explained", "how it works"
+    ],
+    "hashtags": ["#api", "#programming", "#coding", "#webdevelopment", "#techexplained", "#softwareengineering"],
+    "pinnedComment": "Which API style should we break down first — REST, GraphQL, or gRPC? 👇  And if this finally made APIs click for you, subscribe — it genuinely helps the channel. New explainer every week.",
+    "hook": "You use APIs over a hundred times a day and never see a single one. This is the 5-minute explanation that finally makes it click — with a real API call answered live on screen."
+  },
+
+  "intro": {
+    "narration": "Right now, without you touching a thing, your phone is quietly making calls to computers all over the world. They are called API calls — and the moment you watch one actually happen, you will finally understand how the whole internet talks to itself.",
+    "beats": [
+      { "cue": "calls", "mark": "nameReveal" },
+      { "cue": "internet", "mark": "promise" }
+    ]
+  },
+
+  "stages": [
+    {
+      "id": "what",
+      "scene": "what",
+      "chapter": "What an API is",
+      "icon": "messenger",
+      "accent": "#FFC24B",
+      "narration": "Let us kill the confusion in one minute. API stands for Application Programming Interface, and the word that matters is interface. An interface is just a contract: a list of things you are allowed to ask for, and a promise of what you will get back. So picture an API as a messenger. Your app hands it a request, it runs off to some other system, and it comes back with the answer. You never touch that system yourself, and that is the entire trick. You do not see its code, its servers, or its private data. You only get the doors it decides to open. The API is those doors, plus the rules for knocking.",
+      "specs": [
+        { "label": "API", "value": "Application Programming Interface", "cue": "Application", "source": "mdn-http" },
+        { "label": "Interface", "value": "a request + response contract", "cue": "contract", "source": "mdn-http" }
+      ],
+      "beats": [
+        { "cue": "messenger", "mark": "messenger" },
+        { "cue": "request", "mark": "sendRequest" },
+        { "cue": "answer", "mark": "getResponse" },
+        { "cue": "private", "mark": "hidden" },
+        { "cue": "doors", "mark": "doors" }
+      ],
+      "verdict": "An API is a contract: you ask in an agreed way, it answers in an agreed way."
+    },
+    {
+      "id": "restaurant",
+      "scene": "restaurant",
+      "chapter": "The restaurant analogy",
+      "icon": "waiter",
+      "accent": "#FF6B4A",
+      "narration": "Here is the picture that makes it click forever. You sit down in a restaurant. You are the app, the one who wants something. The kitchen is the server; it has the food, but you are never allowed back there. Standing between you is the waiter, and the waiter is the API. You do not scream orders at the chef. You read the menu, the exact list of things you are allowed to order, and you hand your order to the waiter. That is your request. He carries it to the kitchen, the food gets made, and he returns with your plate. That is the response. You never see the kitchen, or anyone else's order. The menu is the documentation: it says precisely what you can ask for, and nothing you cannot.",
+      "specs": [
+        { "label": "Menu", "value": "the documented surface you may ask for", "cue": "menu", "source": "mdn-rest" },
+        { "label": "Kitchen", "value": "off-limits — the system you never touch", "cue": "kitchen", "source": "mdn-rest" }
+      ],
+      "beats": [
+        { "cue": "app", "mark": "youSit" },
+        { "cue": "kitchen", "mark": "kitchen" },
+        { "cue": "waiter", "mark": "waiter" },
+        { "cue": "menu", "mark": "menu" },
+        { "cue": "order", "mark": "order" },
+        { "cue": "plate", "mark": "plate" }
+      ],
+      "verdict": "Menu is the docs, order is the request, plate is the response — and you never enter the kitchen."
+    },
+    {
+      "id": "anatomy",
+      "scene": "anatomy",
+      "chapter": "Anatomy of a call",
+      "icon": "envelope",
+      "accent": "#3DE0B0",
+      "narration": "So what is a request actually made of? On the web, almost nothing. First, an address, the endpoint, a URL pointing at exactly what you want. Second, a method, the verb: GET to read, POST to send, PUT to update, DELETE to remove. That is the whole request. Where, and what. The reply comes back in three pieces. A status code, a three-digit number telling you how it went. Headers, labels describing the reply. And the body, the real data, almost always JSON, which people and machines can both read. Address and method going out; status, headers, and body coming back. Learn those five words, and you can read almost any API on Earth.",
+      "specs": [
+        { "label": "Methods", "value": "GET · POST · PUT · DELETE", "cue": "GET", "source": "mdn-http" },
+        { "label": "Response body", "value": "JSON — human and machine readable", "cue": "JSON", "source": "mdn-json" }
+      ],
+      "beats": [
+        { "cue": "endpoint", "mark": "endpoint" },
+        { "cue": "method", "mark": "method" },
+        { "cue": "status", "mark": "status" },
+        { "cue": "headers", "mark": "headers" },
+        { "cue": "body", "mark": "body" }
+      ],
+      "verdict": "A call is address + method going out; status + headers + body coming back."
+    },
+    {
+      "id": "realcall",
+      "scene": "realcall",
+      "chapter": "A real call",
+      "icon": "terminal",
+      "accent": "#B06BFF",
+      "narration": "Enough theory, let us fire a real one. This is a genuine public API, the United States National Weather Service. We send a single line: GET, and the endpoint for a pair of coordinates. Now watch the reply. Status two hundred, OK, it worked. Then the headers. Then the body: real JSON, naming the forecast office and grid for that spot, which we could follow all the way to a live forecast. No key, no login. Now, APIs defend themselves. Ask for something that does not exist, and you get four oh four, Not Found. Hit it too fast, and you get four twenty-nine, Too Many Requests, that is rate limiting. Those are not bugs in your code. That is the API talking back.",
+      "specs": [
+        { "label": "Success", "value": "200 OK", "cue": "worked", "source": "mdn-status" },
+        { "label": "Missing", "value": "404 Not Found", "cue": "Found", "source": "mdn-status" },
+        { "label": "Too fast", "value": "429 Too Many Requests", "cue": "limiting", "source": "mdn-status" }
+      ],
+      "beats": [
+        { "cue": "GET", "mark": "typeRequest" },
+        { "cue": "reply", "mark": "sendOff" },
+        { "cue": "worked", "mark": "ok200" },
+        { "cue": "body", "mark": "showBody" },
+        { "cue": "Found", "mark": "err404" },
+        { "cue": "limiting", "mark": "err429" }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "https://api.weather.gov/points/38.89,-77.03",
+        "response": {
+          "status": "200 OK",
+          "headers": [ "content-type: application/geo+json", "cache-control: public, max-age=300" ],
+          "body": "{\n  \"properties\": {\n    \"gridId\": \"LWX\",\n    \"gridX\": 97,\n    \"gridY\": 71,\n    \"forecast\": \"https://api.weather.gov/gridpoints/LWX/97,71/forecast\"\n  }\n}"
+        }
+      },
+      "verdict": "A real call is one line out, a status code and JSON back — you just read one."
+    },
+    {
+      "id": "why",
+      "scene": "why",
+      "chapter": "Why APIs exist",
+      "icon": "fanout",
+      "accent": "#FF3E7F",
+      "narration": "So why wire the whole world this way? Because it lets you use things you could never build. Your weather app does not own weather stations, it calls a weather API and relays the answer. A translator app does not ship every dictionary on Earth, it calls a translation API. A checkout button does not reinvent banking, it calls a payments API. And a flight search site does not own a single plane: it fans out one question, any seats to Lagos, to dozens of airline APIs at once, then merges the answers into one clean list. APIs are how software stands on the shoulders of other software. Everyone exposes only what they choose, keeps the rest locked down, and ships ten times faster.",
+      "specs": [
+        { "label": "The pattern", "value": "reuse, don't rebuild", "cue": "build", "source": "mdn-rest" },
+        { "label": "Fan-out", "value": "one client → many APIs at once", "cue": "fans", "source": "mdn-rest" }
+      ],
+      "beats": [
+        { "cue": "weather", "mark": "weatherApi" },
+        { "cue": "translator", "mark": "translateApi" },
+        { "cue": "payments", "mark": "paymentsApi" },
+        { "cue": "fans", "mark": "fanout" },
+        { "cue": "merges", "mark": "merge" }
+      ],
+      "verdict": "APIs let you use what you'd never build yourself — weather, translation, payments, flights."
+    },
+    {
+      "id": "styles",
+      "scene": "styles",
+      "chapter": "API styles",
+      "icon": "hub",
+      "accent": "#E8C24A",
+      "narration": "Last thing: not every API speaks the same dialect. The one we just used is REST, plain web requests and HTTP verbs, and by far the most common. SOAP is the older, strict, envelope-wrapped style, still running in banks and big enterprise. GraphQL lets you ask for exactly the fields you want in one shot, nothing more, nothing less. gRPC runs on HTTP/2 and is built for blazing fast machine-to-machine calls between backend services. And MQTT is featherweight messaging for devices, sensors and smart-home gadgets checking in. Same idea every single time: a request in an agreed shape, a reply in an agreed shape. Only the envelope changes.",
+      "specs": [
+        { "label": "Most common", "value": "REST over HTTP", "cue": "REST", "source": "mdn-rest" },
+        { "label": "Device messaging", "value": "MQTT", "cue": "MQTT", "source": "mqtt" }
+      ],
+      "beats": [
+        { "cue": "REST", "mark": "rest" },
+        { "cue": "SOAP", "mark": "soap" },
+        { "cue": "GraphQL", "mark": "graphql" },
+        { "cue": "gRPC", "mark": "grpc" },
+        { "cue": "MQTT", "mark": "mqtt" }
+      ],
+      "styles": [
+        { "name": "REST", "note": "Plain web requests + HTTP verbs", "seed": "rest", "source": "mdn-rest" },
+        { "name": "SOAP", "note": "Strict XML envelopes, enterprise", "seed": "soap", "source": "mdn-rest" },
+        { "name": "GraphQL", "note": "Ask for exactly the fields you want", "seed": "graphql", "source": "graphql" },
+        { "name": "gRPC", "note": "HTTP/2, fast service-to-service", "seed": "grpc", "source": "grpc" },
+        { "name": "MQTT", "note": "Lightweight messaging for devices", "seed": "mqtt", "source": "mqtt" }
+      ],
+      "verdict": "Same contract, different envelopes — REST, SOAP, GraphQL, gRPC, MQTT."
+    }
+  ],
+
+  "outro": {
+    "narration": "So that is an API: a messenger, a menu, and a contract between programs, and you just watched a real one answer. Next up, we break down every API style, one by one. If this finally made it click for you, hit subscribe, it genuinely helps the channel. I will see you in the next one.",
+    "nextVideo": "Every API Style Explained",
+    "question": "Which API style should we break down first?",
+    "beats": [
+      { "cue": "messenger", "mark": "recapMessenger" },
+      { "cue": "menu", "mark": "recapMenu" },
+      { "cue": "contract", "mark": "recapContract" },
+      { "cue": "subscribe", "mark": "cta" }
+    ]
+  }
+}

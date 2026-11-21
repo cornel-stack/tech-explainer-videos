@@ -1,0 +1,120 @@
+{
+  "id": "t06-gpu",
+  "title": "How a GPU Works",
+  "series": "How It Works",
+  "keyNoun": "GPU",
+  "promise": "Thousands of tiny cores, one instruction, a mountain of data — and why AI can't run without it.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#39FF88",
+  "sources": [
+    { "id": "nvidia", "label": "NVIDIA GPU architecture whitepapers", "url": "https://www.nvidia.com/en-us/technologies/" },
+    { "id": "vendor", "label": "GPU spec sheets (VRAM / bandwidth / TDP)", "url": "https://www.techpowerup.com/gpu-specs/" },
+    { "id": "alexnet", "label": "Krizhevsky, Sutskever & Hinton — ImageNet / AlexNet (2012)", "url": "https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" }
+  ],
+  "youtube": {
+    "titles": [
+      "How a GPU Works — and Why AI Can't Run Without One",
+      "How a Graphics Card Actually Works (and Why AI Needs It)",
+      "GPU vs CPU: How a Graphics Card Really Works",
+      "Why AI Runs on Graphics Cards — How a GPU Works"
+    ],
+    "primaryTitle": "How a GPU Works — and Why AI Can't Run Without One",
+    "tags": [
+      "how a gpu works", "how does a gpu work", "graphics card explained", "gpu vs cpu",
+      "cuda cores", "tensor cores", "parallel computing", "simd", "matrix multiplication",
+      "why ai needs gpu", "gpu architecture", "nvidia gpu", "how graphics cards work", "vram",
+      "how ai works", "deep learning hardware", "tech explained", "computer science"
+    ],
+    "hashtags": ["#gpu", "#ai", "#howitworks", "#tech", "#computerscience"],
+    "pinnedComment": "The one-line version: a neural-network layer IS a matrix multiply, and a GPU is a matrix-multiply machine. 👇 What should we take apart next? Subscribe — 'How AI Actually Works' is coming.",
+    "hook": "A CPU is a few geniuses; a GPU is an army of thousands. That one difference — massive parallelism — is why a graphics card draws a billion pixels a second, and why the entire AI revolution literally can't run without one."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "cores",
+      "narration": "Your CPU is a genius — but it does one thing at a time. A GPU is the opposite: thousands of simple workers, all computing at once. That single idea — massive parallelism — is why a graphics card can draw a billion pixels a second, and why the entire AI revolution literally cannot run without one. Let's open it up and see how.",
+      "beats": [ { "cue": "parallelism", "mark": "par" }, { "cue": "AI", "mark": "ai" } ]
+    },
+
+    {
+      "kind": "stage", "id": "scale", "name": "The Scale of the Job", "manim": "ladder", "icon": "fanout", "accent": "#39FF88",
+      "narration": "Start with the sheer scale. To draw a single frame of a modern game, your machine solves millions of tiny math problems — where each triangle sits, what colour each pixel is — and it does that sixty, even a hundred, times a second. An old 3D game needed around a hundred million calculations a second. A modern one needs tens of trillions. No processor that works step by step could ever keep up. The only way to hit those numbers is to stop doing one calculation at a time, and start doing millions at once.",
+      "specs": [
+        { "label": "Old 3D game", "value": "~100 million calcs/sec", "cue": "hundred", "source": "nvidia" },
+        { "label": "Modern game", "value": "tens of trillions/sec", "cue": "trillions", "source": "nvidia" },
+        { "label": "Per frame", "value": "millions of tiny sums", "cue": "millions", "source": "nvidia" }
+      ],
+      "verdict": "The job isn't hard math — it's an impossible amount of easy math."
+    },
+    {
+      "kind": "stage", "id": "cpuvsgpu", "name": "CPU vs GPU", "manim": "cores", "icon": "server", "accent": "#FF6B4A",
+      "narration": "So why can't your CPU just do it? A CPU has a handful of enormous, brilliant cores — maybe four to twenty-four — each able to run complex, branching logic, one instruction after another. It's a few geniuses. A GPU flips that completely: thousands of small, simple cores — a modern card has over ten thousand — each weak on its own, but together, a tireless army. The CPU is a couple of strong arms. The GPU is ten thousand weak ones. For one hard problem, you want the genius. For a million easy problems, you want the army.",
+      "specs": [
+        { "label": "CPU", "value": "4–24 big, clever cores", "cue": "twenty-four", "source": "nvidia" },
+        { "label": "GPU", "value": "10,000+ small cores", "cue": "thousand", "source": "nvidia" },
+        { "label": "Strategy", "value": "many weak, all in parallel", "cue": "army", "source": "nvidia" }
+      ],
+      "verdict": "CPU: a few geniuses. GPU: an army. The job decides which wins."
+    },
+    {
+      "kind": "stage", "id": "die", "name": "Inside the Die", "manim": "hierarchy", "icon": "hub", "accent": "#2DD4BF",
+      "narration": "Those thousands of cores aren't a random pile — they're organised like a fractal. Zoom into the silicon die and you find a repeating hierarchy: the whole die splits into a few big clusters; each cluster holds several streaming multiprocessors, or SMs; each SM runs groups of threads called warps — thirty-two at a time; and each thread runs on a single CUDA core. One modern chip packs over twenty-eight billion transistors into this structure. It is not one giant brain — it's the same tiny worker, copied ten thousand times, and wired to march in step.",
+      "specs": [
+        { "label": "Hierarchy", "value": "die → cluster → SM → warp → core", "cue": "hierarchy", "source": "nvidia" },
+        { "label": "A warp", "value": "32 threads in lockstep", "cue": "thirty-two", "source": "nvidia" },
+        { "label": "Transistors", "value": "~28 billion on one chip", "cue": "billion", "source": "nvidia" }
+      ],
+      "verdict": "A GPU isn't one big brain — it's one tiny worker, copied ten thousand times."
+    },
+    {
+      "kind": "stage", "id": "simd", "name": "SIMD — One Instruction, Many Data", "manim": "simd", "icon": "arrow", "accent": "#2DD4BF",
+      "narration": "Here's the trick that makes the army work: SIMD — single instruction, multiple data. Instead of giving each core its own program, the GPU broadcasts one instruction to thousands of cores at once, and each applies it to a different piece of data. 'Multiply this pixel's brightness' — fired at ten thousand pixels simultaneously. This only works because the pieces are independent: moving one triangle never depends on another, so there is nothing to wait for. Graphics is parallel by its very nature — and that is exactly the shape a GPU is built around.",
+      "specs": [
+        { "label": "SIMD", "value": "one instruction, many data", "cue": "instruction", "source": "nvidia" },
+        { "label": "Works because", "value": "the data is independent", "cue": "independent", "source": "nvidia" },
+        { "label": "Perfect for", "value": "pixels, vertices — parallel", "cue": "parallel", "source": "nvidia" }
+      ],
+      "verdict": "One instruction, thousands of data — because every pixel is on its own."
+    },
+    {
+      "kind": "stage", "id": "card", "name": "The Card Itself", "icon": "server", "accent": "#FFB020", "image": "gpu",
+      "narration": "All of this lives on the card itself — a small computer bolted onto yours. The cores are useless without data to chew, so right beside them sits dedicated memory — VRAM, usually a type called GDDR6X — feeding them at colossal speed: up to around a terabyte per second, many times faster than your system RAM. And feeding ten thousand cores running flat out takes serious power — the card pulls over three hundred watts, turning twelve volts into roughly one volt at hundreds of amps, and every watt becomes heat. That's why a graphics card is mostly cooler. The compute is the easy part; feeding and cooling it is the hard one.",
+      "specs": [
+        { "label": "Memory", "value": "VRAM — GDDR6X", "cue": "VRAM", "source": "vendor" },
+        { "label": "Bandwidth", "value": "up to ~1 TB / second", "cue": "terabyte", "source": "vendor" },
+        { "label": "Power", "value": "300W+ → becomes heat", "cue": "watts", "source": "vendor" }
+      ],
+      "verdict": "The cores are easy. Feeding and cooling them is the real engineering."
+    },
+    {
+      "kind": "stage", "id": "ai", "name": "Why AI Needs It", "manim": "matmul", "icon": "hub", "accent": "#B06BFF", "image": "datacenter",
+      "narration": "Now the part that rewired the world. Strip away the biology, and a neural network is mostly one operation, repeated billions of times: matrix multiplication — grids of numbers multiplied together. And a matrix multiply is just thousands of independent multiply-and-adds — exactly the parallel job a GPU devours. A neural-network layer literally is a matrix multiply, and a GPU is a matrix-multiply machine. Modern cards even add tensor cores — units built to do nothing but multiply matrices, even faster. AI didn't need a brand-new kind of chip. It needed the one we had already built for video games.",
+      "specs": [
+        { "label": "A neural-net layer", "value": "= a matrix multiply", "cue": "matrix", "source": "nvidia" },
+        { "label": "Tensor cores", "value": "matrix-multiply specialists", "cue": "tensor", "source": "nvidia" },
+        { "label": "Why a GPU", "value": "matrix multiply is parallel", "cue": "parallel", "source": "nvidia" }
+      ],
+      "verdict": "A neural-network layer is a matrix multiply — and a GPU is a matrix-multiply machine."
+    },
+    {
+      "kind": "stage", "id": "explosion", "name": "The AI Explosion", "manim": "timeline", "icon": "clock", "accent": "#B06BFF",
+      "narration": "And that realisation detonated. In two thousand twelve, a network called AlexNet shocked the field by winning an image-recognition contest — trained on just two gaming graphics cards, with about a gigabyte and a half of memory each. That was the spark. A little over a decade later, the data-centre GPUs training today's models carry more like a hundred and forty gigabytes each, and they ship by the millions, wired into warehouse-sized machines. Same core idea, scaled almost beyond comprehension. The gaming chip grew up — and became the engine of the entire AI age.",
+      "specs": [
+        { "label": "2012", "value": "AlexNet, on 2 gaming GPUs", "cue": "AlexNet", "source": "alexnet" },
+        { "label": "Back then", "value": "~1.5 GB memory each", "cue": "gigabyte", "source": "alexnet" },
+        { "label": "Today", "value": "~141 GB per data-centre GPU", "cue": "gigabytes", "source": "vendor" }
+      ],
+      "verdict": "The gaming chip grew up — and became the engine of the AI age."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "How AI Actually Works",
+      "question": "What should we take apart next?",
+      "narration": "So that's a GPU: not a faster CPU, but a fundamentally different machine — thousands of simple workers doing the very same thing to a mountain of data, all at once. It drew your games, and now it's training the future. Next, we open up the thing everyone is actually asking about: how AI actually works. If this finally made it click, subscribe, it genuinely helps. So tell me — what should we take apart next?",
+      "beats": [ { "cue": "AI", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "take", "mark": "ask" } ]
+    }
+  ]
+}

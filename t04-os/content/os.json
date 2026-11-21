@@ -1,0 +1,237 @@
+{
+  "id": "t04-os",
+  "title": "Every Operating System Explained",
+  "series": "Every X",
+  "keyNoun": "Operating System",
+  "promise": "Every OS you'll ever meet — where it came from, what it's for, and who still runs it.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35FF9E",
+  "sources": [
+    { "id": "wiki", "label": "Wikipedia — release dates & history", "url": "https://en.wikipedia.org/wiki/Operating_system" },
+    { "id": "statcounter", "label": "StatCounter Global Stats — OS share", "url": "https://gs.statcounter.com/os-market-share" },
+    { "id": "kernelorg", "label": "kernel.org — the Linux kernel", "url": "https://www.kernel.org/" },
+    { "id": "vendor", "label": "Vendor press (device counts)", "url": "https://blog.google/" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Operating System Explained — Including the Ones You Can't Buy",
+      "Every OS Explained in 12 Minutes (and Where Each One Still Lives)",
+      "From UNIX to HarmonyOS: Every Operating System Explained",
+      "Every Operating System Explained — the Full Family Tree"
+    ],
+    "primaryTitle": "Every Operating System Explained — Including the Ones You Can't Buy",
+    "tags": [
+      "every operating system explained", "operating system", "os explained", "windows",
+      "macos", "linux", "android", "ios", "chromeos", "steamos", "freebsd", "unix", "bsd",
+      "harmonyos", "kaios", "kernel", "os family tree", "how an os works", "tech explained",
+      "computer science", "linux vs windows"
+    ],
+    "hashtags": ["#operatingsystem", "#linux", "#windows", "#android", "#tech"],
+    "pinnedComment": "Which one are you watching this on? 👇 (yes, ChromeOS counts). Subscribe — 'Every Dead Operating System' is next.",
+    "hook": "Every operating system you'll ever meet — from the 1969 ancestor that still runs the internet, to the ones hiding in your router, your PlayStation, and your feature phone. Where each came from, what it does, and who still runs it."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "primer",
+      "narration": "You are using one right now. An operating system is the layer between your apps and the bare metal — it owns the hardware, hands out memory and CPU time, and decides what every program is allowed to do. There are far more than you think: fourteen of them, across five families, from a nineteen sixty-nine ancestor to the OS hiding in your router. Let's meet all of them.",
+      "beats": [ { "cue": "fourteen", "mark": "count" }, { "cue": "families", "mark": "fam" } ]
+    },
+    {
+      "kind": "timeline",
+      "manim": "familytree",
+      "narration": "Almost every OS alive today grows from three roots. One: UNIX, nineteen sixty-nine, which branched into BSD, then FreeBSD, and — through a company called NeXT — into macOS and iOS. Two: Linux, nineteen ninety-one, which grew into Android, ChromeOS, and SteamOS. Three: Microsoft's line, from MS-DOS to Windows to the NT kernel that still powers Windows today. Learn the tree, and every name on this list suddenly has a place.",
+      "beats": [ { "cue": "UNIX", "mark": "unix" }, { "cue": "Linux", "mark": "linux" }, { "cue": "Microsoft", "mark": "ms" } ]
+    },
+
+    {
+      "kind": "item", "id": "unix", "name": "UNIX", "family": "unix", "year": "1969", "maker": "Bell Labs",
+      "logo": "unix", "image": "ritchie", "highlight": "Kernel", "icon": "server",
+      "narration": "It starts here. In nineteen sixty-nine, at Bell Labs, Ken Thompson and Dennis Ritchie built UNIX — and almost everything about how computers work today was decided in this room. Multiple users, a tree of files, small tools piped together, and the idea of a kernel that owns the hardware. UNIX was rewritten in the C language, which made it portable to any machine. It was never free — licences ran into the thousands — but its ideas escaped and conquered the world.",
+      "specs": [
+        { "label": "First release", "value": "1969", "cue": "sixty-nine", "source": "wiki" },
+        { "label": "Made by", "value": "Thompson & Ritchie, Bell Labs", "cue": "Bell", "source": "wiki" },
+        { "label": "Licence", "value": "proprietary (costly)", "cue": "licences", "source": "wiki" },
+        { "label": "Legacy", "value": "the ancestor of nearly all", "cue": "world", "source": "wiki" }
+      ],
+      "verdict": "Found on: big-iron servers — and in the DNA of macOS, iOS, Linux and Android."
+    },
+    {
+      "kind": "item", "id": "bsd", "name": "BSD", "family": "unix", "year": "1977", "maker": "UC Berkeley",
+      "logo": "bsd", "image": "datacenter", "highlight": "TCP/IP", "icon": "server",
+      "narration": "In the late seventies, Berkeley took UNIX and ran with it. BSD — the Berkeley Software Distribution — added the thing that mattered most: a working TCP/IP networking stack. The way computers talk over the internet was essentially standardised here. A long legal fight with AT&T over who owned UNIX nearly killed BSD in the early nineties — and that gap is exactly the gap a Finnish student named Linus would fill. BSD lived on, quietly, under a very permissive licence.",
+      "specs": [
+        { "label": "First release", "value": "1977", "cue": "seventies", "source": "wiki" },
+        { "label": "Made by", "value": "UC Berkeley", "cue": "Berkeley", "source": "wiki" },
+        { "label": "Gave us", "value": "the TCP/IP stack", "cue": "networking", "source": "wiki" },
+        { "label": "Licence", "value": "permissive (BSD)", "cue": "permissive", "source": "wiki" }
+      ],
+      "verdict": "Found on: the foundations of the internet — and the ancestor of FreeBSD and macOS."
+    },
+    {
+      "kind": "item", "id": "freebsd", "name": "FreeBSD", "family": "unix", "year": "1993", "maker": "The FreeBSD Project",
+      "logo": "freebsd", "image": "datacenter", "highlight": "Networking", "icon": "server",
+      "narration": "FreeBSD, from nineteen ninety-three, is BSD made into a complete, modern, free operating system — and it is probably powering things you use every day without knowing. Netflix streams a huge share of its video from FreeBSD servers because its network stack is brutally fast. The PlayStation four and five run a customised FreeBSD. WhatsApp famously served millions of connections per server on it. It's rock-solid and permissively licensed — just invisible, because it lives in infrastructure, not on desktops.",
+      "specs": [
+        { "label": "First release", "value": "1993", "cue": "ninety-three", "source": "wiki" },
+        { "label": "Runs", "value": "Netflix CDN, PS4 / PS5", "cue": "Netflix", "source": "wiki" },
+        { "label": "Known for", "value": "a fast network stack", "cue": "fast", "source": "wiki" },
+        { "label": "Licence", "value": "permissive (BSD)", "cue": "permissively", "source": "wiki" }
+      ],
+      "verdict": "Found on: Netflix's servers, your PlayStation, and countless routers."
+    },
+    {
+      "kind": "item", "id": "macos", "name": "macOS", "family": "apple", "year": "2001", "maker": "Apple",
+      "logo": "macos", "image": "laptop", "highlight": "Darwin (UNIX) core", "icon": "laptop",
+      "narration": "When Steve Jobs came back to Apple in nineteen ninety-seven, he brought an operating system with him — NeXTSTEP, which Apple bought for over four hundred million dollars. That became macOS in two thousand one. Under its polished surface sits Darwin, a certified UNIX core, which is why the Mac is beloved by developers: the power of UNIX with a designed, consistent desktop on top. The catch is the walled garden — Apple hardware only, and a premium price for the privilege.",
+      "specs": [
+        { "label": "First release", "value": "2001 (Mac OS X)", "cue": "thousand", "source": "wiki" },
+        { "label": "Core", "value": "Darwin — a certified UNIX", "cue": "Darwin", "source": "wiki" },
+        { "label": "From", "value": "NeXT, bought ~$429M, 1997", "cue": "million", "source": "wiki" },
+        { "label": "Runs on", "value": "Apple hardware only", "cue": "hardware", "source": "wiki" }
+      ],
+      "verdict": "Found on: every Mac — a UNIX under glass."
+    },
+    {
+      "kind": "item", "id": "ios", "name": "iOS", "family": "apple", "year": "2007", "maker": "Apple",
+      "logo": "ios", "image": "smartphone", "highlight": "Sandboxed apps", "icon": "phone",
+      "narration": "iOS, from two thousand seven, is macOS's mobile sibling — same UNIX roots, radically locked down. Every app runs in its own sandbox, isolated from the rest of the system, which is a huge part of why iPhones are hard to infect. Famously, Steve Jobs didn't even want an App Store; it arrived in two thousand eight and changed software forever. The trade is control: you install what Apple allows, how Apple allows, and nothing else. Security and consistency, bought with your freedom.",
+      "specs": [
+        { "label": "First release", "value": "2007", "cue": "seven", "source": "wiki" },
+        { "label": "App Store", "value": "2008", "cue": "eight", "source": "wiki" },
+        { "label": "Security model", "value": "per-app sandboxing", "cue": "sandbox", "source": "wiki" },
+        { "label": "Freedom", "value": "locked down by design", "cue": "control", "source": "wiki" }
+      ],
+      "verdict": "Found on: every iPhone and iPad — the walled garden, perfected."
+    },
+    {
+      "kind": "item", "id": "msdos", "name": "MS-DOS", "family": "ms", "year": "1981", "maker": "Microsoft",
+      "logo": "msdos", "image": "", "highlight": "Command line", "icon": "terminal",
+      "narration": "Microsoft's empire started with a bargain. In nineteen eighty-one, IBM needed an OS for its new PC; Microsoft bought one for a reported fifty thousand dollars, licensed it to IBM, and crucially kept the right to sell it to everyone else. That was MS-DOS: a bare, text-only command line with no graphics and no multitasking. It wasn't elegant — but it was everywhere, and it made Microsoft the default. Every Windows PC still carries a little of its DNA.",
+      "specs": [
+        { "label": "First release", "value": "1981", "cue": "eighty-one", "source": "wiki" },
+        { "label": "Interface", "value": "text-only command line", "cue": "command", "source": "wiki" },
+        { "label": "Deal", "value": "licensed to IBM, sold to all", "cue": "IBM", "source": "wiki" },
+        { "label": "Legacy", "value": "the seed of Windows", "cue": "default", "source": "wiki" }
+      ],
+      "verdict": "Found on: 1980s PCs — and still buried in the Windows command prompt."
+    },
+    {
+      "kind": "item", "id": "windows", "name": "Windows", "family": "ms", "year": "1985", "maker": "Microsoft",
+      "logo": "windows", "image": "laptop", "highlight": "GUI shell", "icon": "laptop",
+      "narration": "Windows, nineteen eighty-five, put a graphical shell on top of DOS — and then rode raw compatibility to total dominance. Its superpower was never elegance; it was that it ran everything, on hardware from everybody. Ninety-five, XP, seven, ten, eleven — each one carried decades of software forward. That same openness is its curse: it's the biggest malware target on Earth, update fatigue is real, and the Blue Screen of Death has haunted it since version one. It still owns roughly seven in ten desktops.",
+      "specs": [
+        { "label": "First release", "value": "1985", "cue": "eighty-five", "source": "wiki" },
+        { "label": "Desktop share", "value": "~70% (StatCounter)", "cue": "seven", "source": "statcounter" },
+        { "label": "Strength", "value": "runs almost everything", "cue": "compatibility", "source": "wiki" },
+        { "label": "Weakness", "value": "#1 malware target", "cue": "malware", "source": "wiki" }
+      ],
+      "verdict": "Found on: ~70% of the world's desktops — compatibility is king."
+    },
+    {
+      "kind": "item", "id": "windowsnt", "name": "Windows NT", "family": "ms", "year": "1993", "maker": "Microsoft",
+      "logo": "windowsnt", "image": "datacenter", "highlight": "NT kernel", "icon": "server",
+      "narration": "Here's the twist most people miss: the Windows you use today isn't built on DOS at all. In nineteen ninety-three, Microsoft shipped Windows NT — a brand-new, from-scratch kernel designed for stability, security, and real multitasking. The consumer and NT lines merged with XP in two thousand one, and every Windows since — ten, eleven, and Windows Server — runs the NT kernel. So the modern Windows is really two stories: a friendly face from DOS, and a serious engine from NT.",
+      "specs": [
+        { "label": "First release", "value": "1993", "cue": "ninety-three", "source": "wiki" },
+        { "label": "What it is", "value": "a from-scratch kernel", "cue": "scratch", "source": "wiki" },
+        { "label": "Powers", "value": "Windows 10, 11, Server", "cue": "every", "source": "wiki" },
+        { "label": "Built for", "value": "stability & security", "cue": "stability", "source": "wiki" }
+      ],
+      "verdict": "Found on: every modern Windows PC and server — the real engine under the hood."
+    },
+    {
+      "kind": "item", "id": "linux", "name": "Linux", "family": "linux", "year": "1991", "maker": "Linus Torvalds",
+      "logo": "linux", "image": "torvalds", "highlight": "Monolithic kernel", "icon": "server",
+      "narration": "In nineteen ninety-one, a Finnish student named Linus Torvalds posted about a free kernel he was writing — \"just a hobby, won't be big and professional.\" It became the most important piece of software on Earth. Linux is only the kernel; wrap it with tools and you get a distribution — Ubuntu, Debian, Fedora, Arch. It's free, open, and endlessly configurable, which is why it runs the vast majority of the world's servers, all top supercomputers, and the cloud itself. The catch: on the desktop, it still asks more of you.",
+      "specs": [
+        { "label": "First release", "value": "1991", "cue": "ninety-one", "source": "kernelorg" },
+        { "label": "Kernel vs distro", "value": "Ubuntu, Debian, Fedora…", "cue": "distribution", "source": "kernelorg" },
+        { "label": "Runs", "value": "most servers & the cloud", "cue": "servers", "source": "wiki" },
+        { "label": "Licence", "value": "free & open source (GPL)", "cue": "free", "source": "kernelorg" }
+      ],
+      "verdict": "Found on: most of the internet, every supercomputer — and your Android phone."
+    },
+    {
+      "kind": "item", "id": "android", "name": "Android", "family": "google", "year": "2008", "maker": "Google",
+      "logo": "android", "image": "androidrobot", "highlight": "ART runtime", "icon": "phone",
+      "narration": "Android is Linux in disguise — and the most-installed OS on the planet. Google bought the startup in two thousand five for a reported fifty million dollars; it launched in two thousand eight, and today runs on over three billion active devices. Under the hood it's the Linux kernel, with Google's own runtime — ART — running your apps on top. It's open, so every maker skins it differently. That's the gift and the curse: endless variety, but a messy update story and plenty of bloatware.",
+      "specs": [
+        { "label": "First release", "value": "2008", "cue": "eight", "source": "wiki" },
+        { "label": "Active devices", "value": "3B+ (Google)", "cue": "billion", "source": "vendor" },
+        { "label": "Based on", "value": "the Linux kernel", "cue": "Linux", "source": "wiki" },
+        { "label": "Weakness", "value": "updates & bloatware", "cue": "bloatware", "source": "wiki" }
+      ],
+      "verdict": "Found on: 3 billion+ phones, TVs, watches and cars."
+    },
+    {
+      "kind": "item", "id": "chromeos", "name": "ChromeOS", "family": "google", "year": "2011", "maker": "Google",
+      "logo": "chromeos", "image": "laptop", "highlight": "Browser shell", "icon": "laptop",
+      "narration": "ChromeOS, from two thousand eleven, asked a radical question: what if the browser was the whole computer? It's Linux underneath, but the interface is essentially Chrome — your apps are web apps, your files live in the cloud, and the machine boots in seconds and barely gets viruses. That's why it conquered schools. The weakness is the flip side: lean too hard on the cloud and it struggles offline, and heavyweight desktop software like Photoshop was never really the point. It now runs Android and Linux apps too.",
+      "specs": [
+        { "label": "First release", "value": "2011", "cue": "eleven", "source": "wiki" },
+        { "label": "Based on", "value": "Linux (Gentoo roots)", "cue": "Linux", "source": "wiki" },
+        { "label": "Big in", "value": "schools", "cue": "schools", "source": "wiki" },
+        { "label": "Weakness", "value": "cloud-dependent", "cue": "offline", "source": "wiki" }
+      ],
+      "verdict": "Found on: millions of Chromebooks — the browser as a computer."
+    },
+    {
+      "kind": "item", "id": "steamos", "name": "SteamOS", "family": "other", "year": "2013", "maker": "Valve",
+      "logo": "steamos", "image": "steamdeck", "highlight": "Proton layer", "icon": "laptop",
+      "narration": "Valve's first try at a living-room OS — Steam Machines in twenty thirteen — flopped hard. But SteamOS came back in twenty twenty-two inside the Steam Deck, and this time it worked. It's Arch Linux underneath, and its secret weapon is Proton: a compatibility layer that translates Windows games to run on Linux, on the fly. Suddenly a huge chunk of the Windows-only Steam library just works on a handheld. SteamOS is quietly the strongest case yet that PC gaming doesn't need Windows.",
+      "specs": [
+        { "label": "First release", "value": "2013 → Deck 2022", "cue": "thirteen", "source": "wiki" },
+        { "label": "Based on", "value": "Arch Linux", "cue": "Arch", "source": "wiki" },
+        { "label": "Secret weapon", "value": "Proton (Windows games)", "cue": "Proton", "source": "wiki" },
+        { "label": "Found on", "value": "the Steam Deck", "cue": "Deck", "source": "wiki" }
+      ],
+      "verdict": "Found on: the Steam Deck — Windows games, no Windows."
+    },
+    {
+      "kind": "item", "id": "kaios", "name": "KaiOS", "family": "other", "year": "2017", "maker": "KaiOS Technologies",
+      "logo": "kaios", "image": "featurephone", "highlight": "Web-app stack", "icon": "phone",
+      "narration": "Here's one you've probably never heard of that runs on hundreds of millions of phones. KaiOS, from twenty seventeen, rose from the ashes of Firefox OS to power cheap feature phones — the ones with physical keypads, not touchscreens — bringing apps, 4G, and even maps to the next billion people coming online in India and Africa. Its apps are built from web technology, HTML and JavaScript, running on tiny hardware. It's proof that the smartphone isn't the only future.",
+      "specs": [
+        { "label": "First release", "value": "2017", "cue": "seventeen", "source": "wiki" },
+        { "label": "Runs on", "value": "smart feature phones", "cue": "feature", "source": "wiki" },
+        { "label": "From", "value": "the ashes of Firefox OS", "cue": "Firefox", "source": "wiki" },
+        { "label": "Apps built in", "value": "HTML + JavaScript", "cue": "web", "source": "wiki" }
+      ],
+      "verdict": "Found on: hundreds of millions of feature phones across India and Africa."
+    },
+    {
+      "kind": "item", "id": "harmonyos", "name": "HarmonyOS", "family": "other", "year": "2019", "maker": "Huawei",
+      "logo": "harmonyos", "image": "smartphone", "highlight": "Distributed soft bus", "icon": "hub",
+      "narration": "HarmonyOS is what happens when a giant is cut off and has to build its own world. After Huawei was placed on a US trade blacklist in twenty nineteen, losing access to Google's Android, it launched HarmonyOS. Its headline idea is the distributed soft bus: phone, watch, car, and TV act less like separate gadgets and more like one pooled computer, sharing screens and resources seamlessly. Newer versions have dropped Android compatibility entirely. It already runs on hundreds of millions of devices — almost all of them in China.",
+      "specs": [
+        { "label": "First release", "value": "2019", "cue": "nineteen", "source": "wiki" },
+        { "label": "Why", "value": "Huawei cut off from Android", "cue": "blacklist", "source": "wiki" },
+        { "label": "Big idea", "value": "distributed 'soft bus'", "cue": "distributed", "source": "wiki" },
+        { "label": "Scale", "value": "100Ms of devices (mostly China)", "cue": "millions", "source": "vendor" }
+      ],
+      "verdict": "Found on: hundreds of millions of Huawei devices — a whole ecosystem, rebuilt."
+    },
+
+    {
+      "kind": "compare",
+      "manim": "desktopshare",
+      "narration": "So who actually wins? On the desktop, it isn't close. Windows still runs roughly seven out of every ten computers. macOS takes most of the rest, somewhere around fifteen percent. And Linux — the OS that runs nearly all of the world's servers — sits at just a few percent of desktops. The machine in your server room and the machine on your desk are two completely different worlds.",
+      "beats": [ { "cue": "Windows", "mark": "win" }, { "cue": "Linux", "mark": "linux" } ]
+    },
+    {
+      "kind": "compare",
+      "manim": "mobileshare",
+      "narration": "On mobile, the split is just as stark — but it's a different two. Android runs around seven in ten phones worldwide, carried by cheap hardware everywhere on Earth. iOS takes most of the remainder, concentrated in wealthier markets, where it captures the vast majority of the profit. Two systems, both born from older giants, now split almost the entire planet's pockets between them.",
+      "beats": [ { "cue": "Android", "mark": "android" }, { "cue": "iOS", "mark": "ios" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every Dead Operating System Explained",
+      "question": "Which one are you watching this on?",
+      "narration": "So that's every operating system still standing: the UNIX elders, the Microsoft empire, the Linux revolution, and the newcomers rebuilding it all. One layer, running your entire digital life, usually without a single thank-you. Next, we dig up the ones that died — the operating systems that lost. If this gave you the whole map, subscribe, it genuinely helps. So tell me in the comments: which one are you watching this on?",
+      "beats": [ { "cue": "dead", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "comments", "mark": "ask" } ]
+    }
+  ]
+}

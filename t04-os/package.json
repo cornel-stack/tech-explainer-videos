@@ -1,0 +1,35 @@
+{
+  "name": "t04-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "What Is an API? — a fresh, animation-first explainer. Open Peeps + Coco Material + DiceBear + Manim + three.js, composited by Remotion, rendered only in GitHub CI.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "studio": "remotion studio",
+    "still": "remotion still Thumb out/thumb.png --props=render-input.json",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@dicebear/collection": "^9.2.2",
+    "@dicebear/core": "^9.2.2",
+    "@react-three/fiber": "^8.17.10",
+    "@remotion/cli": "4.0.545",
+    "@remotion/google-fonts": "4.0.545",
+    "@remotion/media-utils": "4.0.545",
+    "@remotion/noise": "4.0.545",
+    "@remotion/paths": "4.0.545",
+    "@remotion/shapes": "4.0.545",
+    "@remotion/three": "4.0.545",
+    "@remotion/transitions": "4.0.545",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "4.0.545",
+    "three": "^0.169.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/three": "^0.169.0",
+    "typescript": "^5.6.3"
+  }
+}

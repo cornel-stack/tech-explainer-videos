@@ -1,0 +1,214 @@
+{
+  "id": "t02-styles",
+  "title": "Every API Style Explained",
+  "series": "Every X",
+  "keyNoun": "API Style",
+  "promise": "Eight ways two programs talk — and the one question that tells you which to use.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#FF3E7F",
+  "sources": [
+    { "id": "rest", "label": "Roy Fielding — REST dissertation", "url": "https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm" },
+    { "id": "rfc9110", "label": "RFC 9110 — HTTP Semantics", "url": "https://www.rfc-editor.org/rfc/rfc9110" },
+    { "id": "soap", "label": "W3C — SOAP", "url": "https://www.w3.org/TR/soap/" },
+    { "id": "graphql", "label": "GraphQL — specification", "url": "https://spec.graphql.org/" },
+    { "id": "grpc", "label": "gRPC — documentation", "url": "https://grpc.io/docs/" },
+    { "id": "rfc6455", "label": "RFC 6455 — The WebSocket Protocol", "url": "https://www.rfc-editor.org/rfc/rfc6455" },
+    { "id": "sse", "label": "WHATWG HTML — Server-sent events", "url": "https://html.spec.whatwg.org/multipage/server-sent-events.html" },
+    { "id": "webrtc", "label": "W3C — WebRTC", "url": "https://www.w3.org/TR/webrtc/" }
+  ],
+
+  "youtube": {
+    "titles": [
+      "Every API Style Explained (REST, GraphQL, gRPC, WebSocket & More)",
+      "8 API Styles — and Exactly When to Use Each One",
+      "Stop Picking the Wrong API Style — All 8, Explained",
+      "REST vs GraphQL vs gRPC vs WebSocket — Every API Style Explained"
+    ],
+    "primaryTitle": "Every API Style Explained (REST, GraphQL, gRPC, WebSocket & More)",
+    "tags": [
+      "every api style", "api styles", "rest vs graphql", "graphql", "grpc", "websocket",
+      "rest api", "api architecture", "webhook", "server sent events", "webrtc", "soap",
+      "api explained", "api types", "which api to use", "system design", "backend",
+      "api tutorial", "software architecture", "web development", "tech explained"
+    ],
+    "hashtags": ["#api", "#systemdesign", "#graphql", "#grpc", "#backend", "#webdevelopment"],
+    "pinnedComment": "Which API style does YOUR app use? 👇  We're doing a deep dive on each one next — subscribe so you don't miss them. It genuinely helps the channel.",
+    "hook": "Two programs need to talk, and there are eight completely different ways to do it. Here's every major API style — REST, SOAP, GraphQL, gRPC, WebSocket, SSE, Webhooks and WebRTC — and the one question that tells you which to use."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "narration": "Two programs need to talk, and there are at least eight completely different ways to do it. Pick the wrong one, and you will feel it for years. So here is every major API style, and the one simple question that tells you which to reach for.",
+      "beats": [
+        { "cue": "eight", "mark": "count" },
+        { "cue": "question", "mark": "promise" }
+      ]
+    },
+    {
+      "kind": "axis",
+      "narration": "Before the list, one map that makes all of them click. Ask two questions. First, who starts the conversation, the client or the server? Second, is it one quick exchange, or does the line stay open? Those two questions split every style into four corners. Most of them, REST, SOAP, GraphQL, live right here: the client asks, the server answers, done. Keep the line open and you get WebSocket. Let the server start, and you get webhooks and server-sent events. And WebRTC skips the server in the middle entirely.",
+      "beats": [
+        { "cue": "starts", "mark": "who" },
+        { "cue": "open", "mark": "persist" },
+        { "cue": "corners", "mark": "grid" }
+      ]
+    },
+
+    {
+      "kind": "item", "id": "rest", "name": "REST", "year": "2000", "who": "Roy Fielding",
+      "pattern": "reqres", "accent": "#FFC24B", "icon": "arrow",
+      "narration": "We start with REST, easily the most common. Roy Fielding described it back in two thousand, and it simply rides on the plain web. You hit a URL with an HTTP verb, GET to read, POST to create, DELETE to remove, and the server hands back JSON. Every request stands completely on its own; the server remembers nothing in between. That statelessness is exactly why REST scales so well and caches almost for free. The downside: for deeply linked data you end up making call after call, and the server, not you, decides the shape of what comes back.",
+      "specs": [
+        { "label": "Transport", "value": "HTTP/1.1", "cue": "HTTP", "source": "rfc9110" },
+        { "label": "Payload", "value": "JSON", "cue": "JSON", "source": "rfc9110" },
+        { "label": "Direction", "value": "client → server", "cue": "verb", "source": "rest" },
+        { "label": "Cacheable", "value": "Yes — a big win", "cue": "caches", "source": "rest" },
+        { "label": "Browser", "value": "native", "cue": "web", "source": "rfc9110" }
+      ],
+      "code": ["GET /users/1  HTTP/1.1", "Host: api.app.com", "", "200 OK", "{ \"id\": 1, \"name\": \"Ada\" }"],
+      "beats": [ { "cue": "URL", "mark": "send" }, { "cue": "back", "mark": "recv" }, { "cue": "call", "mark": "weak" } ],
+      "verdict": "Use it when you're building a public, cacheable API and simplicity wins."
+    },
+    {
+      "kind": "item", "id": "soap", "name": "SOAP", "year": "1998", "who": "Microsoft",
+      "pattern": "envelope", "accent": "#B06BFF", "icon": "envelope",
+      "narration": "Before REST took over, there was SOAP, from Microsoft in the late nineties. SOAP wraps every message in a strict XML envelope: a header for things like security, and a body for the actual call. Its superpower is rules. Built-in error handling, encryption, and transactions, and it can travel over almost anything, HTTP, SMTP, even raw TCP. That rigor is why banks, healthcare, and governments still run on it. The cost is weight: all that XML is verbose and heavy, and it is complete overkill for a simple mobile app that just wants a little JSON.",
+      "specs": [
+        { "label": "Transport", "value": "HTTP · SMTP · TCP", "cue": "TCP", "source": "soap" },
+        { "label": "Payload", "value": "XML envelope", "cue": "XML", "source": "soap" },
+        { "label": "Direction", "value": "client → server", "cue": "call", "source": "soap" },
+        { "label": "Security", "value": "built-in", "cue": "encryption", "source": "soap" },
+        { "label": "Browser", "value": "poor fit", "cue": "overkill", "source": "soap" }
+      ],
+      "code": ["<soap:Envelope>", "  <soap:Header>…</soap:Header>", "  <soap:Body>", "    <getUser><id>1</id></getUser>", "  </soap:Body>", "</soap:Envelope>"],
+      "beats": [ { "cue": "envelope", "mark": "send" }, { "cue": "body", "mark": "recv" }, { "cue": "verbose", "mark": "weak" } ],
+      "verdict": "Use it when a bank or legacy system demands strict contracts and built-in security."
+    },
+    {
+      "kind": "item", "id": "graphql", "name": "GraphQL", "year": "2015", "who": "Facebook",
+      "pattern": "oneQuery", "accent": "#FF3E7F", "icon": "hub",
+      "narration": "GraphQL came out of Facebook in twenty fifteen to kill two problems: over-fetching and under-fetching. Instead of many URLs, there is one endpoint and a schema of types. The client sends a query naming exactly the fields it wants, even nested across relationships, and the server returns precisely that shape, nothing extra. One round trip, no waste. GitHub, Shopify, and Pinterest lean on it hard. The catch: it is harder to cache than REST, because everything is a single POST, and a carelessly nested query can quietly trigger a giant database scan and take you down.",
+      "specs": [
+        { "label": "Transport", "value": "HTTP POST", "cue": "POST", "source": "graphql" },
+        { "label": "Payload", "value": "JSON — you shape it", "cue": "fields", "source": "graphql" },
+        { "label": "Direction", "value": "client → server", "cue": "query", "source": "graphql" },
+        { "label": "Cacheable", "value": "Harder than REST", "cue": "cache", "source": "graphql" },
+        { "label": "Browser", "value": "native", "cue": "endpoint", "source": "graphql" }
+      ],
+      "code": ["query {", "  user(id: 1) {", "    name", "    posts { title }", "  }", "}"],
+      "beats": [ { "cue": "query", "mark": "send" }, { "cue": "shape", "mark": "recv" }, { "cue": "scan", "mark": "weak" } ],
+      "verdict": "Use it when clients need nested data and you're tired of over-fetching."
+    },
+
+    {
+      "kind": "compare",
+      "narration": "Here is the clearest reason GraphQL exists. Say you want a book and its two authors. With REST, that is often three separate trips: get the book, then get each author, the classic N plus one problem. With GraphQL, it is one query that names exactly the fields you want, and the server returns precisely that shape. The trade: REST's separate GETs cache beautifully in browsers and CDNs; GraphQL's single POST does not, and a careless query can hammer your database. Neither is better. It is a trade-off, and now you can see it.",
+      "beats": [
+        { "cue": "three", "mark": "rest" },
+        { "cue": "one", "mark": "graphql" },
+        { "cue": "cache", "mark": "tradeoff" }
+      ]
+    },
+
+    {
+      "kind": "item", "id": "grpc", "name": "gRPC", "year": "2016", "who": "Google",
+      "pattern": "streams", "accent": "#3DE0B0", "icon": "server",
+      "narration": "gRPC, from Google in twenty sixteen, is built for speed between servers. The idea is an old one, RPC, call a function on another machine as if it were local. But gRPC makes it fast: messages are Protocol Buffers, a compact binary format, sent over HTTP/2, which multiplexes many calls on one connection. It even supports streaming in both directions at once. Netflix and Uber use it between microservices, because binary plus HTTP/2 means far smaller payloads than JSON. The downside: it is not made for browsers, you need a proxy, and binary messages are a pain to eyeball and debug.",
+      "specs": [
+        { "label": "Transport", "value": "HTTP/2", "cue": "multiplexes", "source": "grpc" },
+        { "label": "Payload", "value": "Protocol Buffers (binary)", "cue": "binary", "source": "grpc" },
+        { "label": "Direction", "value": "both — streaming", "cue": "streaming", "source": "grpc" },
+        { "label": "Cacheable", "value": "No", "cue": "microservices", "source": "grpc" },
+        { "label": "Browser", "value": "needs a proxy", "cue": "proxy", "source": "grpc" }
+      ],
+      "code": ["service Users {", "  rpc GetUser(UserId) returns (User);", "}", "message User {", "  int32 id = 1;", "  string name = 2;", "}"],
+      "beats": [ { "cue": "call", "mark": "send" }, { "cue": "streaming", "mark": "recv" }, { "cue": "browsers", "mark": "weak" } ],
+      "verdict": "Use it for fast internal service-to-service calls — not public browser traffic."
+    },
+    {
+      "kind": "item", "id": "websocket", "name": "WebSocket", "year": "2011", "who": "RFC 6455",
+      "pattern": "handshake", "accent": "#FF6B4A", "icon": "arrow",
+      "narration": "Everything so far was one and done. WebSocket, standardized in twenty eleven, keeps the line open. It starts as a normal HTTP request with one twist, an Upgrade header, and if the server agrees, it answers one oh one, Switching Protocols, and that same connection becomes a permanent two-way pipe. Now either side can send a message the instant it has one, with no polling. That is what powers live chat, multiplayer games, and streaming prices. The trade-off: an always-open connection costs memory and effort to scale, and it is genuine overkill if your app is not actually real-time.",
+      "specs": [
+        { "label": "Transport", "value": "TCP (upgraded HTTP)", "cue": "Upgrade", "source": "rfc6455" },
+        { "label": "Payload", "value": "text · JSON · binary", "cue": "message", "source": "rfc6455" },
+        { "label": "Direction", "value": "two-way, live", "cue": "two-way", "source": "rfc6455" },
+        { "label": "Persistent", "value": "Yes — line stays open", "cue": "open", "source": "rfc6455" },
+        { "label": "Browser", "value": "native", "cue": "chat", "source": "rfc6455" }
+      ],
+      "code": ["GET /chat  HTTP/1.1", "Upgrade: websocket", "Connection: Upgrade", "", "101 Switching Protocols", "↔  (two-way from here)"],
+      "beats": [ { "cue": "Upgrade", "mark": "send" }, { "cue": "two-way", "mark": "recv" }, { "cue": "memory", "mark": "weak" } ],
+      "verdict": "Use it when both sides must talk live — chat, games, trading."
+    },
+    {
+      "kind": "item", "id": "sse", "name": "Server-Sent Events", "year": "2015", "who": "WHATWG",
+      "pattern": "serverStream", "accent": "#E8C24A", "icon": "cloud",
+      "narration": "Sometimes only the server needs to talk. Server-Sent Events, part of the HTML standard, gives you a one-way stream: the browser opens a plain HTTP connection with EventSource, and the server pushes updates down it whenever it likes. No handshake, no new protocol, and it even reconnects on its own if it drops. It is perfect for a live news feed, a notification bell, or a progress bar. The limits are the flip side of that simplicity: it only flows one way, server to client, and browsers cap how many of these connections you can hold open at once.",
+      "specs": [
+        { "label": "Transport", "value": "plain HTTP", "cue": "HTTP", "source": "sse" },
+        { "label": "Payload", "value": "text events", "cue": "updates", "source": "sse" },
+        { "label": "Direction", "value": "server → client", "cue": "one-way", "source": "sse" },
+        { "label": "Cacheable", "value": "No (a live stream)", "cue": "stream", "source": "sse" },
+        { "label": "Browser", "value": "native — EventSource", "cue": "EventSource", "source": "sse" }
+      ],
+      "code": ["const es = new EventSource(\"/stream\");", "", "es.onmessage = (e) => {", "  console.log(e.data);", "};"],
+      "beats": [ { "cue": "EventSource", "mark": "send" }, { "cue": "pushes", "mark": "recv" }, { "cue": "one-way", "mark": "weak" } ],
+      "verdict": "Use it when only the server needs to push, one way, over plain HTTP."
+    },
+    {
+      "kind": "item", "id": "webhook", "name": "Webhook", "year": "callback", "who": "event-driven",
+      "pattern": "callback", "accent": "#FFC24B", "icon": "messenger",
+      "narration": "A webhook flips the whole model around. Normally you call the API; with a webhook, the API calls you. You register a URL, and when some event happens, a payment clears, a commit is pushed, their server sends an HTTP POST to your URL with the details. It is the difference between checking your mailbox every minute and just waiting for the doorbell to ring. GitHub, Stripe, and Slack all run on them. The catch: your endpoint has to be public and always up, you must verify the call is genuine, and it is one-way, fine for events, useless for a real back-and-forth.",
+      "specs": [
+        { "label": "Transport", "value": "HTTP POST", "cue": "POST", "source": "rfc9110" },
+        { "label": "Payload", "value": "JSON event", "cue": "event", "source": "rfc9110" },
+        { "label": "Direction", "value": "server → you", "cue": "doorbell", "source": "rfc9110" },
+        { "label": "Cacheable", "value": "No", "cue": "verify", "source": "rfc9110" },
+        { "label": "Pattern", "value": "reverse API", "cue": "flips", "source": "rfc9110" }
+      ],
+      "code": ["POST /your/callback  HTTP/1.1", "", "{", "  \"event\": \"payment.succeeded\",", "  \"amount\": 4200", "}"],
+      "beats": [ { "cue": "event", "mark": "send" }, { "cue": "POST", "mark": "recv" }, { "cue": "verify", "mark": "weak" } ],
+      "verdict": "Use it when you want to be notified of an event instead of polling for it."
+    },
+    {
+      "kind": "item", "id": "webrtc", "name": "WebRTC", "year": "2011", "who": "W3C + Google",
+      "pattern": "peer", "accent": "#B06BFF", "icon": "phone",
+      "narration": "Last one, and the odd one out: WebRTC. Everything else routes through a server in the middle. WebRTC connects two browsers directly, peer to peer, for real-time audio, video, and files. A signalling server only introduces the two peers; after that, the media flows straight between them, which is why a video call feels instant. It handles the genuinely hard parts, punching through firewalls, negotiating codecs, and adapting quality to your bandwidth. Google Meet and Discord calls run on it. The cost: it is complex to set up, and true peer-to-peer gets fragile across strict corporate networks.",
+      "specs": [
+        { "label": "Transport", "value": "UDP · SRTP", "cue": "peer", "source": "webrtc" },
+        { "label": "Payload", "value": "audio · video · data", "cue": "media", "source": "webrtc" },
+        { "label": "Direction", "value": "peer ↔ peer", "cue": "directly", "source": "webrtc" },
+        { "label": "Server", "value": "only to introduce", "cue": "signalling", "source": "webrtc" },
+        { "label": "Browser", "value": "native", "cue": "video", "source": "webrtc" }
+      ],
+      "code": ["const pc = new RTCPeerConnection();", "", "pc.ontrack = (e) => {", "  video.srcObject = e.streams[0];", "};"],
+      "beats": [ { "cue": "signalling", "mark": "send" }, { "cue": "directly", "mark": "recv" }, { "cue": "complex", "mark": "weak" } ],
+      "verdict": "Use it for direct peer-to-peer media — video, voice, screen share."
+    },
+
+    {
+      "kind": "decision",
+      "narration": "So which do you actually pick? Building a public API? REST, simple and cacheable. A mobile app pulling nested data? GraphQL. Fast calls between your own microservices? gRPC. A chat app or live prices? WebSocket, because the line stays open. Want to be told the moment something happens, like a payment clearing? A webhook, the server calls you. A video or screen share? WebRTC, peer to peer. There is rarely one perfect answer, but those same two questions, who starts, and does the line stay open, get you ninety percent of the way there.",
+      "beats": [
+        { "cue": "REST", "mark": "rest" },
+        { "cue": "GraphQL", "mark": "graphql" },
+        { "cue": "microservices", "mark": "grpc" },
+        { "cue": "WebSocket", "mark": "websocket" },
+        { "cue": "webhook", "mark": "webhook" },
+        { "cue": "ninety", "mark": "rule" }
+      ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every API Authentication Method",
+      "question": "Which API style does your app use?",
+      "narration": "That is every major API style, and now you can tell them apart in seconds. Next, we break down every API authentication method, from keys to OAuth. If this cleared things up for you, hit subscribe, it genuinely helps the channel. So, tell me in the comments, which one does your app use?",
+      "beats": [
+        { "cue": "authentication", "mark": "next" },
+        { "cue": "subscribe", "mark": "cta" },
+        { "cue": "comments", "mark": "ask" }
+      ]
+    }
+  ]
+}

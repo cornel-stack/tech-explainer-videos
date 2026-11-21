@@ -1,0 +1,15 @@
+node_modules/
+build/
+.remotion/
+out/
+parts/
+render-input.json
+**/public/audio/
+**/public/manim/*.mp4
+**/public/manim/durations.json
+**/public/images/
+**/public/logos/
+**/public/coco/
+**/.manim_media/
+__pycache__/
+.DS_Store

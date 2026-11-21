@@ -1,0 +1,145 @@
+{
+  "id": "t05-boot",
+  "title": "How an Operating System Works",
+  "series": "How It Works",
+  "keyNoun": "Boot",
+  "promise": "The first second after you press power — millisecond by millisecond.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#FFB020",
+  "sources": [
+    { "id": "uefi", "label": "UEFI Specification overview", "url": "https://uefi.org/specifications" },
+    { "id": "grub", "label": "GNU GRUB manual", "url": "https://www.gnu.org/software/grub/manual/" },
+    { "id": "systemd", "label": "systemd documentation", "url": "https://systemd.io/" },
+    { "id": "msboot", "label": "Microsoft — Windows boot process", "url": "https://learn.microsoft.com/windows-hardware/drivers/bringup/boot-and-uefi" },
+    { "id": "apple", "label": "Apple Platform Security (iBoot / secure boot)", "url": "https://support.apple.com/guide/security/" },
+    { "id": "kerneldocs", "label": "The Linux Kernel documentation", "url": "https://docs.kernel.org/" }
+  ],
+  "youtube": {
+    "titles": [
+      "How an Operating System Works — the First Second After You Press Power",
+      "What Actually Happens in the First Second After Power-On",
+      "From Power Button to Desktop: How an OS Really Boots",
+      "How an Operating System Works (Millisecond by Millisecond)"
+    ],
+    "primaryTitle": "How an Operating System Works — the First Second After You Press Power",
+    "tags": [
+      "how an operating system works", "boot process", "how a computer boots", "bios uefi",
+      "bootloader", "kernel", "operating system explained", "how does an os work", "systemd",
+      "privilege rings", "virtual memory", "cpu scheduler", "computer science", "how computers work",
+      "power on self test", "grub", "tech explained", "ring 0"
+    ],
+    "hashtags": ["#operatingsystem", "#howitworks", "#computerscience", "#linux", "#tech"],
+    "pinnedComment": "The whole first second, millisecond by millisecond. What should we take apart next? 👇 Subscribe — 'How the Internet Actually Works' is coming.",
+    "hook": "You press power. One second later you're at your desktop. In that second a hidden relay race runs — firmware wakes the hardware, a bootloader finds the kernel, the kernel takes command, and one process spawns all the others. Let's slow it down to 1000 milliseconds and watch every step."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "post",
+      "narration": "You press the power button. One second later, you're looking at your desktop. But in that single second, a hidden relay race runs — firmware wakes the hardware, a bootloader finds the kernel, the kernel takes command, and the first process spawns every other one. Let's slow that second down to a thousand milliseconds, and watch the whole thing happen.",
+      "beats": [ { "cue": "second", "mark": "sec" }, { "cue": "thousand", "mark": "ms" } ]
+    },
+
+    {
+      "kind": "stage", "id": "post", "name": "Power & POST", "phase": "firmware", "msStart": 0, "msEnd": 200, "chainStep": 0,
+      "manim": "post", "icon": "clock", "accent": "#FFB020",
+      "narration": "Zero milliseconds. The power button doesn't start your operating system — it starts the firmware, a tiny program baked into a chip on the motherboard: UEFI on modern machines, BIOS on older ones. Its first job is the POST, the power-on self-test — a fast roll-call of the hardware. Is the CPU alive? Is there memory, a screen, a keyboard? If something critical is missing, you get beeps, not pixels. Only once the hardware answers 'present' does the firmware go looking for something to boot.",
+      "specs": [
+        { "label": "Runs first", "value": "firmware — UEFI / BIOS", "cue": "firmware", "source": "uefi" },
+        { "label": "POST", "value": "power-on self-test", "cue": "POST", "source": "uefi" },
+        { "label": "On failure", "value": "beep codes, not pixels", "cue": "beeps", "source": "uefi" }
+      ],
+      "verdict": "By ~200 ms: the hardware is awake and accounted for."
+    },
+    {
+      "kind": "stage", "id": "bootloader", "name": "The Bootloader", "phase": "bootloader", "msStart": 200, "msEnd": 450, "chainStep": 1,
+      "manim": "bootchain", "icon": "arrow", "accent": "#2DD4BF",
+      "narration": "Two hundred milliseconds. The firmware hands off to a bootloader — a small program whose entire job is to find the operating system's kernel, load it into memory, and jump to it. On Linux that's usually GRUB; on Windows, the boot manager, bootmgr; on a Mac, iBoot. This is also where the three worlds split: GRUB loads the Linux kernel and systemd; bootmgr loads winload and the NT kernel; iBoot verifies and loads Apple's kernel. Same job, three names — and the bootloader's very last act is to give up control, forever.",
+      "specs": [
+        { "label": "Linux", "value": "GRUB", "cue": "GRUB", "source": "grub" },
+        { "label": "Windows", "value": "bootmgr → winload", "cue": "bootmgr", "source": "msboot" },
+        { "label": "macOS", "value": "iBoot", "cue": "iBoot", "source": "apple" }
+      ],
+      "verdict": "By ~450 ms: the kernel is loaded into memory and running."
+    },
+    {
+      "kind": "stage", "id": "kernel", "name": "The Kernel Takes Over", "phase": "kernel", "msStart": 450, "msEnd": 700, "chainStep": 2,
+      "icon": "server", "accent": "#35FF9E",
+      "stepDetail": ["decompress into RAM", "probe every device", "load the drivers"],
+      "narration": "Four hundred and fifty milliseconds, and the real boss arrives: the kernel. It decompresses itself into memory, then takes total control of the machine. It probes every device, loads the drivers that know how to talk to your disk, your graphics, your network card, and sets up the core systems — memory, processes, the lot. From this instant on, no ordinary program touches the hardware directly; everything goes through the kernel. It is the one piece of software that is always running, and always in charge.",
+      "specs": [
+        { "label": "The kernel", "value": "always running, in charge", "cue": "charge", "source": "kerneldocs" },
+        { "label": "Loads", "value": "the device drivers", "cue": "drivers", "source": "kerneldocs" },
+        { "label": "Now owns", "value": "all hardware access", "cue": "hardware", "source": "kerneldocs" }
+      ],
+      "verdict": "By ~700 ms: the kernel owns the machine."
+    },
+    {
+      "kind": "stage", "id": "init", "name": "PID 1 — The First Process", "phase": "init", "msStart": 700, "msEnd": 950, "chainStep": 3,
+      "icon": "hub", "accent": "#9B8CFF",
+      "stepDetail": ["spawn PID 1", "mount the file systems", "start every service"],
+      "narration": "Seven hundred milliseconds. The kernel can't do everything itself, so it starts exactly one program — the first process, PID 1 — and hands it the user world. On Linux that's systemd; on macOS, launchd; on Windows, the session manager. PID 1 is the ancestor of every other process you will ever run. Its job is to bring the system to life: mount the file systems, start the network, sound, and power services, and launch the login screen. Every app you open today is, somewhere up the tree, a child of this one process.",
+      "specs": [
+        { "label": "First process", "value": "PID 1 — the ancestor", "cue": "PID", "source": "systemd" },
+        { "label": "Linux", "value": "systemd", "cue": "systemd", "source": "systemd" },
+        { "label": "Brings up", "value": "mounts + all services", "cue": "services", "source": "systemd" }
+      ],
+      "verdict": "By ~950 ms: file systems mounted, services up, login ready."
+    },
+    {
+      "kind": "stage", "id": "userspace", "name": "User Space — You're In", "phase": "userspace", "msStart": 950, "msEnd": 1000, "chainStep": 4,
+      "icon": "laptop", "accent": "#C9CDD4",
+      "stepDetail": ["paint the login screen", "load the desktop", "control → you"],
+      "narration": "Nine hundred and fifty milliseconds. The login screen paints, the desktop loads, and control finally reaches you — user space. Here is the deep divide that defines an operating system: your apps live in user space, walled off from the hardware, while the kernel lives in kernel space, holding the keys to everything. Your browser can't just grab the disk; it has to ask. One second after a dead, cold machine, a browser, a cursor, and a thousand background tasks are all running at once — and you never saw the race.",
+      "specs": [
+        { "label": "You are in", "value": "user space", "cue": "user", "source": "kerneldocs" },
+        { "label": "Walled off from", "value": "the hardware", "cue": "walled", "source": "kerneldocs" },
+        { "label": "Elapsed", "value": "~1 second", "cue": "second", "source": "kerneldocs" }
+      ],
+      "verdict": "~1000 ms: the first second is over — now the kernel works forever."
+    },
+
+    {
+      "kind": "stage", "id": "rings", "name": "Privilege Rings", "phase": "running", "chainStep": 5,
+      "manim": "rings", "icon": "doors", "accent": "#35FF9E",
+      "narration": "So what is the kernel doing now, and forever? First, it enforces the walls. CPUs have privilege levels, drawn as rings. Ring zero, the centre, is kernel mode — full power over the hardware. Ring three, the outside, is user mode, where your apps live, deliberately caged. When your app needs something only the kernel can do — open a file, send a packet — it can't just reach in. It makes a system call: a single guarded doorway from ring three to ring zero and back. That gate is exactly why one crashing app doesn't take down the whole machine.",
+      "specs": [
+        { "label": "Ring 0", "value": "kernel mode — full power", "cue": "zero", "source": "kerneldocs" },
+        { "label": "Ring 3", "value": "user mode — caged", "cue": "three", "source": "kerneldocs" },
+        { "label": "Crossed by", "value": "a system call", "cue": "call", "source": "kerneldocs" }
+      ],
+      "verdict": "The rings are why a crashing app can't take the kernel with it."
+    },
+    {
+      "kind": "stage", "id": "memory", "name": "Virtual Memory", "phase": "running", "chainStep": 5,
+      "manim": "memory", "icon": "server", "accent": "#2DD4BF",
+      "narration": "Second job: the great illusion of memory. Every program believes it has the whole machine's memory to itself, in one tidy block starting at zero. It is a lie the kernel tells on purpose. A hardware unit called the MMU translates each program's virtual addresses into real, scattered locations in physical memory, using lookup tables split into pages — usually four kilobytes each. If a page isn't in RAM, a 'page fault' quietly fetches it from disk. This is how a hundred programs share one pool of memory without ever seeing — or corrupting — each other.",
+      "specs": [
+        { "label": "Each app sees", "value": "its own private memory", "cue": "illusion", "source": "kerneldocs" },
+        { "label": "Translated by", "value": "the MMU", "cue": "MMU", "source": "kerneldocs" },
+        { "label": "Page size", "value": "~4 KB", "cue": "kilobytes", "source": "kerneldocs" }
+      ],
+      "verdict": "Virtual memory: every app gets a private universe, safely."
+    },
+    {
+      "kind": "stage", "id": "scheduler", "name": "The Scheduler", "phase": "running", "chainStep": 5,
+      "manim": "scheduler", "icon": "clock", "accent": "#9B8CFF",
+      "narration": "Third job: the impossible juggling act. Your CPU has only a handful of cores, but hundreds of processes all want to run at once. The kernel's scheduler is the air-traffic controller — it gives each one a tiny slice of time, a few milliseconds, then yanks it off and swaps in the next, thousands of times every second. It is so fast that everything looks simultaneous, even on a single core. That seamless illusion of 'everything at once' is the scheduler, quietly deciding who runs next, forever. And that, from power-on, is your operating system.",
+      "specs": [
+        { "label": "Does", "value": "time-slicing", "cue": "slice", "source": "kerneldocs" },
+        { "label": "Switches", "value": "thousands / second", "cue": "thousands", "source": "kerneldocs" },
+        { "label": "Role", "value": "the air-traffic controller", "cue": "controller", "source": "kerneldocs" }
+      ],
+      "verdict": "The scheduler: the illusion that everything runs at once."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "How the Internet Actually Works",
+      "question": "What should we take apart next?",
+      "narration": "And when you shut down, the whole race runs in reverse: the system politely asks each program to stop, kills the stubborn ones, flushes unsaved data to disk, unmounts the drives, and finally tells the firmware to cut the power. One second up, one second down. Next, we go a level deeper — how the internet actually works. If this finally made the black box make sense, subscribe, it genuinely helps. So tell me: what should we take apart next?",
+      "beats": [ { "cue": "reverse", "mark": "shut" }, { "cue": "internet", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "next", "mark": "ask" } ]
+    }
+  ]
+}
