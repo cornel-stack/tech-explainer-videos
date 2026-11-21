@@ -1,0 +1,215 @@
+{
+  "id": "t08-gpu",
+  "title": "Every GPU Explained, Tier by Tier",
+  "series": "Every X",
+  "keyNoun": "GPU",
+  "promise": "What every GPU name means, the four cousins hiding in your other devices, and the four settings that actually change your frame rate.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#76D64A",
+  "sources": [
+    { "id": "nv", "label": "NVIDIA GeForce — product specifications", "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/" },
+    { "id": "amd", "label": "AMD Radeon — product specifications", "url": "https://www.amd.com/en/products/graphics" },
+    { "id": "intel", "label": "Intel Arc — product specifications", "url": "https://www.intel.com/content/www/us/en/products/details/discrete-gpus/arc.html" },
+    { "id": "steam", "label": "Steam Hardware & Software Survey", "url": "https://store.steampowered.com/hwsurvey" },
+    { "id": "price", "label": "Launch MSRPs from vendor press releases (captured Nov 2026)", "url": "https://www.nvidia.com/en-us/geforce/news/" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every GPU Explained, Tier by Tier — Where Your Money Stops Mattering",
+      "Every GPU Explained (and the Names Finally Decoded)",
+      "RTX vs RX vs Arc — Every GPU Explained, and Which You Actually Need",
+      "Every GPU Explained — the Full Graphics Card Buying Guide"
+    ],
+    "primaryTitle": "Every GPU Explained, Tier by Tier — Where Your Money Stops Mattering",
+    "tags": [
+      "every gpu explained", "gpu explained", "rtx vs rx", "which gpu should i buy",
+      "dlss vs fsr", "frame generation", "ray tracing explained", "vram explained",
+      "integrated graphics", "apu npu tpu", "intel arc", "graphics card buying guide",
+      "rtx 5070 explained", "radeon rx 9070 xt", "gpu tiers", "pc building", "how a gpu works",
+      "tech explained"
+    ],
+    "hashtags": ["#gpu", "#graphicscard", "#pcbuilding", "#tech", "#howitworks"],
+    "pinnedComment": "The one rule that saves you money: past the mid-range, each tier costs a lot more for a little more — so buy for your resolution, not for bragging rights. 👇 Which GPU is in YOUR machine? Subscribe — 'Every Type of RAM' is next.",
+    "hook": "Graphics cards: a handful you can actually buy, and a wall of confusing names — RTX 50-90, RX 9000, Arc B, plus DLSS, frame-gen, ray tracing and VRAM. Let's decode every GPU name, meet the four cousins, and break down the four settings that actually change your frame rate."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "cpugpu",
+      "narration": "There are only a handful of graphics cards you can actually buy — but the names are chaos. R-T-X fifty to ninety, R-X nine-thousand, Arc B, and a wall of settings that all promise more frames. In the next twelve minutes we'll decode every GPU name, meet the four GPU cousins hiding inside your other devices, and break down the four settings that actually change your frame rate — including the one place where spending more money quietly stops mattering.",
+      "beats": [ { "cue": "decode", "mark": "dec" }, { "cue": "settings", "mark": "set" } ]
+    },
+    {
+      "kind": "interlude",
+      "manim": "cpugpu",
+      "narration": "Start with what a GPU even is. A C-P-U has a few big, clever cores — brilliant at doing one complicated thing after another. A GPU flips that idea: thousands of tiny, simple cores all doing the same easy sum on millions of pixels at once. That's why games and A-I love it — the work is massively parallel. On the die those cores sit in clusters, then smaller blocks, then three flavours: shader cores for pixels, tensor cores for A-I, and ray-tracing cores for light.",
+      "beats": [ { "cue": "parallel", "mark": "par" }, { "cue": "shader", "mark": "sh" }, { "cue": "tensor", "mark": "te" } ]
+    },
+    {
+      "kind": "interlude",
+      "manim": "binning",
+      "narration": "Here's the secret that explains the whole price ladder: binning. Every chip is cut from the same silicon wafer, and no wafer comes out perfect. A die with a few faulty cores isn't thrown away — the bad cores are switched off, and it's sold as the next tier down. The flagship ninety, the eighty, and the seventy can be the very same design with fewer cores enabled. Which is exactly why, past the mid-range, each step up costs a lot more for only a little more.",
+      "beats": [ { "cue": "binning", "mark": "bin" }, { "cue": "tier", "mark": "ti" } ]
+    },
+
+    {
+      "kind": "item", "id": "nvidia", "name": "GeForce RTX", "launched": "GeForce since 1999", "cat": "CONSUMER · NVIDIA", "tier": "flagship", "icon": "server", "accent": "#76D64A",
+      "narration": "Nvidia's GeForce R-T-X is the default choice, and its name is a code. Take 'R-T-X 5070 Ti'. R-T-X is the brand. The first digit, five, is the generation. The next two, seventy, are the class — how powerful it is inside that generation. And 'Ti' or 'Super' marks a boosted version. A bigger class and a newer generation both cost more — but a newer seventy will often beat last generation's eighty. Always read the whole name before you read the price.",
+      "specs": [
+        { "label": "The name", "value": "brand · gen · class · Ti/Super", "cue": "code", "source": "nv" },
+        { "label": "Classes", "value": "xx60 → xx90", "cue": "class", "source": "nv" },
+        { "label": "Launch MSRP", "value": "~$300 → $2,000+", "cue": "price", "source": "price" }
+      ],
+      "verdict": "Buy it if: you want the widest game support and the best ray tracing — at a premium."
+    },
+    {
+      "kind": "item", "id": "amd", "name": "Radeon RX", "launched": "Radeon since 2000", "cat": "CONSUMER · AMD", "tier": "mainstream", "icon": "server", "accent": "#FF5C47",
+      "narration": "A-M-D's Radeon R-X is the value challenger. The name reads much the same way: 'R-X 9070 X-T' — R-X is the brand, ninety the generation, seventy the class, and X-T means the faster version. Radeon usually gives you more raw performance and more VRAM for your money than Nvidia, which matters as games get hungrier. The trade-offs are weaker ray tracing, and upscaling that until recently lagged behind. For straight rasterised gaming at fourteen-forty, it's often the smarter buy.",
+      "specs": [
+        { "label": "Reads as", "value": "RX · gen · class · XT", "cue": "brand", "source": "amd" },
+        { "label": "Strength", "value": "more VRAM per dollar", "cue": "VRAM", "source": "amd" },
+        { "label": "Weakness", "value": "ray tracing trails Nvidia", "cue": "tracing", "source": "amd" }
+      ],
+      "verdict": "Buy it if: you want the best raw frames per dollar at 1080p–1440p."
+    },
+    {
+      "kind": "item", "id": "arc", "name": "Intel Arc", "launched": "Arc since 2022", "cat": "CONSUMER · INTEL", "tier": "mainstream", "icon": "server", "accent": "#5AA9FF",
+      "narration": "Intel Arc is the third player, and the newcomer. The B-series — like the B-580 — aims at the budget and mid-range, where most people actually shop. Early Arc drivers were rough, but they've improved dramatically, and Arc now punches above its price with solid ray tracing and Intel's XeSS upscaling. In some older games its performance can still be uneven. But as a cheap card for a new build — and as proof the GPU market finally has three real competitors — Arc matters.",
+      "specs": [
+        { "label": "Targets", "value": "budget & mid-range", "cue": "budget", "source": "intel" },
+        { "label": "Upscaler", "value": "XeSS", "cue": "XeSS", "source": "intel" },
+        { "label": "Watch for", "value": "older-game performance", "cue": "older", "source": "intel" }
+      ],
+      "verdict": "Buy it if: you're building cheap and want the newest, fast-improving option."
+    },
+    {
+      "kind": "item", "id": "igpu", "name": "Integrated graphics", "launched": "in most laptops", "cat": "INTEGRATED", "tier": "igpu", "icon": "hub", "accent": "#C9CDD4",
+      "narration": "Most computers never get a separate card at all — their graphics are integrated, built right into the main processor. Intel calls its version Xe, A-M-D uses its Radeon cores, and Apple's M-series does it so well it blurs the line entirely. Integrated graphics share system memory and sip power, which is perfect for laptops, office machines, and video. They'll even run lighter games. What they can't do is drive a high-refresh display at max settings — for that, you still need a discrete GPU.",
+      "specs": [
+        { "label": "Called", "value": "Intel Xe · AMD · Apple M", "cue": "integrated", "source": "intel" },
+        { "label": "Memory", "value": "shares system RAM", "cue": "memory", "source": "amd" },
+        { "label": "Good for", "value": "laptops, office, light games", "cue": "laptops", "source": "intel" }
+      ],
+      "verdict": "Found in: most laptops and office PCs — fine until you want serious gaming."
+    },
+    {
+      "kind": "item", "id": "laptop", "name": "Laptop GPUs", "launched": "the TGP trap", "cat": "MOBILE", "tier": "mobile", "icon": "laptop", "accent": "#2DD4BF",
+      "narration": "Here's a trap that costs people real money. A laptop that says 'R-T-X 5080' does not contain the desktop 5080. To fit inside a thin chassis and run on a battery, mobile GPUs run at a fraction of the power — measured as T-G-P, total graphics power. Two laptops with the identical GPU name can differ by thirty percent in frames, purely because one is allowed more watts. So for a laptop, never trust the sticker alone — check the wattage and the cooling.",
+      "specs": [
+        { "label": "Same name", "value": "much lower power", "cue": "power", "source": "nv" },
+        { "label": "Set by", "value": "TGP (watts)", "cue": "watts", "source": "nv" },
+        { "label": "Gap", "value": "up to ~30% fewer frames", "cue": "percent", "source": "nv" }
+      ],
+      "verdict": "Buy it if: you need portability — but check the TGP, not just the name."
+    },
+    {
+      "kind": "item", "id": "datacenter", "name": "Data-center GPUs", "launched": "H100 · B200", "cat": "DATA CENTER", "tier": "datacenter", "icon": "server", "accent": "#B06BFF",
+      "narration": "At the very top, far from any monitor, sit the data-center GPUs — Nvidia's H-100 and B-200, plus the R-T-X Pro workstation line. They often have no display output at all. Instead they pack enormous memory, blistering interconnects, and tensor cores tuned for one job: training and running A-I models. A single one can cost as much as a car, and they sell in their thousands. This is the silicon behind every chatbot and image generator — the real reason GPUs became the hottest chips on Earth.",
+      "specs": [
+        { "label": "Examples", "value": "H100, B200, RTX Pro", "cue": "monitor", "source": "nv" },
+        { "label": "Built for", "value": "training & running AI", "cue": "training", "source": "nv" },
+        { "label": "Price", "value": "tens of thousands each", "cue": "car", "source": "price" }
+      ],
+      "verdict": "Found in: data centers — the GPU behind modern AI, not gaming."
+    },
+    {
+      "kind": "item", "id": "apu", "name": "APU", "launched": "AMD · 2011", "cat": "GPU COUSIN", "tier": "cousin", "icon": "laptop", "accent": "#FFB020",
+      "narration": "Now the cousins — chips that borrow the GPU idea. First the A-P-U: A-M-D's name for a single chip that fuses capable graphics onto the processor. It's not a weak afterthought — the A-P-U is literally what powers the PlayStation 5, the Xbox, and the Steam Deck, delivering real console gaming from one efficient package. Because the C-P-U and GPU share memory on the same die, they talk faster and waste less power. For handhelds and consoles, the A-P-U is the whole point.",
+      "specs": [
+        { "label": "Is", "value": "CPU + real GPU, one chip", "cue": "fuses", "source": "amd" },
+        { "label": "Powers", "value": "PS5, Xbox, Steam Deck", "cue": "PlayStation", "source": "amd" },
+        { "label": "Since", "value": "AMD, 2011", "cue": "afterthought", "source": "amd" }
+      ],
+      "verdict": "Found in: consoles and handhelds — real gaming from one efficient chip."
+    },
+    {
+      "kind": "item", "id": "npu", "name": "NPU", "launched": "Neural Engine · 2017", "cat": "GPU COUSIN", "tier": "cousin", "icon": "phone", "accent": "#FFB020",
+      "narration": "The N-P-U, or neural processing unit, is a GPU cousin specialised purely for A-I. Apple shipped one as the Neural Engine in the twenty seventeen iPhone, and now every phone and new 'A-I P-C' has one. It runs the maths behind face unlock, live captions, and photo effects right on the device — no cloud, and barely touching the battery. Its yardstick is T-O-P-S, trillions of operations per second; Microsoft's Copilot Plus laptops demand at least forty. Small, efficient, and suddenly everywhere.",
+      "specs": [
+        { "label": "For", "value": "on-device AI", "cue": "neural", "source": "intel" },
+        { "label": "Debut", "value": "iPhone Neural Engine, 2017", "cue": "Apple", "source": "intel" },
+        { "label": "Measured in", "value": "TOPS (40+ for Copilot+)", "cue": "trillions", "source": "intel" }
+      ],
+      "verdict": "Found in: every modern phone and AI PC — AI without the cloud."
+    },
+    {
+      "kind": "item", "id": "tpu", "name": "TPU", "launched": "Google · 2015", "cat": "GPU COUSIN", "tier": "cousin", "icon": "server", "accent": "#FFB020",
+      "narration": "The T-P-U, tensor processing unit, is Google's custom A-I chip. Built from twenty fifteen to do one operation — the matrix multiply at the heart of neural networks — extremely fast, and extremely efficiently. A T-P-U helped AlphaGo beat the world champion at Go in twenty sixteen, and today Google rents them out in its cloud to train enormous models. It's a GPU cousin that gave up graphics entirely to specialise. If the N-P-U is A-I in your pocket, the T-P-U is A-I by the warehouse.",
+      "specs": [
+        { "label": "Does", "value": "the matrix multiply, fast", "cue": "matrix", "source": "nv" },
+        { "label": "Since", "value": "Google, 2015", "cue": "Google", "source": "nv" },
+        { "label": "Famous for", "value": "AlphaGo, 2016", "cue": "AlphaGo", "source": "nv" }
+      ],
+      "verdict": "Found in: Google's cloud — a GPU cousin that dropped graphics for pure AI."
+    },
+    {
+      "kind": "item", "id": "ppu", "name": "PPU — the one the GPU ate", "launched": "Ageia · 2006", "cat": "GPU COUSIN", "tier": "cousin", "icon": "server", "accent": "#FFB020",
+      "narration": "Finally, the cousin that lost. In two thousand six a company called Ageia sold the P-P-U, a physics processing unit — an add-in card just for calculating explosions, cloth, and flying debris. For a couple hundred dollars it promised richer game worlds. But the idea was too narrow: Nvidia simply bought Ageia in two thousand eight and folded physics straight into the GPU. The P-P-U is a reminder that most specialised chips either get absorbed by the GPU, or they die. The GPU usually wins.",
+      "specs": [
+        { "label": "Was", "value": "a physics-only card", "cue": "physics", "source": "nv" },
+        { "label": "Sold by", "value": "Ageia, 2006", "cue": "Ageia", "source": "nv" },
+        { "label": "Fate", "value": "bought by Nvidia, 2008", "cue": "bought", "source": "nv" }
+      ],
+      "verdict": "Gone: absorbed into the GPU — the fate of most niche chips."
+    },
+    {
+      "kind": "item", "id": "upscaling", "name": "Upscaling", "launched": "DLSS · FSR · XeSS", "cat": "SETTING", "tier": "setting", "icon": "hub", "accent": "#35E08A",
+      "manim": "upscale",
+      "narration": "Now the four settings that actually move your frame rate — each one a toggle with a cost. First, upscaling. The GPU renders the game at a lower resolution, say ten-eighty, then an A-I model intelligently upscales it to four-K. You draw a quarter of the pixels, so the frames jump — often by fifty percent or more — for only a tiny loss in sharpness. Nvidia calls it D-L-S-S, A-M-D calls it F-S-R, Intel calls it XeSS. It's usually the first setting you turn on — close to free performance.",
+      "specs": [
+        { "label": "How", "value": "render low → AI upscale", "cue": "upscales", "source": "nv" },
+        { "label": "Gain", "value": "+50% frames or more", "cue": "jump", "source": "nv" },
+        { "label": "Names", "value": "DLSS · FSR · XeSS", "cue": "DLSS", "source": "nv" }
+      ],
+      "verdict": "Turn it on if: you want nearly-free frames — the best-value setting there is."
+    },
+    {
+      "kind": "item", "id": "framegen", "name": "Frame generation", "launched": "inserted frames", "cat": "SETTING", "tier": "setting", "icon": "hub", "accent": "#FFB020",
+      "manim": "framegen",
+      "narration": "Frame generation goes further — and it's divisive. Instead of rendering every frame, the GPU uses A-I to invent whole new frames in between the real ones, doubling the number your monitor actually sees. Motion looks gloriously smooth. But those invented frames add a little input latency, and they can smear very fast action, so you turn it off for competitive shooters. The rule to remember: frame generation makes a smooth game smoother — it can't rescue a game that's already stuttering.",
+      "specs": [
+        { "label": "How", "value": "AI inserts frames", "cue": "invent", "source": "nv" },
+        { "label": "Cost", "value": "added input latency", "cue": "latency", "source": "nv" },
+        { "label": "Avoid in", "value": "competitive shooters", "cue": "competitive", "source": "nv" }
+      ],
+      "verdict": "Turn it on if: a smooth single-player game — off for competitive."
+    },
+    {
+      "kind": "item", "id": "raytracing", "name": "Ray & path tracing", "launched": "real light, fewer frames", "cat": "SETTING", "tier": "setting", "icon": "hub", "accent": "#FF5C47",
+      "manim": "raytrace",
+      "narration": "Ray tracing is the big, beautiful, expensive one. Instead of faking light, the GPU traces actual rays — bouncing them off surfaces for true reflections, real shadows, and soft light, computed on dedicated R-T cores. Path tracing takes it further, simulating a whole scene's light at once. It looks stunning. It also hammers your frame rate: a scene running at ninety frames can drop into the forties with ray tracing, and the twenties with full path tracing. Gorgeous — but you pay for every single bounce.",
+      "specs": [
+        { "label": "How", "value": "trace real light rays", "cue": "rays", "source": "nv" },
+        { "label": "Runs on", "value": "dedicated RT cores", "cue": "cores", "source": "nv" },
+        { "label": "Cost", "value": "90 → 44 → 29 FPS", "cue": "forties", "source": "nv" }
+      ],
+      "verdict": "Turn it on if: you want the best-looking scene and can spare the frames."
+    },
+    {
+      "kind": "item", "id": "sync", "name": "VSync vs G-Sync / FreeSync", "launched": "kill screen tearing", "cat": "SETTING", "tier": "setting", "icon": "hub", "accent": "#5AA9FF",
+      "manim": "sync",
+      "narration": "Last, the setting that fixes a glitch you've definitely seen: screen tearing, where the top and bottom of the image don't line up, because the GPU and the monitor are out of step. The old fix, V-Sync, makes the GPU wait for the monitor — which removes the tearing but adds lag. The modern fix flips it: G-Sync and FreeSync let the monitor vary its own refresh rate to match the GPU. No tearing, and no added lag. If your monitor supports it, switch it on and forget about it.",
+      "specs": [
+        { "label": "Problem", "value": "screen tearing", "cue": "tearing", "source": "nv" },
+        { "label": "VSync", "value": "GPU waits → adds lag", "cue": "waits", "source": "nv" },
+        { "label": "G-Sync/FreeSync", "value": "monitor adapts → no lag", "cue": "vary", "source": "amd" }
+      ],
+      "verdict": "Turn it on if: your monitor supports it — the easiest win here."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "vram",
+      "narration": "One number to take away before you buy anything: VRAM, the memory on the card itself. It holds the textures and the frame being drawn, and when it runs out, your frame rate collapses — stutters, and textures popping in late. Here's the honest guide: eight gigabytes is now the floor for ten-eighty, twelve is comfortable at fourteen-forty, and sixteen or more is what four-K and ray tracing really want. VRAM can't be upgraded later — so it's the one spec that decides how long your card stays relevant.",
+      "beats": [ { "cue": "VRAM", "mark": "vr" }, { "cue": "gigabytes", "mark": "gb" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every Type of RAM Explained",
+      "question": "Which GPU is in your machine?",
+      "narration": "So that's every GPU: three brands whose names are really just codes, the integrated and mobile versions that quietly bend the rules, the cousins — A-P-U, N-P-U, T-P-U — and the four settings that decide your frame rate. Remember the big one: past the mid-range, each tier costs far more for only a little more, so buy for your resolution, not for bragging rights. Next, we do the same teardown for the memory it all runs on — every type of RAM. If this helped, subscribe. So — which GPU is in your machine?",
+      "beats": [ { "cue": "RAM", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "machine", "mark": "ask" } ]
+    }
+  ]
+}
