@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """
-Fetch REAL, freely-licensed images for the "Every Type of Malware" explainer video.
+Fetch REAL, freely-licensed photographs of actual Intel processors — one per chip
+in the "Every Intel CPU" explainer. For each KEY (= the content item id) we try its
+candidate queries in order — Wikimedia Commons first (public-domain / CC), then
+Openverse (commercial + modification licenses) — and keep the first candidate that
+downloads AND passes a content check (a real raster image, not blank/solid/tiny).
+The image is converted to JPEG with Pillow and saved to public/images/<key>.jpg.
 
-For each KEY below we try its candidate queries in order — Wikimedia Commons first
-(public-domain / CC), then Openverse (commercial + modification licenses) — and keep
-the first candidate that downloads AND passes a content check (a real raster image,
-not blank/solid/too small). The image is converted to JPEG with Pillow and saved to
-public/images/<key>.jpg.
+Every item has a specific query first (e.g. "Intel Core i7") and then generic
+Intel-silicon fallbacks, so even the newest lines resolve to a real Intel photo
+rather than a blank panel. A `hero` key supplies a striking CPU macro for the
+thumbnail / intro.
 
 Outputs (only for keys that succeeded):
   public/images/<key>.jpg
@@ -39,23 +43,65 @@ MIN_SIZE = 320  # minimum width AND height, in px
 
 FREE_LICENSE_HINT = re.compile(r"(cc|creative commons|public domain|pd|pdm|no restrictions)", re.I)
 
-# KEY -> ordered candidate queries (real, freely-licensed GPU / silicon imagery)
+# Reject brand logos / badges / stickers / wordmarks / slides — we want PHOTOS of
+# silicon, not trademark artwork. Applied to every candidate title.
+REJECT_TITLE = re.compile(
+    r"(badge|logo|wordmark|sticker|icon|symbol|emblem|brandmark|roadmap|"
+    r"slide|chart|graph|diagram|schematic|infographic|\.svg)", re.I)
+
+# Reject COMPETITOR silicon — the generic "die/CPU macro" fallbacks otherwise pull
+# AMD/Nvidia/etc. This is an Intel video; every chip photo must be Intel.
+REJECT_BRAND = re.compile(
+    r"\b(amd|ryzen|phenom|athlon|opteron|threadripper|epyc|radeon|nvidia|geforce|"
+    r"qualcomm|snapdragon|mediatek|powerpc|motorola|cyrix|via nano)\b", re.I)
+
+# Generic Intel-silicon fallbacks appended to every chip so a real photo always lands.
+GENERIC = ["Intel CPU processor", "Intel processor chip", "Intel microprocessor", "Intel processor macro"]
+
+# KEY (= content item id) -> ordered candidate queries. Specific photo first, then
+# the generic Intel-silicon fallbacks so every line resolves to a real Intel photo.
 KEYS = {
-    "gpu":        ["graphics card GPU", "video card PCB", "graphics card pcb", "graphics processing unit card"],
-    "datacenter": ["data center server racks", "server room data center", "supercomputer data center"],
-    "wafer":      ["silicon wafer semiconductor", "semiconductor wafer"],
-    "chip":       ["microprocessor die", "integrated circuit die", "computer processor chip macro"],
+    "hero":    ["Intel CPU macro", "microprocessor die macro", "Intel processor pins macro"] + GENERIC,
+    "i3":      ["Intel Core i3 processor", "Intel Core i3 CPU"] + GENERIC,
+    "i5":      ["Intel Core i5 processor", "Intel Core i5 CPU"] + GENERIC,
+    "i7":      ["Intel Core i7 processor", "Intel Core i7 CPU"] + GENERIC,
+    "i9":      ["Intel Core i9 processor", "Intel Core i9 CPU"] + GENERIC,
+    # Core Ultra family (modern) — NO generic tail, so a scarce line reuses a
+    # Core-Ultra-family photo rather than falling back to an ancient Intel chip.
+    "ultra":   ["Intel Meteor Lake die", "Intel Meteor Lake processor", "Intel Core Ultra processor", "Intel Core Ultra laptop"],
+    "ultrax":  ["Intel Lunar Lake die", "Intel Lunar Lake processor", "Intel Arc graphics chip", "Intel Core Ultra laptop"],
+    "series3": ["Intel Panther Lake processor", "Intel Core Ultra processor", "Intel Core Ultra laptop", "Intel Lunar Lake processor"],
+    "nseries": ["Intel N100 processor", "Intel NUC mini PC", "mini PC computer"] + GENERIC,
+    "atom":    ["Intel Atom processor", "Intel Atom CPU"] + GENERIC,
+    "celeron": ["Intel Celeron processor", "Intel Pentium processor", "silicon wafer semiconductor"] + GENERIC,
+    "vpro":    ["Intel vPro laptop", "business laptop computer", "laptop motherboard"] + GENERIC,
+    "xeon":    ["Intel Xeon processor", "server CPU Xeon", "data center server rack"] + GENERIC,
+    "wafer":   ["silicon wafer semiconductor", "semiconductor wafer"],
 }
 
 ACCEPT_TOKENS = {}
 
-# Generic imagery, but the bare words collide with unrelated hits, so require a
-# co-occurring on-topic token in the candidate title.
+# A candidate's title must contain one of these on-topic tokens (guards off-topic
+# collisions) AND survive the brand/logo rejectors above. Chip keys REQUIRE the
+# "intel" brand token so a generic "die macro" can't pull a competitor's silicon;
+# platform/budget keys also allow device-context tokens (laptop, mini PC, wafer).
 BROLL_TOKENS = {
-    "gpu":        ["graphics card", "video card", "gpu", "geforce", "radeon", "graphics processing"],
-    "datacenter": ["data center", "data centre", "datacenter", "server room", "server rack", "supercomputer"],
-    "wafer":      ["wafer", "semiconductor", "silicon"],
-    "chip":       ["die", "microprocessor", "integrated circuit", "processor", "chip", "semiconductor", "cpu"],
+    "hero":    ["intel"],
+    "i3":      ["intel", "i3"],
+    "i5":      ["intel", "i5"],
+    "i7":      ["intel", "i7"],
+    "i9":      ["intel", "i9"],
+    # modern keys require a FAMILY token (not bare "intel") so an empty search for a
+    # brand-new line can't fuzzy-match an ancient Intel chip (e.g. a Pentium MMX).
+    "ultra":   ["meteor lake", "core ultra", "lunar lake"],
+    "ultrax":  ["lunar lake", "intel arc", "core ultra"],
+    "series3": ["panther lake", "core ultra", "lunar lake", "meteor lake"],
+    "nseries": ["intel", "n100", "n150", "n270", "nuc", "mini pc", "mini-pc"],
+    "atom":    ["intel", "atom", "n270"],
+    "celeron": ["intel", "celeron", "pentium", "wafer", "semiconductor", "silicon"],
+    "vpro":    ["intel", "laptop", "motherboard", "thinkpad", "business"],
+    "xeon":    ["intel", "xeon"],
+    "wafer":   ["wafer", "semiconductor", "silicon"],
 }
 
 
@@ -99,7 +145,7 @@ def is_image_bytes(b):
     )
 
 
-def load_good_image(b, min_mean=14, max_mean=246):
+def load_good_image(b, min_mean=14, max_mean=248):
     """Validate content and return a loaded RGB PIL image, or None.
 
     Beyond a valid format, reject images that are blacked-out, blank, a single solid
@@ -127,14 +173,22 @@ def load_good_image(b, min_mean=14, max_mean=246):
 
 def save_jpeg(im, key):
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    # cap the long edge so bundled frames stay lean (product photos are plenty at 1600px)
+    w, h = im.size
+    cap = 1600
+    if max(w, h) > cap:
+        if w >= h:
+            im = im.resize((cap, round(h * cap / w)))
+        else:
+            im = im.resize((round(w * cap / h), cap))
     path = OUT_DIR / f"{key}.jpg"
-    im.save(path, "JPEG", quality=88)
+    im.save(path, "JPEG", quality=86)
     return path
 
 
 # ---- Wikimedia Commons -----------------------------------------------------
 
-def commons_search_file(query, limit=8):
+def commons_search_file(query, limit=10):
     params = {
         "action": "query", "format": "json", "list": "search",
         "srsearch": query + " filetype:bitmap", "srnamespace": 6, "srlimit": limit,
@@ -143,7 +197,7 @@ def commons_search_file(query, limit=8):
     return [r["title"] for r in data.get("query", {}).get("search", [])]
 
 
-def commons_imageinfo(title, width=1000):
+def commons_imageinfo(title, width=1200):
     params = {
         "action": "query", "format": "json", "titles": title,
         "prop": "imageinfo", "iiprop": "url|extmetadata|mime", "iiurlwidth": width,
@@ -157,18 +211,20 @@ def commons_imageinfo(title, width=1000):
 
 
 def title_relevant(key, text):
-    """A candidate's title must contain a known token for keys that have one; any other
-    key passes. Guards against off-topic collisions (a "Love Letter" painting, a Toyota
-    Mirai car, a public-bus "dress code" screen, a Temple of Olympian Zeus, ...)."""
+    """A candidate's title must contain a known token for keys that have one AND must
+    not be a logo/badge/wordmark/slide. Guards off-topic collisions + trademark art."""
+    low = (text or "").lower()
+    if REJECT_TITLE.search(low) or REJECT_BRAND.search(low):
+        return False
     tokens = ACCEPT_TOKENS.get(key) or BROLL_TOKENS.get(key)
     if not tokens:
         return True
-    low = (text or "").lower()
     return any(t in low for t in tokens)
 
 
-def try_commons(query, key, min_mean):
-    """Return (im, meta_dict) on success, else (None, None)."""
+def try_commons(query, key, min_mean, used=frozenset()):
+    """Return (im, meta_dict) on success, else (None, None). Skips any source URL
+    already claimed by another key (used) so chips don't share one photo."""
     try:
         titles = commons_search_file(query)
     except Exception as e:
@@ -194,6 +250,9 @@ def try_commons(query, key, min_mean):
         url = (info.get("thumburl") or info.get("url") or "").split("?")[0]
         if not url:
             continue
+        source = info.get("descriptionurl", url)
+        if source in used:
+            continue  # already used for another chip — keep looking for a distinct shot
         try:
             blob = http_get(url)
         except Exception:
@@ -205,15 +264,15 @@ def try_commons(query, key, min_mean):
         clean_title = title.replace("File:", "")
         return im, {
             "credit": f"{clean_title} — {author} ({lic or 'free license'})",
-            "source": info.get("descriptionurl", url),
+            "source": source,
         }
     return None, None
 
 
 # ---- Openverse -------------------------------------------------------------
 
-def try_openverse(query, key, min_mean):
-    """Return (im, meta_dict) on success, else (None, None)."""
+def try_openverse(query, key, min_mean, used=frozenset()):
+    """Return (im, meta_dict) on success, else (None, None). Skips sources in `used`."""
     params = {
         "q": query, "license_type": "commercial,modification",
         "page_size": 12, "mature": "false", "format": "json",
@@ -230,6 +289,9 @@ def try_openverse(query, key, min_mean):
             continue
         if not title_relevant(key, r.get("title") or ""):
             continue
+        source = r.get("foreign_landing_url") or src
+        if source in used:
+            continue
         try:
             blob = http_get(src)
         except Exception:
@@ -242,38 +304,42 @@ def try_openverse(query, key, min_mean):
         title = strip_html(r.get("title") or query)
         return im, {
             "credit": f"{title} — {author} ({lic})",
-            "source": r.get("foreign_landing_url") or src,
+            "source": source,
         }
     return None, None
 
 
 # ---- main ------------------------------------------------------------------
 
-# b-roll keys are full-frame photos; a slightly higher floor avoids all-dark frames.
-BROLL = {"gpu", "datacenter", "wafer", "chip"}
 
-
-def fetch_key(key, queries):
-    min_mean = 40 if key in BROLL else 14
-    for query in queries:
-        for source_name, fn in (("commons", try_commons), ("openverse", try_openverse)):
-            time.sleep(0.4)  # pace search calls to stay under API rate limits
-            try:
-                im, meta = fn(query, key, min_mean)
-            except Exception as e:
-                print(f"      {source_name} error for '{query}' ({e})")
-                continue
-            if im is None:
-                continue
-            try:
-                save_jpeg(im, key)
-            except Exception as e:
-                print(f"      save failed for {key} ({e})")
-                continue
-            meta["file"] = f"images/{key}.jpg"
-            meta["query"] = query
-            print(f"  [ok]   {key}: {source_name} <- \"{query}\"  ({meta['source']})")
-            return meta
+def fetch_key(key, queries, used=frozenset()):
+    # product photos are mostly bright (white backdrops); a modest floor just rejects
+    # all-dark frames while allowing the bright shots through (max_mean guards blanks).
+    min_mean = 30
+    # try to land a DISTINCT photo first; if nothing distinct passes, allow reuse so
+    # the key is never left blank (scarce lines like the newest Core Ultra may share).
+    for allow_reuse in (False, True):
+        pool = frozenset() if allow_reuse else used
+        for query in queries:
+            for source_name, fn in (("commons", try_commons), ("openverse", try_openverse)):
+                time.sleep(0.4)  # pace search calls to stay under API rate limits
+                try:
+                    im, meta = fn(query, key, min_mean, pool)
+                except Exception as e:
+                    print(f"      {source_name} error for '{query}' ({e})")
+                    continue
+                if im is None:
+                    continue
+                try:
+                    save_jpeg(im, key)
+                except Exception as e:
+                    print(f"      save failed for {key} ({e})")
+                    continue
+                meta["file"] = f"images/{key}.jpg"
+                meta["query"] = query
+                tag = "" if not allow_reuse else " (shared)"
+                print(f"  [ok]   {key}: {source_name} <- \"{query}\"{tag}  ({meta['source']})")
+                return meta
     print(f"  [skip] {key}: no usable image found")
     return None
 
@@ -281,18 +347,20 @@ def fetch_key(key, queries):
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest = {}
+    used = set()  # source URLs already claimed — keeps each chip's photo distinct
     for key, queries in KEYS.items():
         try:
-            meta = fetch_key(key, queries)
+            meta = fetch_key(key, queries, used)
         except Exception as e:
             print(f"  [skip] {key}: unexpected error ({e})")
             meta = None
         if meta:
             manifest[key] = meta
+            used.add(meta["source"])
 
     (OUT_DIR / "manifest.json").write_text(json.dumps(manifest, indent=2))
 
-    lines = ["Image attributions for 'How a GPU Works' — required for CC-BY reuse.", ""]
+    lines = ["Image attributions for 'Every Intel CPU Explained' — required for CC-BY reuse.", ""]
     for key, m in manifest.items():
         lines.append(f"{key}: {m['credit']} — {m['source']}")
     (OUT_DIR / "CREDITS.txt").write_text("\n".join(lines) + "\n")

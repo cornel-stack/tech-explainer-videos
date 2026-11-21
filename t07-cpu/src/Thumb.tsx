@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Img, staticFile } from "remotion";
 import type { VideoInput } from "./schema";
 import { theme, fontStack, glow } from "./theme";
 import { Peep, CAST } from "./characters/Peep";
@@ -29,23 +29,36 @@ const Chip: React.FC<{ n: string; c: string; size?: number }> = ({ n, c, size = 
   </div>
 );
 
-export const ThumbA: React.FC<VideoInput> = () => (
-  <AbsoluteFill>
-    <Bg corner="tr" />
-    <div style={{ position: "absolute", top: 120, left: 90 }}>
-      <div style={{ fontFamily: fontStack.mono, fontSize: 34, letterSpacing: 8, color: theme.accents.amber, fontWeight: 700 }}>◢ EVERY X</div>
-      <div style={{ fontFamily: fontStack.sans, fontWeight: 900, fontSize: 132, lineHeight: 0.9, color: theme.ink, letterSpacing: -5, marginTop: 6 }}>
-        EVERY<br /><span style={{ color: theme.accents.amber, textShadow: `0 0 50px ${theme.accents.amber}` }}>INTEL</span> CPU
+export const ThumbA: React.FC<VideoInput> = ({ images }) => {
+  const hero = images?.hero || images?.i9 || images?.i7;
+  return (
+    <AbsoluteFill>
+      <Bg corner="tr" />
+      <div style={{ position: "absolute", top: 120, left: 90, zIndex: 2 }}>
+        <div style={{ fontFamily: fontStack.mono, fontSize: 34, letterSpacing: 8, color: theme.accents.amber, fontWeight: 700 }}>◢ EVERY X</div>
+        <div style={{ fontFamily: fontStack.sans, fontWeight: 900, fontSize: 132, lineHeight: 0.9, color: theme.ink, letterSpacing: -5, marginTop: 6 }}>
+          EVERY<br /><span style={{ color: theme.accents.amber, textShadow: `0 0 50px ${theme.accents.amber}` }}>INTEL</span> CPU
+        </div>
+        <div style={{ display: "inline-block", marginTop: 24, background: theme.accents.mint, color: theme.onAccent, fontFamily: fontStack.sans, fontWeight: 900, fontSize: 44, padding: "12px 28px", borderRadius: 12, transform: "rotate(-3deg)", boxShadow: glow(theme.accents.mint, 0.6) }}>
+          WHICH DO YOU NEED?
+        </div>
       </div>
-      <div style={{ display: "inline-block", marginTop: 24, background: theme.accents.mint, color: theme.onAccent, fontFamily: fontStack.sans, fontWeight: 900, fontSize: 44, padding: "12px 28px", borderRadius: 12, transform: "rotate(-3deg)", boxShadow: glow(theme.accents.mint, 0.6) }}>
-        WHICH DO YOU NEED?
-      </div>
-    </div>
-    <div style={{ position: "absolute", right: 110, top: 150, display: "flex", flexWrap: "wrap", gap: 22, width: 560, justifyContent: "flex-end", alignContent: "center", height: 780 }}>
-      {CHIPS.map((s) => <Chip key={s.n} n={s.n} c={s.c} size={58} />)}
-    </div>
-  </AbsoluteFill>
-);
+      {hero ? (
+        <div style={{ position: "absolute", right: 70, top: 150, width: 720, height: 780, borderRadius: 24, overflow: "hidden", border: `3px solid ${theme.accents.amber}`, boxShadow: glow(theme.accents.amber, 0.6) }}>
+          <Img src={staticFile(hero.file)} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "saturate(1.1) contrast(1.05)" }} />
+          <div style={{ position: "absolute", inset: 0, background: `radial-gradient(120% 100% at 60% 40%, transparent 40%, ${theme.bg}cc 100%)` }} />
+          <div style={{ position: "absolute", left: 20, bottom: 20, display: "flex", gap: 12, flexWrap: "wrap", width: 360 }}>
+            {CHIPS.map((s) => <Chip key={s.n} n={s.n} c={s.c} size={30} />)}
+          </div>
+        </div>
+      ) : (
+        <div style={{ position: "absolute", right: 110, top: 150, display: "flex", flexWrap: "wrap", gap: 22, width: 560, justifyContent: "flex-end", alignContent: "center", height: 780 }}>
+          {CHIPS.map((s) => <Chip key={s.n} n={s.n} c={s.c} size={58} />)}
+        </div>
+      )}
+    </AbsoluteFill>
+  );
+};
 
 export const ThumbB: React.FC<VideoInput> = () => (
   <AbsoluteFill>

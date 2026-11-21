@@ -40,12 +40,20 @@ def main(content_path: str):
     title_txt += "\n".join(f"{i+1}. {t}" for i, t in enumerate(titles))
     (kit / "TITLE.txt").write_text(title_txt + "\n")
 
+    # Image attributions (CC-BY requires visible credit) — from the fetched manifest.
+    img_manifest = data.get("images", {}) or {}
+    img_credits = "\n".join(
+        f"• {m.get('credit', k)}" + (f" — {m['source']}" if m.get("source") else "")
+        for k, m in img_manifest.items()
+    )
+    img_block = (f"\n📷 CHIP PHOTOS (real, CC-licensed — attribution)\n{img_credits}\n" if img_credits else "")
+
     # DESCRIPTION.txt
     items = [s for s in data["segments"] if s.get("kind") in ("item", "stage")]
     outline = "\n".join(f"• {s['name']}" + (f" (since {s['launched']})" if s.get("launched") else "") for s in items)
     desc = f"""{yt.get('hook', content.get('promise', ''))}
 
-🔧 Every Intel line decoded, with the die drawn and a 'buy it if' for each:
+🔧 Every Intel line decoded, with a real photo of each chip and a 'buy it if':
 {outline}
 Plus the name decoder (brand/tier/series/SKU/suffix), the P-core/E-core primer, and the one rule that saves you money: generation beats tier.
 
@@ -54,12 +62,12 @@ Plus the name decoder (brand/tier/series/SKU/suffix), the P-core/E-core primer, 
 
 📚 SOURCES (every number on screen is traced to one of these)
 {sources}
-
+{img_block}
 🔔 New tech explainer every week — subscribe so the next one finds you.
 💬 {yt.get('pinnedComment', '')}
 
 🎨 CREDITS
-Characters: Open Peeps (CC0) via DiceBear · Machine avatars: DiceBear (MIT) · Illustrations: Coco Material (CC BY 4.0) · Diagrams: Manim · 3D: three.js · Composited & rendered with Remotion · Voice: Microsoft Edge TTS.
+Chip photography: Wikimedia Commons / Openverse (CC — see 📷 above) · Characters: Open Peeps (CC0) via DiceBear · Illustrations: Coco Material (CC BY 4.0) · Diagrams: Manim · Composited & rendered with Remotion · Voice: Microsoft Edge TTS.
 
 {hashtags}
 """

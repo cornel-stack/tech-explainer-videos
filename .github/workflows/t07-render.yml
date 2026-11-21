@@ -85,6 +85,8 @@ jobs:
         uses: actions/download-artifact@v4
         continue-on-error: true
         with: { name: scenes, path: t07-cpu/public/manim }
+      - name: Fetch REAL CC-licensed Intel chip photos
+        run: python3 pipeline/fetch_images.py || echo "::warning::image fetch best-effort; missing chips fall back"
       - run: python3 pipeline/synth.py "$SCRIPT"
       - run: python3 pipeline/build_outputs.py
       - id: vid
@@ -185,9 +187,10 @@ jobs:
           name: "Every Intel CPU — build ${{ github.run_number }}"
           body: |
             Automated 1080p60 render of `t07-cpu/${{ env.SCRIPT }}`.
-            Every Intel line (i3→Xeon + Core Ultra) with a name decoder, an original
-            P/E-core die schematic per chip, 4 Manim scenes + a three.js chip hero.
-            No brand logos — all visuals original.
+            Every Intel line (i3→Xeon + Core Ultra) with a name decoder, a REAL
+            CC-licensed photograph of each chip, the tier ladder, 4 Manim scenes.
+            Chip photos sourced from Wikimedia Commons / Openverse (CC) and credited
+            in the description + public/images/CREDITS.txt. No brand logos used.
           files: |
             t07-cpu/out/${{ needs.prep.outputs.id }}.mp4
             t07-cpu/out/${{ needs.prep.outputs.id }}.png

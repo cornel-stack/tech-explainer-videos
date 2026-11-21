@@ -2,13 +2,13 @@ import React from "react";
 import { AbsoluteFill, OffthreadVideo, Loop, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import type { Segment } from "../schema";
 import { theme, fontStack, glow, tierColor } from "../theme";
-import { IsoDieCity } from "../components/IsoDieCity";
+import { ChipPhoto } from "../components/ChipPhoto";
 import { TierLadder } from "../components/TierLadder";
 import { useInput } from "../lib/ctx";
 import { pop } from "../lib/anim";
 
 // One Intel CPU. Frame supplies badge/caption/verdict/rail (specs hidden). TOP:
-// the tier ladder (where this chip sits). LEFT: the isometric silicon-city die
+// the tier ladder (where this chip sits). LEFT: a REAL photograph of the chip
 // (or a Manim clip for binning, or a feature list for vPro). RIGHT: origin + specs.
 export const ItemScene: React.FC<{ seg: Segment }> = ({ seg }) => {
   const frame = useCurrentFrame();
@@ -16,6 +16,8 @@ export const ItemScene: React.FC<{ seg: Segment }> = ({ seg }) => {
   const input = useInput();
   const accent = tierColor(seg.tier) ?? seg.accent ?? theme.accents.amber;
   const clip = seg.manim ? input.manim?.[seg.manim] : undefined;
+  // real photo for this chip, with a generic Intel-silicon shot as fallback.
+  const photo = (seg.id && input.images?.[seg.id]) || input.images?.hero;
   const specs = seg.specs ?? [];
   const headIn = pop(frame, 6, fps);
 
@@ -48,7 +50,7 @@ export const ItemScene: React.FC<{ seg: Segment }> = ({ seg }) => {
             })}
           </div>
         ) : (
-          <IsoDieCity die={seg.die ?? {}} accent={accent} width={1030} height={490} />
+          <ChipPhoto img={photo} name={seg.name ?? ""} accent={accent} width={1030} height={490} />
         )}
       </div>
 
