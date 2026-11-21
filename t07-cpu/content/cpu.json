@@ -1,0 +1,201 @@
+{
+  "id": "t07-cpu",
+  "title": "Every Intel CPU Explained",
+  "series": "Every X",
+  "keyNoun": "Intel CPU",
+  "promise": "What every Intel name means, what the die looks like, and which chip you should actually buy.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#FFB020",
+  "sources": [
+    { "id": "ark", "label": "Intel ARK — product specifications", "url": "https://ark.intel.com/" },
+    { "id": "newsroom", "label": "Intel Newsroom (2023 rebrand, 2024 microcode statement)", "url": "https://newsroom.intel.com/" },
+    { "id": "price", "label": "Retailer price bands (captured Nov 2026)", "url": "https://ark.intel.com/" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Intel CPU Explained — i3 to Xeon, and Which You Actually Need",
+      "Every Intel CPU Explained (and the Names Finally Decoded)",
+      "i3 vs i5 vs i7 vs i9 vs Core Ultra — Every Intel CPU Explained",
+      "Every Intel CPU Explained — the Full Buying Guide"
+    ],
+    "primaryTitle": "Every Intel CPU Explained — i3 to Xeon, and Which You Actually Need",
+    "tags": [
+      "every intel cpu", "intel cpu explained", "i3 vs i5 vs i7 vs i9", "core ultra",
+      "intel core ultra explained", "which intel cpu", "p-cores e-cores", "intel naming explained",
+      "xeon", "celeron", "pentium", "cpu buying guide", "intel 2023 rebrand", "core i7 14700k",
+      "intel cpu tiers", "pc building", "how a cpu works", "tech explained"
+    ],
+    "hashtags": ["#intel", "#cpu", "#pcbuilding", "#tech", "#howitworks"],
+    "pinnedComment": "The one rule that fixes Intel's names: generation beats tier (a 14th-gen i3 beats a 10th-gen i5). 👇 Which chip is in YOUR machine? Subscribe — 'Every AMD CPU' is next.",
+    "hook": "Intel's names are a mess — i3, i5, i7, i9, Core Ultra, Ultra X, N-series, Xeon, and a 2023 rebrand that changed everything. Let's decode every one, show what the die actually looks like, and tell you which you should actually buy."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "decoder",
+      "narration": "Intel's CPU names are a genuine mess. i3, i5, i7, i9 — then a twenty twenty-three rebrand dropped the i, added Core Ultra, an X, an N-series, and a wall of suffix letters. In the next few minutes we will decode every single one, show you what each chip's die actually looks like inside, and answer the only question that matters: which one should you actually buy.",
+      "beats": [ { "cue": "decode", "mark": "dec" }, { "cue": "buy", "mark": "buy" } ]
+    },
+    {
+      "kind": "interlude",
+      "manim": "decoder",
+      "narration": "First, the decoder, because the name tells you almost everything. Take 'Core Ultra 7 265KF'. 'Core Ultra' is the brand family. The '7' is the tier — think small, medium, large, not a generation. The next digit is the series, which is basically the generation. The rest is the specific model number, the SKU. And those trailing letters are the suffix: K means unlocked for overclocking, F means no built-in graphics. Learn those five parts, and a scary name becomes a spec sheet.",
+      "beats": [ { "cue": "brand", "mark": "b" }, { "cue": "tier", "mark": "t" }, { "cue": "suffix", "mark": "s" } ]
+    },
+    {
+      "kind": "interlude",
+      "manim": "cores",
+      "narration": "Second, what's actually on the die. Since twenty twenty-one, Intel chips are hybrid. Big P-cores — performance cores — handle your heavy, foreground work, and each one is hyper-threaded, running two tasks at once. Small E-cores — efficiency cores — quietly mop up background jobs without burning power. So a chip with eight P-cores and twelve E-cores gives you twenty cores, but twenty-eight threads. Keep this picture in mind: every tier below is just this same die, with more or fewer tiles.",
+      "beats": [ { "cue": "P-cores", "mark": "p" }, { "cue": "E-cores", "mark": "e" }, { "cue": "threads", "mark": "th" } ]
+    },
+
+    {
+      "kind": "item", "id": "i3", "name": "Core 3 / i3", "launched": "2010", "tier": "i3", "icon": "server",
+      "die": { "p": 2, "e": 4 }, "accent": "#2DD4BF",
+      "narration": "We start at the bottom: the Core 3, long known as the i3. It's the entry tier — a few cores, modest clocks, built for the everyday. Browsing, office work, video, light multitasking: the i3 handles all of it without breaking a sweat, and without draining your wallet. What it isn't is a workhorse — heavy video editing or serious multitasking will make it gasp. But here's the rule that fixes everything: a newer i3 often beats an older i5. Generation beats tier.",
+      "specs": [
+        { "label": "Cores / threads", "value": "~4c / 8t", "cue": "cores", "source": "ark" },
+        { "label": "Price band", "value": "~$130–160", "cue": "wallet", "source": "price" },
+        { "label": "For", "value": "browsing, office, media", "cue": "everyday", "source": "ark" }
+      ],
+      "verdict": "Buy it if: you browse, do office work, and stream — nothing heavy."
+    },
+    {
+      "kind": "item", "id": "i5", "name": "Core 5 / i5", "launched": "2009", "tier": "i5", "icon": "server",
+      "die": { "p": 6, "e": 8 }, "accent": "#35E08A",
+      "narration": "The Core 5, the i5, is the one most people should actually buy. It's the sweet spot: enough cores for smooth gaming and real multitasking, without paying for power you'll never touch. Modern i5s pack a healthy mix of P-cores and E-cores — easily enough for the vast majority of PCs ever built. It's the default recommendation for a reason. If you're staring at a spec sheet unsure what to get, the honest answer is usually: get the current i5.",
+      "specs": [
+        { "label": "Cores / threads", "value": "up to 14c / 20t", "cue": "cores", "source": "ark" },
+        { "label": "Price band", "value": "~$200–320", "cue": "pay", "source": "price" },
+        { "label": "For", "value": "gaming + everyday, best value", "cue": "sweet", "source": "ark" }
+      ],
+      "verdict": "Buy it if: you want the best all-round value — this is the default pick."
+    },
+    {
+      "kind": "item", "id": "i7", "name": "Core 7 / i7", "launched": "2008", "tier": "i7", "icon": "server",
+      "die": { "p": 8, "e": 12 }, "accent": "#FFB020",
+      "narration": "Step up to the Core 7, the i7, and you're paying for more cores and higher sustained clocks. This is the enthusiast tier — the one that earns its price if you actually push it: high-refresh gaming, video editing, software compiling, heavy multitasking all day. For a pure gamer, an i7 is often more than you need, and an i5 frees up budget for a better graphics card. But if your work is genuinely demanding, the i7 is the comfortable, no-compromise choice.",
+      "specs": [
+        { "label": "Cores / threads", "value": "up to 20c / 28t", "cue": "cores", "source": "ark" },
+        { "label": "Price band", "value": "~$350–450", "cue": "price", "source": "price" },
+        { "label": "For", "value": "creators, high-FPS gaming", "cue": "enthusiast", "source": "ark" }
+      ],
+      "verdict": "Buy it if: you create, edit, compile, or chase high frame-rates."
+    },
+    {
+      "kind": "item", "id": "i9", "name": "Core 9 / i9", "launched": "2017", "tier": "i9", "icon": "server",
+      "die": { "p": 8, "e": 16 }, "accent": "#FF5C47",
+      "narration": "At the top sits the Core 9, the i9 — the flagship, with the most cores and the highest clocks Intel will give a mainstream chip. It's for people who genuinely saturate those cores: professional rendering, simulation, serious workstation loads. For gaming alone, it's usually wasted money. And it carries a cautionary tale: some thirteenth and fourteenth-gen i9s suffered instability and crashes from excessive voltage, which Intel addressed with a microcode update in twenty twenty-four. Raw power is only worth it if you'll actually use it.",
+      "specs": [
+        { "label": "Cores / threads", "value": "up to 24c / 32t", "cue": "cores", "source": "ark" },
+        { "label": "Price band", "value": "~$450–600", "cue": "money", "source": "price" },
+        { "label": "Note", "value": "13th/14th-gen instability fix (2024)", "cue": "microcode", "source": "newsroom" }
+      ],
+      "verdict": "Buy it if: you truly max out the cores — most people shouldn't."
+    },
+    {
+      "kind": "item", "id": "ultra", "name": "Core Ultra", "launched": "2023", "tier": "ultra", "icon": "hub",
+      "die": { "p": 6, "e": 8, "npu": true }, "accent": "#B06BFF",
+      "narration": "In twenty twenty-three Intel rebranded. The 'i' was dropped, and the premium line became Core Ultra. The headline change isn't speed — it's a new tile on the die: an NPU, a neural processing unit, dedicated to running AI tasks efficiently, so features like live background blur and noise removal barely touch your battery. Core Ultra also leans hard into power efficiency, which is why it dominates modern laptops. Same cores you know, plus a built-in AI engine.",
+      "specs": [
+        { "label": "New in", "value": "a built-in NPU (AI engine)", "cue": "NPU", "source": "ark" },
+        { "label": "Replaced", "value": "the 'Core i' naming (2023)", "cue": "rebranded", "source": "newsroom" },
+        { "label": "Best for", "value": "laptops — efficiency + AI", "cue": "laptops", "source": "ark" }
+      ],
+      "verdict": "Buy it if: you want on-device AI and long battery life in a laptop."
+    },
+    {
+      "kind": "item", "id": "ultrax", "name": "Core Ultra X", "launched": "2025", "tier": "ultra", "icon": "hub",
+      "die": { "p": 8, "e": 12, "xe": 12 }, "accent": "#B06BFF",
+      "narration": "Then there's the X. In Intel's newer scheme, an X in the name signals the strongest built-in graphics — the most Xe GPU cores on the die. These are integrated graphics good enough to actually play modern games at sensible settings, with no separate graphics card at all. For thin laptops and small PCs, that's a big deal: you get real gaming performance in a machine that sips power and stays cool. The X means the GPU grew up.",
+      "specs": [
+        { "label": "The 'X'", "value": "max Xe GPU cores on-die", "cue": "graphics", "source": "ark" },
+        { "label": "Means", "value": "game with no separate GPU", "cue": "games", "source": "ark" },
+        { "label": "Great for", "value": "thin laptops, mini PCs", "cue": "thin", "source": "ark" }
+      ],
+      "verdict": "Buy it if: you want to game without a dedicated graphics card."
+    },
+    {
+      "kind": "item", "id": "nseries", "name": "N-series", "launched": "2023", "tier": "low", "icon": "laptop",
+      "die": { "p": 0, "e": 8 }, "accent": "#C9CDD4",
+      "narration": "The N-series is the budget floor. These chips drop P-cores entirely and run on efficiency cores alone, which keeps them cheap, cool, and often fanless. You'll find them in Chromebooks, cheap Windows laptops, and mini-PCs — machines meant for the web, documents, and streaming, not heavy lifting. Don't expect to edit video or play demanding games. But for a light, silent, inexpensive computer that just works, the N-series does exactly its job.",
+      "specs": [
+        { "label": "Cores", "value": "efficiency cores only", "cue": "efficiency", "source": "ark" },
+        { "label": "Found in", "value": "Chromebooks, mini PCs", "cue": "Chromebooks", "source": "ark" },
+        { "label": "For", "value": "web, docs, streaming", "cue": "light", "source": "ark" }
+      ],
+      "verdict": "Buy it if: you want a cheap, silent, basic everyday machine."
+    },
+    {
+      "kind": "item", "id": "atom", "name": "Atom", "launched": "2008", "tier": "low", "icon": "phone",
+      "die": { "p": 0, "e": 4 }, "accent": "#C9CDD4",
+      "narration": "Atom is the chip you use every day without ever seeing it. It's Intel's tiny, ultra-low-power line, built for embedded devices where heat and battery matter more than speed. Point-of-sale terminals, kiosks, security cameras, cars, industrial gear, networking boxes — all quietly run on Atom, often with no fan at all. It will never win a benchmark, and it was never meant to. Its whole purpose is to run forever, cool and cheap, in the background of modern life.",
+      "specs": [
+        { "label": "Built for", "value": "ultra-low power, embedded", "cue": "embedded", "source": "ark" },
+        { "label": "Found in", "value": "kiosks, cameras, cars", "cue": "kiosks", "source": "ark" },
+        { "label": "Cooling", "value": "often fanless", "cue": "fan", "source": "ark" }
+      ],
+      "verdict": "Found in: kiosks, cameras, cars — not your desktop."
+    },
+    {
+      "kind": "item", "id": "celeron", "name": "Celeron & Pentium", "launched": "1998", "tier": "low", "icon": "server",
+      "manim": "binning", "accent": "#C9CDD4",
+      "narration": "Celeron and Pentium were the ultra-budget names for decades — and they reveal a secret of chip-making: binning. Every chip is cut from a big silicon wafer, and no batch is perfect. A die with a couple of flawed cores isn't thrown away — the bad cores are switched off, and it's sold as a cheaper, lower-tier part. Celeron sat at the very bottom of that ladder. Intel retired both the Celeron and Pentium names in twenty twenty-three, folding them into the plain 'Intel Processor' label.",
+      "specs": [
+        { "label": "Binning", "value": "disable bad cores, sell cheaper", "cue": "binning", "source": "ark" },
+        { "label": "Position", "value": "bottom of the stack", "cue": "bottom", "source": "ark" },
+        { "label": "Status", "value": "retired in 2023", "cue": "retired", "source": "newsroom" }
+      ],
+      "verdict": "Buy it if: you're on the tightest budget — but the names are gone now."
+    },
+    {
+      "kind": "item", "id": "vpro", "name": "vPro", "launched": "2006", "tier": "low", "icon": "doors",
+      "features": ["AMT — remote manage a PC even when it's off", "Total Memory Encryption", "hardware-level security for IT fleets"],
+      "accent": "#E8C24A",
+      "narration": "vPro is the odd one out — it isn't a chip at all. It's a business platform that rides on top of certain i5, i7, and i9 processors. Its killer feature is remote management: AMT lets an IT department fix, update, or wipe a laptop over the network even when the machine is powered off. Add hardware-level memory encryption and fleet security, and you have why big companies buy vPro by the thousand. You'll never see it on a gaming-PC box — but it's everywhere in the corporate world.",
+      "specs": [
+        { "label": "What it is", "value": "a business feature set, not a tier", "cue": "platform", "source": "ark" },
+        { "label": "AMT", "value": "remote-manage an off PC", "cue": "remote", "source": "ark" },
+        { "label": "Plus", "value": "memory encryption, fleet security", "cue": "encryption", "source": "ark" }
+      ],
+      "verdict": "Not a chip — a management + security layer for corporate fleets."
+    },
+    {
+      "kind": "item", "id": "xeon", "name": "Xeon", "launched": "1998", "tier": "xeon", "icon": "server",
+      "die": { "p": 32, "e": 0 }, "accent": "#E8C24A",
+      "narration": "At the opposite extreme is Xeon — Intel's heavyweight line for servers and workstations. Where a desktop i9 tops out around two dozen cores, a Xeon can carry dozens to well over a hundred, and crucially, you can run several Xeons together in one machine across multiple sockets. They add server-grade features: error-correcting memory, huge memory capacity, and round-the-clock reliability. This is the silicon behind data centres, render farms, and scientific computing. For a home PC it's pure, expensive overkill.",
+      "specs": [
+        { "label": "Cores", "value": "dozens to 100+", "cue": "hundred", "source": "ark" },
+        { "label": "Multi-socket", "value": "several chips per machine", "cue": "sockets", "source": "ark" },
+        { "label": "For", "value": "servers, workstations", "cue": "servers", "source": "ark" }
+      ],
+      "verdict": "Found in: servers and workstations — overkill for any home PC."
+    },
+    {
+      "kind": "item", "id": "series3", "name": "Core Ultra (Series 3)", "launched": "2026", "tier": "ultra", "icon": "hub",
+      "die": { "p": 8, "e": 16, "npu": true, "xe": 12 }, "accent": "#B06BFF",
+      "narration": "Finally, where it's all heading: the newest Core Ultra generation, Series 3. The pattern is clear — more efficiency, a much stronger NPU for AI, and beefier built-in graphics, all in laptops that last longer on a charge. The naming is settling down too: a single tier number, a series digit for the generation, and a simpler set of suffixes. If you buy a new machine today, this is roughly what you'll be choosing from — and now, you can actually read the name.",
+      "specs": [
+        { "label": "New", "value": "bigger NPU, stronger iGPU", "cue": "NPU", "source": "ark" },
+        { "label": "Focus", "value": "efficiency + on-device AI", "cue": "efficiency", "source": "ark" },
+        { "label": "Naming", "value": "tier · series · simpler suffixes", "cue": "naming", "source": "newsroom" }
+      ],
+      "verdict": "Buy it if: you want the newest laptop silicon with the strongest NPU."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "gentier",
+      "narration": "One rule to take away, because it quietly saves you money. Generation beats tier. A current-generation i3 will often outperform an i5 from several years ago, because each new generation brings real gains. So when you compare two chips, check the generation first — that leading digit — before you argue about i5 versus i7. An old high-tier chip can easily lose to a new low-tier one. Buy recent, not just big.",
+      "beats": [ { "cue": "generation", "mark": "gen" }, { "cue": "recent", "mark": "rec" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every AMD CPU Explained",
+      "question": "Which Intel chip is in your machine?",
+      "narration": "So that's the whole Intel stack, from the humble i3 to the monstrous Xeon — and now the names read like a spec sheet instead of a riddle. Remember the two rules: the name is a code you can decode, and generation beats tier. Next, we do the exact same teardown for Intel's great rival — every AMD CPU. If this finally made the shelf make sense, subscribe, it genuinely helps. So tell me: which Intel chip is in your machine?",
+      "beats": [ { "cue": "AMD", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "machine", "mark": "ask" } ]
+    }
+  ]
+}
