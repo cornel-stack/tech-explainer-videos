@@ -1,0 +1,190 @@
+{
+  "id": "t09-os",
+  "title": "Every Illegal Operating System Explained",
+  "series": "Every X",
+  "keyNoun": "illegal OS",
+  "promise": "Which operating systems get you arrested, which get you sued, and which are perfectly legal — with an honest red/amber/green badge on every one.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#FF5C47",
+  "sources": [
+    { "id": "ccc", "label": "32C3 'Lifting the Fog on Red Star OS' — Grunow & Schießl (2015)", "url": "https://media.ccc.de/v/32c3-7174-lifting_the_fog_on_red_star_os" },
+    { "id": "drweb", "label": "Dr.Web — clipper hidden in pirated Windows EFI (2023)", "url": "https://news.drweb.com/" },
+    { "id": "avast", "label": "Avast — Crackonosh cryptominer report (2021)", "url": "https://decoded.avast.io/" },
+    { "id": "doj", "label": "US DOJ — Phantom Secure press release (2018)", "url": "https://www.justice.gov/opa/pr/phantom-secure-ceo-pleads-guilty" },
+    { "id": "court", "label": "Microsoft v. Lindows — settlement coverage (2004)", "url": "https://www.theregister.com/2004/07/19/microsoft_lindows_settlement/" },
+    { "id": "vendor", "label": "Distro documentation (Tails, Whonix, Kali, Parrot, Astra, NeoKylin)", "url": "https://tails.net/" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Illegal Operating System Explained (Yes, Some Are Still Running)",
+      "Every Illegal Operating System Explained — Red, Amber or Green?",
+      "The Operating Systems That Get You Arrested, Sued, or Watched",
+      "Every Illegal Operating System Explained — the Honest, Sourced List"
+    ],
+    "primaryTitle": "Every Illegal Operating System Explained (Yes, Some Are Still Running)",
+    "tags": [
+      "every illegal operating system", "illegal operating systems", "red star os", "tails os",
+      "whonix", "kali linux", "parrot os", "templeos", "phantom secure", "neokylin", "astra linux",
+      "lindows", "pear os", "is kali linux illegal", "most dangerous operating systems", "tech explained"
+    ],
+    "hashtags": ["#operatingsystem", "#linux", "#cybersecurity", "#tech", "#privacy"],
+    "pinnedComment": "The honest rule: it's almost never the software that's illegal — it's the distribution, the trademark, or the use. Most of this list is amber or green. 👇 Which badge would YOUR OS get? Subscribe — 'Every Dead Operating System' is next.",
+    "hook": "Some operating systems get you arrested, some get you sued, and most — despite the scary reputation — are perfectly legal. Red Star OS, Tails, Whonix, Kali, Phantom Secure and more, each with an honest red/amber/green badge, every claim sourced."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "legend",
+      "narration": "Some operating systems will get you arrested. Some will get you sued. And most of them, despite the scary reputation, are perfectly legal. In the next twelve minutes we'll go through twelve of them — from a country's own surveillance OS, to the hacker's toolkit, to the pirated builds that quietly rob you — and give each one an honest badge: red, amber, or green. Every claim here is sourced. So, which ones are actually illegal?",
+      "beats": [ { "cue": "arrested", "mark": "a" }, { "cue": "sued", "mark": "s" }, { "cue": "badge", "mark": "b" } ]
+    },
+    {
+      "kind": "interlude",
+      "manim": "legend",
+      "narration": "First, the three badges you'll see in the corner of every item. Red means the system is illegal to distribute or possess — pirated, malware-laden, or built for crime. Amber is the big one: legal to own, but illegal to misuse — the hacking and anonymity tools, where the crime is what you do, not what you install. And green means legal, but state-controlled, or banned somewhere — the national operating systems. Keep these in mind, because the honest answer is: most of this list is amber or green.",
+      "beats": [ { "cue": "Red", "mark": "r" }, { "cue": "Amber", "mark": "am" }, { "cue": "green", "mark": "g" } ]
+    },
+
+    {
+      "kind": "item", "id": "redstar", "name": "Red Star OS", "launched": "~2008", "cat": "NORTH KOREA", "status": "green", "icon": "doors", "accent": "#35E08A",
+      "mech": ["open a file", "stamp serial number", "USB copy tagged", "traces back to you"],
+      "narration": "Red Star OS is North Korea's own operating system — and a surveillance tool in disguise. On the surface it's a polished macOS look-alike running on the country's walled-off intranet. Underneath, it quietly watermarks every file you open or copy to a USB stick with your computer's serial number, building a chain of custody that can trace a banned document straight back to you. Try to disable that, and the system detects the tampering and reboots. Security researchers revealed all of this at a conference back in twenty fifteen.",
+      "specs": [
+        { "label": "Origin", "value": "North Korea · ~2008", "cue": "Korea", "source": "ccc" },
+        { "label": "Surface", "value": "Linux, macOS look-alike", "cue": "look-alike", "source": "ccc" },
+        { "label": "The trick", "value": "serial-number file tagging", "cue": "watermarks", "source": "ccc" }
+      ],
+      "verdict": "Legal to run — but it's built to watch the person running it."
+    },
+    {
+      "kind": "item", "id": "neokylin", "name": "NeoKylin", "launched": "2014", "cat": "CHINA", "status": "green", "icon": "hub", "accent": "#35E08A",
+      "mech": ["XP support ends", "Linux core", "XP look-alike", "preinstalled by state"],
+      "narration": "When Microsoft ended support for Windows X-P in twenty fourteen, China didn't want millions of PCs — many of them in government — still depending on foreign software. NeoKylin was the answer: a home-grown Linux built to look and feel almost exactly like X-P, so staff needed no retraining at all. It's been reported preloaded on a large share of commercial PCs sold in China, including by Dell. It isn't illegal — it's the opposite, a state-backed push for software independence. But it shows how an operating system can quietly become a tool of policy.",
+      "specs": [
+        { "label": "Origin", "value": "China · 2014", "cue": "China", "source": "vendor" },
+        { "label": "Why", "value": "replace Windows XP", "cue": "ended", "source": "vendor" },
+        { "label": "Seen on", "value": "Dell commercial PCs", "cue": "Dell", "source": "vendor" }
+      ],
+      "verdict": "Fully legal — a state's bid for software independence."
+    },
+    {
+      "kind": "item", "id": "astra", "name": "Astra Linux", "launched": "gov / MoD", "cat": "RUSSIA", "status": "green", "icon": "server", "accent": "#35E08A",
+      "mech": ["Debian base", "city security levels", "state-certified", "runs on Elbrus"],
+      "narration": "Astra Linux is Russia's answer to the very same question. It's a Debian-based system, certified by the state's security services for handling classified information, and it's now the default across much of the Russian military and government. Its security levels are named after cities, and hardened builds run on Russia's domestic Elbrus processors — part of a wider push to strip Western technology out of sensitive systems, accelerated by sanctions. Owning it is perfectly legal. It's simply the operating system of a state that would rather not depend on anyone else.",
+      "specs": [
+        { "label": "Origin", "value": "Russia · gov & military", "cue": "Russia", "source": "vendor" },
+        { "label": "Base", "value": "Debian, state-certified", "cue": "certified", "source": "vendor" },
+        { "label": "Hardware", "value": "domestic Elbrus CPUs", "cue": "Elbrus", "source": "vendor" }
+      ],
+      "verdict": "Legal — the OS of a state de-coupling from Western tech."
+    },
+    {
+      "kind": "item", "id": "tails", "name": "Tails", "launched": "2009", "cat": "ANONYMITY", "status": "amber", "icon": "cloud", "accent": "#FFB020",
+      "mech": ["boot from USB", "runs in RAM only", "all traffic → Tor", "power off → wiped"],
+      "narration": "Tails is built to leave no trace. You boot it from a USB stick, and the entire system runs inside your computer's memory — never touching the hard drive. Every connection is forced through the Tor network, hiding your location, and the moment you shut down, that memory is wiped, so there's nothing left to find. It's used by journalists, activists, and whistle-blowers — Edward Snowden relied on it — and, inevitably, by criminals too. The tool itself is legal; what you do with it is the only real question.",
+      "specs": [
+        { "label": "Origin", "value": "2009 · the Tor Project", "cue": "USB", "source": "vendor" },
+        { "label": "Trick", "value": "RAM-only, amnesic", "cue": "memory", "source": "vendor" },
+        { "label": "Network", "value": "Tor by default", "cue": "Tor", "source": "vendor" }
+      ],
+      "verdict": "Legal to use — an amnesic OS for anyone who needs to disappear."
+    },
+    {
+      "kind": "item", "id": "whonix", "name": "Whonix", "launched": "2012", "cat": "ANONYMITY", "status": "amber", "icon": "hub", "accent": "#FFB020",
+      "mech": ["workstation VM", "no direct net", "→ gateway VM", "→ Tor → web"],
+      "narration": "Whonix takes anonymity a step further by splitting your computer in two. You work inside one virtual machine — the workstation — which has no direct internet access at all. Everything it sends is forced through a second, separate virtual machine — the gateway — which routes it over Tor. The clever part: the workstation can never see your real I-P address, so even if the software you're running is malicious or compromised, it has nothing to leak. It's a favourite for high-stakes privacy, and, like Tails, completely legal to run.",
+      "specs": [
+        { "label": "Origin", "value": "2012 · open source", "cue": "anonymity", "source": "vendor" },
+        { "label": "Design", "value": "two isolated VMs", "cue": "workstation", "source": "vendor" },
+        { "label": "Result", "value": "app never sees your IP", "cue": "address", "source": "vendor" }
+      ],
+      "verdict": "Legal — isolation so your apps can't leak who you are."
+    },
+    {
+      "kind": "item", "id": "kali", "name": "Kali Linux", "launched": "2013", "cat": "PEN-TESTING", "status": "amber", "icon": "terminal", "accent": "#FFB020",
+      "mech": ["Debian base", "600+ hacking tools", "your own lab = legal", "someone else's = crime"],
+      "narration": "Kali Linux is the best-known hacking distribution — and its reputation scares people far more than it should. It's a Debian-based system that comes pre-loaded with hundreds of security tools: Metasploit, Wireshark, aircrack-ng, and many more. Using Kali is completely legal; it's standard equipment for professional penetration testers who are paid to break into systems, with permission. What's illegal is pointing those same tools at a network you don't own. The software never commits the crime — the lack of authorisation does.",
+      "specs": [
+        { "label": "Origin", "value": "2013 · Debian-based", "cue": "Debian", "source": "vendor" },
+        { "label": "Loadout", "value": "Metasploit, Wireshark…", "cue": "Metasploit", "source": "vendor" },
+        { "label": "The line", "value": "authorisation is everything", "cue": "permission", "source": "vendor" }
+      ],
+      "verdict": "Legal to run — illegal the second you point it at others."
+    },
+    {
+      "kind": "item", "id": "parrot", "name": "Parrot OS", "launched": "2013", "cat": "PEN-TESTING", "status": "amber", "icon": "terminal", "accent": "#FFB020",
+      "mech": ["Debian base", "pentest + forensics", "anonsurf → Tor", "your target decides"],
+      "narration": "Parrot O-S is Kali's lighter-weight rival, built on the same idea: a Debian base packed with penetration-testing and digital-forensics tools, plus built-in anonymity features like anonsurf that push your traffic through Tor. It's popular with security students because it runs well on modest hardware. And the legal story is identical to Kali's: the operating system is just a toolbox, and a toolbox is never the crime. Where you choose to point it decides whether you're a security professional or a criminal.",
+      "specs": [
+        { "label": "Origin", "value": "2013 · Debian-based", "cue": "Debian", "source": "vendor" },
+        { "label": "Extra", "value": "anonsurf, light on RAM", "cue": "anonsurf", "source": "vendor" },
+        { "label": "Legal", "value": "same rule as Kali", "cue": "toolbox", "source": "vendor" }
+      ],
+      "verdict": "Legal — a pen-tester's toolbox; the user supplies the intent."
+    },
+    {
+      "kind": "item", "id": "lindows", "name": "Lindows / Linspire", "launched": "2001", "cat": "THE LAWSUITS", "status": "green", "icon": "doors", "accent": "#35E08A",
+      "mech": ["Linux + Windows apps", "named 'Lindows'", "MS sues over name", "$20M → renamed"],
+      "narration": "Lindows wasn't dangerous — it was sued into a new name. Launched in two thousand one, it was a Linux designed to run Windows applications, and its name was a deliberate poke at Microsoft. Microsoft sued for trademark infringement, but hit a surprising wall: in the US, Lindows argued that 'windows' had been a generic word for on-screen panels long before Microsoft ever used it. Facing that risk, Microsoft paid around twenty million dollars to settle, and Lindows renamed itself Linspire. The product was always legal; the name was the entire fight.",
+      "specs": [
+        { "label": "Origin", "value": "USA · 2001", "cue": "thousand", "source": "court" },
+        { "label": "The fight", "value": "is 'windows' generic?", "cue": "generic", "source": "court" },
+        { "label": "Outcome", "value": "~$20M, renamed Linspire", "cue": "twenty", "source": "court" }
+      ],
+      "verdict": "Legal — a trademark fight, not a crime; it just lost its name."
+    },
+    {
+      "kind": "item", "id": "pearos", "name": "Pear OS", "launched": "2011", "cat": "THE LAWSUITS", "status": "green", "icon": "laptop", "accent": "#35E08A",
+      "mech": ["Ubuntu base", "clones macOS look", "trade-dress risk", "vanished Jan 2014"],
+      "narration": "Pear O-S was a French, Ubuntu-based Linux with one bold choice: it copied the look of Apple's macOS almost pixel for pixel — right down to a pear-shaped logo echoing Apple's own. That's a trademark and 'trade dress' minefield — imitating not a name, but the entire visual identity of a product. Pear O-S never faced a public lawsuit, but in January twenty fourteen it abruptly shut down, its creator saying only that the project had been bought by an unnamed company. Legal grey areas rarely end with a bang; usually, they just quietly disappear.",
+      "specs": [
+        { "label": "Origin", "value": "France · 2011", "cue": "French", "source": "vendor" },
+        { "label": "Risk", "value": "copied macOS trade dress", "cue": "trade", "source": "vendor" },
+        { "label": "End", "value": "sold & shut, Jan 2014", "cue": "bought", "source": "vendor" }
+      ],
+      "verdict": "Legal grey area — it quietly vanished rather than fight."
+    },
+    {
+      "kind": "item", "id": "gamingwin", "name": "Pirated 'Gaming' Windows", "launched": "ongoing", "cat": "ACTUALLY ILLEGAL", "status": "red", "icon": "cross", "accent": "#FF5C47",
+      "mech": ["cracked ISO", "pre-activated", "malware in EFI", "swaps your wallet"],
+      "narration": "Now the genuinely dangerous ones. All over torrent sites you'll find 'Gaming Edition' or 'Super Lite' builds of Windows — pirated, pre-activated, and promising better performance. Many are booby-trapped. In twenty twenty-three, Dr.Web found builds hiding a clipboard clipper deep in the E-F-I partition, where antivirus rarely looks; it silently swapped any crypto-wallet address you copied for the attacker's, stealing around nineteen thousand dollars. A related campaign, Crackonosh, buried a crypto-miner in cracked games and infected over two hundred thousand machines. Free Windows is never actually free.",
+      "specs": [
+        { "label": "Hidden in", "value": "EFI partition (rarely scanned)", "cue": "partition", "source": "drweb" },
+        { "label": "Clipper theft", "value": "~$19,000 (Dr.Web 2023)", "cue": "nineteen", "source": "drweb" },
+        { "label": "Crackonosh", "value": "222K machines infected", "cue": "Crackonosh", "source": "avast" }
+      ],
+      "verdict": "Illegal and dangerous — piracy plus hidden malware. Don't."
+    },
+    {
+      "kind": "item", "id": "phantom", "name": "Phantom Secure", "launched": "to 2018", "cat": "ACTUALLY ILLEGAL", "status": "red", "icon": "phone", "accent": "#FF5C47",
+      "mech": ["stripped BlackBerry", "encrypted-only", "servers abroad", "remote wipe"],
+      "narration": "Phantom Secure sold the ultimate underground phone. They took ordinary BlackBerrys, physically stripped out the camera, microphone, G-P-S, and web browser, and installed encrypted messaging that could only talk to other Phantom devices — routed through servers in Hong Kong and Panama, beyond easy reach of police. For thousands of dollars a year, it became the communications network of choice for organised crime. In twenty eighteen the US Justice Department charged the company as a criminal enterprise, and its C-E-O was sentenced to nine years. Here, the operating system itself was the crime.",
+      "specs": [
+        { "label": "Origin", "value": "Canada · ended 2018", "cue": "BlackBerrys", "source": "doj" },
+        { "label": "Users", "value": "organised crime", "cue": "crime", "source": "doj" },
+        { "label": "End", "value": "DOJ case; CEO got 9 years", "cue": "Justice", "source": "doj" }
+      ],
+      "verdict": "Illegal — built for crime; the DOJ prosecuted the OS itself."
+    },
+    {
+      "kind": "item", "id": "templeos", "name": "TempleOS", "launched": "2003–2018", "cat": "NONE OF THE ABOVE", "status": "green", "icon": "terminal", "accent": "#35E08A",
+      "mech": ["one author", "own language: HolyC", "640×480 · 16 colours", "no network"],
+      "narration": "And finally, the one that belongs on no blacklist at all. TempleOS was written single-handedly by Terry Davis, over more than a decade — around a hundred thousand lines of code, including his own programming language, HolyC, and his own compiler. He built it to a strict spec he believed was divinely mandated: six-forty by four-eighty resolution, sixteen colours, and no networking whatsoever. It's completely legal, it still runs to this day, and it crashes nothing but nostalgia. It's here only because it's one of the most remarkable things a single person ever built.",
+      "specs": [
+        { "label": "Author", "value": "Terry Davis, solo", "cue": "single-handedly", "source": "vendor" },
+        { "label": "Size", "value": "~100K lines + HolyC", "cue": "hundred", "source": "vendor" },
+        { "label": "The spec", "value": "640×480, 16 colours", "cue": "colours", "source": "vendor" }
+      ],
+      "verdict": "Completely legal — here for the story, not a rap sheet."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "Every Dead Operating System",
+      "question": "Which badge would your OS get?",
+      "narration": "So there it is — twelve operating systems, and only a couple that are truly illegal. The pattern worth remembering: it's almost never the software itself that's the crime — it's the distribution, the trademark, or the use. A hacking tool in the right hands is a profession; the exact same tool in the wrong hands is an offence. Next time, we dig up every dead operating system — the ones that didn't break the law, they just lost. If this was interesting, subscribe. So tell me: which badge would your O-S get?",
+      "beats": [ { "cue": "Dead", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "badge", "mark": "ask" } ]
+    }
+  ]
+}

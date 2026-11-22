@@ -1,0 +1,80 @@
+import React from "react";
+import { Img, staticFile, useCurrentFrame } from "remotion";
+import { theme, fontStack, glow } from "../theme";
+import { useInput } from "../lib/ctx";
+
+// The famous real-world CASE as a HUD-framed "evidence" card. Shows a real
+// fetched image (with a slow Ken-Burns drift + scanlines) when available, else a
+// redacted drawn fallback so it never blanks.
+export const ScreenCard: React.FC<{
+  caseKey?: string;
+  caseName: string;
+  accent: string;
+  header?: string;
+  width?: number;
+  height?: number;
+}> = ({ caseKey, caseName, accent, header = "CASE FILE", width = 760, height = 470 }) => {
+  const frame = useCurrentFrame();
+  const input = useInput();
+  const img = caseKey ? input.images?.[caseKey] : undefined;
+  const k = 1.06 + Math.sin(frame / 90) * 0.03; // breathing zoom
+  const panX = Math.sin(frame / 110) * 14;
+
+  return (
+    <div
+      style={{
+        width,
+        background: theme.paper,
+        border: `1px solid ${accent}55`,
+        borderRadius: 12,
+        boxShadow: glow(accent, 0.3),
+        overflow: "hidden",
+        fontFamily: fontStack.mono,
+      }}
+    >
+      {/* header */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 16px", background: "#0C0C12", borderBottom: `1px solid ${accent}33` }}>
+        <span style={{ width: 9, height: 9, borderRadius: 2, background: accent, boxShadow: `0 0 8px ${accent}` }} />
+        <span style={{ color: accent, fontSize: 16, letterSpacing: 2, fontWeight: 600 }}>{header}</span>
+        <span style={{ color: theme.inkSoft, fontSize: 16, marginLeft: "auto" }}>{caseName}</span>
+      </div>
+
+      {/* body */}
+      <div style={{ position: "relative", width: "100%", height, background: "#050507", overflow: "hidden" }}>
+        {img ? (
+          <Img src={staticFile(img.file)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${k}) translateX(${panX}px)`, filter: "saturate(0.9) contrast(1.05)" }} />
+        ) : (
+          <div style={{ width: "100%", height: "100%", display: "grid", placeItems: "center" }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ color: accent, fontSize: 70, fontWeight: 900, letterSpacing: 4, opacity: 0.25, fontFamily: fontStack.sans }}>REDACTED</div>
+              <div style={{ color: theme.inkSoft, fontSize: 22 }}>{caseName}</div>
+            </div>
+          </div>
+        )}
+        {/* scanlines */}
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.0) 0px, rgba(0,0,0,0.0) 2px, rgba(0,0,0,0.28) 3px, rgba(0,0,0,0.0) 4px)", pointerEvents: "none" }} />
+        {/* HUD corner brackets */}
+        {[[8, 8, "nw"], [8, 8, "ne"], [8, 8, "sw"], [8, 8, "se"]].map((_, i) => {
+          const pos: React.CSSProperties = {
+            position: "absolute",
+            width: 26,
+            height: 26,
+            borderColor: accent,
+            [i < 2 ? "top" : "bottom"]: 12,
+            [i % 2 === 0 ? "left" : "right"]: 12,
+            borderStyle: "solid",
+            borderWidth: 0,
+            [i < 2 ? "borderTopWidth" : "borderBottomWidth"]: 3,
+            [i % 2 === 0 ? "borderLeftWidth" : "borderRightWidth"]: 3,
+          } as React.CSSProperties;
+          return <div key={i} style={pos} />;
+        })}
+      </div>
+
+      {/* footer credit */}
+      <div style={{ padding: "7px 16px", background: "#0C0C12", color: theme.inkFaint, fontSize: 12, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+        {img?.credit ? `↳ ${img.credit}` : "artefact redrawn — illustrative"}
+      </div>
+    </div>
+  );
+};
