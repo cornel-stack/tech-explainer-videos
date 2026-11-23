@@ -1,0 +1,142 @@
+{
+  "id": "t29-wifi",
+  "title": "Every Wi-Fi Standard Explained",
+  "series": "Every X",
+  "keyNoun": "Wi-Fi standard",
+  "promise": "Every Wi-Fi generation untangled — from 802.11b to Wi-Fi 7 — with the real speeds, the bands, the confusing names decoded, and what each one actually changed in your home.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "ieee", "label": "IEEE 802.11 standards & Wi-Fi Alliance generation names", "url": "https://www.wi-fi.org/discover-wi-fi" },
+    { "id": "ref", "label": "Wi-Fi generation references (bands, PHY rates, features)", "url": "https://en.wikipedia.org/wiki/IEEE_802.11" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Wi-Fi Standard Explained in 10 Minutes — 802.11b to Wi-Fi 7",
+      "Every Wi-Fi Standard Explained — Speeds, Bands & the Names Decoded",
+      "Every Wi-Fi Generation (Wi-Fi 4, 5, 6, 6E, 7) Finally Explained",
+      "Every Wi-Fi Standard Explained — and Why Your Speed Isn't the Number on the Box"
+    ],
+    "primaryTitle": "Every Wi-Fi Standard Explained in 10 Minutes — 802.11b to Wi-Fi 7",
+    "tags": [
+      "every wifi standard", "wifi explained", "wifi 6 vs wifi 5", "wifi 7", "802.11",
+      "wifi 6e", "wifi generations", "wifi bands 2.4 vs 5", "wifi speeds", "what wifi do i have",
+      "wifi standards explained", "home network", "wifi naming", "tech explained", "how it works"
+    ],
+    "hashtags": ["#wifi", "#networking", "#tech", "#router", "#howitworks"],
+    "pinnedComment": "The decoder ring: 802.11n = Wi-Fi 4, 802.11ac = Wi-Fi 5, 802.11ax = Wi-Fi 6, +6 GHz = 6E, 802.11be = Wi-Fi 7. And the truth: those headline Gbps numbers are lab maximums — your real speed is set by the weakest link (distance, walls, your oldest device). 👇 What Wi-Fi are you on right now? Subscribe — 'Every Monitor Refresh Rate' is next.",
+    "hook": "Wi-Fi 4, 5, 6, 6E, 7 — and also 802.11n, ac, ax, be. Two naming systems for the same thing, box numbers you'll never actually hit, and three different bands. Let's decode every Wi-Fi standard, for good."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "timeline",
+      "narration": "Wi-Fi 4, 5, 6, 6E, and now 7 — and ALSO 802-dot-11-n, a-c, a-x, b-e. That's two completely different naming systems for the exact same thing, plastered on every router box, next to headline speeds you will basically never actually hit in real life. It's confusing by design. So let's fix it. We'll walk through every Wi-Fi generation, decode both names, give you the real-world speeds, untangle the bands — two-point-four, five, and six gigahertz — and tell you what each one genuinely changed. By the end, you'll read a router box like a pro.",
+      "beats": [ { "cue": "naming", "mark": "n" }, { "cue": "bands", "mark": "b" }, { "cue": "changed", "mark": "c" } ]
+    },
+
+    {
+      "kind": "item", "id": "legacy", "name": "802.11b / g", "launched": "1999–2003", "cat": "THE BEGINNING", "accent": "#C9CDD4",
+      "wifi": { "code": "802.11b / g", "brand": "pre-branding", "speed": "11 → 54 Mbps", "bands": "2.4", "frac": 0.08 },
+      "narration": "It started with 802-dot-11-b in nineteen-ninety-nine — the first Wi-Fi people actually used, at a whopping eleven megabits per second, on the two-point-four gigahertz band. Then 802-dot-11-g in two-thousand-three bumped that to fifty-four megabits, while staying on two-point-four. These were the dial-up-era of wireless: slow by today's standards, single-band, and easily congested. But they proved the whole idea — that your internet could finally leave the wall socket, and follow you around the house.",
+      "specs": [
+        { "label": "Speed", "value": "11 Mbps (b) → 54 Mbps (g)", "cue": "megabits", "source": "ref" },
+        { "label": "Band", "value": "2.4 GHz only", "cue": "band", "source": "ref" },
+        { "label": "Era", "value": "the first everyday Wi-Fi", "cue": "first", "source": "ref" }
+      ],
+      "verdict": "Where it began — 11 to 54 Mbps on 2.4 GHz; slow, but it cut the cord."
+    },
+    {
+      "kind": "item", "id": "n", "name": "Wi-Fi 4", "launched": "2009", "cat": "802.11n", "accent": "#FFB020",
+      "wifi": { "code": "802.11n", "brand": "Wi-Fi 4", "speed": "up to 600 Mbps", "bands": "2.4 + 5", "frac": 0.22 },
+      "narration": "802-dot-11-n, now rebranded Wi-Fi 4, was the big leap in two-thousand-nine. It did two important things. First, it introduced M-I-M-O — multiple antennas sending multiple streams of data at once, multiplying throughput up to around six hundred megabits. And second, it was the first to work on both the two-point-four AND the five gigahertz bands. This is the generation where Wi-Fi became genuinely fast enough for everything — and, retroactively, where the sensible 'Wi-Fi number' names start.",
+      "specs": [
+        { "label": "Speed", "value": "up to 600 Mbps", "cue": "hundred", "source": "ref" },
+        { "label": "New", "value": "MIMO — multiple antennas", "cue": "antennas", "source": "ref" },
+        { "label": "Bands", "value": "2.4 + 5 GHz (dual-band)", "cue": "five", "source": "ieee" }
+      ],
+      "verdict": "802.11n = Wi-Fi 4 — MIMO + dual-band; the first properly fast, flexible Wi-Fi."
+    },
+    {
+      "kind": "item", "id": "ac", "name": "Wi-Fi 5", "launched": "2014", "cat": "802.11ac", "accent": "#2DD4BF",
+      "wifi": { "code": "802.11ac", "brand": "Wi-Fi 5", "speed": "~1.3+ Gbps", "bands": "5", "frac": 0.42 },
+      "narration": "802-dot-11-a-c, or Wi-Fi 5, from twenty-fourteen, went all-in on the cleaner, faster five gigahertz band, and pushed speeds past a gigabit for the first time. It widened the channels, and added M-U-M-I-M-O — letting the router talk to several devices at once, rather than serving them one at a time. For most of the last decade, Wi-Fi 5 was the workhorse in homes everywhere, and for a lot of people, it's still exactly what they're running today.",
+      "specs": [
+        { "label": "Speed", "value": "over 1 Gbps (gigabit era)", "cue": "gigabit", "source": "ref" },
+        { "label": "Focus", "value": "the fast 5 GHz band", "cue": "five", "source": "ref" },
+        { "label": "New", "value": "MU-MIMO — many devices at once", "cue": "once", "source": "ieee" }
+      ],
+      "verdict": "802.11ac = Wi-Fi 5 — gigabit speeds on 5 GHz; the decade's home workhorse."
+    },
+    {
+      "kind": "item", "id": "ax", "name": "Wi-Fi 6", "launched": "2019", "cat": "802.11ax", "accent": "#35E08A",
+      "wifi": { "code": "802.11ax", "brand": "Wi-Fi 6", "speed": "up to 9.6 Gbps", "bands": "2.4 + 5", "frac": 0.7 },
+      "narration": "Wi-Fi 6, which is 802-dot-11-a-x from twenty-nineteen, changed the goal entirely. Instead of just chasing a bigger top speed — though it does hit nearly ten gigabits on paper — it was engineered for CROWDS. Its key trick, O-F-D-M-A, lets the router slice a channel and serve many devices in the same instant, hugely boosting efficiency when dozens of gadgets are fighting for airtime. In a modern smart home with thirty connected things, Wi-Fi 6 isn't about peak speed — it's about everything staying responsive, at once.",
+      "specs": [
+        { "label": "Speed", "value": "up to 9.6 Gbps (on paper)", "cue": "gigabits", "source": "ref" },
+        { "label": "Superpower", "value": "OFDMA — efficient in crowds", "cue": "crowds", "source": "ieee" },
+        { "label": "Best for", "value": "homes full of devices", "cue": "devices", "source": "ref" }
+      ],
+      "verdict": "802.11ax = Wi-Fi 6 — not just faster; efficient when dozens of devices share the air."
+    },
+    {
+      "kind": "item", "id": "6e", "name": "Wi-Fi 6E", "launched": "2021", "cat": "THE EXTRA BAND", "accent": "#B06BFF",
+      "wifi": { "code": "802.11ax (6 GHz)", "brand": "Wi-Fi 6E", "speed": "up to 9.6 Gbps", "bands": "6", "frac": 0.72 },
+      "narration": "Wi-Fi 6E is the one letter that trips everyone up. It is NOT a new generation — it's exactly the same Wi-Fi 6 technology, with the 'E' standing for 'Extended' into a brand-new third band: six gigahertz. And this new band is the real prize — it's wide open, totally free of all the old congestion from decades of legacy devices. So 6E gives you clean, fast, interference-free lanes — but only for brand-new gear that supports it, and at six gigahertz, over fairly short range.",
+      "specs": [
+        { "label": "What", "value": "Wi-Fi 6 + the new 6 GHz band", "cue": "band", "source": "ieee" },
+        { "label": "Win", "value": "clean, congestion-free airwaves", "cue": "congestion", "source": "ref" },
+        { "label": "Catch", "value": "short range; new gear only", "cue": "range", "source": "ref" }
+      ],
+      "verdict": "Not a new gen — Wi-Fi 6 'Extended' onto a clean, fast, short-range 6 GHz band."
+    },
+    {
+      "kind": "item", "id": "be", "name": "Wi-Fi 7", "launched": "2024", "cat": "802.11be", "accent": "#E8C24A",
+      "wifi": { "code": "802.11be", "brand": "Wi-Fi 7", "speed": "up to 46 Gbps", "bands": "2.4 + 5 + 6", "frac": 1.0 },
+      "narration": "And the current peak: Wi-Fi 7, or 802-dot-11-b-e, from twenty-twenty-four. On paper, it's monstrous — up to forty-six gigabits — using ultra-wide three-hundred-and-twenty megahertz channels across all three bands. But its cleverest feature is Multi-Link Operation: a device can connect across several bands SIMULTANEOUSLY, combining them for more speed, and seamlessly dodging congestion by hopping between them. It's overkill for browsing — but it's built for the future: flawless eight-K streaming, cloud gaming, and V-R with almost no lag.",
+      "specs": [
+        { "label": "Speed", "value": "up to 46 Gbps (320 MHz channels)", "cue": "forty-six", "source": "ref" },
+        { "label": "Superpower", "value": "Multi-Link — several bands at once", "cue": "simultaneously", "source": "ieee" },
+        { "label": "For", "value": "8K, cloud gaming, VR", "cue": "gaming", "source": "ref" }
+      ],
+      "verdict": "802.11be = Wi-Fi 7 — 320 MHz channels + Multi-Link across all 3 bands at once."
+    },
+    {
+      "kind": "item", "id": "bands", "name": "The Bands Decoded", "launched": "2.4 / 5 / 6 GHz", "cat": "THE REAL TRADE-OFF", "accent": "#FF5C47",
+      "wifi": { "code": "2.4 · 5 · 6 GHz", "brand": "range vs speed", "speed": "pick your lane", "bands": "2.4 + 5 + 6", "frac": 0.5 },
+      "narration": "Here's the thing the generations all share, and the single most useful fact in Wi-Fi: the band matters more than the number. Two-point-four gigahertz is slow, but it travels far and punches through walls — great for a doorbell down the hall. Five gigahertz is much faster, but shorter range — your main workhorse. And six gigahertz is the fastest and cleanest, but barely leaves the room. It is always the same physics we keep meeting: lower frequency reaches further; higher frequency carries more, but fades fast. Your router juggles all of them for you.",
+      "specs": [
+        { "label": "2.4 GHz", "value": "far reach, slow, wall-friendly", "cue": "walls", "source": "ref" },
+        { "label": "5 GHz", "value": "fast, medium range (the workhorse)", "cue": "workhorse", "source": "ref" },
+        { "label": "6 GHz", "value": "fastest, cleanest, short range", "cue": "cleanest", "source": "ref" }
+      ],
+      "verdict": "Band beats number: 2.4 reaches far, 5 is the workhorse, 6 is fast but room-only."
+    },
+    {
+      "kind": "item", "id": "truth", "name": "Why Your Speed Is Lower", "launched": "REALITY", "cat": "THE HONEST BIT", "accent": "#FFB020",
+      "wifi": { "code": "real ≪ box", "brand": "weakest link wins", "speed": "the slowest link", "bands": "2.4 + 5", "frac": 0.3 },
+      "narration": "So why do you never, ever see that big box number? Because those gigabit figures are theoretical lab maximums — one perfect device, standing next to the router, in a radio-silent room. Reality is different. Your real speed is set by the WEAKEST link in the chain: the distance, the walls, interference from neighbours, and crucially, your OLDEST device — a Wi-Fi 5 phone gets Wi-Fi 5 speeds, no matter how fancy your new router is. And remember, Wi-Fi is only ever as fast as the internet plan feeding it. Match your gear, mind the band, and set your expectations honestly.",
+      "specs": [
+        { "label": "Box number", "value": "a theoretical lab maximum", "cue": "maximums", "source": "ref" },
+        { "label": "Real speed", "value": "set by the weakest link", "cue": "weakest", "source": "ref" },
+        { "label": "Remember", "value": "capped by your internet plan", "cue": "plan", "source": "ref" }
+      ],
+      "verdict": "Box numbers are lab maximums — your real speed is the weakest link in the chain."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "bands",
+      "narration": "Here's the whole picture, decoded. The names first: 802-dot-11-n is Wi-Fi 4, a-c is Wi-Fi 5, a-x is Wi-Fi 6, add the six gigahertz band and it's 6E, and b-e is Wi-Fi 7. Each generation got faster, smarter in crowds, and added bands — climbing from a shared two-point-four gigahertz lane all the way to three bands used at once. But under every single one sits the same unbreakable physics: higher frequencies carry more data but travel less far. Newer is better — but the band, the distance, and your weakest device always have the final say.",
+      "beats": [ { "cue": "names", "mark": "n" }, { "cue": "bands", "mark": "b" }, { "cue": "physics", "mark": "p" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every Monitor Refresh Rate",
+      "question": "What Wi-Fi are you on right now?",
+      "narration": "So that's every Wi-Fi standard, decoded: from 802-dot-11-b inching along at eleven megabits, to Wi-Fi 7 juggling three bands at once for tens of gigabits. The names finally make sense — n, ac, ax, be map neatly to Wi-Fi 4, 5, 6, and 7. Each leap added speed, efficiency in crowds, and new bands. But the golden rule never changes: your real-world speed is the weakest link, and the band matters more than the big number on the box. Buy for your devices, not for the marketing. Next, we stay on the theme of numbers that aren't quite what they seem: every monitor refresh rate. If this decoded your router, subscribe. So tell me — what Wi-Fi are you on right now?",
+      "beats": [ { "cue": "monitor", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "right", "mark": "ask" } ]
+    }
+  ]
+}
