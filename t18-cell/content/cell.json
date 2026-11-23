@@ -1,0 +1,146 @@
+{
+  "id": "t18-cell",
+  "title": "Every Mobile Network Explained",
+  "series": "Every X",
+  "keyNoun": "mobile network",
+  "promise": "The whole mobile family tree, from the analog brick to the terabit future — every generation of mobile network, and exactly what each one changed.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "itu", "label": "ITU — IMT standards (IMT-2000, IMT-Advanced, IMT-2020)", "url": "https://www.itu.int/en/ITU-R/study-groups/rsg5/rwp5d/imt/Pages/default.aspx" },
+    { "id": "gsma", "label": "GSMA — mobile network history & generations", "url": "https://www.gsma.com/aboutus/history" },
+    { "id": "spec", "label": "3GPP release history (GSM / GPRS / UMTS / HSPA / LTE / NR)", "url": "https://www.3gpp.org/specifications-technologies/releases" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Mobile Network Explained: 1G to 6G, What Each One Changed",
+      "Every Mobile Network Explained — From the Brick Phone to 6G",
+      "1G to 6G: Every Mobile Network Generation Explained",
+      "Every Mobile Network Explained — and What Each Unlocked"
+    ],
+    "primaryTitle": "Every Mobile Network Explained: 1G to 6G, What Each One Changed",
+    "tags": [
+      "every mobile network", "1g 2g 3g 4g 5g 6g", "mobile network generations",
+      "history of mobile networks", "what is 6g", "4g vs 5g", "gsm lte explained",
+      "cellular network explained", "how mobile networks work", "evolution of mobile",
+      "6g explained", "mobile internet history", "tech explained", "how it works"
+    ],
+    "hashtags": ["#mobile", "#5g", "#6g", "#networking", "#tech"],
+    "pinnedComment": "The pattern worth remembering: each 'G' didn't just add speed — it unlocked a new way to use a phone that nobody saw coming. 1G=voice, 2G=text, 3G=web, 4G=streaming, 5G=low-latency IoT, 6G=sensing. So when the next G lands, ignore the hype and ask: what does this one unlock? 👇 Which G were you born into? Subscribe — 'Every Computer Part' is next.",
+    "hook": "Every decade a new 'G' appears on your phone, and the whole world of mobile quietly reinvents itself. 1G let us talk, 2G let us text, 3G gave us the internet, 4G gave us streaming. Each one unlocked a new way to use a phone — often one nobody saw coming."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "timeline",
+      "narration": "Every decade or so, a new 'G' appears on your phone, and the whole world of mobile quietly reinvents itself. 1G let us talk. 2G let us text. 3G gave us the internet, 4G gave us streaming, and 5G promised to connect absolutely everything. Each generation didn't just add speed — it unlocked an entirely new way to use a phone, often one that nobody saw coming. So let's trace the whole family tree, from the analog brick to the terabit future: every mobile network, and exactly what each one changed.",
+      "beats": [ { "cue": "talk", "mark": "t" }, { "cue": "text", "mark": "x" }, { "cue": "changed", "mark": "c" } ]
+    },
+
+    {
+      "kind": "item", "id": "g1", "name": "1G", "launched": "early 1980s", "cat": "ANALOG VOICE", "icon": "phone", "accent": "#C9CDD4", "gen": { "era": "brick", "speed": 0.0024, "unlocked": "wireless voice" },
+      "narration": "It all began with 1G, in the early nineteen eighties — the age of the brick phone with the pull-up antenna. 1G was purely analog, and it did exactly one thing: carry a voice call, wirelessly. That was genuinely revolutionary. But it was also deeply flawed: calls were fuzzy, batteries died fast, and because the signal was unencrypted analog radio, anyone with a scanner could simply listen in on your conversation. No texts, no data — just expensive, insecure, untethered talking.",
+      "specs": [
+        { "label": "Arrived", "value": "early 1980s · analog", "cue": "eighties", "source": "itu" },
+        { "label": "Peak", "value": "~2.4 kbit/s", "cue": "analog", "source": "spec" },
+        { "label": "Unlocked", "value": "wireless voice calls", "cue": "voice", "source": "gsma" }
+      ],
+      "verdict": "The brick-phone era — wireless voice, and anyone could eavesdrop."
+    },
+    {
+      "kind": "item", "id": "g2", "name": "2G", "launched": "1991", "cat": "DIGITAL · SMS", "icon": "phone", "accent": "#2DD4BF", "gen": { "era": "candybar", "speed": 0.064, "unlocked": "SMS + encryption" },
+      "narration": "2G, arriving in nineteen ninety-one, went digital — and that single change unlocked everything. Digitizing the voice made calls clearer, more efficient, and crucially, encrypted, so casual eavesdropping got far harder. But the real legacy of 2G, and its standard G-S-M, was a tiny side-feature almost nobody planned for: the text message. S-M-S turned the phone from a talking device into a messaging device, and quietly changed how humanity communicates. 2G also brought the very first trickle of data — just enough for a downloadable ringtone.",
+      "specs": [
+        { "label": "Arrived", "value": "1991 · GSM, digital", "cue": "ninety", "source": "itu" },
+        { "label": "Peak", "value": "~64 kbit/s", "cue": "data", "source": "spec" },
+        { "label": "Unlocked", "value": "SMS texts + encryption", "cue": "text", "source": "gsma" }
+      ],
+      "verdict": "Digital voice, encryption, and — almost by accident — the text message."
+    },
+    {
+      "kind": "item", "id": "g25", "name": "2.5G — GPRS / EDGE", "launched": "2000", "cat": "FIRST DATA", "icon": "hub", "accent": "#2DD4BF", "gen": { "era": "candybar", "speed": 0.2, "unlocked": "always-on data" },
+      "narration": "Between 2G and 3G came the half-steps: G-P-R-S, and then EDGE, often branded '2.5G'. For the very first time, your phone had always-on packet data — you paid for the megabytes, not the minutes. It was painfully slow, a fraction of a single megabit, but it was just enough for the first mobile web pages, in the stripped-down W-A-P format, and for picture messages. This is where the phone quietly stopped being just a phone, and started becoming a tiny, always-connected computer.",
+      "specs": [
+        { "label": "Arrived", "value": "2000 · GPRS/EDGE", "cue": "half", "source": "spec" },
+        { "label": "Peak", "value": "~0.1–0.4 Mbit/s", "cue": "megabit", "source": "spec" },
+        { "label": "Unlocked", "value": "always-on mobile data", "cue": "packet", "source": "gsma" }
+      ],
+      "verdict": "'2.5G' — the first always-on data, and the earliest mobile web."
+    },
+    {
+      "kind": "item", "id": "g3", "name": "3G", "launched": "2001", "cat": "MOBILE INTERNET", "icon": "hub", "accent": "#FFB020", "gen": { "era": "candybar", "speed": 7, "unlocked": "the mobile web" },
+      "narration": "3G, launched in two thousand one on the I-M-T-2000 standard, was the first generation built for data from the ground up. Speeds jumped into the megabits, finally making the mobile internet genuinely usable — real web browsing, email on the move, music downloads, and the futuristic promise of the era, the video call. 3G is the great bridge generation: it arrived just as the first smartphones did, and together they turned the mobile internet from a novelty into something people actually used every single day.",
+      "specs": [
+        { "label": "Arrived", "value": "2001 · IMT-2000", "cue": "thousand", "source": "itu" },
+        { "label": "Peak", "value": "~2–42 Mbit/s", "cue": "megabits", "source": "spec" },
+        { "label": "Unlocked", "value": "mobile internet + video calls", "cue": "video", "source": "gsma" }
+      ],
+      "verdict": "Built for data — the real mobile internet and the video-call dream."
+    },
+    {
+      "kind": "item", "id": "g35", "name": "3.5G — HSPA", "launched": "2008", "cat": "USABLE WEB", "icon": "laptop", "accent": "#FFB020", "gen": { "era": "smartphone", "speed": 21, "unlocked": "real mobile apps" },
+      "narration": "Just as 3G met the touchscreen smartphone, it got a crucial speed boost: H-S-P-A, the '3.5G' upgrade. It pushed real-world speeds up to tens of megabits, and this is the unsung hero generation — because it's what actually made the early app stores and mobile social media bearable. Without H-S-P-A quietly supercharging 3G in the late two-thousands, the explosion of the smartphone might have stalled on a spinning loading wheel. It bought the time for 4G to arrive.",
+      "specs": [
+        { "label": "Arrived", "value": "2008 · HSPA / HSPA+", "cue": "boost", "source": "spec" },
+        { "label": "Peak", "value": "~14–42 Mbit/s", "cue": "megabits", "source": "spec" },
+        { "label": "Unlocked", "value": "the early app & social era", "cue": "app", "source": "gsma" }
+      ],
+      "verdict": "The unsung booster that made the early smartphone era actually usable."
+    },
+    {
+      "kind": "item", "id": "g4", "name": "4G — LTE", "launched": "2009", "cat": "MOBILE BROADBAND", "icon": "laptop", "accent": "#35E08A", "gen": { "era": "smartphone", "speed": 150, "unlocked": "streaming + apps" },
+      "narration": "4G, and its dominant standard L-T-E, arrived around two thousand nine, and changed the game completely. By ditching the old circuit-switched design and running everything — even voice itself — as pure internet data packets, 4G delivered true mobile broadband: tens, even hundreds of megabits per second. This is the generation that built the modern world inside your pocket. Smooth H-D video streaming, live maps, ride-hailing, video calls that actually worked, the entire app economy — none of it is possible without the fat, reliable pipe that 4G L-T-E provides.",
+      "specs": [
+        { "label": "Arrived", "value": "2009 · LTE, all-IP", "cue": "nine", "source": "itu" },
+        { "label": "Peak", "value": "~100 Mbit/s → 1 Gbit/s", "cue": "broadband", "source": "spec" },
+        { "label": "Unlocked", "value": "streaming + the app economy", "cue": "streaming", "source": "gsma" }
+      ],
+      "verdict": "True mobile broadband — the pipe the entire app economy runs on."
+    },
+    {
+      "kind": "item", "id": "g45", "name": "4.5G — LTE-Advanced", "launched": "2013", "cat": "HD EVERYWHERE", "icon": "laptop", "accent": "#35E08A", "gen": { "era": "smartphone", "speed": 600, "unlocked": "gigabit LTE" },
+      "narration": "4G didn't stand still either. L-T-E-Advanced, the '4.5G' refinement, used a clever trick called carrier aggregation — bonding several frequency bands together into one fatter pipe — to push real speeds toward a gigabit. For most people, this is the network that quietly made high-definition video, demanding apps, and cloud everything feel instant and effortless on a phone. It's the mature, polished peak of 4G — and, honestly, it's still the workhorse carrying a huge share of the world's mobile traffic today.",
+      "specs": [
+        { "label": "Arrived", "value": "2013 · LTE-Advanced", "cue": "refinement", "source": "spec" },
+        { "label": "Peak", "value": "up to ~1 Gbit/s", "cue": "gigabit", "source": "spec" },
+        { "label": "Trick", "value": "carrier aggregation", "cue": "aggregation", "source": "spec" }
+      ],
+      "verdict": "4G's polished peak — carrier aggregation, and still a global workhorse."
+    },
+    {
+      "kind": "item", "id": "g5", "name": "5G", "launched": "2019", "cat": "LOW LATENCY · IoT", "icon": "hub", "accent": "#B06BFF", "gen": { "era": "smartphone", "speed": 1000, "unlocked": "low latency + IoT" },
+      "narration": "5G, from around twenty nineteen, is the current generation — and we did a whole deep-dive on it. The headline is gigabit speed, but the real story is low latency and sheer capacity: 5G can keep a packed stadium online, and connect a vast number of sensors and devices at once. Its catch, as we saw, is physics: the truly fast millimetre-wave version barely travels, so the 5G most people actually get is a solid, if less dramatic, mid-band upgrade. A genuine step forward — just not the science-fiction one from the adverts.",
+      "specs": [
+        { "label": "Arrived", "value": "2019 · IMT-2020", "cue": "nineteen", "source": "itu" },
+        { "label": "Peak", "value": "~0.2–2 Gbit/s", "cue": "gigabit", "source": "spec" },
+        { "label": "Unlocked", "value": "low latency, IoT, crowds", "cue": "latency", "source": "gsma" }
+      ],
+      "verdict": "Speed, low latency and massive IoT — if you can reach the fast band."
+    },
+    {
+      "kind": "item", "id": "g6", "name": "6G", "launched": "~2030", "cat": "THE RESEARCH FUTURE", "icon": "cloud", "accent": "#E8C24A", "gen": { "era": "foldable", "speed": 100000, "unlocked": "sensing + AI" },
+      "narration": "And on the horizon, still deep in the research labs: 6G, targeted for around twenty thirty. The goals are staggering — potentially terabit speeds using extreme terahertz frequencies, and latency so low it becomes imperceptible. But 6G is meant to be far more than just faster. The big ideas are joint communication and sensing — the network itself acting like radar, to 'see' the world — and A-I woven natively into its very core. Think holographic calls, and digital twins. If history is any guide, it will be genuinely revolutionary, and massively over-hyped, in equal measure.",
+      "specs": [
+        { "label": "Target", "value": "~2030 (research)", "cue": "thirty", "source": "gsma" },
+        { "label": "Goal", "value": "terabit · terahertz", "cue": "terabit", "source": "gsma" },
+        { "label": "Idea", "value": "sensing + AI-native network", "cue": "sensing", "source": "spec" }
+      ],
+      "verdict": "The research future — terabit speeds, network-as-radar, AI woven in."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "changed",
+      "narration": "Step back, and look at what each generation actually unlocked, because it matters far more than the raw megabits. 1G: voice. 2G: text. 3G: the web. 4G: streaming and the app economy. 5G: low latency and the internet of things. Every single generation took something that was a luxury, or didn't exist at all, and turned it into a basic assumption you now can't imagine living without. That is the real story of mobile — not the speed, but the new human habit each 'G' quietly created.",
+      "beats": [ { "cue": "voice", "mark": "v" }, { "cue": "unlocked", "mark": "u" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every Computer Part Explained",
+      "question": "Which G were you born into?",
+      "narration": "So that's the mobile family tree: 1G gave us the voice, 2G the text, 3G the web, 4G the stream, 5G the low-latency future — and 6G promises to let the network itself see the world. Each generation quietly rewired how we live, usually in ways its own inventors never predicted. So the next time a new 'G' is announced, you'll know to ignore the hype, and ask the only question that really matters: what does this one actually unlock? Next, we crack open the case itself — every computer part, and what each one does for you. If you enjoyed the trip, subscribe. So — which G were you born into?",
+      "beats": [ { "cue": "part", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "born", "mark": "ask" } ]
+    }
+  ]
+}

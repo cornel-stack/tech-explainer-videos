@@ -1,0 +1,203 @@
+name: Render T18 — Every Mobile Network
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "t18-cell/**"
+      - ".github/workflows/t11-render.yml"
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Content JSON (relative to t18-cell/)"
+        required: true
+        default: "content/cell.json"
+
+env:
+  SHARDS: 8
+  PROJECT: t18-cell
+  SCRIPT: ${{ github.event.inputs.script || 'content/cell.json' }}
+
+jobs:
+  scenes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render Manim scenes (official image)
+        run: |
+          mkdir -p t18-cell/public/manim
+          docker run --rm --user root -v "$PWD/t18-cell":/work -w /work \
+            manimcommunity/manim:stable python pipeline/render_manim.py \
+            || echo "::warning::Manim render failed; some scenes fall back"
+          touch t18-cell/public/manim/keep.txt
+      - name: Measure Manim clip durations (host ffprobe — reliable)
+        run: |
+          which ffprobe || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+          sudo chown -R "$(id -u):$(id -g)" t18-cell/public/manim
+          cd t18-cell/public/manim
+          python3 - <<'PY'
+          import json, glob, os, subprocess
+          out = {}
+          for f in sorted(glob.glob("*.mp4")):
+              name = os.path.splitext(f)[0]
+              try:
+                  d = subprocess.check_output(
+                      ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                       "-of", "default=noprint_wrappers=1:nokey=1", f], text=True).strip()
+                  out[name] = round(float(d), 3)
+              except Exception as e:
+                  print("warn", f, e)
+          json.dump(out, open("durations.json", "w"), indent=2)
+          print("durations.json ->", out)
+          PY
+      - uses: actions/upload-artifact@v4
+        with: { name: scenes, path: t18-cell/public/manim, retention-days: 1 }
+
+  prep:
+    needs: scenes
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:noble
+    defaults:
+      run:
+        shell: bash
+        working-directory: t18-cell
+    outputs:
+      id: ${{ steps.vid.outputs.id }}
+      total: ${{ steps.frames.outputs.total }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python deps
+        run: |
+          curl -sSL https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+          python3 /tmp/get-pip.py --break-system-packages
+          for a in 1 2 3 4; do
+            python3 -m pip install --break-system-packages --no-cache-dir --retries 5 --timeout 60 -r requirements.txt && break
+            echo "pip retry $a"; sleep 10
+          done
+      - uses: actions/cache@v4
+        with:
+          path: t18-cell/node_modules
+          key: nm-t18-${{ hashFiles('t18-cell/package-lock.json') }}
+      - run: npm install --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - name: Get Manim clips
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with: { name: scenes, path: t18-cell/public/manim }
+      - run: python3 pipeline/synth.py "$SCRIPT"
+      - run: python3 pipeline/build_outputs.py
+      - id: vid
+        run: echo "id=$(python3 -c "import json;print(json.load(open('render-input.json'))['id'])")" >> "$GITHUB_OUTPUT"
+      - name: Render clickbait thumbnails + build YouTube upload kit
+        run: |
+          mkdir -p out/youtube
+          npx remotion still ThumbA "out/youtube/THUMBNAIL-A.png" --props=render-input.json
+          npx remotion still ThumbB "out/youtube/THUMBNAIL-B.png" --props=render-input.json
+          cp "out/youtube/THUMBNAIL-A.png" "out/${{ steps.vid.outputs.id }}.png"
+          python3 pipeline/build_youtube_kit.py "$SCRIPT"
+      - id: frames
+        run: echo "total=$(python3 -c "import json;print(json.load(open('render-input.json'))['totalFrames'])")" >> "$GITHUB_OUTPUT"
+      - name: Bundle everything the shards need
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle
+          retention-days: 1
+          include-hidden-files: true
+          path: |
+            t18-cell/render-input.json
+            t18-cell/public
+            t18-cell/out
+
+  render:
+    needs: prep
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:noble
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+        working-directory: t18-cell
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: t18-cell/node_modules
+          key: nm-t18-${{ hashFiles('t18-cell/package-lock.json') }}
+      - run: npm install --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - uses: actions/download-artifact@v4
+        with: { name: bundle, path: t18-cell }
+      - name: Render frame range for this shard
+        run: |
+          N=${SHARDS}; total=${{ needs.prep.outputs.total }}; shard=${{ matrix.shard }}
+          step=$(( (total + N - 1) / N ))
+          start=$(( shard * step )); end=$(( start + step - 1 ))
+          if [ "$end" -ge "$total" ]; then end=$(( total - 1 )); fi
+          mkdir -p out
+          if [ "$start" -gt "$end" ]; then echo "empty shard $shard"; exit 0; fi
+          echo "shard $shard: frames $start-$end of $total"
+          npx remotion render Video "out/part-$(printf '%02d' $shard).mp4" \
+            --props=render-input.json --frames=$start-$end --concurrency=100% --gl=swangle
+      - uses: actions/upload-artifact@v4
+        with:
+          name: part-${{ matrix.shard }}
+          path: t18-cell/out/part-*.mp4
+          retention-days: 1
+          if-no-files-found: ignore
+
+  finish:
+    needs: [prep, render]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: FedericoCarboni/setup-ffmpeg@v3
+      - name: Get the bundle
+        uses: actions/download-artifact@v4
+        with: { name: bundle, path: t18-cell }
+      - name: Get all rendered parts
+        uses: actions/download-artifact@v4
+        with: { pattern: part-*, path: t18-cell/parts, merge-multiple: true }
+      - name: Concatenate parts -> final MP4
+        run: |
+          cd t18-cell
+          id=${{ needs.prep.outputs.id }}
+          : > /tmp/list.txt
+          for f in $(ls parts/part-*.mp4 | sort -V); do echo "file '$PWD/$f'" >> /tmp/list.txt; done
+          echo "parts:"; cat /tmp/list.txt
+          ffmpeg -hide_banner -loglevel error -f concat -safe 0 -i /tmp/list.txt -c copy "out/$id.mp4"
+          ls -la "out/$id.mp4"
+      - name: Zip the YouTube upload kit (labelled folder)
+        run: |
+          cd t18-cell/out
+          zip -r "${{ needs.prep.outputs.id }}-youtube-kit.zip" youtube
+          ls -la youtube
+      - name: Publish as Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: t18-cell-${{ github.run_number }}
+          name: "Every Mobile Network — build ${{ github.run_number }}"
+          body: |
+            Automated 1080p60 render of `t18-cell/${{ env.SCRIPT }}`.
+            9 generations of mobile network (1G -> 6G), each with its drawn era
+            phone, a log-scaled peak-speed bar, and what it unlocked — plus a speed
+            ladder and a cumulative "what changed" scene. All visuals drawn (GenPhone
+            component + 2 Manim scenes) — no logos. Sourced (ITU IMT, GSMA, 3GPP).
+          files: |
+            t18-cell/out/${{ needs.prep.outputs.id }}.mp4
+            t18-cell/out/${{ needs.prep.outputs.id }}.png
+            t18-cell/out/${{ needs.prep.outputs.id }}-youtube-kit.zip
+            t18-cell/out/youtube/THUMBNAIL-A.png
+            t18-cell/out/youtube/THUMBNAIL-B.png
+            t18-cell/out/captions.srt
+            t18-cell/out/chapters.txt
+            t18-cell/out/description.txt
+      - run: |
+          echo "### Render complete :clapper:" >> "$GITHUB_STEP_SUMMARY"
+          echo "https://github.com/${{ github.repository }}/releases/tag/t18-cell-${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
