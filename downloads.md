@@ -24,8 +24,8 @@ Repo: https://github.com/cornel-stack/tech-explainer-videos/releases
 | T19 | Every Computer Part | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t19-parts-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t19-parts-1/t19-parts.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t19-parts-1/t19-parts-youtube-kit.zip) |
 | T20 | Every Dead Operating System | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t20-deados-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t20-deados-1/t20-deados.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t20-deados-1/t20-deados-youtube-kit.zip) |
 | T21 | Every Programming Language | Every X | _rendering…_ | | |
-| T22 | How Git Works Under the Hood | How It Works | _building…_ | | |
-| T23 | Every Git Command | Every X | _planned_ | | |
+| T22 | How Git Works Under the Hood | How It Works | _rendering…_ | | |
+| T23 | Every Git Command | Every X | _building…_ | | |
 | T24 | How LLMs Actually Work | How It Works | _planned_ | | |
 | T25 | How ChatGPT Works | How It Works | _planned_ | | |
 | T26 | Every USB Type | Every X | _planned_ | | |

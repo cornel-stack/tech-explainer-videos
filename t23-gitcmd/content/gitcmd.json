@@ -1,0 +1,536 @@
+{
+  "id": "t23-gitcmd",
+  "title": "Every Git Command You Actually Need",
+  "series": "Every X",
+  "keyNoun": "Git command",
+  "promise": "The dozen Git commands that cover ~99% of real work — each one shown live in the terminal, with exactly what it does, when to reach for it, and the gotcha that bites beginners.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    {
+      "id": "core",
+      "label": "Pro Git (Chacon & Straub) — the command reference",
+      "url": "https://git-scm.com/book"
+    },
+    {
+      "id": "pro",
+      "label": "Official Git documentation & `git help <cmd>`",
+      "url": "https://git-scm.com/docs"
+    }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Git Command You Actually Need in 10 Minutes",
+      "Every Git Command Explained — the 12 That Cover 99% of Your Work",
+      "Every Git Command You Need (Live in the Terminal)",
+      "Git Commands Explained — init, add, commit, branch, merge, push & more"
+    ],
+    "primaryTitle": "Every Git Command You Actually Need in 10 Minutes",
+    "tags": [
+      "git commands",
+      "every git command",
+      "git tutorial",
+      "learn git",
+      "git for beginners",
+      "git add commit push",
+      "git branch merge",
+      "git pull vs fetch",
+      "git stash",
+      "git commands explained",
+      "git cheat sheet",
+      "version control",
+      "git basics",
+      "tech explained",
+      "how it works"
+    ],
+    "hashtags": [
+      "#git",
+      "#programming",
+      "#developer",
+      "#tech",
+      "#coding"
+    ],
+    "pinnedComment": "The 12 that cover ~99% of real work: init, clone, status, add, commit, log, branch, switch, merge, pull, push, stash. Master these and you rarely need more. 👇 Which Git command do you use most? Subscribe — 'How LLMs Actually Work' is next.",
+    "hook": "There are over a hundred Git commands — and you'll genuinely only ever need about twelve. Learn these, and you'll handle ~99% of everything you do, every single day, without ever Googling in a panic again."
+  },
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "flow",
+      "narration": "Git has well over a hundred commands — and here's the good news: you will genuinely only ever need about twelve of them. These twelve cover ninety-nine percent of everything you do, every single day. So forget the intimidating manual. Let's go through each essential command, live in the terminal — exactly what it does, when to reach for it, and the one gotcha that trips up beginners. By the end, the daily Git workflow will feel like second nature, and you'll stop Googling the same commands in a panic.",
+      "beats": [
+        {
+          "cue": "hundred",
+          "mark": "h"
+        },
+        {
+          "cue": "twelve",
+          "mark": "t"
+        },
+        {
+          "cue": "terminal",
+          "mark": "tm"
+        }
+      ]
+    },
+    {
+      "kind": "item",
+      "id": "init",
+      "name": "git init",
+      "launched": "START",
+      "cat": "START A REPO",
+      "accent": "#35E08A",
+      "cmd": {
+        "line": "git init",
+        "out": "Initialized empty Git repository\nin /my-project/.git/",
+        "note": "creates the hidden .git database"
+      },
+      "narration": "Everything starts with git init. Run it inside any folder, and Git creates that hidden dot-git database we talked about, turning an ordinary directory into a tracked repository. From this moment on, Git is watching, ready to record snapshots. You only ever run this once, right at the very beginning of a brand-new project. That's it — your repo is born.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "turns a folder into a repo",
+          "cue": "repository",
+          "source": "core"
+        },
+        {
+          "label": "Creates",
+          "value": "the hidden .git database",
+          "cue": "database",
+          "source": "core"
+        },
+        {
+          "label": "Run it",
+          "value": "once, at the start",
+          "cue": "once",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Creates the .git repo in a folder — run it once at the very start."
+    },
+    {
+      "kind": "item",
+      "id": "clone",
+      "name": "git clone",
+      "launched": "START",
+      "cat": "COPY A REPO",
+      "accent": "#35E08A",
+      "cmd": {
+        "line": "git clone <url>",
+        "out": "Cloning into 'project'...\nReceiving objects: 100% done.",
+        "note": "downloads the entire history, not just files"
+      },
+      "narration": "If the project already exists somewhere — on GitHub, say — you don't init, you clone. Git clone takes a U-R-L and copies the entire repository down to your machine: not just the current files, but the complete object database and the full history, every commit ever made. That's the distributed part in action. It also automatically remembers where it came from, calling that remote 'origin', so you can sync back to it later.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "copies a remote repo to you",
+          "cue": "copies",
+          "source": "core"
+        },
+        {
+          "label": "Gets",
+          "value": "the full history, not just files",
+          "cue": "history",
+          "source": "core"
+        },
+        {
+          "label": "Remembers",
+          "value": "the source as 'origin'",
+          "cue": "origin",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Downloads an entire remote repo — full history — and remembers it as 'origin'."
+    },
+    {
+      "kind": "item",
+      "id": "status",
+      "name": "git status",
+      "launched": "INSPECT",
+      "cat": "WHAT'S CHANGED?",
+      "accent": "#2DD4BF",
+      "cmd": {
+        "line": "git status",
+        "out": "Changes not staged:\n  modified: app.js\nUntracked files:\n  notes.txt",
+        "note": "your most-run command — read it constantly"
+      },
+      "narration": "Git status is the command you will run more than any other — your constant 'where am I?' check. It tells you which branch you're on, which files you've changed but not yet staged, which are staged and ready, and which are brand-new and untracked. Whenever you're unsure what Git is about to do, run status first. It's harmless, it's instant, and it is the single best habit a beginner can build.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "shows changed / staged / new files",
+          "cue": "staged",
+          "source": "core"
+        },
+        {
+          "label": "Also",
+          "value": "tells you your current branch",
+          "cue": "branch",
+          "source": "core"
+        },
+        {
+          "label": "Habit",
+          "value": "run it constantly — it's harmless",
+          "cue": "harmless",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Shows what's changed, staged and untracked — run it constantly; it's free."
+    },
+    {
+      "kind": "item",
+      "id": "add",
+      "name": "git add",
+      "launched": "SAVE",
+      "cat": "STAGE CHANGES",
+      "accent": "#FFB020",
+      "cmd": {
+        "line": "git add .",
+        "out": "(nothing printed — but now\n app.js & notes.txt are staged)",
+        "note": "the staging area = choosing what goes in"
+      },
+      "narration": "Before you can save a snapshot, you choose exactly what goes into it, using git add. This moves your changes into the staging area — a kind of loading dock for your next commit. 'Git add dot' stages everything you've touched; or you can name specific files, to craft a clean, focused commit out of only some of your changes. That staging step feels fussy at first, but it is Git's quiet superpower: you decide precisely what each snapshot contains.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "stages changes for the next commit",
+          "cue": "stages",
+          "source": "core"
+        },
+        {
+          "label": "The area",
+          "value": "a 'loading dock' before committing",
+          "cue": "loading",
+          "source": "core"
+        },
+        {
+          "label": "Tip",
+          "value": "'git add .' = everything you touched",
+          "cue": "everything",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Stages changes into the loading dock — you choose what the commit contains."
+    },
+    {
+      "kind": "item",
+      "id": "commit",
+      "name": "git commit",
+      "launched": "SAVE",
+      "cat": "SAVE A SNAPSHOT",
+      "accent": "#FFB020",
+      "cmd": {
+        "line": "git commit -m \"add login\"",
+        "out": "[main a1b3f9] add login\n 2 files changed, 18 insertions(+)",
+        "note": "the one permanent save-point"
+      },
+      "narration": "Git commit takes everything you've staged and permanently records it as a new snapshot in your history — that commit object, with its own unique hash. Always pass a message, with dash-m, describing what you changed and, ideally, why. A good commit message is a gift to your future self, and to your teammates. This is THE save button of Git: small, frequent, well-described commits are the mark of someone who actually knows what they're doing.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "saves staged changes as a snapshot",
+          "cue": "snapshot",
+          "source": "core"
+        },
+        {
+          "label": "Always",
+          "value": "add a -m \"message\"",
+          "cue": "message",
+          "source": "core"
+        },
+        {
+          "label": "Tip",
+          "value": "commit small and often",
+          "cue": "frequent",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Permanently saves the staged snapshot — always with a clear -m message."
+    },
+    {
+      "kind": "item",
+      "id": "log",
+      "name": "git log",
+      "launched": "INSPECT",
+      "cat": "VIEW HISTORY",
+      "accent": "#2DD4BF",
+      "cmd": {
+        "line": "git log --oneline",
+        "out": "a1b3f9 add login\n7c2e04 set up router\ne9f1a2 initial commit",
+        "note": "add --oneline for a clean one-line view"
+      },
+      "narration": "Git log shows you the history — the chain of commits, newest first, each with its hash, author, date and message. On its own it's a bit verbose, so almost everyone adds dash-dash-oneline, which collapses each commit to a single tidy line. This is how you see the story of a project: who changed what, and when. Add dash-dash-graph, and it even draws the branches and merges as A-S-C-I-I art.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "lists the commit history",
+          "cue": "history",
+          "source": "core"
+        },
+        {
+          "label": "Use",
+          "value": "--oneline for a clean view",
+          "cue": "oneline",
+          "source": "pro"
+        },
+        {
+          "label": "Bonus",
+          "value": "--graph draws the branches",
+          "cue": "graph",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Shows the commit history — add --oneline (and --graph) for a clean view."
+    },
+    {
+      "kind": "item",
+      "id": "branch",
+      "name": "git branch",
+      "launched": "BRANCH",
+      "cat": "MAKE A BRANCH",
+      "accent": "#B06BFF",
+      "cmd": {
+        "line": "git branch feature",
+        "out": "* main\n  feature",
+        "note": "a branch is just a 41-byte pointer"
+      },
+      "narration": "Git branch, with a name, creates a new branch — remember, that's just a tiny, cheap pointer to your current commit. With no name, it simply lists all your branches, with a star marking the one you're on. Branches let you work on a new feature, or an experiment, completely isolated from the stable main code — so you can make a mess safely, and throw it away if it doesn't work out. Because they're so cheap, you should make them freely.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "creates (or lists) branches",
+          "cue": "creates",
+          "source": "core"
+        },
+        {
+          "label": "Recall",
+          "value": "a branch is a cheap pointer",
+          "cue": "pointer",
+          "source": "core"
+        },
+        {
+          "label": "Why",
+          "value": "isolate work safely",
+          "cue": "isolated",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Creates or lists branches — cheap pointers that isolate your work safely."
+    },
+    {
+      "kind": "item",
+      "id": "switch",
+      "name": "git switch",
+      "launched": "BRANCH",
+      "cat": "CHANGE BRANCH",
+      "accent": "#B06BFF",
+      "cmd": {
+        "line": "git switch feature",
+        "out": "Switched to branch 'feature'",
+        "note": "the modern, clearer name for 'checkout'"
+      },
+      "narration": "To actually move onto a branch, you use git switch, followed by its name. This points HEAD at that branch, and instantly rewrites the files in your folder to match its snapshot. You might also see the older command, git checkout, used for this — switch is simply the newer, clearer name, since checkout did about five different jobs and confused everyone. Add dash-c to switch, and it creates a new branch AND jumps onto it, in a single step.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "moves you onto a branch",
+          "cue": "move",
+          "source": "core"
+        },
+        {
+          "label": "Old name",
+          "value": "the clearer 'git checkout'",
+          "cue": "checkout",
+          "source": "pro"
+        },
+        {
+          "label": "Combo",
+          "value": "'switch -c' = create + switch",
+          "cue": "create",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Moves you onto a branch (the modern 'checkout') — add -c to create + switch."
+    },
+    {
+      "kind": "item",
+      "id": "merge",
+      "name": "git merge",
+      "launched": "BRANCH",
+      "cat": "COMBINE BRANCHES",
+      "accent": "#B06BFF",
+      "cmd": {
+        "line": "git merge feature",
+        "out": "Updating 7c2e04..a1b3f9\nFast-forward · 3 files changed",
+        "note": "conflicts happen when both sides edit a line"
+      },
+      "narration": "When your feature is ready, git merge brings its commits back into your current branch — usually main. Git finds the common ancestor and combines the two histories. Most of the time, this just works, silently. But if the two branches changed the very same lines in the same file, you get the dreaded merge conflict — and Git stops and asks YOU to decide which version wins. Conflicts feel scary, but they're normal: you just edit the file, pick the right lines, and commit.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "combines another branch into yours",
+          "cue": "combines",
+          "source": "core"
+        },
+        {
+          "label": "Conflict",
+          "value": "when both edit the same line",
+          "cue": "same",
+          "source": "core"
+        },
+        {
+          "label": "Fix",
+          "value": "edit, choose, then commit",
+          "cue": "decide",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Combines a branch into yours — conflicts just mean you pick which lines win."
+    },
+    {
+      "kind": "item",
+      "id": "pull",
+      "name": "git pull",
+      "launched": "SYNC",
+      "cat": "GET UPDATES",
+      "accent": "#E8C24A",
+      "cmd": {
+        "line": "git pull",
+        "out": "Updating a1b3f9..c4d8e1\n Fast-forward · 5 files changed",
+        "note": "it's really fetch + merge in one"
+      },
+      "narration": "When you're working with others, their commits pile up on the remote. Git pull brings them down to you — it's actually two commands in one: git fetch, which downloads the new commits, followed by git merge, which blends them into your branch. Run pull before you start work each day, to make sure you're building on top of everyone else's latest changes, rather than drifting off on a stale copy and causing yourself conflicts later.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "downloads + merges remote commits",
+          "cue": "downloads",
+          "source": "core"
+        },
+        {
+          "label": "Really",
+          "value": "git fetch + git merge",
+          "cue": "fetch",
+          "source": "core"
+        },
+        {
+          "label": "Habit",
+          "value": "pull before you start work",
+          "cue": "before",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Fetch + merge in one — pull others' latest before you start work each day."
+    },
+    {
+      "kind": "item",
+      "id": "push",
+      "name": "git push",
+      "launched": "SYNC",
+      "cat": "SHARE YOUR WORK",
+      "accent": "#E8C24A",
+      "cmd": {
+        "line": "git push",
+        "out": "To github.com:you/project.git\n  7c2e04..a1b3f9  main -> main",
+        "note": "nothing is shared until you push"
+      },
+      "narration": "Git push is the mirror of pull: it uploads YOUR new commits to the remote, so your teammates can see and build on them. This is crucial to understand — until you push, every commit you've made lives only on your own machine. Your work isn't backed up, and nobody else can see it. So commit often locally, and push regularly to share. Push is the moment your private snapshots become part of the shared, public history.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "uploads your commits to the remote",
+          "cue": "uploads",
+          "source": "core"
+        },
+        {
+          "label": "Key fact",
+          "value": "nothing's shared until you push",
+          "cue": "machine",
+          "source": "core"
+        },
+        {
+          "label": "Habit",
+          "value": "push regularly to share + back up",
+          "cue": "regularly",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Uploads your commits to the remote — until you push, your work is local only."
+    },
+    {
+      "kind": "item",
+      "id": "stash",
+      "name": "git stash",
+      "launched": "RESCUE",
+      "cat": "SHELVE WORK",
+      "accent": "#FF5C47",
+      "cmd": {
+        "line": "git stash",
+        "out": "Saved working directory.\nHEAD is now at a1b3f9",
+        "note": "git stash pop brings it all back"
+      },
+      "narration": "Last one, and it's the lifesaver. You're halfway through messy changes, when you suddenly need to switch branches to fix an urgent bug — but Git won't let you, because of your uncommitted mess. Git stash is the answer: it sweeps all your uncommitted changes safely to one side, giving you a clean slate instantly. You deal with the emergency, then run git stash pop, and your work-in-progress comes right back, exactly as you left it. It's the undo button for 'oh no, not right now'.",
+      "specs": [
+        {
+          "label": "Does",
+          "value": "shelves uncommitted changes",
+          "cue": "sweeps",
+          "source": "core"
+        },
+        {
+          "label": "Gives",
+          "value": "a clean slate instantly",
+          "cue": "clean",
+          "source": "core"
+        },
+        {
+          "label": "Restore",
+          "value": "git stash pop brings it back",
+          "cue": "pop",
+          "source": "pro"
+        }
+      ],
+      "verdict": "Shelves your uncommitted work for a clean slate — 'stash pop' brings it back."
+    },
+    {
+      "kind": "interlude",
+      "manim": "workflow",
+      "narration": "Put them together, and here is the daily rhythm of basically every developer on Earth. Pull the latest. Switch to a fresh branch. Do your work. Add, and commit, in small snapshots. Push your branch up. Open a pull request, get it reviewed, and merge it into main. Then delete the branch and go again. That single loop — pull, branch, commit, push, merge — is ninety-nine percent of Git in practice. Everything else is just a tool you reach for on the rare day you actually need it.",
+      "beats": [
+        {
+          "cue": "rhythm",
+          "mark": "r"
+        },
+        {
+          "cue": "loop",
+          "mark": "l"
+        },
+        {
+          "cue": "practice",
+          "mark": "p"
+        }
+      ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "How LLMs Actually Work",
+      "question": "Which Git command do you use most?",
+      "narration": "So that's your Git toolkit: a dozen commands that carry you through almost everything. Start with init or clone, inspect with status and log, save with add and commit, branch and switch and merge to work in parallel, pull and push to share, and stash when life interrupts. Learn just these, use them every day, and Git quietly turns from a source of fear into the quiet superpower it was always meant to be. Next, we switch gears completely, and open up the biggest black box of all: how large language models actually work. If this earned a spot in your bookmarks, subscribe. So tell me — which Git command do you use the most?",
+      "beats": [
+        {
+          "cue": "models",
+          "mark": "next"
+        },
+        {
+          "cue": "subscribe",
+          "mark": "cta"
+        },
+        {
+          "cue": "most",
+          "mark": "ask"
+        }
+      ]
+    }
+  ]
+}
