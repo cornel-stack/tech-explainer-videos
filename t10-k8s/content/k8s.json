@@ -1,0 +1,134 @@
+{
+  "id": "t10-k8s",
+  "title": "How Kubernetes Works",
+  "series": "How It Works",
+  "keyNoun": "Kubernetes",
+  "promise": "One diagram, built up piece by piece, that makes Kubernetes finally obvious — pods, nodes, the control plane, and the self-healing loop at its heart.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "k8sdocs", "label": "kubernetes.io — Components & Controllers documentation", "url": "https://kubernetes.io/docs/concepts/overview/components/" },
+    { "id": "borg", "label": "Google — 'Large-scale cluster management at Google with Borg' (2015)", "url": "https://research.google/pubs/pub43438/" },
+    { "id": "cncf", "label": "CNCF Annual Survey — Kubernetes adoption", "url": "https://www.cncf.io/reports/" },
+    { "id": "cloud", "label": "Managed Kubernetes — GKE / EKS / AKS provider docs", "url": "https://kubernetes.io/docs/setup/production-environment/turnkey-solutions/" }
+  ],
+  "youtube": {
+    "titles": [
+      "How Kubernetes Works: The Diagram That Makes It Obvious",
+      "How Kubernetes Works — Explained With One Growing Diagram",
+      "Kubernetes Explained: Pods, Nodes, Control Plane & the Self-Healing Loop",
+      "How Kubernetes Actually Works (and When You Shouldn't Use It)"
+    ],
+    "primaryTitle": "How Kubernetes Works: The Diagram That Makes It Obvious",
+    "tags": [
+      "how kubernetes works", "kubernetes explained", "kubernetes architecture", "k8s explained",
+      "what is kubernetes", "control plane", "pods nodes kubernetes", "kubernetes reconciliation",
+      "kubelet kube-proxy", "etcd scheduler", "kubernetes for beginners", "container orchestration",
+      "kubernetes deployment yaml", "devops", "how it works", "tech explained"
+    ],
+    "hashtags": ["#kubernetes", "#k8s", "#devops", "#containers", "#howitworks"],
+    "pinnedComment": "The whole thing in one sentence: you declare the state you want, and an army of tiny control loops works nonstop to make reality match it. 👇 What would you run on a cluster of your own? Subscribe — 'How Docker Works' is next.",
+    "hook": "Kubernetes runs a huge share of the internet and has a reputation for being impossibly complicated. It isn't. There's one idea — and one diagram — that makes the whole thing obvious. Let's build it up: pods, nodes, the control plane, and the self-healing loop at its heart."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "reconcile",
+      "narration": "Kubernetes runs a huge share of the internet — and it has a reputation for being impossibly complicated. It isn't. Underneath all the jargon there's one simple idea, and one diagram, that make the whole thing obvious. In the next few minutes we'll build that diagram up piece by piece — pods, nodes, the control plane — then watch a real request flow through it, watch a crashed app heal itself, and see exactly when you should use Kubernetes, and when you really shouldn't.",
+      "beats": [ { "cue": "idea", "mark": "idea" }, { "cue": "diagram", "mark": "dia" }, { "cue": "heal", "mark": "heal" } ]
+    },
+
+    {
+      "kind": "stage", "id": "problem", "name": "The Problem It Solves", "manim": "problem", "icon": "cross", "accent": "#FF5C47",
+      "narration": "Here's the problem Kubernetes exists to solve. Say you've packaged your app into a container — a neat, self-contained box that runs anywhere. Fine, until reality hits. At three in the morning it crashes — who restarts it? It suddenly goes viral — who launches ten more copies, then shuts them down when the traffic drops? And those copies have to be spread across many servers — which ones? Doing all of that by hand, forever, is impossible. Kubernetes flips the whole thing around: you simply declare the end state you want — say, ten healthy copies — and it does whatever it takes to make that true, and keep it true.",
+      "specs": [
+        { "label": "The job", "value": "run containers at scale", "cue": "container", "source": "k8sdocs" },
+        { "label": "By hand", "value": "restart, scale, place — forever", "cue": "impossible", "source": "k8sdocs" },
+        { "label": "The flip", "value": "declare the end state", "cue": "declare", "source": "k8sdocs" }
+      ],
+      "verdict": "You don't give Kubernetes steps — you give it a goal."
+    },
+    {
+      "kind": "stage", "id": "blocks", "name": "Pods, Nodes & the Cluster", "manim": "blocks", "icon": "server", "accent": "#35E08A",
+      "narration": "Kubernetes is built from three nested pieces. The smallest is the pod — the unit you actually run. A pod wraps one or more containers that share a single network address and storage, and they live and die together. Pods run on nodes — the machines, physical or virtual, that supply the actual C-P-U and memory. And all of the nodes together form the cluster — the single pool of resources that Kubernetes manages as one. The payoff is that you never think about an individual server again. You hand work to the cluster, and it decides which node each pod should actually run on.",
+      "specs": [
+        { "label": "Pod", "value": "smallest unit · 1+ containers", "cue": "pod", "source": "k8sdocs" },
+        { "label": "Node", "value": "a machine (CPU + memory)", "cue": "machines", "source": "k8sdocs" },
+        { "label": "Cluster", "value": "all nodes as one pool", "cue": "cluster", "source": "k8sdocs" }
+      ],
+      "verdict": "Pods run on nodes; nodes form the cluster — you manage the cluster."
+    },
+    {
+      "kind": "stage", "id": "controlplane", "name": "The Control Plane", "manim": "controlplane", "icon": "hub", "accent": "#B06BFF",
+      "narration": "Every cluster has a brain: the control plane, made of four parts. The A-P-I server is the front door — every command, whether from you or from the system itself, goes through its single interface. etcd is the memory: a distributed key-value store that holds the entire desired and actual state of the cluster. The scheduler watches for pods that need a home, and picks the best node for each based on free resources. And the controller manager runs the control loops that notice when things drift and correct them. Together they decide what should happen — but, crucially, they never run your containers themselves.",
+      "specs": [
+        { "label": "API server", "value": "the one front door", "cue": "front", "source": "k8sdocs" },
+        { "label": "etcd", "value": "key-value store of all state", "cue": "memory", "source": "k8sdocs" },
+        { "label": "Scheduler + controllers", "value": "place pods · fix drift", "cue": "scheduler", "source": "k8sdocs" }
+      ],
+      "verdict": "The control plane decides what should happen — it doesn't run the work."
+    },
+    {
+      "kind": "stage", "id": "worker", "name": "The Worker Nodes", "manim": "worker", "icon": "terminal", "accent": "#FFB020",
+      "narration": "The actual work happens on the worker nodes, and each one runs three agents. The kubelet is the control plane's hands on that machine: it reads which pods belong here, makes sure they're running and healthy, and reports back constantly. The container runtime — something like containerd — does the heavy lifting of pulling images and starting the containers. And kube-proxy handles networking: when a request arrives for your app, it routes and load-balances it across all the healthy pods, so traffic always reaches a working copy — no matter which node that copy happens to be on.",
+      "specs": [
+        { "label": "kubelet", "value": "keeps this node's pods alive", "cue": "kubelet", "source": "k8sdocs" },
+        { "label": "Container runtime", "value": "pulls images, runs them", "cue": "runtime", "source": "k8sdocs" },
+        { "label": "kube-proxy", "value": "routes & load-balances traffic", "cue": "load-balances", "source": "k8sdocs" }
+      ],
+      "verdict": "Workers run the pods; kube-proxy makes sure traffic finds them."
+    },
+    {
+      "kind": "stage", "id": "reconcile", "name": "Reconciliation: The One Idea", "manim": "reconcile", "icon": "arrow", "accent": "#2DD4BF",
+      "narration": "Now the single idea that makes all of this click: reconciliation. etcd always holds two numbers — the desired state you asked for, and the actual state right now. Every controller does just one tiny thing, on a loop: compare the two, and close the gap. So you want ten copies. A node dies, taking two pods with it, and the actual count drops to eight. A controller notices that eight is less than ten, asks the scheduler to place two new pods, and the kubelets start them. Back to ten. It never stops checking. That constant self-correction is exactly why Kubernetes is called self-healing.",
+      "specs": [
+        { "label": "The loop", "value": "compare desired vs actual", "cue": "compare", "source": "k8sdocs" },
+        { "label": "Example", "value": "10 wanted, 8 live → +2", "cue": "eight", "source": "k8sdocs" },
+        { "label": "Result", "value": "self-healing, forever", "cue": "self-healing", "source": "k8sdocs" }
+      ],
+      "verdict": "One loop, everywhere: reality drifts, and Kubernetes drags it back."
+    },
+    {
+      "kind": "stage", "id": "deploy", "name": "You Declare It in YAML", "manim": "rollout", "icon": "check", "accent": "#E8C24A",
+      "code": [
+        "apiVersion: apps/v1",
+        "kind: Deployment",
+        "metadata:",
+        "  name: nginx",
+        "spec:",
+        "  replicas: 3",
+        "  template:",
+        "    spec:",
+        "      containers:",
+        "      - name: nginx",
+        "        image: nginx:1.27"
+      ],
+      "narration": "So how do you actually ask for all of this? You don't click buttons — you write a short file. This is a Deployment, in Y-A-M-L: it says run the nginx image, and keep three replicas. You send it once to the A-P-I server, which saves it to etcd as the new desired state, and the controllers make it real. Change the image to a newer version and re-apply, and Kubernetes does a rolling update: it brings up new pods, waits until they're healthy, then retires the old ones a few at a time — so your app updates with zero downtime. And if that new version turns out broken, a single command rolls it right back.",
+      "specs": [
+        { "label": "You write", "value": "desired state, in YAML", "cue": "file", "source": "k8sdocs" },
+        { "label": "replicas: 3", "value": "keep three copies", "cue": "three", "source": "k8sdocs" },
+        { "label": "Rolling update", "value": "new pods up → old retired", "cue": "rolling", "source": "k8sdocs" }
+      ],
+      "verdict": "You edit one file; Kubernetes makes reality match it — with no downtime."
+    },
+    {
+      "kind": "stage", "id": "tradeoffs", "name": "When To Use It — and Not", "manim": "tradeoffs", "icon": "fanout", "accent": "#C9CDD4",
+      "narration": "So should you actually use it? Be honest. Kubernetes gives you real superpowers: it scales to thousands of machines, it heals itself, and it runs the same way on any cloud or on your own hardware — no lock-in. But the cost is steep. It is genuinely complex, it needs a team to run it well, and the control plane itself burns resources even when your app is doing nothing. For a huge, spiky, variable workload, it's worth every bit. For a simple website or a small team, it's usually overkill — a single server, or a managed platform, will do the job. And if you do want it, managed services like G-K-E, E-K-S and A-K-S will run the control plane for you.",
+      "specs": [
+        { "label": "Strengths", "value": "scale · self-heal · portable", "cue": "superpowers", "source": "cncf" },
+        { "label": "Costs", "value": "complex · needs a team", "cue": "complex", "source": "k8sdocs" },
+        { "label": "Shortcut", "value": "managed GKE / EKS / AKS", "cue": "managed", "source": "cloud" }
+      ],
+      "verdict": "Use it for big, variable workloads — not for a simple website."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "How Docker Works",
+      "question": "What would you run on a cluster of your own?",
+      "narration": "So that's Kubernetes, start to finish: you declare the state you want, and an army of small control loops works nonstop to make reality match it — placing pods, routing traffic, and healing failures without you ever touching a server. Pods, nodes, control plane, reconciliation — really just four ideas, one diagram. Next time we go one level down, to the container itself: how Docker actually works. If this finally made Kubernetes click, subscribe — it genuinely helps. So tell me: what would you run on a cluster of your own?",
+      "beats": [ { "cue": "Docker", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "cluster", "mark": "ask" } ]
+    }
+  ]
+}
