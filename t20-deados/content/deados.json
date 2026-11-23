@@ -1,0 +1,164 @@
+{
+  "id": "t20-deados",
+  "title": "Every Dead Operating System",
+  "series": "Every X",
+  "keyNoun": "dead operating system",
+  "promise": "A graveyard tour of the operating systems that died — what each one did, why it lost, and what it left behind. Some were better than what beat them.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#B06BFF",
+  "sources": [
+    { "id": "hist", "label": "Computing history references (Wikipedia OS histories, Computer History Museum)", "url": "https://en.wikipedia.org/wiki/History_of_operating_systems" },
+    { "id": "legacy", "label": "Platform retrospectives & post-mortems (vendor announcements, retro-tech archives)", "url": "https://en.wikipedia.org/wiki/List_of_discontinued_operating_systems" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Dead Operating System Explained — and Why It Died",
+      "Every Dead Operating System — a Graveyard Tour (CP/M to Windows Phone)",
+      "Every Dead OS Explained in 10 Minutes — Gone but Not Forgotten",
+      "Every Operating System That Died — What Killed It, What It Left Behind"
+    ],
+    "primaryTitle": "Every Dead Operating System Explained — and Why It Died",
+    "tags": [
+      "dead operating systems", "discontinued os", "os history", "beos", "os2 warp",
+      "symbian", "palm os", "webos", "windows phone", "blackberry os", "classic mac os",
+      "ms dos", "cp m", "why did it die", "retro computing", "tech history", "how it works"
+    ],
+    "hashtags": ["#retrotech", "#os", "#computinghistory", "#tech", "#rip"],
+    "pinnedComment": "⚰️ The graveyard, in order: CP/M, MS-DOS, Classic Mac OS, OS/2, BeOS, Palm OS, Symbian, BlackBerry OS, webOS, Windows Phone. 👇 Which one did you actually use — and which deserved to live? Subscribe — 'Every Programming Language' is next.",
+    "hook": "Every operating system you use today stands on a graveyard of the ones that lost. Some were clunky. But some were genuinely better than what killed them — faster, cleaner, years ahead. Here lie ten of the dead, and the stories of exactly what went wrong."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "timeline",
+      "narration": "Every operating system you use today is standing on a graveyard. For every Windows, every macOS, every Android that survived, a dozen rivals lost — and quietly died. Some of them deserved it: they were clunky, or slow, or hopelessly late. But some were genuinely better than the thing that killed them — faster, cleaner, and years ahead of their time. They just lost the war anyway. So welcome to the graveyard. Over the next ten minutes, here lie ten dead operating systems — what each one did, exactly what went wrong, and what it left behind.",
+      "beats": [ { "cue": "graveyard", "mark": "g" }, { "cue": "better", "mark": "b" }, { "cue": "lost", "mark": "l" } ]
+    },
+
+    {
+      "kind": "item", "id": "cpm", "name": "CP/M", "launched": "1974 – 1983", "cat": "DIED: OUT-NEGOTIATED", "icon": "terminal", "accent": "#C9CDD4", "part": "crt",
+      "grave": { "form": "crt", "born": "1974", "died": "1983", "epitaph": "the one that should have been DOS" },
+      "narration": "Here lies C-P-M, the great-grandfather. In the nineteen-seventies, it was THE operating system for business microcomputers — if you ran a small computer, you almost certainly ran C-P-M. So when I-B-M came knocking to build their new P-C, C-P-M's creator was the obvious choice. But the deal famously fell apart — and I-B-M turned instead to a tiny company called Microsoft, which bought a C-P-M clone and renamed it D-O-S. C-P-M didn't lose on merit. It lost a business meeting. And that single missed handshake handed Microsoft the entire future of the personal computer.",
+      "specs": [
+        { "label": "Reigned", "value": "1970s business micros", "cue": "seventies", "source": "hist" },
+        { "label": "Cause of death", "value": "lost the IBM PC deal to DOS", "cue": "deal", "source": "hist" },
+        { "label": "Legacy", "value": "its clone became MS-DOS", "cue": "clone", "source": "legacy" }
+      ],
+      "verdict": "Lost the IBM deal — and with it, the whole PC era to DOS."
+    },
+    {
+      "kind": "item", "id": "msdos", "name": "MS-DOS", "launched": "1981 – 2000", "cat": "DIED: ABSORBED", "icon": "terminal", "accent": "#35E08A", "part": "crt",
+      "grave": { "form": "crt", "born": "1981", "died": "2000", "epitaph": "C:\\> it swallowed the world, then was swallowed" },
+      "narration": "Here lies M-S-D-O-S — the blinking C-prompt that ran the world for a decade. No windows, no mouse, no multitasking: just you, a black screen, and commands you had to memorise. It was spartan, but it made Microsoft, and it ran on everything. Its killer, though, was its own child. Windows started as just a pretty program running ON TOP of D-O-S — but with Windows ninety-five, Microsoft finally buried the command line underneath a graphical world, and never looked back. D-O-S didn't vanish overnight; it was slowly absorbed, until it was just a hidden layer, and then gone entirely.",
+      "specs": [
+        { "label": "Reigned", "value": "the 1980s PC", "cue": "decade", "source": "hist" },
+        { "label": "Cause of death", "value": "absorbed by Windows 95", "cue": "ninety-five", "source": "hist" },
+        { "label": "Legacy", "value": "the command line never left", "cue": "command", "source": "legacy" }
+      ],
+      "verdict": "Ran the '80s PC — then Windows grew over it and buried it."
+    },
+    {
+      "kind": "item", "id": "macos9", "name": "Classic Mac OS", "launched": "1984 – 2001", "cat": "DIED: REPLACED", "icon": "laptop", "accent": "#C9CDD4", "part": "crt",
+      "grave": { "form": "crt", "born": "1984", "died": "2001", "epitaph": "the GUI pioneer, retired by its own company" },
+      "narration": "Here lies the classic Mac O-S — the system that, in nineteen-eighty-four, showed the world what a computer COULD be: windows, icons, a mouse, a desktop. It made the graphical interface mainstream. But by the late nineties it was showing its age badly — it had no proper memory protection, so one misbehaving app could, and regularly did, crash the entire machine. Apple's fix was radical: throw out the old foundation entirely and build Mac O-S Ten on top of rock-solid Unix. The classic Mac O-S wasn't killed by a rival. Apple deliberately retired it, to save the Mac itself.",
+      "specs": [
+        { "label": "Pioneered", "value": "the mainstream GUI (1984)", "cue": "graphical", "source": "hist" },
+        { "label": "Cause of death", "value": "no memory protection → crashes", "cue": "crash", "source": "hist" },
+        { "label": "Legacy", "value": "replaced by Unix-based Mac OS X", "cue": "unix", "source": "legacy" }
+      ],
+      "verdict": "Made the GUI mainstream — then Apple replaced it with Unix-based OS X."
+    },
+    {
+      "kind": "item", "id": "os2", "name": "OS/2 Warp", "launched": "1987 – 2006", "cat": "DIED: OUT-MARKETED", "icon": "server", "accent": "#2DD4BF", "part": "desktop",
+      "grave": { "form": "desktop", "born": "1987", "died": "2006", "epitaph": "a better Windows than Windows" },
+      "narration": "Here lies O-S-Two — I-B-M's great tragedy. It was co-developed WITH Microsoft, and technically it was superb: true multitasking, crash protection, rock-solid — a serious thirty-two-bit operating system while Windows was still a toy. Its slogan was fair: 'a better Windows than Windows'. But then Microsoft walked away to pour everything into Windows ninety-five — and out-marketed I-B-M into oblivion. O-S-Two was better engineered and lost anyway, because the world buys what it's SOLD, not what's best. It clung on for years in A-T-Ms and banks before finally fading out.",
+      "specs": [
+        { "label": "Strength", "value": "true 32-bit multitasking, stable", "cue": "multitasking", "source": "hist" },
+        { "label": "Cause of death", "value": "out-marketed by Windows 95", "cue": "marketed", "source": "hist" },
+        { "label": "Legacy", "value": "ran ATMs & banks for decades", "cue": "banks", "source": "legacy" }
+      ],
+      "verdict": "Technically superb — lost the marketing war to Windows 95."
+    },
+    {
+      "kind": "item", "id": "beos", "name": "BeOS", "launched": "1995 – 2001", "cat": "DIED: NO MARKET", "icon": "hub", "accent": "#B06BFF", "part": "desktop",
+      "grave": { "form": "desktop", "born": "1995", "died": "2001", "epitaph": "too far ahead of its time to survive" },
+      "narration": "Here lies Be-O-S — the beautiful one. Built from scratch in the mid-nineties with no legacy baggage, it was designed for media: it could juggle multiple video streams and audio tracks with a smoothness that genuinely stunned people, on hardware of the era. It booted in seconds. Developers adored it. Apple almost bought it to be the next Mac O-S — then chose NeXT instead, and the deal that would have saved Be collapsed. Without Apple, and without apps, it simply had no market to sell to. It was arguably the most elegant desktop O-S ever made. And almost nobody got to use it.",
+      "specs": [
+        { "label": "Strength", "value": "media-first, seconds to boot", "cue": "media", "source": "hist" },
+        { "label": "Cause of death", "value": "Apple bought NeXT instead", "cue": "apple", "source": "hist" },
+        { "label": "Legacy", "value": "lives on as open-source Haiku", "cue": "elegant", "source": "legacy" }
+      ],
+      "verdict": "The most elegant desktop OS — killed by having no market. Reborn as Haiku."
+    },
+    {
+      "kind": "item", "id": "palmos", "name": "Palm OS", "launched": "1996 – 2009", "cat": "DIED: MISSED SMARTPHONE", "icon": "laptop", "accent": "#FFB020", "part": "pda",
+      "grave": { "form": "pda", "born": "1996", "died": "2009", "epitaph": "owned your pocket before phones did" },
+      "narration": "Here lies Palm O-S — the king of the P-D-A. Before smartphones, the Palm Pilot was how busy people carried their calendar, contacts and notes in a pocket, tapping away with a little plastic stylus. It was fast, simple, and instant — it just worked. But Palm O-S was built for a calm, offline, tap-the-screen world — and it never made the leap to the always-connected smartphone. When the iPhone arrived, Palm's ageing system had no answer. A late reboot called webOS came too little, too late. The company that defined the pocket computer completely missed the device that replaced it.",
+      "specs": [
+        { "label": "Reigned", "value": "the PDA era (Palm Pilot)", "cue": "pda", "source": "hist" },
+        { "label": "Cause of death", "value": "never made the smartphone leap", "cue": "smartphone", "source": "hist" },
+        { "label": "Legacy", "value": "defined pocket organisers", "cue": "pocket", "source": "legacy" }
+      ],
+      "verdict": "Ruled the PDA — but couldn't become a smartphone in time."
+    },
+    {
+      "kind": "item", "id": "symbian", "name": "Symbian", "launched": "1998 – 2012", "cat": "DIED: TOUCHSCREEN", "icon": "hub", "accent": "#35E08A", "part": "phone",
+      "grave": { "form": "phone", "born": "1998", "died": "2012", "epitaph": "the #1 smartphone OS you forgot existed" },
+      "narration": "Here lies Symbian — and this one was the actual market LEADER. For years, Symbian was the number-one smartphone operating system on Earth, powering hundreds of millions of Nokia phones. It did email, web and apps when most phones couldn't dream of it. But it was built for keypads and tiny screens, in a pre-touch world — and it was a nightmare for developers. When the iPhone and Android redefined what a phone was, overnight, Symbian suddenly felt ancient. Nokia clung to it for years too long, then abandoned it for Windows Phone — and killed the global leader almost by its own hand.",
+      "specs": [
+        { "label": "Reigned", "value": "#1 smartphone OS, pre-2007", "cue": "leader", "source": "hist" },
+        { "label": "Cause of death", "value": "built for keypads, not touch", "cue": "touch", "source": "hist" },
+        { "label": "Legacy", "value": "proved the mass smartphone", "cue": "millions", "source": "legacy" }
+      ],
+      "verdict": "The world's #1 smartphone OS — made obsolete overnight by the touchscreen."
+    },
+    {
+      "kind": "item", "id": "blackberry", "name": "BlackBerry OS", "launched": "1999 – 2013", "cat": "DIED: DENIAL", "icon": "terminal", "accent": "#C9CDD4", "part": "phone",
+      "grave": { "form": "phone", "born": "1999", "died": "2013", "epitaph": "the keyboard that refused to die — and did" },
+      "narration": "Here lies BlackBerry O-S — the one that ran the world's thumbs. With its iconic physical keyboard and bullet-proof secure email, it was THE phone of executives, and of presidents; 'CrackBerry' was a genuine addiction. Then the iPhone arrived with a full touchscreen and no keyboard — and BlackBerry's leaders famously scoffed that nobody would ever want that. By the time they admitted they were catastrophically wrong, it was far too late. A late, modern reboot called BlackBerry Ten was actually good — and nobody cared. It's the textbook case of a market leader killed by its own confidence.",
+      "specs": [
+        { "label": "Reigned", "value": "secure email, physical keyboard", "cue": "keyboard", "source": "hist" },
+        { "label": "Cause of death", "value": "dismissed the touchscreen", "cue": "scoffed", "source": "hist" },
+        { "label": "Legacy", "value": "set the bar for mobile security", "cue": "secure", "source": "legacy" }
+      ],
+      "verdict": "King of secure email — killed by refusing to believe in the touchscreen."
+    },
+    {
+      "kind": "item", "id": "webos", "name": "webOS", "launched": "2009 – 2012", "cat": "DIED: BAD OWNERS", "icon": "laptop", "accent": "#FF5C47", "part": "phone",
+      "grave": { "form": "phone", "born": "2009", "died": "2012", "epitaph": "great ideas, passed hand to hand to death" },
+      "narration": "Here lies webOS — the one that got the ideas RIGHT, and the business catastrophically wrong. From Palm in two-thousand-nine, it introduced multitasking as swipeable 'cards' and elegant notifications — ideas that iOS and Android would later quietly borrow wholesale. But Palm was dying, so H-P bought it — then, after launching a tablet, killed the hardware just forty-nine days later in a stunning act of corporate whiplash. webOS was then passed around like an unwanted heirloom. It never failed on merit; it was failed by a chain of owners who had no idea what they were holding.",
+      "specs": [
+        { "label": "Strength", "value": "card multitasking, notifications", "cue": "cards", "source": "hist" },
+        { "label": "Cause of death", "value": "HP killed it in 49 days", "cue": "forty-nine", "source": "hist" },
+        { "label": "Legacy", "value": "lives on in LG smart TVs", "cue": "owners", "source": "legacy" }
+      ],
+      "verdict": "Pioneered gestures & cards — killed by its owners, not its code. Lives in LG TVs."
+    },
+    {
+      "kind": "item", "id": "winphone", "name": "Windows Phone", "launched": "2010 – 2017", "cat": "DIED: NO APPS", "icon": "server", "accent": "#B06BFF", "part": "phone",
+      "grave": { "form": "phone", "born": "2010", "died": "2017", "epitaph": "gorgeous tiles, empty shelves" },
+      "narration": "And here lies Windows Phone — Microsoft's last, beautiful stand in mobile. Its 'Live Tiles' interface looked like nothing else: bold, flat, animated, genuinely original, and many who used it loved it. Microsoft spent billions, even bought Nokia, and threw its full weight behind it. But it arrived years too late, into a world already split cleanly between iPhone and Android — and it fell straight into the fatal 'app gap'. Developers wouldn't build for a platform with few users; and users wouldn't buy a phone with few apps. That death spiral is unbreakable. By twenty-seventeen, Microsoft quietly gave up the phone business for good.",
+      "specs": [
+        { "label": "Strength", "value": "original Live Tiles design", "cue": "tiles", "source": "hist" },
+        { "label": "Cause of death", "value": "the app gap death spiral", "cue": "app gap", "source": "hist" },
+        { "label": "Legacy", "value": "flat design influenced everyone", "cue": "flat", "source": "legacy" }
+      ],
+      "verdict": "Beautiful and well-funded — killed by the unbreakable no-apps / no-users spiral."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "causes",
+      "narration": "Walk back through the graveyard and you'll notice the headstones rhyme. Almost none of these died because they were bad. CP/M lost a meeting. OS-Two and BeOS were better, and lost anyway. BlackBerry died of pure arrogance; webOS, of terrible owners. Symbian and Palm were leaders who simply froze when the ground shifted. The real killers are always the same three: timing, momentum, and apps. The best technology does not win. The one with the most users, and the most software, wins — and everything else, however brilliant, ends up right here.",
+      "beats": [ { "cue": "rhyme", "mark": "r" }, { "cue": "killers", "mark": "k" }, { "cue": "win", "mark": "w" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every Programming Language",
+      "question": "Which dead OS did you actually use?",
+      "narration": "So that's the graveyard: ten operating systems that shaped computing and then lost it. But look closely and none of them are truly gone. BeOS breathes on as Haiku. webOS runs on millions of LG TVs. Their best ideas — cards, tiles, gestures, app stores — were simply absorbed into the survivors you use every day. In tech, nothing good really dies; it just gets borrowed by whatever killed it. Next, we count the bodies in a different graveyard: every programming language. If you enjoyed paying your respects, subscribe. So tell me — which of these dead operating systems did YOU actually use?",
+      "beats": [ { "cue": "gone", "mark": "g" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "use", "mark": "ask" } ]
+    }
+  ]
+}
