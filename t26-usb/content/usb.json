@@ -1,0 +1,536 @@
+{
+  "id": "t26-usb",
+  "title": "Every USB Type Explained",
+  "series": "Every X",
+  "keyNoun": "USB type",
+  "promise": "Every USB connector and speed standard finally untangled — from the flip-three-times USB-A to USB4 and 240W Power Delivery — and why a USB-C port tells you almost nothing about what it can do.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#2DD4BF",
+  "sources": [
+    {
+      "id": "usbif",
+      "label": "USB Implementers Forum (USB-IF) — connector & speed specifications",
+      "url": "https://www.usb.org/"
+    },
+    {
+      "id": "ref",
+      "label": "Connector, cable & charging references (spec tables, teardown guides)",
+      "url": "https://en.wikipedia.org/wiki/USB"
+    }
+  ],
+  "youtube": {
+    "titles": [
+      "Every USB Type Explained in 10 Minutes — Finally Untangled",
+      "Every USB Type Explained — Connectors, Speeds & the USB-C Mess",
+      "Every USB Type Explained (USB-A to USB4 & 240W Power Delivery)",
+      "Every USB Type Explained — Why Your USB-C Port Is a Mystery"
+    ],
+    "primaryTitle": "Every USB Type Explained in 10 Minutes — Finally Untangled",
+    "tags": [
+      "every usb type",
+      "usb explained",
+      "usb c explained",
+      "usb a b c",
+      "usb 3.0 vs 3.1",
+      "usb4",
+      "thunderbolt vs usb c",
+      "usb power delivery",
+      "micro usb",
+      "usb speeds",
+      "usb standards",
+      "what usb do i have",
+      "usb cables explained",
+      "tech explained",
+      "how it works"
+    ],
+    "hashtags": [
+      "#usb",
+      "#usbc",
+      "#tech",
+      "#gadgets",
+      "#hardware"
+    ],
+    "pinnedComment": "The one truth to remember: a USB-C port tells you NOTHING about its speed or power — the shape is just the plug. Check the spec, not the shape. Connectors: A, B, Mini, Micro, C, Lightning · Speeds: USB 2.0, 3.x, USB4, Thunderbolt · Power: PD. 👇 How many USB-C cables do you own that you don't trust? Subscribe — 'Every API Authentication Method' is next.",
+    "hook": "USB was supposed to mean 'Universal'. Instead we got a drawer full of plugs that don't fit, a USB-A you flip three times, and USB-C cables that look identical but do wildly different things. Let's untangle every single one."
+  },
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "evolution",
+      "narration": "USB. It literally stands for Universal Serial Bus — 'universal' being the great joke, because for twenty-five years it has been anything but. We've got a drawer full of plugs that don't fit each other, a USB-A you somehow have to flip three times to insert, and now USB-C cables that look completely identical but do wildly, maddeningly different things. So let's fix that, for good. We'll untangle every USB type — first the physical connectors, then the confusing speed standards — and by the end you'll finally know exactly what you're plugging in.",
+      "beats": [
+        {
+          "cue": "universal",
+          "mark": "u"
+        },
+        {
+          "cue": "connectors",
+          "mark": "c"
+        },
+        {
+          "cue": "plugging",
+          "mark": "p"
+        }
+      ]
+    },
+    {
+      "kind": "item",
+      "id": "usba",
+      "name": "USB-A",
+      "launched": "1996",
+      "cat": "THE CLASSIC",
+      "accent": "#C9CDD4",
+      "usb": {
+        "kind": "connector",
+        "shape": "usba",
+        "value": "the flat rectangle"
+      },
+      "narration": "The one everyone knows: USB-A. That flat rectangle that has been on every computer, charger and T-V since nineteen-ninety-six. It is reliable and everywhere — but it has one infamous flaw: it only goes in one way, and it is physically impossible to tell which way that is, so you flip it, fail, flip it back, and it works. It is not reversible, and it never will be. USB-A is on its way out, slowly — but it will be in our drawers for decades.",
+      "specs": [
+        {
+          "label": "Since",
+          "value": "1996 · the original",
+          "cue": "ninety-six",
+          "source": "ref"
+        },
+        {
+          "label": "Flaw",
+          "value": "only goes in one way",
+          "cue": "flip",
+          "source": "ref"
+        },
+        {
+          "label": "Status",
+          "value": "everywhere, slowly fading",
+          "cue": "drawers",
+          "source": "ref"
+        }
+      ],
+      "verdict": "The flat classic on every device since 1996 — reliable, but you'll flip it twice."
+    },
+    {
+      "kind": "item",
+      "id": "usbb",
+      "name": "USB-B",
+      "launched": "1996",
+      "cat": "THE PRINTER PLUG",
+      "accent": "#8C8E92",
+      "usb": {
+        "kind": "connector",
+        "shape": "usbb",
+        "value": "the tall square"
+      },
+      "narration": "At the other end of that old cable is often USB-B — the chunky, almost square connector with a little bevel on top. You rarely see it on modern gear, but if you own a printer, or a desktop audio interface, or a M-I-D-I keyboard, you absolutely know this one. The idea was simple: a different shape at the device end, so you could never plug two computers into each other by mistake. Big, sturdy, and very much a relic of the desktop era.",
+      "specs": [
+        {
+          "label": "Lives on",
+          "value": "printers, audio gear, MIDI",
+          "cue": "printer",
+          "source": "ref"
+        },
+        {
+          "label": "Shape",
+          "value": "chunky near-square",
+          "cue": "square",
+          "source": "ref"
+        },
+        {
+          "label": "Why",
+          "value": "a distinct 'device end'",
+          "cue": "device",
+          "source": "ref"
+        }
+      ],
+      "verdict": "The chunky square 'device end' — still clinging on to printers and audio gear."
+    },
+    {
+      "kind": "item",
+      "id": "mini",
+      "name": "Mini-USB",
+      "launched": "2000s",
+      "cat": "THE FIRST SHRINK",
+      "accent": "#FFB020",
+      "usb": {
+        "kind": "connector",
+        "shape": "mini",
+        "value": "the 2000s plug"
+      },
+      "narration": "As gadgets shrank, USB-B was far too bulky — so along came Mini-USB. For much of the two-thousands, this was THE plug for digital cameras, early M-P-3 players, and the first smartphones. It was a genuine step forward. But it had a reputation for being a little fragile, and wearing out, working loose over time. It didn't last all that long before being replaced — but for a solid decade, Mini-USB was how a generation of gadgets charged and synced.",
+      "specs": [
+        {
+          "label": "Era",
+          "value": "2000s cameras & MP3 players",
+          "cue": "cameras",
+          "source": "ref"
+        },
+        {
+          "label": "Win",
+          "value": "much smaller than USB-B",
+          "cue": "forward",
+          "source": "ref"
+        },
+        {
+          "label": "Flaw",
+          "value": "wore loose over time",
+          "cue": "fragile",
+          "source": "ref"
+        }
+      ],
+      "verdict": "The 2000s shrink for cameras & MP3 players — smaller, but a bit fragile."
+    },
+    {
+      "kind": "item",
+      "id": "micro",
+      "name": "Micro-USB",
+      "launched": "2007",
+      "cat": "THE PHONE STANDARD",
+      "accent": "#FF5C47",
+      "usb": {
+        "kind": "connector",
+        "shape": "micro",
+        "value": "the 2010s plug"
+      },
+      "narration": "Mini was quickly replaced by the thinner, more durable Micro-USB — and this one became huge. For most of the twenty-tens, Micro-USB charged nearly every Android phone, every power bank, every cheap gadget on Earth; the E-U even pushed it as a common standard. But it kept USB-A's original sin: it is not reversible, so you're back to squinting at it in the dark. Billions of these cables still exist — but it's being swept away, at last, by USB-C.",
+      "specs": [
+        {
+          "label": "Ruled",
+          "value": "2010s Android & gadgets",
+          "cue": "android",
+          "source": "ref"
+        },
+        {
+          "label": "Better",
+          "value": "thinner, tougher than Mini",
+          "cue": "durable",
+          "source": "ref"
+        },
+        {
+          "label": "Still",
+          "value": "not reversible",
+          "cue": "reversible",
+          "source": "ref"
+        }
+      ],
+      "verdict": "The 2010s phone & gadget plug — tougher than Mini, but still not reversible."
+    },
+    {
+      "kind": "item",
+      "id": "usbc",
+      "name": "USB-C",
+      "launched": "2014",
+      "cat": "THE ONE PLUG",
+      "accent": "#2DD4BF",
+      "usb": {
+        "kind": "connector",
+        "shape": "usbc",
+        "value": "reversible"
+      },
+      "narration": "And here is the hero: USB-C. Small, oval, and gloriously reversible — there is no wrong way up, ever. It is designed to be the single connector to replace all the others: phones, laptops, tablets, monitors, even the humble charger. The E-U has now effectively mandated it. But — and this is the twist the whole video is building to — USB-C is only the SHAPE of the plug. It says absolutely nothing about the speed or the power running through it. Two identical-looking C cables can be worlds apart. Hold that thought.",
+      "specs": [
+        {
+          "label": "Since",
+          "value": "2014 · reversible at last",
+          "cue": "reversible",
+          "source": "usbif"
+        },
+        {
+          "label": "Goal",
+          "value": "one plug for everything",
+          "cue": "replace",
+          "source": "ref"
+        },
+        {
+          "label": "Catch",
+          "value": "it's only the shape",
+          "cue": "shape",
+          "source": "usbif"
+        }
+      ],
+      "verdict": "The reversible one-plug-for-everything — but the shape alone tells you nothing."
+    },
+    {
+      "kind": "item",
+      "id": "lightning",
+      "name": "Lightning",
+      "launched": "2012",
+      "cat": "APPLE'S DETOUR",
+      "accent": "#C9CDD4",
+      "usb": {
+        "kind": "connector",
+        "shape": "lightning",
+        "value": "Apple only"
+      },
+      "narration": "A quick detour, because it confused everyone: Lightning. This is Apple's own connector, from twenty-twelve — and it beat everyone else to reversibility by two whole years, which is why iPhones felt so smug. But it was proprietary, Apple-only, and never part of the USB standard at all. Its story is now basically over: that same E-U rule forced Apple to finally switch its iPhones to USB-C. Lightning was the small, slick connector that proved reversible was possible — and is now quietly being retired.",
+      "specs": [
+        {
+          "label": "Whose",
+          "value": "Apple-only (not USB)",
+          "cue": "proprietary",
+          "source": "ref"
+        },
+        {
+          "label": "First",
+          "value": "reversible before USB-C",
+          "cue": "reversibility",
+          "source": "ref"
+        },
+        {
+          "label": "Status",
+          "value": "retired for USB-C",
+          "cue": "retired",
+          "source": "ref"
+        }
+      ],
+      "verdict": "Apple's proprietary plug — reversible first, now retired in favour of USB-C."
+    },
+    {
+      "kind": "item",
+      "id": "usb2",
+      "name": "USB 2.0",
+      "launched": "2000",
+      "cat": "SPEED: HIGH SPEED",
+      "accent": "#35E08A",
+      "usb": {
+        "kind": "gauge",
+        "value": "480 Mbps",
+        "frac": 0.08
+      },
+      "narration": "Now we switch from shapes to SPEEDS — because that's where the real confusion lives. USB 2.0, from the year two-thousand, tops out at four-hundred-and-eighty megabits per second, branded 'High Speed'. For two decades this was the baseline that was simply everywhere, and honestly, for a keyboard, a mouse, or a printer, it's still completely fine today. Remember: the speed standard is separate from the connector — you can have USB 2.0 running over an A, a Micro, or even a C plug. Shape and speed are two different questions.",
+      "specs": [
+        {
+          "label": "Speed",
+          "value": "480 Mbps ('High Speed')",
+          "cue": "megabits",
+          "source": "usbif"
+        },
+        {
+          "label": "Since",
+          "value": "2000 · the baseline",
+          "cue": "baseline",
+          "source": "usbif"
+        },
+        {
+          "label": "Key",
+          "value": "speed ≠ connector shape",
+          "cue": "separate",
+          "source": "usbif"
+        }
+      ],
+      "verdict": "480 Mbps 'High Speed' — the 2-decade baseline, and still fine for a mouse."
+    },
+    {
+      "kind": "item",
+      "id": "usb3",
+      "name": "USB 3.x",
+      "launched": "2008",
+      "cat": "SPEED: THE NAMING MESS",
+      "accent": "#FFB020",
+      "usb": {
+        "kind": "gauge",
+        "value": "5–20 Gbps",
+        "frac": 0.5
+      },
+      "narration": "Then came USB 3, and with it, an absolute catastrophe of naming. It launched at five gigabits — often marked by a blue plug or an 'S-S' logo. Fine. But then the committee renamed it, repeatedly: USB 3.0 became 3.1 Gen 1, then 3.2 Gen 1 by 2. The ten-gigabit version became 3.1 Gen 2, then 3.2 Gen 2 by 1. It is genuinely, deliberately incomprehensible. Just ignore the version soup entirely, and look for the real number that matters: five, ten, or twenty gigabits per second. That's the only thing that tells you the actual speed.",
+      "specs": [
+        {
+          "label": "Speeds",
+          "value": "5, 10, or 20 Gbps",
+          "cue": "gigabits",
+          "source": "usbif"
+        },
+        {
+          "label": "Clue",
+          "value": "often a blue port / 'SS'",
+          "cue": "blue",
+          "source": "ref"
+        },
+        {
+          "label": "Advice",
+          "value": "ignore 'Gen' soup, read the Gbps",
+          "cue": "version",
+          "source": "usbif"
+        }
+      ],
+      "verdict": "5–20 Gbps — but the 'Gen 2×2' naming is chaos; just read the Gbps number."
+    },
+    {
+      "kind": "item",
+      "id": "usb4",
+      "name": "USB4",
+      "launched": "2019",
+      "cat": "SPEED: THE MODERN TOP",
+      "accent": "#B06BFF",
+      "usb": {
+        "kind": "gauge",
+        "value": "40 Gbps",
+        "frac": 0.85
+      },
+      "narration": "USB4 is the modern attempt to clean up the mess — and note the style, no space, just 'USB4'. It runs only over USB-C, and it hits forty gigabits per second, with newer versions pushing to eighty. Crucially, it was built directly on top of Intel's Thunderbolt technology, which Intel opened up — so USB4 can carry data, video to multiple monitors, and power, all down that one cable, intelligently sharing the bandwidth. It is the closest USB has ever come to actually keeping its original 'universal' promise.",
+      "specs": [
+        {
+          "label": "Speed",
+          "value": "40 Gbps (up to 80)",
+          "cue": "forty",
+          "source": "usbif"
+        },
+        {
+          "label": "Only on",
+          "value": "USB-C, built on Thunderbolt",
+          "cue": "thunderbolt",
+          "source": "usbif"
+        },
+        {
+          "label": "Carries",
+          "value": "data + video + power",
+          "cue": "video",
+          "source": "ref"
+        }
+      ],
+      "verdict": "40 Gbps over USB-C, built on Thunderbolt — data, video and power in one cable."
+    },
+    {
+      "kind": "item",
+      "id": "thunderbolt",
+      "name": "Thunderbolt",
+      "launched": "2011",
+      "cat": "SPEED: THE PREMIUM TIER",
+      "accent": "#2DD4BF",
+      "usb": {
+        "kind": "gauge",
+        "value": "40–80 Gbps",
+        "frac": 1.0
+      },
+      "narration": "Sitting right at the top is Thunderbolt — Intel and Apple's premium standard, which also uses the USB-C plug, adding yet more to the confusion. Thunderbolt 3 and 4 guarantee a full forty gigabits and strict minimum capabilities; Thunderbolt 5 pushes to eighty and beyond. If a port has a tiny lightning-bolt icon next to it, it's Thunderbolt — and it is essentially a guaranteed, no-compromise superset of USB4. It's what you want for driving multiple high-resolution monitors or fast external S-S-Ds. Same C-shaped plug — a very different, premium league of performance.",
+      "specs": [
+        {
+          "label": "Speed",
+          "value": "40 Gbps → 80+ (TB5)",
+          "cue": "eighty",
+          "source": "ref"
+        },
+        {
+          "label": "Look for",
+          "value": "a ⚡ lightning-bolt icon",
+          "cue": "icon",
+          "source": "ref"
+        },
+        {
+          "label": "Is",
+          "value": "a guaranteed USB4 superset",
+          "cue": "superset",
+          "source": "ref"
+        }
+      ],
+      "verdict": "The premium tier over USB-C — 40–80 Gbps, marked by a ⚡; a guaranteed superset."
+    },
+    {
+      "kind": "item",
+      "id": "pd",
+      "name": "USB Power Delivery",
+      "launched": "2012",
+      "cat": "POWER: NOT JUST DATA",
+      "accent": "#FF5C47",
+      "usb": {
+        "kind": "gauge",
+        "value": "up to 240W",
+        "frac": 0.95
+      },
+      "narration": "One more dimension, and it's power. The original USB could trickle a feeble two and a half watts — fine for a mouse, useless for a laptop. USB Power Delivery, over USB-C, completely changed that: devices and chargers negotiate, on the fly, and deliver up to one hundred watts, and now, with the latest revision, a huge two hundred and forty watts. That is enough to fast-charge a phone, run a gaming laptop, even power a monitor — all from the same type of cable. It is why one good USB-C charger can finally replace your whole pile of bricks.",
+      "specs": [
+        {
+          "label": "Power",
+          "value": "up to 240W (was 2.5W)",
+          "cue": "watts",
+          "source": "usbif"
+        },
+        {
+          "label": "How",
+          "value": "device & charger negotiate",
+          "cue": "negotiate",
+          "source": "usbif"
+        },
+        {
+          "label": "Means",
+          "value": "one charger for everything",
+          "cue": "charger",
+          "source": "ref"
+        }
+      ],
+      "verdict": "Up to 240W over USB-C via negotiation — one charger for phone AND laptop."
+    },
+    {
+      "kind": "item",
+      "id": "confusion",
+      "name": "The USB-C Catch",
+      "launched": "TODAY",
+      "cat": "THE TRUTH TO REMEMBER",
+      "accent": "#E8C24A",
+      "usb": {
+        "kind": "gauge",
+        "value": "shape ≠ ability",
+        "frac": 0.0
+      },
+      "narration": "Which brings us to the one thing to burn into your memory. Because the C plug carries all of this — different speeds, different power levels, video or no video — two USB-C cables that look absolutely identical can be wildly different. One does forty gigabits and two hundred and forty watts; another, that came free with a gadget, does a feeble 2.0 speed and barely charges. The plug shape tells you nothing. So check the actual spec printed on the cable or the port — never just the shape. That, finally, is every USB type, untangled.",
+      "specs": [
+        {
+          "label": "Truth",
+          "value": "the C shape ≠ its ability",
+          "cue": "identical",
+          "source": "usbif"
+        },
+        {
+          "label": "So",
+          "value": "check the spec, not the shape",
+          "cue": "spec",
+          "source": "usbif"
+        },
+        {
+          "label": "Result",
+          "value": "no more guessing cables",
+          "cue": "untangled",
+          "source": "ref"
+        }
+      ],
+      "verdict": "A USB-C plug tells you nothing — always check the printed spec, not the shape."
+    },
+    {
+      "kind": "interlude",
+      "manim": "chaos",
+      "narration": "Here's the whole mess on one screen. There are two totally separate questions you must always ask. One: the connector — the physical shape — A, B, Mini, Micro, or C. And two: the capability running through it — the speed, from 2.0 up to USB4, and the power, up to 240 watts. The old plugs tied shape and ability loosely together. USB-C broke them completely apart — one shape, now hiding a dozen different capabilities inside. Universal in shape; wildly unequal in power. Shape, and spec: always two questions, never one.",
+      "beats": [
+        {
+          "cue": "connector",
+          "mark": "c"
+        },
+        {
+          "cue": "capability",
+          "mark": "cap"
+        },
+        {
+          "cue": "spec",
+          "mark": "s"
+        }
+      ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every API Authentication Method",
+      "question": "How many USB-C cables do you not trust?",
+      "narration": "So that is every USB type, finally untangled. The connectors tell a neat story of shrinking and, at last, flipping the right way up — ending at the one reversible C plug to rule them all. But the real lesson is that the plug and its power are now two completely separate things. USB-C won the shape war, and in doing so, quietly hid all the complexity inside the cable. So check the spec, not just the shape, and you'll never be fooled again. Next, we tackle a different kind of plug-and-socket — every way one computer proves who it is to another: every A-P-I authentication method. If this untangled your cable drawer, subscribe. So tell me — how many USB-C cables do you own that you secretly don't trust?",
+      "beats": [
+        {
+          "cue": "API",
+          "mark": "next"
+        },
+        {
+          "cue": "subscribe",
+          "mark": "cta"
+        },
+        {
+          "cue": "trust",
+          "mark": "ask"
+        }
+      ]
+    }
+  ]
+}

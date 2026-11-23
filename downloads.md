@@ -28,7 +28,7 @@ Repo: https://github.com/cornel-stack/tech-explainer-videos/releases
 | T23 | Every Git Command | Every X | _building…_ | | |
 | T24 | How LLMs Actually Work | How It Works | _planned_ | | |
 | T25 | How ChatGPT Works | How It Works | _planned_ | | |
-| T26 | Every USB Type | Every X | _planned_ | | |
+| T26 | Every USB Type | Every X | _building…_ | | |
 | T27 | Every API Authentication Method | Every X | _planned_ | | |
 | T28 | How a CPU Works | How It Works | _planned_ | | |
 | T29 | Every Wi-Fi Standard | Every X | _planned_ | | |
