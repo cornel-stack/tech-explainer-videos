@@ -1,0 +1,186 @@
+{
+  "id": "t21-langs",
+  "title": "Every Programming Language Explained",
+  "series": "Every X",
+  "keyNoun": "programming language",
+  "promise": "The dozen programming languages that actually run the world — what each is for, what makes it special, and why it exists. A family tree, one Hello World at a time.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "hist", "label": "Language histories & official docs (Wikipedia, language home pages)", "url": "https://en.wikipedia.org/wiki/History_of_programming_languages" },
+    { "id": "use", "label": "Developer usage surveys (Stack Overflow, TIOBE, Octoverse)", "url": "https://survey.stackoverflow.co/" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Programming Language Explained in 10 Minutes",
+      "Every Programming Language Explained — What Each One Is Actually For",
+      "Every Programming Language in One Video (C to Rust to TypeScript)",
+      "Every Programming Language Explained — the Family Tree, One Hello World at a Time"
+    ],
+    "primaryTitle": "Every Programming Language Explained in 10 Minutes",
+    "tags": [
+      "programming languages explained", "every programming language", "best programming language",
+      "c vs python", "learn to code", "python", "javascript", "rust", "golang", "typescript",
+      "which language to learn", "coding for beginners", "programming explained", "tech explained", "how it works"
+    ],
+    "hashtags": ["#programming", "#coding", "#softwareengineering", "#tech", "#developer"],
+    "pinnedComment": "👋 Every Hello World, in order: C, C++, Python, Ruby, Java, JavaScript, PHP, C#, Go, Rust, TypeScript, Swift. The secret nobody tells beginners: learn ONE properly and the rest come easy — they're variations on the same few ideas. 👇 What was your first language? Subscribe — 'How Git Works' is next.",
+    "hook": "There are thousands of programming languages — but only about a dozen actually run the world. Every app, every website, every game, every AI is built in one of them. And they're not random: each was born to fix a pain in the one before it."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "tree",
+      "narration": "There are thousands of programming languages in existence — but only about a dozen actually run the world. Every app, every website, every game, every A-I, is built in one of them. And they are not random: each one was born to solve a specific pain in the language before it — so together, they form a kind of family tree. So let's walk that tree. Here is every programming language that truly matters — what it's for, what makes it special, and why it exists at all — told one Hello World at a time.",
+      "beats": [ { "cue": "thousands", "mark": "t" }, { "cue": "family", "mark": "f" }, { "cue": "walk", "mark": "w" } ]
+    },
+
+    {
+      "kind": "item", "id": "c", "name": "C", "launched": "1972", "cat": "THE BEDROCK", "accent": "#C9CDD4",
+      "lang": { "ext": "hello.c", "run": "Hello, World!", "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}" },
+      "narration": "C is the bedrock that everything else stands on. Written in nineteen-seventy-two to build Unix, it gives you direct, almost physical control over the computer's memory — which makes it blisteringly fast, and famously unforgiving. Your operating system, your database, even most of the other languages on this very list, are written in C. Fifty years on, nothing has truly replaced it.",
+      "specs": [
+        { "label": "Born", "value": "1972 · to build Unix", "cue": "unix", "source": "hist" },
+        { "label": "Superpower", "value": "direct control of memory", "cue": "memory", "source": "hist" },
+        { "label": "Runs", "value": "OSes, databases, everything", "cue": "database", "source": "use" }
+      ],
+      "verdict": "The bedrock — direct, fast, unforgiving; it's still under everything."
+    },
+    {
+      "kind": "item", "id": "cpp", "name": "C++", "launched": "1985", "cat": "THE POWER TOOL", "accent": "#FF5C47",
+      "lang": { "ext": "hello.cpp", "run": "Hello, World!", "code": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n}" },
+      "narration": "C-plus-plus took C and added objects — a way to model complex things — while keeping every bit of C's raw speed. It is enormous and intricate, handing you total control, and plenty of rope to hang yourself with. It is the language of triple-A games, web browsers, and high-frequency trading: anywhere you need maximum performance, but with real structure.",
+      "specs": [
+        { "label": "Born", "value": "1985 · C with objects", "cue": "objects", "source": "hist" },
+        { "label": "Trade-off", "value": "total control, total complexity", "cue": "control", "source": "hist" },
+        { "label": "Best for", "value": "games, browsers, performance", "cue": "games", "source": "use" }
+      ],
+      "verdict": "C with objects — maximum performance and maximum complexity."
+    },
+    {
+      "kind": "item", "id": "python", "name": "Python", "launched": "1991", "cat": "THE EVERYMAN", "accent": "#35E08A",
+      "lang": { "ext": "hello.py", "run": "Hello, World!", "code": "print(\"Hello, World!\")" },
+      "narration": "Python made a radical bet: that programmer time matters more than computer time. Its code reads almost like plain English, so it is the easiest of the big languages to learn — and it is now the single most popular language on Earth. It is a little slow, but it is the undisputed king of data science, machine learning and A-I. If you only ever learn one language, learn this one.",
+      "specs": [
+        { "label": "Born", "value": "1991 · readability first", "cue": "english", "source": "hist" },
+        { "label": "Status", "value": "most popular language today", "cue": "popular", "source": "use" },
+        { "label": "Best for", "value": "AI, data, scripting", "cue": "machine", "source": "use" }
+      ],
+      "verdict": "The everyman — easiest to learn, and the king of AI and data."
+    },
+    {
+      "kind": "item", "id": "ruby", "name": "Ruby", "launched": "1995", "cat": "DEVELOPER JOY", "accent": "#FF5C47",
+      "lang": { "ext": "hello.rb", "run": "Hello, World!", "code": "puts \"Hello, World!\"" },
+      "narration": "Ruby was designed around one single goal: making the programmer happy. It is elegant and expressive, optimised for how humans think, not how machines work. It exploded thanks to Rails — the framework that let tiny teams build entire web startups astonishingly fast. Twitter, GitHub and Shopify all began their lives written in Ruby.",
+      "specs": [
+        { "label": "Born", "value": "1995 · programmer happiness", "cue": "happy", "source": "hist" },
+        { "label": "Superpower", "value": "elegant, expressive, human", "cue": "expressive", "source": "hist" },
+        { "label": "Best for", "value": "web startups (Rails)", "cue": "rails", "source": "use" }
+      ],
+      "verdict": "Built for joy — elegant, expressive, and the heart of Rails."
+    },
+    {
+      "kind": "item", "id": "java", "name": "Java", "launched": "1995", "cat": "WRITE ONCE, RUN ANYWHERE", "accent": "#FFB020",
+      "lang": { "ext": "Main.java", "run": "Hello, World!", "code": "class Main {\n  public static void main(String[] a) {\n    System.out.println(\"Hello, World!\");\n  }\n}" },
+      "narration": "Java's promise was 'write once, run anywhere': your code runs on a virtual machine, so it simply does not care what computer it lands on. That made it the default language of big, serious systems — banks, massive backends, and every Android app. It is verbose and ceremonial, but incredibly stable. Billions of devices quietly run Java right now.",
+      "specs": [
+        { "label": "Born", "value": "1995 · run anywhere", "cue": "anywhere", "source": "hist" },
+        { "label": "How", "value": "runs on a virtual machine", "cue": "virtual", "source": "hist" },
+        { "label": "Best for", "value": "enterprise + Android", "cue": "android", "source": "use" }
+      ],
+      "verdict": "Write once, run anywhere — the stable backbone of enterprise and Android."
+    },
+    {
+      "kind": "item", "id": "javascript", "name": "JavaScript", "launched": "1995", "cat": "THE WEB ITSELF", "accent": "#E8C24A",
+      "lang": { "ext": "hello.js", "run": "Hello, World!", "code": "console.log(\"Hello, World!\");" },
+      "narration": "JavaScript was famously built in just ten days — and then accidentally took over the world. It is the only language that runs natively inside every web browser, which makes it completely unavoidable: every interactive website you have ever used runs on it. It then escaped the browser to run servers too. It is quirky, chaotic, and utterly, totally dominant.",
+      "specs": [
+        { "label": "Born", "value": "1995 · in just 10 days", "cue": "days", "source": "hist" },
+        { "label": "Superpower", "value": "the only language in the browser", "cue": "browser", "source": "hist" },
+        { "label": "Best for", "value": "the web, front and back", "cue": "website", "source": "use" }
+      ],
+      "verdict": "Born in 10 days — the one language every browser speaks."
+    },
+    {
+      "kind": "item", "id": "php", "name": "PHP", "launched": "1995", "cat": "THE WORKHORSE", "accent": "#B06BFF",
+      "lang": { "ext": "hello.php", "run": "Hello, World!", "code": "<?php\n\necho \"Hello, World!\";\n\n?>" },
+      "narration": "P-H-P is the unglamorous workhorse that quietly built the web. It was designed for exactly one thing — generating web pages on a server — and it did it so simply that an enormous share of all websites, including the early Facebook and most of WordPress, still run on it today. Everyone loves to mock P-H-P. It is also, still, absolutely everywhere.",
+      "specs": [
+        { "label": "Born", "value": "1995 · web pages on a server", "cue": "server", "source": "hist" },
+        { "label": "Powers", "value": "WordPress, early Facebook", "cue": "wordpress", "source": "use" },
+        { "label": "Reputation", "value": "mocked — and everywhere", "cue": "mock", "source": "use" }
+      ],
+      "verdict": "The mocked workhorse — still quietly running a huge slice of the web."
+    },
+    {
+      "kind": "item", "id": "csharp", "name": "C#", "launched": "2000", "cat": "THE ALL-ROUNDER", "accent": "#2DD4BF",
+      "lang": { "ext": "Hello.cs", "run": "Hello, World!", "code": "using System;\n\nConsole.WriteLine(\"Hello, World!\");" },
+      "narration": "C-sharp was Microsoft's answer to Java — and it grew into one of the most polished, genuinely pleasant languages to write. It runs the Windows software world, and crucially, it is the language of Unity, the engine behind a huge portion of the games you actually play. Modern, fast, and beautifully tooled from top to bottom.",
+      "specs": [
+        { "label": "Born", "value": "2000 · Microsoft's answer to Java", "cue": "microsoft", "source": "hist" },
+        { "label": "Superpower", "value": "polished, modern, well-tooled", "cue": "polished", "source": "hist" },
+        { "label": "Best for", "value": "games (Unity), Windows", "cue": "unity", "source": "use" }
+      ],
+      "verdict": "Microsoft's polished all-rounder — and the language of Unity games."
+    },
+    {
+      "kind": "item", "id": "go", "name": "Go", "launched": "2009", "cat": "THE SIMPLIFIER", "accent": "#2DD4BF",
+      "lang": { "ext": "hello.go", "run": "Hello, World!", "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}" },
+      "narration": "Go was built at Google by people utterly fed up with complexity. Its entire philosophy is ruthless simplicity: a small language you can genuinely learn in a weekend, with brilliant built-in support for doing thousands of things at once. That made it the language of the modern cloud — Docker and Kubernetes are both written in Go.",
+      "specs": [
+        { "label": "Born", "value": "2009 · at Google", "cue": "google", "source": "hist" },
+        { "label": "Philosophy", "value": "ruthless simplicity", "cue": "simplicity", "source": "hist" },
+        { "label": "Best for", "value": "cloud, servers, tools", "cue": "cloud", "source": "use" }
+      ],
+      "verdict": "Ruthless simplicity + easy concurrency — the language of the cloud."
+    },
+    {
+      "kind": "item", "id": "rust", "name": "Rust", "launched": "2010", "cat": "THE SAFE ONE", "accent": "#FFB020",
+      "lang": { "ext": "main.rs", "run": "Hello, World!", "code": "fn main() {\n    println!(\"Hello, World!\");\n}" },
+      "narration": "Rust solves a problem that haunted C for fifty years: memory bugs, the root cause of most serious security holes. Its clever 'borrow checker' guarantees memory safety at compile time — with zero runtime cost, so it stays as fast as C. It is famously hard to learn, and, for years running now, it is the language developers most adore.",
+      "specs": [
+        { "label": "Born", "value": "2010 · safety without the cost", "cue": "safety", "source": "hist" },
+        { "label": "Superpower", "value": "borrow checker = no memory bugs", "cue": "borrow", "source": "hist" },
+        { "label": "Status", "value": "most-loved language, for years", "cue": "adore", "source": "use" }
+      ],
+      "verdict": "C's speed with guaranteed memory safety — and the most loved language."
+    },
+    {
+      "kind": "item", "id": "typescript", "name": "TypeScript", "launched": "2012", "cat": "JAVASCRIPT, GROWN UP", "accent": "#B06BFF",
+      "lang": { "ext": "hello.ts", "run": "Hello, World!", "code": "const msg: string = \"Hello, World!\";\n\nconsole.log(msg);" },
+      "narration": "TypeScript is JavaScript, but with a safety net. It adds a type system on top of J-S — catching a whole class of silly, costly bugs before your code ever runs — then compiles straight back down to plain JavaScript. It has quietly become the default for serious web projects: most large front-ends today are written in TypeScript, not raw J-S.",
+      "specs": [
+        { "label": "Born", "value": "2012 · types for JavaScript", "cue": "type", "source": "hist" },
+        { "label": "Superpower", "value": "catches bugs before they run", "cue": "bugs", "source": "hist" },
+        { "label": "Best for", "value": "large-scale web front-ends", "cue": "front", "source": "use" }
+      ],
+      "verdict": "JavaScript with a type safety net — now the default for big web apps."
+    },
+    {
+      "kind": "item", "id": "swift", "name": "Swift", "launched": "2014", "cat": "THE APPLE ONE", "accent": "#FF5C47",
+      "lang": { "ext": "hello.swift", "run": "Hello, World!", "code": "print(\"Hello, World!\")" },
+      "narration": "Swift is Apple's modern language, built to replace the ageing Objective-C. It is clean, safe and fast — and it is how essentially every new iPhone, iPad and Mac app is written today. If you want to build for Apple's billion-plus devices, this is simply the language you reach for. Easy to read, hard to misuse.",
+      "specs": [
+        { "label": "Born", "value": "2014 · Apple's modern language", "cue": "apple", "source": "hist" },
+        { "label": "Replaced", "value": "the ageing Objective-C", "cue": "objective", "source": "hist" },
+        { "label": "Best for", "value": "iPhone, iPad & Mac apps", "cue": "iphone", "source": "use" }
+      ],
+      "verdict": "Apple's clean, safe modern language — how iOS & Mac apps are built."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "spectrum",
+      "narration": "Step back, and the whole family sorts neatly onto one spectrum. At one end: the compiled, close-to-the-metal languages — C, C-plus-plus, Rust — that talk almost directly to the hardware. Brutally fast, but demanding. At the other end: the interpreted, human-friendly ones — Python, JavaScript, Ruby — that happily trade raw speed for the sheer joy of getting things done. There is no single 'best' language. There is only the right tool for the job, and the trade-off you are willing to make.",
+      "beats": [ { "cue": "spectrum", "mark": "s" }, { "cue": "fast", "mark": "f" }, { "cue": "trade-off", "mark": "t" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "How Git Works Under the Hood",
+      "question": "What was your first language?",
+      "narration": "So that is the family: a dozen languages, each one solving the pain of the one before it. C for raw power, Python for ease, JavaScript for the web, Rust for safety — all different answers to the same question of how we talk to machines. And the secret nobody tells beginners? Once you truly learn one of them, the next comes easy; they are all just variations on the same few ideas. Next, we go under the hood of the tool every single one of these is built with — how Git actually works. If this helped, subscribe. So tell me — what was YOUR first language?",
+      "beats": [ { "cue": "family", "mark": "fam" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "first", "mark": "ask" } ]
+    }
+  ]
+}
