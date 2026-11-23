@@ -1,0 +1,121 @@
+{
+  "id": "t13-wifi",
+  "title": "How Wi-Fi Works",
+  "series": "How It Works",
+  "keyNoun": "Wi-Fi",
+  "promise": "How your data becomes invisible radio waves, why those waves die crossing your home, and exactly how to drag a strong signal into the one cursed bedroom.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "ieee", "label": "IEEE 802.11 — the Wi-Fi standard", "url": "https://standards.ieee.org/ieee/802.11/7028/" },
+    { "id": "fcc", "label": "FCC / Ofcom — 2.4 / 5 / 6 GHz spectrum allocations", "url": "https://www.fcc.gov/wireless/bureau-divisions/mobility-division/wi-fi-6ghz" },
+    { "id": "phys", "label": "RF propagation & material attenuation references", "url": "https://en.wikipedia.org/wiki/Free-space_path_loss" },
+    { "id": "wfa", "label": "Wi-Fi Alliance — Wi-Fi 6 / 6E / 7 features", "url": "https://www.wi-fi.org/discover-wi-fi" }
+  ],
+  "youtube": {
+    "titles": [
+      "How Wi-Fi Works: Why Your Signal Dies in the Bedroom",
+      "How Wi-Fi Actually Works — and How to Fix Your Dead Zones",
+      "Why Your Wi-Fi Dies Two Rooms Away (How Wi-Fi Really Works)",
+      "How Wi-Fi Works: Radio, Walls, and the Cursed Bedroom"
+    ],
+    "primaryTitle": "How Wi-Fi Works: Why Your Signal Dies in the Bedroom",
+    "tags": [
+      "how wifi works", "wifi explained", "why is my wifi slow", "wifi dead zone",
+      "2.4ghz vs 5ghz", "wifi signal", "how wireless works", "wifi interference",
+      "mesh wifi", "beamforming", "wifi 6", "router placement", "fix wifi",
+      "radio waves", "how it works", "tech explained"
+    ],
+    "hashtags": ["#wifi", "#networking", "#tech", "#router", "#howitworks"],
+    "pinnedComment": "The one-line reason your bedroom Wi-Fi dies: it's behind too much stuff, on a band that hates walls — and you can't beat physics, you can only move the signal closer. 👇 Where's YOUR home dead zone? Subscribe — 'Every Wi-Fi Standard Explained' is next.",
+    "hook": "You pay for fast internet, the router glows proudly in the living room — and yet the bedroom still buffers. Wi-Fi feels like magic until it dies two rooms away. It isn't magic — it's radio, physics, and a few specific villains. Let's build the whole picture."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "walls",
+      "narration": "You pay for fast internet, the router sits proudly in the living room with all its lights on — and yet in the bedroom, the stream still buffers. Wi-Fi feels like pure magic, right up until it mysteriously stops working two rooms away. But it isn't magic — it's radio, physics, and a few very specific villains. So let's build the whole picture: how your data becomes invisible waves, why those waves die crossing your home, and exactly how to drag a strong signal into that one cursed bedroom.",
+      "beats": [ { "cue": "radio", "mark": "rad" }, { "cue": "waves", "mark": "wav" }, { "cue": "bedroom", "mark": "bed" } ]
+    },
+
+    {
+      "kind": "stage", "id": "radio", "name": "It's Just Radio", "manim": "radio", "icon": "hub", "accent": "#35E08A",
+      "narration": "At its heart, Wi-Fi is just radio. Your router is a tiny two-way radio station, and so is every phone and laptop in your home. To send you this video, the router turns the data — the ones and zeros — into invisible radio waves, ripples in the electromagnetic field, and broadcasts them through the air in every direction at once. Your device's antenna picks up those faint waves and turns them back into data. There's no magic and no cable — just two radios, talking to each other by making the air wiggle billions of times a second.",
+      "specs": [
+        { "label": "What it is", "value": "a two-way radio link", "cue": "radio", "source": "ieee" },
+        { "label": "Carries data as", "value": "electromagnetic waves", "cue": "waves", "source": "ieee" },
+        { "label": "Both ends", "value": "router + device = radios", "cue": "antenna", "source": "ieee" }
+      ],
+      "verdict": "Wi-Fi is radio — two antennas making the air wiggle billions of times a second."
+    },
+    {
+      "kind": "stage", "id": "modulation", "name": "Data Onto a Wave", "manim": "modulation", "icon": "arrow", "accent": "#2DD4BF",
+      "narration": "But how do you put data onto a wave? You start with a plain carrier wave — a steady, featureless hum at a fixed frequency — and you deliberately tweak it to encode bits. Nudge its height, shift its timing, and each tiny pattern of tweaks stands for a chunk of ones and zeros. That's modulation. Modern Wi-Fi is astonishingly aggressive about it, cramming many bits into every single nudge using a scheme called Q-A-M. And the cleaner the signal, the more bits it dares to pack in — which is exactly why a weak, noisy signal is always a slow one too.",
+      "specs": [
+        { "label": "Modulation", "value": "tweak a carrier wave", "cue": "tweak", "source": "ieee" },
+        { "label": "Scheme", "value": "QAM — many bits per nudge", "cue": "QAM", "source": "ieee" },
+        { "label": "Key link", "value": "cleaner signal → faster", "cue": "cleaner", "source": "ieee" }
+      ],
+      "verdict": "Data rides on a wave by nudging it — and cleaner means faster."
+    },
+    {
+      "kind": "stage", "id": "bands", "name": "2.4 vs 5 vs 6 GHz", "manim": "bands", "icon": "fanout", "accent": "#B06BFF",
+      "narration": "Wi-Fi doesn't use one frequency, but several bands — and choosing between them is the central trade-off of the whole system. The old two-point-four gigahertz band uses longer waves that travel far and slip through walls well, but it's slow, and these days horribly crowded. The five gigahertz band is much faster with far more room, but its shorter waves don't reach as far, or punch through walls as easily. The newest, six gigahertz — Wi-Fi 6E — is faster still and almost empty, but shorter-range yet again. The rule is simple: a higher frequency buys you speed, and costs you reach.",
+      "specs": [
+        { "label": "2.4 GHz", "value": "far + through walls, but slow", "cue": "crowded", "source": "fcc" },
+        { "label": "5 GHz", "value": "fast, more room, shorter range", "cue": "five", "source": "fcc" },
+        { "label": "The rule", "value": "higher freq = speed − reach", "cue": "higher", "source": "phys" }
+      ],
+      "verdict": "Higher frequency buys speed and costs range — that's the whole trade."
+    },
+    {
+      "kind": "stage", "id": "walls", "name": "Why the Bedroom Dies", "manim": "walls", "icon": "cross", "accent": "#FF5C47",
+      "narration": "Now, the bedroom. Why does a strong signal in the living room become two sad bars down the hall? Two things kill it. First, distance: radio waves spread out in every direction, so their strength falls off fast — double the distance, and you quarter the signal. Second, and far worse, walls. Every wall absorbs some of the wave, and the material matters enormously: drywall is gentle, but brick, concrete, and especially metal and water — including the water in your own body — soak it right up. And remember — the faster five-gigahertz band is hit the hardest of all. Your bedroom isn't far. It's just behind too much stuff.",
+      "specs": [
+        { "label": "Distance", "value": "2× away → ¼ the signal", "cue": "double", "source": "phys" },
+        { "label": "Walls", "value": "brick/concrete/metal absorb most", "cue": "absorb", "source": "phys" },
+        { "label": "Worst hit", "value": "the fast 5 GHz band", "cue": "hardest", "source": "phys" }
+      ],
+      "verdict": "Distance and walls — and 5 GHz suffers both the most."
+    },
+    {
+      "kind": "stage", "id": "interference", "name": "A Crowded Airwave", "manim": "interference", "icon": "fanout", "accent": "#FFB020",
+      "narration": "Even with a clear path, your signal still has to share the air. The two-point-four gigahertz band is a noisy, crowded room: your microwave oven screams right across it, and so do baby monitors, Bluetooth gadgets, and — in a block of flats — a dozen of your neighbours' routers. On top of that, Wi-Fi splits each band into channels, and on two-point-four those channels overlap, so nearby networks literally talk over one another. When the air is this congested, your devices spend their time politely waiting for a gap to speak — and your speed collapses, even with full signal bars.",
+      "specs": [
+        { "label": "Sharing 2.4", "value": "microwaves, Bluetooth, neighbours", "cue": "microwave", "source": "fcc" },
+        { "label": "Channels", "value": "overlap on 2.4 → collisions", "cue": "overlap", "source": "ieee" },
+        { "label": "Result", "value": "full bars, still slow", "cue": "congested", "source": "ieee" }
+      ],
+      "verdict": "A crowded band means waiting your turn — full bars, slow speeds."
+    },
+    {
+      "kind": "stage", "id": "tricks", "name": "How Routers Fight Back", "manim": "tricks", "icon": "hub", "accent": "#35E08A",
+      "narration": "Modern routers fight back with some genuinely clever tricks. Instead of one antenna, they use several — M-I-M-O — sending multiple data streams at the same time, and even bouncing signals off your walls to their advantage. Beamforming lets the router shape its transmission into a focused beam, aimed right at your device, instead of wasting energy radiating in every direction. And Wi-Fi 6 adds O-F-D-M-A, which lets the router talk to many devices in the very same instant, rather than one at a time. Together, these are why a modern router handles a busy, cluttered home far, far better than one from ten years ago.",
+      "specs": [
+        { "label": "MIMO", "value": "many antennas, many streams", "cue": "several", "source": "wfa" },
+        { "label": "Beamforming", "value": "focus a beam at your device", "cue": "beam", "source": "wfa" },
+        { "label": "Wi-Fi 6 OFDMA", "value": "serve many devices at once", "cue": "OFDMA", "source": "wfa" }
+      ],
+      "verdict": "Many antennas, a focused beam, and serving everyone at once."
+    },
+    {
+      "kind": "stage", "id": "fix", "name": "Fixing the Dead Zone", "manim": "fix", "icon": "check", "accent": "#E8C24A",
+      "narration": "So how do you actually fix that dead bedroom? The clever tricks still can't beat physics, so the real answer is simply to move the signal closer. Put the router central and high, out in the open — not tucked in a cabinet behind the T-V. For a bigger home, the proper fix is a mesh system: two or three units spread around the place that hand your device off to the nearest one, so you're never far from a radio. Ideally, link those units with a cable. And for anything that doesn't move — a T-V, a desktop — honestly, nothing beats just plugging in an Ethernet wire.",
+      "specs": [
+        { "label": "Placement", "value": "central, high, in the open", "cue": "central", "source": "wfa" },
+        { "label": "Big homes", "value": "mesh — move the signal closer", "cue": "mesh", "source": "wfa" },
+        { "label": "Best of all", "value": "wire what doesn't move", "cue": "Ethernet", "source": "wfa" }
+      ],
+      "verdict": "You can't beat physics — move the signal closer, or run a wire."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "Every Wi-Fi Standard Explained",
+      "question": "Where's the one spot your Wi-Fi goes to die?",
+      "narration": "So that's Wi-Fi, end to end: your router modulates data onto radio waves, picks a band that trades speed against reach, and then fights distance, walls, and a crowded airwave to get those waves to you. The bedroom dies because it's simply behind too much stuff, on a band that hates walls — and the fix is almost always to move the signal closer. Next time, we decode the names on the box: every Wi-Fi standard, from ancient 802-dot-11b to Wi-Fi 7. If this finally explained your dead zone, subscribe. So tell me — where's the one spot in your home where Wi-Fi goes to die?",
+      "beats": [ { "cue": "standard", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "die", "mark": "ask" } ]
+    }
+  ]
+}
