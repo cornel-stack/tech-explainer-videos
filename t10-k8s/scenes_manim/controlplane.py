@@ -84,7 +84,7 @@ class Controlplane(Scene):
             desc.next_to(name, DOWN, buff=0.1)
             g = VGroup(box, name, desc)
             g.body = box
-            g.name = name
+            g.namelbl = name
             return g
 
         api = subbox("API server", "front door", VIOLET)
@@ -106,7 +106,7 @@ class Controlplane(Scene):
 
         self.play(*[Create(b.body) for b in (api, etcd, sched, ctrl)],
                   run_time=0.8)
-        self.play(*[FadeIn(b.name) for b in (api, etcd, sched, ctrl)],
+        self.play(*[FadeIn(b.namelbl) for b in (api, etcd, sched, ctrl)],
                   *[FadeIn(b[2]) for b in (api, etcd, sched, ctrl)],
                   run_time=0.4)
         self.play(FadeIn(kv_rows), run_time=0.4)
@@ -193,9 +193,7 @@ class Controlplane(Scene):
         boxes_order = [api, etcd, sched]
         box_fracs = [(0.0, 0.25), (0.25, 0.5), (0.5, 0.75)]
 
-        def make_box_glow(bx, lo, hi):
-            base_col = bx.body.get_stroke_color()
-
+        def make_box_glow(lo, hi):
             def _upd(m):
                 active = False
                 for off in pk_offsets:
@@ -206,7 +204,7 @@ class Controlplane(Scene):
             return _upd
 
         for bx, (lo, hi) in zip(boxes_order, box_fracs):
-            bx.body.add_updater(make_box_glow(bx.body, lo, hi))
+            bx.body.add_updater(make_box_glow(lo, hi))
 
         # scheduler -> node highlight on the last leg
         def node_upd(m):

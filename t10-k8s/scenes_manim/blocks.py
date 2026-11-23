@@ -161,7 +161,7 @@ class Blocks(Scene):
 
                 def _upd(m):
                     s = base * (1.0 + 0.03 * np.sin(2.2 * t.get_value() + phase))
-                    m.set_width(1.5 * s, stretch=False)
+                    m.scale_to_fit_width(1.5 * s)
                 return _upd
             p.add_updater(make_breath(p, i * 0.8))
 
@@ -177,7 +177,7 @@ class Blocks(Scene):
 
         SPAWN_GAP = 3.5  # a new pod every few seconds, looping
 
-        def make_spawn_upd(idx):
+        def make_spawn_upd(idx, body):
             appear_at = 1.5 + idx * SPAWN_GAP
 
             def _upd(m):
@@ -196,12 +196,12 @@ class Blocks(Scene):
                     vis = 1.0
                     s = 1.0 + 0.03 * np.sin(2.4 * t.get_value() + idx)
                 m.set_opacity(vis)
-                m.body.set_stroke(opacity=vis)
-                m.set_width(1.5 * self.pod_scale * max(s, 0.05), stretch=False)
+                body.set_stroke(opacity=vis)
+                m.scale_to_fit_width(1.5 * self.pod_scale * max(s, 0.05))
             return _upd
 
         for i, g in enumerate(spawn_pods):
-            g.add_updater(make_spawn_upd(i))
+            g.add_updater(make_spawn_upd(i, g.body))
 
         # --- cluster dash shimmer (keeps it feeling alive) -------------------
         def dash_upd(m):

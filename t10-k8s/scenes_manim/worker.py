@@ -165,7 +165,7 @@ class Worker(Scene):
                 trip = int(t.get_value() // REQ_PERIOD)
                 chosen = (trip % 3) == idx
                 breath = 1.0 + 0.03 * np.sin(2.5 * t.get_value() + idx)
-                m.set_width(1.6 * breath, stretch=False)
+                m.scale_to_fit_width(1.6 * breath)
                 if chosen and frac > 0.82:
                     m.set_stroke(color=AMBER, width=4.5)
                 else:

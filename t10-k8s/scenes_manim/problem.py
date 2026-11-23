@@ -118,7 +118,7 @@ class Problem(Scene):
         def app_box_upd(m):
             tt = t.get_value() % CYCLE
             breath = 1.0 + 0.04 * np.sin(3.0 * t.get_value())
-            m.set_width(1.5 * breath, stretch=False)
+            m.scale_to_fit_width(1.5 * breath)
             # crash window 1.5..3.0 : flash coral
             if 1.5 <= tt < 3.0:
                 m.set_stroke(color=CORAL, width=3.5)
@@ -154,7 +154,7 @@ class Problem(Scene):
             if 3.0 <= tt < 3.6:
                 m.set_opacity(1.0)
                 ang = (tt - 3.0) / 0.6 * 2 * np.pi
-                m.set_width(0.6 + 0.1 * np.sin(ang))
+                m.scale_to_fit_width(0.6 + 0.1 * np.sin(ang))
             else:
                 m.set_opacity(0.0)
         restart.add_updater(restart_upd)
@@ -186,7 +186,7 @@ class Problem(Scene):
                 tt = t.get_value() % CYCLE
                 breath = 1.0 + 0.05 * np.sin(4.0 * t.get_value() + idx)
                 m.move_to(target)
-                m.set_width(0.78 * breath, stretch=False)
+                m.scale_to_fit_width(0.78 * breath)
                 # surge build 3.4..5.5 (staggered), hold, shrink at night 8.5..9.5
                 appear_at = 3.4 + idx * 0.18
                 if tt < appear_at:
