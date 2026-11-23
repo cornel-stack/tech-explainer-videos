@@ -157,7 +157,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: FedericoCarboni/setup-ffmpeg@v3
+      - name: Ensure ffmpeg (apt — reliable, no flaky download action)
+        run: which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
       - name: Get the bundle
         uses: actions/download-artifact@v4
         with: { name: bundle, path: t23-gitcmd }
