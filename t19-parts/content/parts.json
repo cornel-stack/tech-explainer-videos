@@ -1,0 +1,155 @@
+{
+  "id": "t19-parts",
+  "title": "Every Computer Part Explained",
+  "series": "Every X",
+  "keyNoun": "computer part",
+  "promise": "Every core part of a computer in plain English — a brain, memory, a heart, lungs, and hands in silicon — and exactly what each one does for you.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "hw", "label": "PC component references (manufacturer spec pages, iFixit teardowns)", "url": "https://www.ifixit.com/Device/PC" },
+    { "id": "role", "label": "Computer architecture basics (the von Neumann model, I/O)", "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Computer Part Explained in 10 Minutes — What Each One Does for You",
+      "Every Computer Part Explained — Your PC Is a Body in Silicon",
+      "Every Part of a Computer Explained (Plain English, 10 Minutes)",
+      "Every Computer Part Explained — CPU, GPU, RAM, PSU & More"
+    ],
+    "primaryTitle": "Every Computer Part Explained in 10 Minutes — What Each One Does for You",
+    "tags": [
+      "every computer part", "computer parts explained", "pc parts explained",
+      "what does a cpu do", "what is a motherboard", "pc build explained", "cpu gpu ram",
+      "psu explained", "ssd vs hdd", "pc components for beginners", "how a computer works",
+      "pc building guide", "what each part does", "tech explained", "how it works"
+    ],
+    "hashtags": ["#pc", "#pcbuilding", "#computers", "#tech", "#hardware"],
+    "pinnedComment": "The whole box in one analogy: CPU = brain, motherboard = nervous system, RAM = desk, storage = filing cabinet, GPU = art studio, PSU = heart, cooler = sweat glands, case+fans = body & lungs, monitor = eyes, keyboard/mouse = hands. 👇 Which part would you upgrade first? Subscribe — 'How a CPU Works' is next.",
+    "hook": "Open any computer and you'll find the same handful of parts, each doing one job, working as a team. It looks like an intimidating mess of boards and cables — but it's really just a human body, in silicon: a brain, memory, a heart, lungs, and hands."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "assembly",
+      "narration": "Open up any computer — a laptop, a desktop, a server — and you will find the same handful of parts, each doing one job, all working together as a team. It can look like an intimidating mess of boards and cables. But it is really just a human body, rebuilt in silicon: a brain, memory, a heart, lungs, and hands. So in the next ten minutes, let's go through every core part of a computer, explain in plain English exactly what each one does for you — and see how they all click together into a working machine.",
+      "beats": [ { "cue": "brain", "mark": "b" }, { "cue": "body", "mark": "bd" }, { "cue": "together", "mark": "t" } ]
+    },
+
+    {
+      "kind": "item", "id": "cpu", "name": "CPU — Processor", "launched": "", "cat": "THE BRAIN", "icon": "hub", "accent": "#35E08A", "part": "cpu",
+      "narration": "The C-P-U, the central processing unit, is the brain of the whole machine. Every single thing your computer does — opening an app, loading a page, doing a sum — is ultimately billions of tiny instructions, executed by the C-P-U, one tick of its clock at a time. Its speed is measured in gigahertz, and the number of 'cores' it has decides how many separate tasks it can genuinely juggle at once. It thinks; and everything else in the box exists either to feed it, or to act on what it decides.",
+      "specs": [
+        { "label": "Job", "value": "runs every instruction", "cue": "instructions", "source": "role" },
+        { "label": "Measured by", "value": "GHz speed · core count", "cue": "cores", "source": "hw" },
+        { "label": "Analogy", "value": "the brain", "cue": "brain", "source": "role" }
+      ],
+      "verdict": "The brain — it does the actual computing; everything else serves it."
+    },
+    {
+      "kind": "item", "id": "mobo", "name": "Motherboard", "launched": "", "cat": "THE NERVOUS SYSTEM", "icon": "server", "accent": "#2DD4BF", "part": "mobo",
+      "narration": "If the C-P-U is the brain, the motherboard is the nervous system and the skeleton combined. It's the big printed circuit board that everything else plugs into, and its one job is connection: it physically holds the C-P-U, the R-A-M, and the graphics card, and it carries the electrical signals between every component, and out to all your ports. The motherboard doesn't do any 'thinking' itself — but nothing can talk to anything else without it. It also decides which parts you're even allowed to install, through its socket and its chipset.",
+      "specs": [
+        { "label": "Job", "value": "connects every part", "cue": "connection", "source": "role" },
+        { "label": "Defines", "value": "socket + chipset = compatibility", "cue": "socket", "source": "hw" },
+        { "label": "Analogy", "value": "nervous system + skeleton", "cue": "skeleton", "source": "role" }
+      ],
+      "verdict": "The backbone — it connects everything and decides what can plug in."
+    },
+    {
+      "kind": "item", "id": "ram", "name": "RAM — Memory", "launched": "", "cat": "THE DESK", "icon": "server", "accent": "#35E08A", "part": "ram",
+      "narration": "R-A-M, random-access memory, is your computer's working desk. When you open a program or a file, it's loaded from slow storage into fast R-A-M, so the C-P-U can reach it almost instantly. The bigger your desk, the more things you can have open and spread out at once, without everything slowing to a crawl. But R-A-M is volatile — it's wiped completely clean the moment the power goes off. It is for right now, not for keeps. We did a whole separate video on exactly why more of it isn't always faster.",
+      "specs": [
+        { "label": "Job", "value": "holds what you're using now", "cue": "working", "source": "role" },
+        { "label": "Key trait", "value": "fast but volatile (wiped on off)", "cue": "volatile", "source": "hw" },
+        { "label": "Analogy", "value": "your working desk", "cue": "desk", "source": "role" }
+      ],
+      "verdict": "The fast desk — holds what you're actively using; forgets on power-off."
+    },
+    {
+      "kind": "item", "id": "gpu", "name": "GPU — Graphics Card", "launched": "", "cat": "THE ART STUDIO", "icon": "hub", "accent": "#B06BFF", "part": "gpu",
+      "narration": "The G-P-U, the graphics card, is the specialist artist. While the C-P-U is a brilliant generalist, the G-P-U has thousands of simpler cores, built to do one thing in parallel, at massive scale: draw pixels. That makes it essential for gaming, video editing, and 3D — and these days, for running A-I, which is really just the same kind of parallel maths underneath. On a basic P-C, the C-P-U handles the graphics itself; but for anything visually demanding, a dedicated G-P-U does all of the heavy lifting.",
+      "specs": [
+        { "label": "Job", "value": "draws graphics in parallel", "cue": "parallel", "source": "role" },
+        { "label": "Needed for", "value": "gaming, video, 3D, AI", "cue": "gaming", "source": "hw" },
+        { "label": "Analogy", "value": "the art studio", "cue": "artist", "source": "role" }
+      ],
+      "verdict": "The parallel artist — renders graphics (and AI); optional but transformative."
+    },
+    {
+      "kind": "item", "id": "storage", "name": "Storage — SSD / HDD", "launched": "", "cat": "THE FILING CABINET", "icon": "server", "accent": "#FFB020", "part": "storage",
+      "narration": "Storage is your computer's long-term memory — the filing cabinet that keeps everything safe even when the power is off. There are two kinds. A hard drive, an H-D-D, stores data on spinning magnetic platters: cheap, and enormous, but slow. A solid-state drive, an S-S-D, uses flash-memory chips with no moving parts: far, far faster, and now the standard. And the golden rule of a snappy computer: put your operating system on an S-S-D. It is, by a mile, the single upgrade that people actually feel the most.",
+      "specs": [
+        { "label": "Job", "value": "keeps files when powered off", "cue": "off", "source": "role" },
+        { "label": "SSD vs HDD", "value": "flash (fast) vs platters (cheap)", "cue": "platters", "source": "hw" },
+        { "label": "Golden tip", "value": "OS on an SSD = snappy", "cue": "SSD", "source": "hw" }
+      ],
+      "verdict": "Long-term memory — HDD is cheap & big, SSD is fast; put your OS on SSD."
+    },
+    {
+      "kind": "item", "id": "psu", "name": "PSU — Power Supply", "launched": "", "cat": "THE HEART", "icon": "doors", "accent": "#FF5C47", "part": "psu",
+      "narration": "The power supply unit, the P-S-U, is the heart that keeps everything alive. The wall socket gives you high-voltage alternating current — A-C — which your delicate components would absolutely hate. The P-S-U converts it into the steady, low-voltage direct current — D-C — that each part actually needs, and distributes it through a web of cables. It's the least glamorous part, and the one people love to cheap out on — which is a real mistake: a bad P-S-U runs unstable, and can quietly take the rest of your expensive components down with it.",
+      "specs": [
+        { "label": "Job", "value": "wall AC → clean DC power", "cue": "converts", "source": "role" },
+        { "label": "Feeds", "value": "every component", "cue": "distributes", "source": "hw" },
+        { "label": "Warning", "value": "never cheap out on it", "cue": "cheap", "source": "hw" }
+      ],
+      "verdict": "The heart — converts wall power to clean DC; never cheap out on it."
+    },
+    {
+      "kind": "item", "id": "cooler", "name": "CPU Cooler", "launched": "", "cat": "THE SWEAT GLANDS", "icon": "fanout", "accent": "#2DD4BF", "part": "cooler",
+      "narration": "All that thinking generates heat — and a hot chip throttles itself, or dies — so every C-P-U needs a cooler. The common type is an air cooler: a block of metal fins that pulls heat straight off the chip, with a fan blowing it away. The fancier type is liquid cooling, which pumps coolant through the chip to a radiator — quieter, and more effective under heavy load. Either way, the job is exactly the same: move the heat out, fast, so your brain can keep running at full speed without ever melting.",
+      "specs": [
+        { "label": "Job", "value": "move heat off the CPU", "cue": "heat", "source": "role" },
+        { "label": "Types", "value": "air (fins+fan) vs liquid", "cue": "liquid", "source": "hw" },
+        { "label": "Why", "value": "hot chips throttle or die", "cue": "throttle", "source": "hw" }
+      ],
+      "verdict": "Heat removal — keeps the CPU from throttling or cooking itself."
+    },
+    {
+      "kind": "item", "id": "case", "name": "Case + Fans", "launched": "", "cat": "THE BODY & LUNGS", "icon": "server", "accent": "#C9CDD4", "part": "case",
+      "narration": "The case is the body that holds it all together — but it is much more than just a box. It gives every part a secure mounting point, and, crucially, it manages airflow. Case fans pull cool air in at the front, and push hot air out the back and top, creating a current that carries heat away from everything inside. Good airflow keeps the whole system cool and stable; a stuffy, dusty case slowly bakes your components and shortens their life. The case is the skin, and the lungs, of the machine.",
+      "specs": [
+        { "label": "Job", "value": "houses parts + airflow", "cue": "airflow", "source": "role" },
+        { "label": "Fans", "value": "cool in front → hot out back", "cue": "fans", "source": "hw" },
+        { "label": "Matters", "value": "good airflow = cooler, longer life", "cue": "life", "source": "hw" }
+      ],
+      "verdict": "The body and lungs — holds everything and moves air to keep it cool."
+    },
+    {
+      "kind": "item", "id": "monitor", "name": "Monitor", "launched": "", "cat": "THE EYES", "icon": "laptop", "accent": "#B06BFF", "part": "monitor",
+      "narration": "None of this is any use at all if you can't see it — which is the monitor's job. It's the window into the machine, taking the finished image the G-P-U produces and painting it, pixel by pixel, dozens or even hundreds of times a second. Its two key numbers are resolution — how many pixels, so how sharp it is — and refresh rate — how many times per second it updates, which decides how smooth motion looks. Technically it's an output device, not part of the 'computer' itself — but it is how the computer talks back to you.",
+      "specs": [
+        { "label": "Job", "value": "shows the GPU's output", "cue": "image", "source": "role" },
+        { "label": "Key specs", "value": "resolution + refresh rate", "cue": "resolution", "source": "hw" },
+        { "label": "Type", "value": "an output device", "cue": "output", "source": "role" }
+      ],
+      "verdict": "The window out — resolution is sharpness, refresh rate is smoothness."
+    },
+    {
+      "kind": "item", "id": "peripherals", "name": "Keyboard & Mouse", "launched": "", "cat": "THE HANDS", "icon": "terminal", "accent": "#35E08A", "part": "peripherals",
+      "narration": "And finally, the parts you actually touch: the input devices, your keyboard and mouse. They are how you give the computer commands — the hands and the voice of the whole setup. Every key you press, and every pixel you move the cursor, is converted into a signal the C-P-U reads and acts on. They seem trivial, but they are the entire interface between a human intention and a machine — and a genuinely good keyboard and mouse quietly make everything you do feel better. Together with the monitor, they close the loop: you act, and the computer responds.",
+      "specs": [
+        { "label": "Job", "value": "turn your actions into commands", "cue": "commands", "source": "role" },
+        { "label": "Are", "value": "input devices", "cue": "input", "source": "role" },
+        { "label": "Role", "value": "the human–machine interface", "cue": "interface", "source": "hw" }
+      ],
+      "verdict": "The hands — input devices that turn your intent into commands."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "dataflow",
+      "narration": "So here is how they all work as a team, on one simple task — say, opening a photo. You click your mouse: an input. The C-P-U sees it, and asks storage for the file; storage sends the file into fast R-A-M. The C-P-U processes it, hands the visuals over to the G-P-U to draw, and the G-P-U sends the finished picture to your monitor — all of it powered by the P-S-U, and kept cool by the fans. From a click to an image, in the blink of an eye. Every part, playing its own position.",
+      "beats": [ { "cue": "click", "mark": "c" }, { "cue": "RAM", "mark": "r" }, { "cue": "monitor", "mark": "m" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "How a CPU Works",
+      "question": "Which part would you upgrade first?",
+      "narration": "So that's a computer, finally demystified: a brain that thinks, a nervous system that connects it all, memory for right now and for keeps, a heart for power, lungs for cooling, and hands and eyes to meet you. Each part is simple on its own; the real magic is in how they cooperate. And the best news? Most of them are swappable — you can upgrade the brain, add more desk space, or drop in a faster filing cabinet, all by yourself. Next, we go deep into the most important part of all: how a C-P-U actually works. If this made the box make sense, subscribe. So — which part would you upgrade first?",
+      "beats": [ { "cue": "CPU", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "upgrade", "mark": "ask" } ]
+    }
+  ]
+}

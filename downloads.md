@@ -18,10 +18,10 @@ Repo: https://github.com/cornel-stack/tech-explainer-videos/releases
 | T13 | How Wi-Fi Works | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t13-wifi-2) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t13-wifi-2/t13-wifi.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t13-wifi-2/t13-wifi-youtube-kit.zip) |
 | T14 | How RAM Works | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t14-ram-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t14-ram-1/t14-ram.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t14-ram-1/t14-ram-youtube-kit.zip) |
 | T15 | Every Type of RAM (DDR1–DDR5) | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t15-ddr-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t15-ddr-1/t15-ddr.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t15-ddr-1/t15-ddr-youtube-kit.zip) |
-| T16 | How HTTPS Works | How It Works | _building…_ | | |
-| T17 | How 5G Works | How It Works | _planned_ | | |
-| T18 | Every Mobile Network (1G–6G) | Every X | _planned_ | | |
-| T19 | Every Computer Part | Every X | _planned_ | | |
+| T16 | How HTTPS Works | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t16-https-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t16-https-1/t16-https.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t16-https-1/t16-https-youtube-kit.zip) |
+| T17 | How 5G Works | How It Works | _rendering…_ | | |
+| T18 | Every Mobile Network (1G–6G) | Every X | _rendering…_ | | |
+| T19 | Every Computer Part | Every X | _building…_ | | |
 | T20 | Every Dead Operating System | Every X | _planned_ | | |
 | T21 | Every Programming Language | Every X | _planned_ | | |
 | T22 | How Git Works Under the Hood | How It Works | _planned_ | | |
