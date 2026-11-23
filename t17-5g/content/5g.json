@@ -1,0 +1,119 @@
+{
+  "id": "t17-5g",
+  "title": "How 5G Works",
+  "series": "How It Works",
+  "keyNoun": "5G",
+  "promise": "How 5G really works — three bands, dense small cells, beamforming and a low-latency core — and exactly why the gigabit speed you were promised almost never shows up.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "3gpp", "label": "3GPP — 5G NR specifications (Rel-15/16/17)", "url": "https://www.3gpp.org/technologies/5g-system-overview" },
+    { "id": "carrier", "label": "FCC spectrum filings & independent speed tests (Ookla, OpenSignal)", "url": "https://www.opensignal.com/reports" },
+    { "id": "gsma", "label": "GSMA / industry references (bands, mmWave, network slicing)", "url": "https://www.gsma.com/futurenetworks/5g/" }
+  ],
+  "youtube": {
+    "titles": [
+      "How 5G Works — and Why It's Slower Than They Promised",
+      "How 5G Actually Works (and Why It Feels Like 4G)",
+      "Why Your 5G Is Slower Than Promised — How 5G Really Works",
+      "How 5G Works: mmWave, Small Cells, and the Gigabit Lie"
+    ],
+    "primaryTitle": "How 5G Works — and Why It's Slower Than They Promised",
+    "tags": [
+      "how 5g works", "5g explained", "why is my 5g slow", "mmwave", "5g vs 4g",
+      "5g bands", "mid band 5g", "5g coverage", "beamforming", "network slicing",
+      "is 5g worth it", "5g speed", "how mobile networks work", "how it works",
+      "cellular network", "tech explained"
+    ],
+    "hashtags": ["#5g", "#mobile", "#networking", "#tech", "#howitworks"],
+    "pinnedComment": "The thing the ads hide: the gigabit '5G' demos all use mmWave, which barely reaches past the antenna. The '5G' you actually get is usually mid- or low-band — a real upgrade, but a world away from the gigabit-everywhere dream. Ignore the icon, judge the speed you get. 👇 What does your 5G actually hit? Subscribe — 'Every Mobile Network' is next.",
+    "hook": "5G was going to change everything — gigabit speeds in your pocket, zero lag. And yet, for most people, 5G feels basically like 4G. What happened? A fascinating collision between brilliant tech, the stubborn laws of physics, and some very creative marketing."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "narration": "5G was going to change everything. Gigabit speeds in your pocket, zero lag, a hyper-connected future — that was the promise, plastered across every billboard. And yet, for most people, 5G feels… basically like 4G. So what on earth happened? The truth is a fascinating collision between genuinely brilliant technology, the stubborn laws of physics, and some very creative marketing. So let's build the whole picture of how 5G really works — and understand exactly why the blazing speed you were promised almost never actually shows up.",
+      "beats": [ { "cue": "promise", "mark": "prom" }, { "cue": "physics", "mark": "phy" }, { "cue": "speed", "mark": "spd" } ]
+    },
+
+    {
+      "kind": "stage", "id": "whatis", "name": "The Promise", "manim": "whatis", "icon": "hub", "accent": "#35E08A",
+      "narration": "5G is the fifth generation of mobile networks, and the promise was enormous: gigabit speeds, almost zero lag, and the ability to connect a billion devices at once. It isn't just a faster 4G — it's a whole new radio system, called 5G N-R, using brand-new slices of the airwaves and a smarter core network. The vision was self-driving cars talking instantly, surgeons operating remotely, and your phone pulling down a full movie in a single second. That's the pitch. The reality, as we'll see, is a lot more complicated — and a lot more about physics.",
+      "specs": [
+        { "label": "What", "value": "5th-gen mobile (5G NR)", "cue": "radio", "source": "3gpp" },
+        { "label": "Promise", "value": "gigabit speed, near-zero lag", "cue": "gigabit", "source": "3gpp" },
+        { "label": "Also", "value": "a billion devices at once", "cue": "billion", "source": "gsma" }
+      ],
+      "verdict": "5G is a new radio + core — the pitch was gigabit speeds and zero lag."
+    },
+    {
+      "kind": "stage", "id": "bands", "name": "Three Very Different Bands", "manim": "bands", "icon": "fanout", "accent": "#B06BFF",
+      "narration": "The single most important thing to understand about 5G is that it isn't one thing — it runs on three very different bands, and they could not be more different. Low-band, under one gigahertz, travels for miles and slips through walls, but it is barely faster than good 4G. Mid-band, around one to six gigahertz, is the real sweet spot: genuinely fast, with decent range — this is the 5G most people actually get, and the one they should want. And high-band, called millimetre wave, above twenty-four gigahertz, is the one in all the demos: absurdly fast, but with almost no range at all. It's the same old trade-off: speed versus reach.",
+      "specs": [
+        { "label": "Low-band", "value": "miles of range, barely 4G speed", "cue": "miles", "source": "gsma" },
+        { "label": "Mid-band", "value": "the real 5G — fast + decent range", "cue": "sweet", "source": "carrier" },
+        { "label": "High (mmWave)", "value": "blazing, but almost no range", "cue": "millimetre", "source": "3gpp" }
+      ],
+      "verdict": "Three bands, one trade-off: low reaches far, mmWave is fast but tiny."
+    },
+    {
+      "kind": "stage", "id": "mmwave", "name": "Why mmWave Disappoints", "manim": "mmwave", "icon": "cross", "accent": "#FF5C47",
+      "narration": "Those jaw-dropping, two-gigabit-per-second 5G demos? They all use millimetre wave — and here's the catch nobody mentions. Millimetre waves are so short and so fragile that they barely travel a single city block. They are blocked by walls, by windows, by rain, by the leaves on a tree — even by your own hand holding the phone. So mmWave only really works outdoors, in a direct line of sight to a nearby antenna, in dense places like a stadium or a downtown core. For the overwhelming majority of people, in a home or a suburb, you will essentially never touch it. The fastest 5G is also the rarest.",
+      "specs": [
+        { "label": "Range", "value": "barely a city block", "cue": "block", "source": "carrier" },
+        { "label": "Blocked by", "value": "walls, rain, leaves, your hand", "cue": "hand", "source": "3gpp" },
+        { "label": "So", "value": "stadiums & downtown only", "cue": "stadium", "source": "carrier" }
+      ],
+      "verdict": "The gigabit demos are all mmWave — which barely reaches past the antenna."
+    },
+    {
+      "kind": "stage", "id": "network", "name": "Small Cells & Beamforming", "manim": "network", "icon": "server", "accent": "#2DD4BF",
+      "narration": "To make these short-range bands work at all, 5G needs a far denser network. Instead of a few big towers, it uses many more small cells — compact antennas on lampposts, rooftops, and walls, right up close to you. And each one uses two clever tricks: massive M-I-M-O, which is dozens of tiny antennas packed into one panel, and beamforming, which focuses the signal into a tight beam aimed directly at your phone, following you as you move, instead of blasting out in every direction. More cells, each one smarter. The downside: rolling out this many sites is slow, and extremely expensive — a big reason good 5G took so long to actually arrive.",
+      "specs": [
+        { "label": "Small cells", "value": "many more, closer antennas", "cue": "small", "source": "gsma" },
+        { "label": "Beamforming", "value": "a beam aimed at your phone", "cue": "beamforming", "source": "3gpp" },
+        { "label": "Catch", "value": "slow & costly to deploy", "cue": "expensive", "source": "carrier" }
+      ],
+      "verdict": "Dense small cells + beams aimed at you — powerful, but slow to build."
+    },
+    {
+      "kind": "stage", "id": "latency", "name": "The Real Superpower: Latency", "manim": "latency", "icon": "clock", "accent": "#FFB020",
+      "narration": "Speed grabs the headlines, but 5G's quieter superpower is latency — the tiny delay before data even starts moving. 4G has a lag of around fifty milliseconds; 5G aims for just a few, approaching real-time. This needs two things: a completely rebuilt 5G core network, and edge computing — putting servers physically closer to you, so data doesn't have to travel to a distant data centre and back. 5G can even do network slicing: carving one physical network into separate virtual lanes — a guaranteed low-latency lane for, say, emergency services, running right alongside a bulk lane for video streaming. It's less about raw speed, and more about responsiveness and control.",
+      "specs": [
+        { "label": "Latency", "value": "~50 ms (4G) → a few ms", "cue": "milliseconds", "source": "3gpp" },
+        { "label": "Edge", "value": "servers moved closer to you", "cue": "edge", "source": "gsma" },
+        { "label": "Slicing", "value": "virtual lanes per use-case", "cue": "slicing", "source": "3gpp" }
+      ],
+      "verdict": "5G's real gift is low latency — via a new core, edge servers, and slicing."
+    },
+    {
+      "kind": "stage", "id": "slower", "name": "Why It Feels Slow", "manim": "slower", "icon": "cross", "accent": "#FF5C47",
+      "narration": "So why does your 5G so often feel barely different from 4G? Because of the enormous gap between the millimetre-wave marketing and the mid-band, or low-band, reality. That '5G' icon lighting up your phone is very often low-band — barely faster than the 4G it replaced. Carriers also played naming games: remember '5G E', which was literally just 4G with a shiny new label. And coverage is patchy, so you keep dropping back to 4G anyway. Independent tests show the typical real-world 5G speed is a few hundred megabits at best — a real improvement, yes, but a world away from the gigabit-everywhere dream you were actually sold.",
+      "specs": [
+        { "label": "The icon", "value": "often low-band ≈ 4G+", "cue": "icon", "source": "carrier" },
+        { "label": "Naming games", "value": "‘5G E’ was just 4G", "cue": "label", "source": "carrier" },
+        { "label": "Real speed", "value": "usually a few hundred Mbps", "cue": "hundred", "source": "carrier" }
+      ],
+      "verdict": "The icon lies: most '5G' is mid/low-band — good, not the gigabit promise."
+    },
+    {
+      "kind": "stage", "id": "real", "name": "The Honest Picture", "manim": "real", "icon": "check", "accent": "#E8C24A",
+      "narration": "So here's the honest picture. 5G is genuinely a real upgrade — just not the science-fiction one from the adverts. Mid-band 5G is meaningfully faster than 4G, it handles packed crowds at concerts and stations far, far better, and its low latency quietly enables new things. The millimetre-wave gigabit dream is real too, but it will stay rare — confined to dense hotspots. The practical takeaway: mid-band is the 5G that matters, so ignore the icon and the hype, and judge it purely on the speed you actually get. And the next leap, 6G, is already being researched — promising, and no doubt, over-promised all over again.",
+      "specs": [
+        { "label": "The real 5G", "value": "mid-band — a genuine upgrade", "cue": "mid-band", "source": "carrier" },
+        { "label": "Best at", "value": "crowds, capacity, low lag", "cue": "crowds", "source": "gsma" },
+        { "label": "Next", "value": "6G already in research", "cue": "6G", "source": "gsma" }
+      ],
+      "verdict": "Mid-band 5G is the real deal — ignore the icon, judge the actual speed."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "Every Mobile Network Explained",
+      "question": "What speed does your 5G actually hit?",
+      "narration": "So that's 5G: a genuinely clever system of three bands, dense small cells, beamforming, and a rebuilt low-latency core — all wrapped in marketing that oversold the rarest, fastest part of it. The real 5G, mid-band, is a solid upgrade; the gigabit mmWave future stays stuck in stadiums. Next time, we zoom all the way out to the whole story — every mobile network, from one-G to six-G, and exactly what each generation changed. If this finally cut through the 5G hype, subscribe. So tell me — what speed does your 5G actually hit?",
+      "beats": [ { "cue": "network", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "hit", "mark": "ask" } ]
+    }
+  ]
+}
