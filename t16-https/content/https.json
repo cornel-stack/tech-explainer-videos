@@ -1,0 +1,119 @@
+{
+  "id": "t16-https",
+  "title": "How HTTPS Works",
+  "series": "How It Works",
+  "keyNoun": "HTTPS",
+  "promise": "How two strangers agree a secret in full view of everyone watching — and what the padlock in your address bar actually proves, which is both less and more than you think.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "tls", "label": "IETF RFC 8446 — TLS 1.3", "url": "https://datatracker.ietf.org/doc/html/rfc8446" },
+    { "id": "mdn", "label": "MDN Web Docs — HTTPS, TLS & certificates", "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security" },
+    { "id": "ca", "label": "CA/Browser Forum & Let's Encrypt — certificates & chain of trust", "url": "https://letsencrypt.org/how-it-works/" }
+  ],
+  "youtube": {
+    "titles": [
+      "How HTTPS Works: What the Padlock Actually Proves",
+      "How HTTPS Really Works (and Why the Padlock Doesn't Mean 'Safe')",
+      "What the Padlock ACTUALLY Proves — How HTTPS Works",
+      "How HTTPS Works: Keys, Handshakes, and the Padlock Myth"
+    ],
+    "primaryTitle": "How HTTPS Works: What the Padlock Actually Proves",
+    "tags": [
+      "how https works", "https explained", "what does the padlock mean", "tls explained",
+      "ssl tls", "public key cryptography", "tls handshake", "certificate authority",
+      "is the padlock safe", "web security", "encryption explained", "how it works",
+      "https padlock", "tls 1.3", "cybersecurity", "tech explained"
+    ],
+    "hashtags": ["#https", "#cybersecurity", "#encryption", "#tls", "#howitworks"],
+    "pinnedComment": "The thing everyone gets wrong: the padlock does NOT mean a site is safe. It only means 'encrypted connection to whoever owns this exact domain' — and a scammer can get a valid padlock for a fake domain in minutes. Always check the domain name. 👇 Did you think the padlock meant 'safe'? Subscribe — 'How 5G Works' is next.",
+    "hook": "That little padlock in your address bar — you've been told it means a site is 'secure.' But what does it ACTUALLY prove? The honest answer is both less and more interesting than you think. HTTPS rests on a beautiful trick: two strangers agreeing a secret in full view of everyone watching."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "narration": "That little padlock in your browser's address bar — you have seen it a million times, and you have been told it means a site is 'secure.' But what does it actually prove? Because the honest answer is both less, and far more interesting, than you'd think. H-T-T-P-S is the technology that now encrypts almost the entire web, and it rests on a genuinely beautiful trick: two complete strangers agreeing on a shared secret, in full view of everyone watching. So let's open the padlock right up — how the lock is made, what it truly guarantees, and the one dangerous thing it does not.",
+      "beats": [ { "cue": "padlock", "mark": "lock" }, { "cue": "strangers", "mark": "str" }, { "cue": "guarantees", "mark": "gua" } ]
+    },
+
+    {
+      "kind": "stage", "id": "problem", "name": "The Postcard Problem", "manim": "problem", "icon": "cross", "accent": "#FF5C47",
+      "narration": "Type H-T-T-P into your browser, and your data travels the internet as plain text — like a postcard. Every router it passes, every Wi-Fi hotspot, your internet provider — anyone along the path can read it, and even change it. Your password, your messages, your card number: all out in the open. H-T-T-P-S fixes this by wrapping ordinary H-T-T-P inside a layer of encryption called T-L-S. Same web, but now your postcard is sealed inside a locked, tamper-proof envelope. The little padlock is simply the sign that T-L-S is switched on.",
+      "specs": [
+        { "label": "HTTP", "value": "plain text — a postcard", "cue": "postcard", "source": "mdn" },
+        { "label": "On the path", "value": "anyone can read & alter it", "cue": "read", "source": "mdn" },
+        { "label": "HTTPS", "value": "HTTP wrapped inside TLS", "cue": "TLS", "source": "tls" }
+      ],
+      "verdict": "HTTPS is just HTTP sealed inside TLS — the padlock means TLS is on."
+    },
+    {
+      "kind": "stage", "id": "twokeys", "name": "Two Kinds of Key", "manim": "twokeys", "icon": "hub", "accent": "#2DD4BF",
+      "narration": "Encryption needs keys, and there are two flavours. Symmetric encryption uses one single shared key to both lock and unlock — it's beautifully fast, but both sides must already know the same secret. Asymmetric encryption uses a pair: a public key that anyone can have, and a private key kept secret. Anything locked with the public key can only ever be opened by the matching private one. This solves a chicken-and-egg puzzle: how do two strangers agree on a secret key, over a line that everyone is listening to? The answer uses both of them — and it all happens in the handshake.",
+      "specs": [
+        { "label": "Symmetric", "value": "one shared key · fast", "cue": "shared", "source": "mdn" },
+        { "label": "Asymmetric", "value": "a public + private pair", "cue": "pair", "source": "mdn" },
+        { "label": "The puzzle", "value": "agree a secret in the open", "cue": "strangers", "source": "tls" }
+      ],
+      "verdict": "Two key types: a fast shared one, and a public/private pair to set it up."
+    },
+    {
+      "kind": "stage", "id": "handshake", "name": "The TLS Handshake", "manim": "handshake", "icon": "arrow", "accent": "#35E08A",
+      "narration": "When you connect, the browser and server run the T-L-S handshake — just a few milliseconds of negotiation. The browser says hello, and lists the encryption it supports. The server replies with its digital certificate, which contains its public key. Then, using that asymmetric magic, the two sides securely agree on a brand-new, shared symmetric key that no eavesdropper could ever work out — even while watching every single byte go past. From that moment on, they switch to the fast shared key for the actual conversation. A slow, careful setup first; a fast, secure chat afterwards.",
+      "specs": [
+        { "label": "Browser → hello", "value": "‘here's what I support’", "cue": "hello", "source": "tls" },
+        { "label": "Server → certificate", "value": "its public key, signed", "cue": "certificate", "source": "tls" },
+        { "label": "Both derive", "value": "one shared session key", "cue": "key", "source": "tls" }
+      ],
+      "verdict": "A quick handshake: agree a secret key in the open, then talk fast."
+    },
+    {
+      "kind": "stage", "id": "certificate", "name": "What the Padlock Proves", "manim": "certificate", "icon": "check", "accent": "#E8C24A",
+      "narration": "But wait — what stops an attacker from simply sending you their own public key, and pretending to be your bank? This is the real job of the padlock: identity. That certificate the server sent is signed by a trusted Certificate Authority — a company like Let's Encrypt or DigiCert — which has verified that this key genuinely belongs to this exact domain. Your browser and your operating system ship with a built-in list of these trusted authorities. So the chain of trust runs: you trust your browser, your browser trusts the authority, and the authority vouches for the site. No valid signature — and you get a big red warning.",
+      "specs": [
+        { "label": "Signed by", "value": "a Certificate Authority", "cue": "Authority", "source": "ca" },
+        { "label": "CA verifies", "value": "this key = this domain", "cue": "verified", "source": "ca" },
+        { "label": "Chain of trust", "value": "browser → CA → site", "cue": "chain", "source": "ca" }
+      ],
+      "verdict": "The padlock proves identity: a trusted CA vouched this key owns this domain."
+    },
+    {
+      "kind": "stage", "id": "sealed", "name": "Sealed in Flight", "manim": "sealed", "icon": "doors", "accent": "#35E08A",
+      "narration": "With the shared key agreed, and the identity confirmed, the connection is finally sealed. Every request and response is now scrambled with that symmetric key into complete gibberish. The person on the café Wi-Fi next to you, or your internet provider, sees only encrypted noise — not your password, not even which page you're reading. T-L-S also stamps each message with an integrity check, so if anyone flips even a single bit in transit, the other side notices instantly and throws it away. Private, and tamper-evident — that is the actual guarantee the padlock gives you.",
+      "specs": [
+        { "label": "Encrypted", "value": "eavesdroppers see gibberish", "cue": "gibberish", "source": "mdn" },
+        { "label": "Integrity", "value": "any tampering is detected", "cue": "integrity", "source": "tls" },
+        { "label": "Protects vs", "value": "café Wi-Fi, your ISP", "cue": "café", "source": "mdn" }
+      ],
+      "verdict": "Sealed and tamper-evident — the eavesdropper sees only noise."
+    },
+    {
+      "kind": "stage", "id": "notprove", "name": "What It Does NOT Prove", "manim": "notprove", "icon": "cross", "accent": "#FF5C47",
+      "narration": "Now, the part almost everyone gets wrong — what the padlock does not prove. It does not mean a website is safe, or honest, or legitimate. The padlock only ever certifies one single thing: that you have a private, verified connection to whoever controls that exact domain. A scammer can register 'your-bank-dash-login-dot-com', get a perfectly valid, free certificate for it in minutes, and show you a flawless padlock — all while stealing everything you type. So, a padlock just means 'encrypted to this domain.' It is never, ever a stamp of trustworthiness. Always, always read the domain name itself.",
+      "specs": [
+        { "label": "It proves", "value": "encrypted link to this domain", "cue": "domain", "source": "mdn" },
+        { "label": "It does NOT", "value": "mean the site is honest/safe", "cue": "honest", "source": "mdn" },
+        { "label": "Scam sites", "value": "get valid padlocks too", "cue": "scammer", "source": "ca" }
+      ],
+      "verdict": "The padlock ≠ ‘safe site.’ It only means ‘encrypted to this domain.’"
+    },
+    {
+      "kind": "stage", "id": "modern", "name": "HTTPS Everywhere", "manim": "modern", "icon": "cloud", "accent": "#B06BFF",
+      "narration": "Finally, where things stand today. H-T-T-P-S used to be reserved for login and checkout pages; now it is simply everywhere, and browsers actively mark plain H-T-T-P as 'not secure.' The current version, T-L-S one-point-three, trimmed the handshake down to a single round trip, so encryption is now basically free and instant. In fact, H-T-T-P-S has become so standard that browsers are quietly removing the padlock icon altogether — because being secure is no longer special, it's just the default. The real lesson: encryption protects the pipe. Whether you should trust what's at the other end is still entirely up to you.",
+      "specs": [
+        { "label": "Now", "value": "HTTPS everywhere; HTTP = ‘not secure’", "cue": "everywhere", "source": "mdn" },
+        { "label": "TLS 1.3", "value": "one round trip, faster", "cue": "round", "source": "tls" },
+        { "label": "The icon", "value": "being retired — secure is default", "cue": "removing", "source": "mdn" }
+      ],
+      "verdict": "Encryption is now the default — it protects the pipe, not your judgement."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "How 5G Works",
+      "question": "Did you used to think the padlock meant ‘safe’?",
+      "narration": "So that's H-T-T-P-S: your browser and a server shake hands, use public-key maths to agree a secret in the open, then seal everything with fast symmetric encryption — all vouched for by a certificate authority you've never heard of, but implicitly trust. The padlock proves your connection is private, and that it goes to the real owner of that domain — and nothing more than that. Next time, we go wireless and decode the hype: how 5G actually works, and why it's so often slower than they promised. If this changed how you read that little padlock, subscribe. So — did you used to think the padlock meant 'safe'?",
+      "beats": [ { "cue": "5G", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "safe", "mark": "ask" } ]
+    }
+  ]
+}
