@@ -1,0 +1,146 @@
+{
+  "id": "t11-res",
+  "title": "Every Screen Resolution Explained",
+  "series": "Every X",
+  "keyNoun": "resolution",
+  "promise": "Every resolution from 360p to 8K drawn to true scale, what each is for, and the exact point where more pixels stop making any difference your eyes can see.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "cta", "label": "CTA / ITU-R display-resolution standards (HD, UHD, 8K)", "url": "https://www.itu.int/rec/R-REC-BT.2020" },
+    { "id": "acuity", "label": "Human visual acuity — ~1 arcminute (20/20 / Snellen standard)", "url": "https://en.wikipedia.org/wiki/Visual_acuity" },
+    { "id": "use", "label": "Panel spec sheets & Steam Hardware Survey (common resolutions)", "url": "https://store.steampowered.com/hwsurvey" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Screen Resolution Explained: 720p to 8K, and Where Your Eyes Give Up",
+      "Every Screen Resolution Explained — 360p to 8K, Drawn to Scale",
+      "1080p vs 1440p vs 4K vs 8K — Every Resolution Explained",
+      "Every Screen Resolution Explained — and Why 8K Is a Lie From the Sofa"
+    ],
+    "primaryTitle": "Every Screen Resolution Explained: 720p to 8K, and Where Your Eyes Give Up",
+    "tags": [
+      "every screen resolution", "screen resolution explained", "1080p vs 1440p vs 4k",
+      "4k vs 8k", "is 8k worth it", "what is 1440p", "qhd vs 4k", "display resolution",
+      "pixels explained", "visual acuity", "ppi explained", "ultrawide", "monitor buying guide",
+      "4k tv", "resolution comparison", "tech explained", "how it works"
+    ],
+    "hashtags": ["#resolution", "#4k", "#8k", "#monitors", "#tech"],
+    "pinnedComment": "The rule that saves you money: match resolution to screen size AND how close you sit. Past 4K, in most living rooms, you're paying for pixels your eyes literally cannot resolve. 👇 What are you reading this on? Subscribe — 'Every Monitor Refresh Rate' is next.",
+    "hook": "A screen is just a grid of coloured dots — the whole fight is about how many. From grainy 360p to a 33-megapixel 8K wall, let's climb the ladder, draw every resolution to true scale, and find the exact point where your eyes give up."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "ladder",
+      "narration": "A screen is just a grid of coloured dots, and the whole fight in display tech comes down to one question: how many. From grainy three-sixty p to a thirty-three-megapixel eight-K wall, each step up roughly doubles the detail — and the price, and the horsepower needed to drive it. But there's a limit built right into you: your own eyes. So in the next few minutes we'll climb the entire ladder, show each resolution drawn to true scale, and find the exact point where more pixels stop making any difference you can actually see.",
+      "beats": [ { "cue": "ladder", "mark": "lad" }, { "cue": "eyes", "mark": "eye" }, { "cue": "limit", "mark": "lim" } ]
+    },
+
+    {
+      "kind": "item", "id": "p360", "name": "360p — nHD", "launched": "the floor", "cat": "DATA SAVER", "icon": "phone", "accent": "#FF5C47", "px": [640, 360],
+      "narration": "We start at the very bottom: three-sixty p, sometimes called n-H-D. That's six hundred forty by three hundred sixty — about a quarter of a million pixels. It's the data-saver setting: grainy, soft, but just watchable on a phone over a weak connection. On anything bigger than your hand, you'll see the blocks immediately. It exists for one reason — to keep the video playing when the bandwidth collapses.",
+      "specs": [
+        { "label": "Pixels", "value": "640 × 360 · 0.23 MP", "cue": "quarter", "source": "cta" },
+        { "label": "Good for", "value": "low-bandwidth phone video", "cue": "saver", "source": "use" },
+        { "label": "Weakness", "value": "blocky on any real screen", "cue": "blocks", "source": "acuity" }
+      ],
+      "verdict": "The bandwidth floor — only when the connection is dying."
+    },
+    {
+      "kind": "item", "id": "p480", "name": "480p — SD", "launched": "the DVD era", "cat": "STANDARD DEF", "icon": "cloud", "accent": "#FF5C47", "px": [854, 480],
+      "narration": "Next, four-eighty p — standard definition, the resolution of D-V-Ds and old digital broadcast. Eight hundred fifty-four by four hundred eighty, just over four hundred thousand pixels. For decades this was simply 'normal' television, and on a small tube set it looked completely fine. Blown up on a modern display it's a blurry mess — but it's still the quality your stream quietly falls back to on a slow link.",
+      "specs": [
+        { "label": "Pixels", "value": "854 × 480 · 0.41 MP", "cue": "thousand", "source": "cta" },
+        { "label": "Was", "value": "DVD & SD broadcast", "cue": "broadcast", "source": "use" },
+        { "label": "Now", "value": "the slow-link fallback", "cue": "fall", "source": "use" }
+      ],
+      "verdict": "Standard definition — fine on a 2003 TV, mush on yours."
+    },
+    {
+      "kind": "item", "id": "p720", "name": "720p — HD", "launched": "‘HD ready’", "cat": "HD READY", "icon": "laptop", "accent": "#FFB020", "px": [1280, 720],
+      "narration": "Seven-twenty p is where high definition began. Twelve eighty by seven twenty — about nine hundred thousand pixels, just under one megapixel. It was the first 'H-D' standard, and it is still absolutely everywhere: budget laptops, a huge share of video calls, and most Twitch streams, because it's so light to encode and send. It's genuinely sharp on a small screen — the trouble only starts when you stretch it across a big monitor.",
+      "specs": [
+        { "label": "Pixels", "value": "1280 × 720 · 0.92 MP", "cue": "megapixel", "source": "cta" },
+        { "label": "Lives in", "value": "video calls, Twitch, laptops", "cue": "calls", "source": "use" },
+        { "label": "Why still here", "value": "light to encode & stream", "cue": "encode", "source": "use" }
+      ],
+      "verdict": "The first HD — still the sweet spot for streaming bandwidth."
+    },
+    {
+      "kind": "item", "id": "p1080", "name": "1080p — Full HD", "launched": "the world’s default", "cat": "THE DEFAULT", "icon": "laptop", "accent": "#35E08A", "px": [1920, 1080],
+      "narration": "And here's the one that runs the world: ten-eighty p, Full H-D. Nineteen twenty by ten eighty — just over two megapixels. It is, by a huge margin, the most common resolution on Earth: most phones, most monitors in the Steam survey, and the default for most of YouTube and Netflix. It also hits the point where, on a typical screen at a normal distance, most people simply can't pick out the individual pixels. For the vast majority of viewing, ten-eighty p is genuinely enough.",
+      "specs": [
+        { "label": "Pixels", "value": "1920 × 1080 · 2.07 MP", "cue": "megapixels", "source": "cta" },
+        { "label": "Share", "value": "the most common on Earth", "cue": "common", "source": "use" },
+        { "label": "The point", "value": "pixels vanish at normal distance", "cue": "distance", "source": "acuity" }
+      ],
+      "verdict": "The world's default — and honestly enough for most screens."
+    },
+    {
+      "kind": "item", "id": "p1440", "name": "1440p — QHD / 2K", "launched": "27-inch desktops", "cat": "GAMER SWEET SPOT", "icon": "terminal", "accent": "#35E08A", "px": [2560, 1440],
+      "narration": "Step up to fourteen-forty p — Q-H-D, often marketed as two-K. Twenty five sixty by fourteen forty, about three point seven megapixels — roughly eighty percent more than ten-eighty p. This is the sweet spot for desktop monitors, especially twenty-seven inch gaming screens, where you sit close enough that the extra sharpness is genuinely obvious. It's a real, visible upgrade over Full H-D, without the brutal performance cost of pushing all the way to four-K.",
+      "specs": [
+        { "label": "Pixels", "value": "2560 × 1440 · 3.7 MP", "cue": "point", "source": "cta" },
+        { "label": "Sweet spot", "value": "27-inch desktop & gaming", "cue": "desktop", "source": "use" },
+        { "label": "Vs 1080p", "value": "~80% more pixels", "cue": "eighty", "source": "cta" }
+      ],
+      "verdict": "The desktop sweet spot — sharper than 1080p, kinder than 4K."
+    },
+    {
+      "kind": "item", "id": "uw1440", "name": "Ultrawide — 3440×1440", "launched": "21:9", "cat": "ULTRAWIDE", "icon": "hub", "accent": "#B06BFF", "px": [3440, 1440],
+      "narration": "A quick detour: ultrawide. Take fourteen-forty p and stretch it to twenty-one by nine — thirty four forty by fourteen forty, about five megapixels. You're not adding sharpness here, you're adding width: a wrap-around field of view in games, and room for three documents side by side at work. The catch is that not every app fills the extra space gracefully, and you get black bars on normal sixteen-by-nine video. But for pure immersion and multitasking, nothing else quite feels like it.",
+      "specs": [
+        { "label": "Pixels", "value": "3440 × 1440 · 4.95 MP", "cue": "five", "source": "cta" },
+        { "label": "Aspect", "value": "21:9 — adds width, not sharpness", "cue": "width", "source": "use" },
+        { "label": "Trade", "value": "black bars on 16:9 video", "cue": "bars", "source": "use" }
+      ],
+      "verdict": "Not sharper — wider. For immersion and side-by-side work."
+    },
+    {
+      "kind": "item", "id": "p4k", "name": "4K — UHD", "launched": "4 × 1080p", "cat": "TV & PREMIUM", "icon": "server", "accent": "#B06BFF", "px": [3840, 2160],
+      "narration": "Four-K — ultra-high-definition. Thirty eight forty by twenty one sixty, about eight point three megapixels: exactly four times ten-eighty p, two-K wide and two-K tall stacked together. On a large television, or a big monitor you sit close to, the jump in detail is gorgeous and obvious. This is the mainstream premium standard now — for T-Vs, consoles, and high-end P-Cs. The honest caveat: on a small screen, or from across a living room, you may not actually see all of those pixels.",
+      "specs": [
+        { "label": "Pixels", "value": "3840 × 2160 · 8.3 MP", "cue": "point", "source": "cta" },
+        { "label": "Versus 1080p", "value": "exactly 4× the pixels", "cue": "times", "source": "cta" },
+        { "label": "Best on", "value": "big TVs & monitors", "cue": "television", "source": "use" }
+      ],
+      "verdict": "Four times Full HD — stunning up close, wasted from the sofa."
+    },
+    {
+      "kind": "item", "id": "p5k", "name": "5K", "launched": "Retina desktops", "cat": "PRO / RETINA", "icon": "server", "accent": "#2DD4BF", "px": [5120, 2880],
+      "narration": "Five-K is a specialist. Fifty one twenty by twenty eight eighty — about fourteen point seven megapixels. Why this exact, odd size? It's precisely four times the pixels of a twenty-seven inch fourteen-forty p panel, which lets the operating system do perfect 'Retina' scaling: every interface element drawn from four real pixels, razor-sharp text, and no blur. Photographers and designers love it, because you can show a full four-K video with your editing tools arranged around it. It's niche, and expensive — but for pro desktop work, it's close to ideal.",
+      "specs": [
+        { "label": "Pixels", "value": "5120 × 2880 · 14.7 MP", "cue": "fourteen", "source": "cta" },
+        { "label": "Why", "value": "perfect 2× Retina UI scaling", "cue": "Retina", "source": "use" },
+        { "label": "For", "value": "photo & design pros", "cue": "designers", "source": "use" }
+      ],
+      "verdict": "A pro niche — flawless Retina UI and 4K with room to work."
+    },
+    {
+      "kind": "item", "id": "p8k", "name": "8K — UHD-2", "launched": "16 × 1080p", "cat": "THE CEILING", "icon": "hub", "accent": "#E8C24A", "px": [7680, 4320],
+      "narration": "And the ceiling: eight-K. Seventy six eighty by forty three twenty — thirty three megapixels, sixteen times ten-eighty p. The numbers are staggering, and up close on a huge panel the clarity really is unreal. But here's the hard truth the marketing skips: at a normal living-room distance, on any television you can actually fit in a house, your eyes physically cannot resolve the difference between eight-K and four-K. There's also almost nothing filmed in it. For now, eight-K is a spec-sheet trophy far more than a visible upgrade.",
+      "specs": [
+        { "label": "Pixels", "value": "7680 × 4320 · 33 MP", "cue": "thirty", "source": "cta" },
+        { "label": "Versus 1080p", "value": "16× the pixels", "cue": "sixteen", "source": "cta" },
+        { "label": "Reality", "value": "eyes can't tell at sofa distance", "cue": "resolve", "source": "acuity" }
+      ],
+      "verdict": "The ceiling — real detail up close, invisible from the couch."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "acuity",
+      "narration": "So, where exactly do your eyes give up? Human vision has a hard limit — about one arc-minute, one sixtieth of a degree. Translate that onto a screen and it becomes a simple rule: for any given viewing distance and screen size, there's a resolution beyond which the pixels are already smaller than you can possibly see. Sit two and a half metres from a sixty-five inch T-V — a completely normal living room — and that limit lands right around four-K. Everything past it, including all of eight-K, is simply invisible from the couch. Sharpness you paid for, but will never actually see.",
+      "beats": [ { "cue": "limit", "mark": "lim" }, { "cue": "invisible", "mark": "inv" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every Monitor Refresh Rate Explained",
+      "question": "What are you reading this on?",
+      "narration": "So that's the whole resolution ladder, drawn to scale: more pixels do mean more detail — but only up to the wall your own eyes build. Match the resolution to the screen size and how close you sit, and past four-K, for most rooms, you are simply buying numbers you cannot see. Next, we tackle the other half of what makes a screen feel good: not how many pixels, but how often they refresh — every monitor refresh rate, sixty hertz to five hundred and forty. If this sharpened things up, subscribe. So tell me — what are you reading this on?",
+      "beats": [ { "cue": "refresh", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "reading", "mark": "ask" } ]
+    }
+  ]
+}
