@@ -19,12 +19,12 @@ Repo: https://github.com/cornel-stack/tech-explainer-videos/releases
 | T14 | How RAM Works | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t14-ram-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t14-ram-1/t14-ram.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t14-ram-1/t14-ram-youtube-kit.zip) |
 | T15 | Every Type of RAM (DDR1–DDR5) | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t15-ddr-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t15-ddr-1/t15-ddr.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t15-ddr-1/t15-ddr-youtube-kit.zip) |
 | T16 | How HTTPS Works | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t16-https-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t16-https-1/t16-https.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t16-https-1/t16-https-youtube-kit.zip) |
-| T17 | How 5G Works | How It Works | _rendering…_ | | |
-| T18 | Every Mobile Network (1G–6G) | Every X | _rendering…_ | | |
-| T19 | Every Computer Part | Every X | _building…_ | | |
-| T20 | Every Dead Operating System | Every X | _planned_ | | |
-| T21 | Every Programming Language | Every X | _planned_ | | |
-| T22 | How Git Works Under the Hood | How It Works | _planned_ | | |
+| T17 | How 5G Works | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t17-5g-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t17-5g-1/t17-5g.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t17-5g-1/t17-5g-youtube-kit.zip) |
+| T18 | Every Mobile Network (1G–6G) | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t18-cell-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t18-cell-1/t18-cell.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t18-cell-1/t18-cell-youtube-kit.zip) |
+| T19 | Every Computer Part | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t19-parts-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t19-parts-1/t19-parts.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t19-parts-1/t19-parts-youtube-kit.zip) |
+| T20 | Every Dead Operating System | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t20-deados-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t20-deados-1/t20-deados.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t20-deados-1/t20-deados-youtube-kit.zip) |
+| T21 | Every Programming Language | Every X | _rendering…_ | | |
+| T22 | How Git Works Under the Hood | How It Works | _building…_ | | |
 | T23 | Every Git Command | Every X | _planned_ | | |
 | T24 | How LLMs Actually Work | How It Works | _planned_ | | |
 | T25 | How ChatGPT Works | How It Works | _planned_ | | |

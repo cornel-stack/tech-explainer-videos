@@ -1,0 +1,118 @@
+{
+  "id": "t22-git",
+  "title": "How Git Works Under the Hood",
+  "series": "How It Works",
+  "keyNoun": "Git",
+  "promise": "How Git really works beneath the commands — a tiny content-addressed database of blobs, trees and commits, all held together by hashes and pointers. After this, it never feels like magic again.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "core", "label": "Pro Git (Chacon & Straub) — Git Internals: objects, refs, the DAG", "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects" },
+    { "id": "pro", "label": "Official Git documentation & `git help`", "url": "https://git-scm.com/doc" }
+  ],
+  "youtube": {
+    "titles": [
+      "How Git Works Under the Hood — Hashes, Blobs, Trees & Commits",
+      "How Git Actually Works (It's Just Hashes and Pointers)",
+      "How Git Works Under the Hood — and Why It Stops Being Scary",
+      "Git Internals Explained — How Git Really Stores Your Code"
+    ],
+    "primaryTitle": "How Git Works Under the Hood — Hashes, Blobs, Trees & Commits",
+    "tags": [
+      "how git works", "git internals", "git explained", "git under the hood",
+      "git objects", "blob tree commit", "what is a commit", "git branches explained",
+      "content addressable storage", "git for beginners", "git tutorial", "version control",
+      "how it works", "tech explained", "learn git"
+    ],
+    "hashtags": ["#git", "#programming", "#versioncontrol", "#tech", "#howitworks"],
+    "pinnedComment": "The whole secret in one line: Git is a content-addressed database — files become blobs, folders become trees, snapshots become commits, and a branch is just a 41-byte pointer. Hashes + pointers. That's it. 👇 Which Git command still scares you? Subscribe — 'Every Git Command' is next.",
+    "hook": "Git runs basically all of modern software — and almost everyone is secretly a little terrified of it. But underneath, Git is astonishingly simple: not a complicated diff tool, but a tiny, elegant database of snapshots built from hashes and pointers."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "narration": "Git is the tool that runs basically all of modern software — and almost everyone who uses it is, let's be honest, a little bit terrified of it. We memorise a handful of commands, we pray we don't hit a merge conflict, and we quietly treat the whole thing as black magic. But here is the secret: underneath, Git is astonishingly simple. It is not a complicated diff tool — it is a tiny, elegant database of snapshots, built from just a few kinds of object, and a whole lot of hashing. So let's open up the hood, and build up exactly how Git really works — and I promise, it will never feel like magic again.",
+      "beats": [ { "cue": "software", "mark": "sw" }, { "cue": "simple", "mark": "si" }, { "cue": "hood", "mark": "hd" } ]
+    },
+
+    {
+      "kind": "stage", "id": "model", "name": "It's a Snapshot Database", "manim": "model", "icon": "hub", "accent": "#35E08A",
+      "narration": "The first and biggest misconception is that Git stores differences — that each commit saves only what changed since the last one. It doesn't. Git stores snapshots. Every time you commit, Git takes a complete picture of every file in your project, at that moment, and stores it. If a file didn't change, Git is smart enough to just point to the previous copy instead of storing it twice — but the mental model you want is snapshots, not diffs. And everything — every file, every folder, every commit — is kept as an 'object' in a little key-value database, hidden inside your project's dot-git folder. That database, really, is all that Git is.",
+      "specs": [
+        { "label": "It's NOT", "value": "a diff tool", "cue": "diff", "source": "core" },
+        { "label": "It IS", "value": "a snapshot database", "cue": "snapshots", "source": "core" },
+        { "label": "Lives in", "value": "the hidden .git folder", "cue": "folder", "source": "pro" }
+      ],
+      "verdict": "Git stores whole snapshots, not diffs — as objects in a tiny .git database."
+    },
+    {
+      "kind": "stage", "id": "blob", "name": "Everything Starts With a Hash", "manim": "blob", "icon": "server", "accent": "#B06BFF",
+      "narration": "So how does Git actually store a file? It takes the file's entire contents and runs them through a hash function — these days SHA-256, historically SHA-1 — which crunches any input into a short, fixed-length fingerprint: a string of forty hex characters. That fingerprint becomes the file's name inside the database. The wrapped-up content itself is called a 'blob'. Two crucial things follow. First: if two files have identical content, they produce an identical hash — so Git stores that content only once, automatically. And second: if even a single byte changes, the hash changes completely. The name IS the content. This is called content-addressable storage, and it is the whole foundation.",
+      "specs": [
+        { "label": "Hash", "value": "content → 40-char fingerprint", "cue": "fingerprint", "source": "core" },
+        { "label": "A blob", "value": "is just your file's content", "cue": "blob", "source": "core" },
+        { "label": "Key fact", "value": "identical content = identical hash", "cue": "identical", "source": "core" }
+      ],
+      "verdict": "A file's content is hashed into a 'blob' — the hash itself is its name."
+    },
+    {
+      "kind": "stage", "id": "tree", "name": "Folders Become Trees", "manim": "tree", "icon": "fanout", "accent": "#2DD4BF",
+      "narration": "Blobs store content — but they don't store filenames, or folders. That is the job of the second object type: the tree. A tree is basically Git's version of a folder: a simple list that maps each filename to the hash of its blob, plus any sub-folders, which are just… more trees, nested inside. So a tree captures the structure of your project — which files exist, what they're called, and how they're arranged — entirely by pointing to hashes. And because a tree contains the hashes of everything inside it, the tree itself gets a hash that depends on its full contents. One single hash, at the top, now represents your whole directory, perfectly.",
+      "specs": [
+        { "label": "A tree", "value": "a folder: names → blob hashes", "cue": "folder", "source": "core" },
+        { "label": "Nests", "value": "sub-folders are just more trees", "cue": "nested", "source": "core" },
+        { "label": "Result", "value": "one hash = your whole structure", "cue": "structure", "source": "core" }
+      ],
+      "verdict": "A tree maps names to blob hashes — one top hash captures the whole project."
+    },
+    {
+      "kind": "stage", "id": "commit", "name": "A Commit Ties It Together", "manim": "commit", "icon": "check", "accent": "#FFB020",
+      "narration": "Now, the star of the show: the commit. The commit is the third object type, and it is wonderfully simple — a tiny file that records just a few things. One: a pointer to a single tree — the complete snapshot of your project at that moment. Two: a pointer to its parent commit — the one that came right before it. And three: the author, the date, and your commit message. That is genuinely it. And of course, this commit object is itself hashed, giving it its own unique forty-character I-D — the commit hash you see and copy all the time. So one commit hash points to a tree, which points to trees and blobs: the entire state of your code, locked to a single fingerprint.",
+      "specs": [
+        { "label": "Points to", "value": "a tree (the full snapshot)", "cue": "snapshot", "source": "core" },
+        { "label": "And to", "value": "its parent commit", "cue": "parent", "source": "core" },
+        { "label": "Plus", "value": "author, date, message", "cue": "message", "source": "core" }
+      ],
+      "verdict": "A commit = a pointer to a tree + its parent + author/message, all hashed."
+    },
+    {
+      "kind": "stage", "id": "dag", "name": "History Is a Chain of Hashes", "manim": "dag", "icon": "fanout", "accent": "#35E08A",
+      "narration": "Because every commit points back to its parent, commits naturally link up into a chain — and, with branches and merges, into a graph. This is your project's history, and it only ever grows forward. Now here is the beautiful, slightly mind-bending part. A commit's hash is built from its content — and that content includes its parent's hash. So if you ever changed anything about an old commit — even a single character in its message — its hash would change, which would change its child's hash, and its child's, all the way down. The entire chain is cryptographically linked. That is exactly why rewriting history rewrites every commit after it — and why Git history is so tamper-evident, and so trustworthy.",
+      "specs": [
+        { "label": "Chain", "value": "each commit points to its parent", "cue": "parent", "source": "core" },
+        { "label": "Linked", "value": "the parent's hash is inside the child", "cue": "cryptographically", "source": "core" },
+        { "label": "So", "value": "changing history changes all hashes", "cue": "rewriting", "source": "pro" }
+      ],
+      "verdict": "Commits chain by parent-hash — change one, and every later hash changes too."
+    },
+    {
+      "kind": "stage", "id": "branch", "name": "A Branch Is Just a Pointer", "manim": "branch", "icon": "fanout", "accent": "#B06BFF",
+      "narration": "If commits form this whole graph, then what, exactly, is a branch? Here is the idea that unlocks everything: a branch is almost nothing. It is just a tiny file — forty-one bytes — containing the hash of one single commit. That is the entire branch. 'Main' is a pointer. 'Feature' is a pointer. When you make a new commit, Git simply creates the commit object, and then slides the current branch pointer forward onto it. And a special pointer, called HEAD, just tells Git which branch you are currently on. That is why branching in Git is instant, and basically free — you are not copying any files, you are only creating a tiny new pointer. Everyone's first Git fear turns out to be the cheapest operation of all.",
+      "specs": [
+        { "label": "A branch", "value": "a 41-byte file = one commit hash", "cue": "bytes", "source": "core" },
+        { "label": "HEAD", "value": "points to your current branch", "cue": "head", "source": "core" },
+        { "label": "So", "value": "branching is instant & free", "cue": "free", "source": "pro" }
+      ],
+      "verdict": "A branch is just a 41-byte pointer to a commit — so branching is nearly free."
+    },
+    {
+      "kind": "stage", "id": "distributed", "name": "Why It All Just Works", "manim": "distributed", "icon": "hub", "accent": "#E8C24A",
+      "narration": "Now step back, and the elegance clicks into place. Because every object is named by its own content, Git can instantly tell what two people already share — and send only the objects that are genuinely new. That is a push, and a pull. When you clone a repo, you do not just get a copy of the files — you get the entire object database, the whole history, right there on your own machine; that is what 'distributed' really means. Merging is simply finding a common ancestor commit in the graph, and combining from there. And because objects are only ever added, never changed, almost nothing is ever truly lost — even 'deleted' commits linger, recoverable through the reflog. Hashes, and pointers. Build those two ideas up, and the whole terrifying tool becomes completely understandable.",
+      "specs": [
+        { "label": "Push / pull", "value": "send only the new objects", "cue": "push", "source": "core" },
+        { "label": "Clone", "value": "you get the full history, locally", "cue": "distributed", "source": "pro" },
+        { "label": "Safety net", "value": "objects added, never changed (reflog)", "cue": "reflog", "source": "core" }
+      ],
+      "verdict": "Content-addressing makes clone, sync, merge and recovery all fall out for free."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "Every Git Command Explained",
+      "question": "Which Git command still scares you?",
+      "narration": "So that is Git, with the hood up. It isn't magic, and it really isn't a diff tool — it is a small, beautiful, content-addressed database. Files become blobs, folders become trees, snapshots become commits, and commits chain into history — every single object named by the hash of its own content. Branches are just feather-light pointers that slide along the graph. Hold on to those two ideas — hashes, and pointers — and nothing Git does can ever fully mystify you again. Next time, we turn this understanding into muscle memory: every Git command you actually need, finally explained. If this made Git click, subscribe. So tell me — which Git command still scares you?",
+      "beats": [ { "cue": "command", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "scares", "mark": "ask" } ]
+    }
+  ]
+}
