@@ -1,0 +1,120 @@
+{
+  "id": "t14-ram",
+  "title": "How RAM Works",
+  "series": "How It Works",
+  "keyNoun": "RAM",
+  "promise": "How a single bit lives in a leaky capacitor, how the CPU finds it among billions, what 'fast' memory really means — and why, past a point, more RAM does nothing.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "jedec", "label": "JEDEC — DDR SDRAM standards (timings & bandwidth)", "url": "https://www.jedec.org/standards-documents/docs/jesd79-5b" },
+    { "id": "arch", "label": "Computer architecture — memory hierarchy & DRAM operation", "url": "https://en.wikipedia.org/wiki/Dynamic_random-access_memory" },
+    { "id": "bench", "label": "Real-world RAM benchmarks (capacity, dual-channel, speed)", "url": "https://www.anandtech.com/tag/memory" }
+  ],
+  "youtube": {
+    "titles": [
+      "How RAM Works — and Why More Isn't Always Faster",
+      "How RAM Actually Works (and the 'More RAM' Myth)",
+      "How RAM Works: Capacitors, Channels, and Why 32GB Won't Help You",
+      "How RAM Works — the Memory Myth That Costs People Money"
+    ],
+    "primaryTitle": "How RAM Works — and Why More Isn't Always Faster",
+    "tags": [
+      "how ram works", "ram explained", "does more ram help", "is more ram faster",
+      "dram explained", "dual channel ram", "ram latency vs bandwidth", "ddr5",
+      "how much ram do i need", "16gb vs 32gb", "memory explained", "cas latency",
+      "pc building", "ram speed", "how it works", "tech explained"
+    ],
+    "hashtags": ["#ram", "#memory", "#pcbuilding", "#tech", "#howitworks"],
+    "pinnedComment": "The myth, busted: RAM is desk space, not horsepower. More only helps if you were running out — past 'enough,' the extra GB just sit empty. The real free upgrade is a matched pair for dual-channel. 👇 How much RAM are you running? Subscribe — 'Every Type of RAM' is next.",
+    "hook": "'Just add more RAM.' Sometimes that's exactly right — and sometimes you spend good money and nothing changes. The confusion comes from not knowing what RAM actually does. Let's build it from a single leaky capacitor up to why, past a point, more RAM does nothing."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "more",
+      "narration": "More R-A-M. It's the classic advice for a slow computer — just add more memory, and it'll fly. Sometimes that is exactly right. And sometimes you spend good money, and absolutely nothing changes. The confusion comes from not really knowing what R-A-M even is, or what it actually does for you. So let's build it from the ground up: how a single bit is physically stored in a leaky capacitor, how the C-P-U finds that bit in a sea of billions, what the word 'fast' really means for memory — and why, past a certain point, more R-A-M does absolutely nothing.",
+      "beats": [ { "cue": "memory", "mark": "mem" }, { "cue": "bit", "mark": "bit" }, { "cue": "nothing", "mark": "no" } ]
+    },
+
+    {
+      "kind": "stage", "id": "hierarchy", "name": "Why RAM Exists", "manim": "hierarchy", "icon": "server", "accent": "#35E08A",
+      "narration": "To understand R-A-M, you first have to understand a problem: your C-P-U is monstrously fast, and your storage is painfully slow. A modern processor can do billions of things a second, but fetching data from even a quick S-S-D takes, in C-P-U terms, an absolute eternity. So we slide a layer in between — R-A-M, random-access memory — a fast electronic workspace that holds everything the computer is actively using right now. Open an app, and it's copied from slow storage into quick R-A-M, so the C-P-U can reach it instantly. The catch: R-A-M is volatile. Cut the power, and everything in it simply vanishes.",
+      "specs": [
+        { "label": "The problem", "value": "CPU fast, storage slow", "cue": "slow", "source": "arch" },
+        { "label": "RAM is", "value": "the fast working desk", "cue": "workspace", "source": "arch" },
+        { "label": "Volatile", "value": "power off → it's gone", "cue": "volatile", "source": "arch" }
+      ],
+      "verdict": "RAM is the fast desk between a quick CPU and slow storage — and it forgets."
+    },
+    {
+      "kind": "stage", "id": "cell", "name": "Inside a Single Bit", "manim": "cell", "icon": "hub", "accent": "#2DD4BF",
+      "narration": "So what is R-A-M, physically? Your computer's main memory is D-R-A-M, and at its core it is beautifully simple. Each single bit — each one or zero — is stored in a tiny cell made of just two parts: one capacitor, which holds a little electric charge, and one transistor that acts as a gate. A charged capacitor means one; an empty one means zero. A single memory chip packs billions of these cells together. But here's the quirk: those capacitors leak their charge in milliseconds, so the memory must constantly re-read and top up every single cell, thousands of times a second. That endless refreshing is the 'dynamic' in D-R-A-M.",
+      "specs": [
+        { "label": "One bit", "value": "1 capacitor + 1 transistor", "cue": "capacitor", "source": "arch" },
+        { "label": "Charge", "value": "charged = 1, empty = 0", "cue": "charged", "source": "arch" },
+        { "label": "‘Dynamic’", "value": "leaks → refreshed 1000s×/sec", "cue": "refreshing", "source": "arch" }
+      ],
+      "verdict": "Each bit is a leaky capacitor — refreshed constantly, or it forgets in a blink."
+    },
+    {
+      "kind": "stage", "id": "grid", "name": "Finding One Byte", "manim": "grid", "icon": "fanout", "accent": "#B06BFF",
+      "narration": "With billions of cells on a chip, how does the C-P-U find one exact byte? The cells are laid out in a giant grid of rows and columns, like a vast spreadsheet. When the C-P-U wants data, a chip called the memory controller sends an address: it first activates the correct row, pulling that whole row into a buffer, and then selects the single column it needs. This is exactly why it's called 'random access' — unlike a spinning disk, it can jump straight to any cell in roughly the same time, no matter where that cell physically sits. Address in, byte out.",
+      "specs": [
+        { "label": "Layout", "value": "a grid of rows × columns", "cue": "grid", "source": "arch" },
+        { "label": "Access", "value": "activate a row, pick a column", "cue": "row", "source": "arch" },
+        { "label": "‘Random access’", "value": "any cell, ~the same time", "cue": "random", "source": "arch" }
+      ],
+      "verdict": "A giant grid — the controller picks a row, then a column. Any byte, instantly."
+    },
+    {
+      "kind": "stage", "id": "latency", "name": "What ‘Fast’ Means", "manim": "latency", "icon": "clock", "accent": "#FFB020",
+      "narration": "Now, 'fast' R-A-M actually means two very different things, and confusing them is where most people go wrong. The first is latency: the delay before the first bit arrives after you ask for it — measured as C-A-S latency. The second is bandwidth: how much data pours through per second, once it's actually flowing. Picture a highway — latency is how long before the first car arrives; bandwidth is how many cars per minute after that. Each new generation, D-D-R-3 to 4 to 5, roughly doubles the bandwidth by moving more data per clock tick. But latency has barely improved in years — that first bit still takes about as long as it always has.",
+      "specs": [
+        { "label": "Latency", "value": "delay to the first bit (CAS)", "cue": "delay", "source": "jedec" },
+        { "label": "Bandwidth", "value": "data per second once flowing", "cue": "bandwidth", "source": "jedec" },
+        { "label": "DDR gens", "value": "double bandwidth, flat latency", "cue": "double", "source": "jedec" }
+      ],
+      "verdict": "Two speeds: latency is the wait, bandwidth is the flow — DDR only fixes one."
+    },
+    {
+      "kind": "stage", "id": "channels", "name": "The Memory Highway", "manim": "channels", "icon": "fanout", "accent": "#35E08A",
+      "narration": "Here's a free speed-up that most people completely miss: channels. A single stick of R-A-M talks to the C-P-U over one lane. But fit your memory as a matched pair, and the controller runs them in dual-channel — two lanes side by side, effectively doubling the bandwidth. This is exactly why two eight-gigabyte sticks will usually beat one single sixteen-gigabyte stick, despite being the identical total capacity. The lesson is simple, and genuinely useful: when you buy R-A-M, buy it in matched pairs. Same total memory — but the data highway is suddenly twice as wide.",
+      "specs": [
+        { "label": "Single channel", "value": "one lane to the CPU", "cue": "lane", "source": "arch" },
+        { "label": "Dual channel", "value": "matched pair → 2× bandwidth", "cue": "dual", "source": "bench" },
+        { "label": "So", "value": "2 sticks > 1 of the same size", "cue": "pairs", "source": "bench" }
+      ],
+      "verdict": "Two matched sticks beat one — same capacity, twice the lanes."
+    },
+    {
+      "kind": "stage", "id": "more", "name": "Why More Isn’t Faster", "manim": "more", "icon": "cross", "accent": "#FF5C47",
+      "narration": "Which brings us to the big question: if R-A-M is this fast workspace, does simply adding more of it make your computer faster? Mostly — no. Here is the honest truth. R-A-M is like desk space. If your desk is already big enough for everything you're working on, giving you a bigger desk changes nothing — the extra space just sits there, empty. More R-A-M only helps in one specific situation: when you were running out. When your memory fills right up, the computer is forced to dump data onto the slow storage drive — this is called swapping — and performance falls off a cliff. So adding R-A-M doesn't speed up a machine that already had enough; it only rescues one that didn't. Enough is fast. Too little is a disaster. More than enough is just wasted money.",
+      "specs": [
+        { "label": "RAM is", "value": "desk space, not horsepower", "cue": "desk", "source": "arch" },
+        { "label": "Too little", "value": "swaps to disk → the cliff", "cue": "swapping", "source": "bench" },
+        { "label": "The rule", "value": "enough = fast; more = wasted", "cue": "enough", "source": "bench" }
+      ],
+      "verdict": "More RAM only helps if you were short — past 'enough,' it just sits empty."
+    },
+    {
+      "kind": "stage", "id": "buy", "name": "How Much You Need", "manim": "buy", "icon": "check", "accent": "#E8C24A",
+      "narration": "So, how much do you actually need? Match it to what you really do. Eight gigabytes is tight but workable for light web-and-office use; sixteen is the comfortable modern default for most people; thirty-two is for heavy multitaskers, big creative apps, or running lots of virtual machines. Beyond that, for most of us, you are simply buying empty desk. Then grab the easy wins: run it in dual-channel as a matched pair, and don't obsess over raw speed — faster R-A-M gives a small boost to gaming, and to chips using integrated graphics, but for most everyday tasks, capacity and channels matter far more than the megahertz printed on the label.",
+      "specs": [
+        { "label": "Sweet spot", "value": "16 GB most · 32 GB heavy", "cue": "sixteen", "source": "bench" },
+        { "label": "Easy win", "value": "run a dual-channel pair", "cue": "pair", "source": "bench" },
+        { "label": "Speed helps", "value": "gaming & integrated graphics", "cue": "gaming", "source": "bench" }
+      ],
+      "verdict": "Buy enough, in a pair — capacity and channels beat chasing megahertz."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "Every Type of RAM Explained",
+      "question": "How much RAM are you running right now?",
+      "narration": "So that's R-A-M: a grid of billions of leaky capacitors, refreshed constantly, giving your C-P-U a fast desk to work on. 'Fast' is really two things — low latency and high bandwidth — and the single best upgrade most people can make isn't more memory at all, it's a matched pair for dual-channel. And remember the big one: more R-A-M only helps if you were actually running out. Next time, we open the box and decode the names: every type of R-A-M, from D-D-R-1 to D-D-R-5. If this cleared up the myth for you, subscribe. So tell me — how much R-A-M are you running right now?",
+      "beats": [ { "cue": "type", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "running", "mark": "ask" } ]
+    }
+  ]
+}
