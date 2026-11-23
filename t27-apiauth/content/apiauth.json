@@ -1,0 +1,164 @@
+{
+  "id": "t27-apiauth",
+  "title": "Every API Authentication Method Explained",
+  "series": "Every X",
+  "keyNoun": "API auth method",
+  "promise": "Every way one computer proves who it is to an API — from a naked API key to OAuth, JWTs and mutual TLS — each shown as a real HTTP request, with how it works, how safe it is, and when to use it.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#FFB020",
+  "sources": [
+    { "id": "owasp", "label": "OWASP API Security & Authentication cheat sheets", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html" },
+    { "id": "ref", "label": "HTTP auth, OAuth 2.0 & JWT specifications (RFC 7235, 6749, 7519)", "url": "https://datatracker.ietf.org/doc/html/rfc6749" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every API Authentication Method Explained in 10 Minutes",
+      "Every API Auth Method Explained — API Keys, OAuth, JWT, mTLS & More",
+      "Every Way to Authenticate an API (and Which One to Use)",
+      "API Authentication Explained — Keys, Tokens, OAuth, JWT, mTLS"
+    ],
+    "primaryTitle": "Every API Authentication Method Explained in 10 Minutes",
+    "tags": [
+      "api authentication", "api auth methods", "oauth explained", "jwt explained",
+      "api keys", "bearer token", "basic auth", "mutual tls", "hmac", "session cookies",
+      "how api auth works", "oauth vs jwt", "api security", "tech explained", "how it works"
+    ],
+    "hashtags": ["#api", "#security", "#oauth", "#webdev", "#backend"],
+    "pinnedComment": "The ladder, weakest → strongest: none, API key, Basic, Bearer, session cookie, JWT, OAuth 2.0, HMAC, mTLS. Rule of thumb: API key for simple server-to-server, OAuth for 'log in with…', JWT for stateless sessions, mTLS for the crown jewels — and everything over HTTPS, always. 👇 Which do you reach for? Subscribe — 'How a CPU Works' is next.",
+    "hook": "Every time an app talks to an API, it has to prove who it is. Get that wrong and you've handed the keys to your kingdom to the whole internet. So here's every way to authenticate an API — from a naked key to bank-grade mutual TLS."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "handshake",
+      "narration": "Every single time an app talks to an A-P-I — your phone to a server, one service to another — it has to answer one question first: who are you, and are you allowed in? That's authentication. And getting it wrong is how you hand the keys to your entire kingdom to the whole internet. There are many ways to do it, from a single naked secret to bank-grade certificates — each a different trade-off between simplicity and security. So let's go through every A-P-I authentication method, shown as a real request, from the weakest, right up to the strongest.",
+      "beats": [ { "cue": "authentication", "mark": "a" }, { "cue": "secret", "mark": "s" }, { "cue": "strongest", "mark": "st" } ]
+    },
+
+    {
+      "kind": "item", "id": "none", "name": "No Auth", "launched": "PUBLIC", "cat": "SECURITY: NONE", "accent": "#8C8E92",
+      "auth": { "header": "GET /api/weather\n(no credentials)", "sec": 0.04, "tag": "open to everyone" },
+      "narration": "We start at the bottom: no authentication at all. The endpoint is wide open — anyone who knows the U-R-L can call it, no questions asked. And that is genuinely fine for truly public, read-only data: a public weather feed, currency rates, a map tile. But send anything private or anything that costs you money through an open endpoint, and you will deeply regret it. No door, no lock. Only for data you'd happily shout from the rooftops.",
+      "specs": [
+        { "label": "Credential", "value": "none at all", "cue": "open", "source": "owasp" },
+        { "label": "Good for", "value": "truly public, read-only data", "cue": "public", "source": "owasp" },
+        { "label": "Danger", "value": "never for private or paid data", "cue": "private", "source": "owasp" }
+      ],
+      "verdict": "No lock at all — fine for public read-only data, a disaster for anything else."
+    },
+    {
+      "kind": "item", "id": "apikey", "name": "API Key", "launched": "SIMPLE", "cat": "SECURITY: LOW", "accent": "#FF5C47",
+      "auth": { "header": "GET /api/data\nX-API-Key: sk_live_a1b3f9c2…", "sec": 0.32, "tag": "one shared secret" },
+      "narration": "The simplest real method: the A-P-I key. The server gives you a long, random secret string, and you send it with every request, usually in a header. If the key matches, you're in. It's dead easy, which is why it's everywhere for server-to-server calls. But it's a single static secret: anyone who sees it can impersonate you completely, it doesn't expire on its own, and it says nothing about WHO you are — only that you hold the key. Treat it like a password, never put it in front-end code.",
+      "specs": [
+        { "label": "How", "value": "a secret string in a header", "cue": "string", "source": "ref" },
+        { "label": "Good for", "value": "simple server-to-server", "cue": "server", "source": "owasp" },
+        { "label": "Risk", "value": "static — leaks = full access", "cue": "impersonate", "source": "owasp" }
+      ],
+      "verdict": "A shared secret string — easy and everywhere, but static; leak it and you're done."
+    },
+    {
+      "kind": "item", "id": "basic", "name": "Basic Auth", "launched": "1996", "cat": "SECURITY: LOW", "accent": "#FF5C47",
+      "auth": { "header": "Authorization: Basic dXNlcjpwYXNz", "sec": 0.28, "tag": "user:pass, base64" },
+      "narration": "Basic Auth is the old-timer, built right into HTTP. You take a username and password, join them with a colon, and base-sixty-four encode the result into the Authorization header. Crucially — and this trips people up — base-sixty-four is NOT encryption; it's trivially reversible. So Basic Auth is only safe over HTTPS, where the connection itself is encrypted. Simple and universal, but it sends your actual credentials on every request, which is why it's fading out of serious A-P-Is.",
+      "specs": [
+        { "label": "How", "value": "user:pass, base64-encoded", "cue": "colon", "source": "ref" },
+        { "label": "Warning", "value": "base64 ≠ encryption", "cue": "reversible", "source": "owasp" },
+        { "label": "Rule", "value": "only ever over HTTPS", "cue": "https", "source": "owasp" }
+      ],
+      "verdict": "user:pass base64'd into a header — only safe over HTTPS; base64 isn't encryption."
+    },
+    {
+      "kind": "item", "id": "bearer", "name": "Bearer Token", "launched": "TOKEN", "cat": "SECURITY: MEDIUM", "accent": "#FFB020",
+      "auth": { "header": "Authorization: Bearer 9f2c7a1e4b…", "sec": 0.55, "tag": "whoever holds it" },
+      "narration": "Instead of sending your password every time, you trade it once for a token — and then send the token. That's a Bearer token: the name means exactly what it says — whoever BEARS this token gets access, like cash. The big win is that tokens can be short-lived, and revoked, without ever touching your real password. The catch is right there in the name too: if someone steals the token, they ARE you, until it expires. So keep them short-lived, and always over HTTPS.",
+      "specs": [
+        { "label": "How", "value": "trade password once for a token", "cue": "trade", "source": "ref" },
+        { "label": "Name", "value": "whoever bears it, gets in", "cue": "bears", "source": "ref" },
+        { "label": "Win", "value": "short-lived + revocable", "cue": "revoked", "source": "owasp" }
+      ],
+      "verdict": "Swap your password for a token — short-lived & revocable, but theft = instant access."
+    },
+    {
+      "kind": "item", "id": "session", "name": "Session Cookie", "launched": "THE WEB", "cat": "SECURITY: MEDIUM", "accent": "#35E08A",
+      "auth": { "header": "Cookie: session=a9f2c7e1b4d8…", "sec": 0.5, "tag": "server remembers you" },
+      "narration": "The classic web login: session cookies. You log in once; the server creates a session, stores it on its side, and hands your browser a cookie with a random session I-D. The browser then sends that cookie automatically on every request. The server looks up the I-D and knows it's you. It's stateful — the server has to remember every active session — and that automatic sending is also its weakness, opening the door to cross-site request forgery if you're not careful. The workhorse of traditional websites.",
+      "specs": [
+        { "label": "How", "value": "server stores session, browser holds ID", "cue": "session", "source": "ref" },
+        { "label": "Trait", "value": "stateful — server remembers", "cue": "stateful", "source": "ref" },
+        { "label": "Watch", "value": "CSRF if not protected", "cue": "forgery", "source": "owasp" }
+      ],
+      "verdict": "Log in once, browser auto-sends a session cookie — stateful; guard against CSRF."
+    },
+    {
+      "kind": "item", "id": "jwt", "name": "JWT", "launched": "STATELESS", "cat": "SECURITY: MEDIUM-HIGH", "accent": "#2DD4BF",
+      "auth": { "header": "Authorization: Bearer\neyJhbGc.eyJzdWIi.sig", "sec": 0.68, "tag": "signed, self-contained" },
+      "narration": "A JSON Web Token, or J-W-T, is a clever kind of token. It's three base-sixty-four parts — a header, a payload of claims like your user I-D and expiry, and a cryptographic signature — joined by dots. The magic is that signature: the server can verify the token is genuine and untampered WITHOUT storing anything, just by checking the signature with its secret key. That makes it stateless, and brilliant for scaling. The catch: because it's self-contained, a J-W-T is hard to revoke before it naturally expires. Don't put secrets in the payload — it's only signed, not encrypted.",
+      "specs": [
+        { "label": "How", "value": "signed header.payload.signature", "cue": "signature", "source": "ref" },
+        { "label": "Win", "value": "verified with no server state", "cue": "stateless", "source": "ref" },
+        { "label": "Catch", "value": "hard to revoke early", "cue": "revoke", "source": "owasp" }
+      ],
+      "verdict": "A signed, self-contained token — stateless & scalable, but hard to revoke early."
+    },
+    {
+      "kind": "item", "id": "oauth", "name": "OAuth 2.0", "launched": "DELEGATED", "cat": "SECURITY: HIGH", "accent": "#B06BFF",
+      "auth": { "header": "‘Log in with Google’\n→ redirect → consent → token", "sec": 0.82, "tag": "delegated access" },
+      "narration": "OAuth 2.0 is the one behind every 'Log in with Google' button — and it solves a specific, brilliant problem: letting one app access your data on another, WITHOUT ever seeing your password. You're redirected to Google, you log in there and consent to specific scopes, and the app gets back a token that works only for what you approved. Your password never touches the third-party app. It's more complex to implement, but it's the gold standard for delegated, third-party access — and the backbone of logging in across the modern web.",
+      "specs": [
+        { "label": "Solves", "value": "access without sharing a password", "cue": "password", "source": "ref" },
+        { "label": "Flow", "value": "redirect → consent → scoped token", "cue": "consent", "source": "ref" },
+        { "label": "Best for", "value": "'log in with…', delegated access", "cue": "delegated", "source": "owasp" }
+      ],
+      "verdict": "'Log in with Google' — delegated, scoped access with no password sharing."
+    },
+    {
+      "kind": "item", "id": "hmac", "name": "HMAC Signature", "launched": "SIGNED", "cat": "SECURITY: HIGH", "accent": "#35E08A",
+      "auth": { "header": "Authorization: HMAC\nsignature=f1a9…  ts=1699…", "sec": 0.88, "tag": "sign every request" },
+      "narration": "HMAC request signing is what the big cloud providers, like A-W-S, use. Here, the shared secret is NEVER sent over the wire. Instead, both sides know it, and the client uses it to compute a signature — a hash of the request's contents plus a timestamp. The server recomputes that same signature and checks they match. This proves two things at once: that you hold the secret, AND that not a single byte of the request was tampered with in transit. It even stops replay attacks, thanks to the timestamp. Powerful, and fiddly to get exactly right.",
+      "specs": [
+        { "label": "How", "value": "sign the request with a shared secret", "cue": "signature", "source": "ref" },
+        { "label": "Win", "value": "secret never sent; tamper-proof", "cue": "tampered", "source": "owasp" },
+        { "label": "Bonus", "value": "timestamp stops replays", "cue": "replay", "source": "owasp" }
+      ],
+      "verdict": "Sign each request with a never-sent secret — proves identity AND integrity."
+    },
+    {
+      "kind": "item", "id": "mtls", "name": "Mutual TLS", "launched": "ZERO-TRUST", "cat": "SECURITY: HIGHEST", "accent": "#E8C24A",
+      "auth": { "header": "TLS handshake:\nclient cert ⇄ server cert", "sec": 0.97, "tag": "both sides prove it" },
+      "narration": "At the very top sits mutual TLS. Normally, in HTTPS, only the server proves its identity with a certificate. In mutual T-L-S, the CLIENT must present a valid certificate too — so both sides cryptographically prove who they are, before any data flows at all. Nothing gets through without a trusted certificate on both ends. It's the backbone of high-security, zero-trust systems — banking, internal microservices, defence. It's heavy to manage, with certificates to issue and rotate, but for the crown jewels, it is as strong as it gets.",
+      "specs": [
+        { "label": "How", "value": "client + server both show certs", "cue": "certificate", "source": "ref" },
+        { "label": "Level", "value": "zero-trust, bank-grade", "cue": "zero-trust", "source": "owasp" },
+        { "label": "Cost", "value": "heavy cert management", "cue": "rotate", "source": "owasp" }
+      ],
+      "verdict": "Both client AND server present certificates — the strongest, and the heaviest."
+    },
+    {
+      "kind": "item", "id": "choose", "name": "How to Choose", "launched": "GUIDANCE", "cat": "THE DECISION", "accent": "#FFB020",
+      "auth": { "header": "match the method\nto the risk", "sec": 0.0, "tag": "the cheat sheet" },
+      "narration": "So, which do you actually pick? Here's the cheat sheet. For simple internal, server-to-server calls, an A-P-I key is perfectly fine. For letting users 'log in with' another service, OAuth, every time. For your own stateless app sessions, JWTs. For signing requests where integrity really matters, HMAC. And for the absolute crown jewels, mutual TLS. The one rule that never changes, under all of them: everything over HTTPS, always. Match the strength of the lock to the value of what's behind the door.",
+      "specs": [
+        { "label": "Simple", "value": "API key (server-to-server)", "cue": "key", "source": "owasp" },
+        { "label": "Users", "value": "OAuth; stateless apps: JWT", "cue": "oauth", "source": "owasp" },
+        { "label": "Always", "value": "everything over HTTPS", "cue": "https", "source": "owasp" }
+      ],
+      "verdict": "Match the lock to the value behind the door — and always, always over HTTPS."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "spectrum",
+      "narration": "Line them all up, and they form a clear ladder of strength. At the bottom: no auth, then the single static secret of an A-P-I key or Basic Auth — simple, but fragile. In the middle: tokens — Bearer, session cookies, JWTs — that avoid resending your password and can expire. Near the top: OAuth for delegated access, and HMAC, which never even sends the secret. And at the summit, mutual TLS, where both sides prove themselves with certificates. As you climb, security rises — and so does complexity. The art is picking the right rung.",
+      "beats": [ { "cue": "ladder", "mark": "l" }, { "cue": "tokens", "mark": "t" }, { "cue": "complexity", "mark": "c" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "How a CPU Works",
+      "question": "Which auth method do you reach for?",
+      "narration": "So that's every common way to authenticate an A-P-I — a ladder from a wide-open door, through keys and tokens and clever signatures, all the way up to both sides showing their papers with mutual TLS. There's no single best one; there's only the right match between the strength of the lock and the value of what it protects — with HTTPS underneath every single rung. Get this layer right, and your A-P-I is a fortress. Get it wrong, and it's an open door. Next, we go right down to the silicon and answer the big one: how a C-P-U actually works. If this levelled up your security, subscribe. So tell me — which auth method do you reach for?",
+      "beats": [ { "cue": "CPU", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "reach", "mark": "ask" } ]
+    }
+  ]
+}

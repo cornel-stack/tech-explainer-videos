@@ -26,10 +26,10 @@ Repo: https://github.com/cornel-stack/tech-explainer-videos/releases
 | T21 | Every Programming Language | Every X | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t21-langs-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t21-langs-1/t21-langs.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t21-langs-1/t21-langs-youtube-kit.zip) |
 | T22 | How Git Works Under the Hood | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t22-git-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t22-git-1/t22-git.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t22-git-1/t22-git-youtube-kit.zip) |
 | T23 | Every Git Command | Every X | _building…_ | | |
-| T24 | How LLMs Actually Work | How It Works | _planned_ | | |
-| T25 | How ChatGPT Works | How It Works | _planned_ | | |
-| T26 | Every USB Type | Every X | _building…_ | | |
-| T27 | Every API Authentication Method | Every X | _planned_ | | |
+| T24 | How LLMs Actually Work | How It Works | [tag](https://github.com/cornel-stack/tech-explainer-videos/releases/tag/t24-llm-1) | [mp4](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t24-llm-1/t24-llm.mp4) | [zip](https://github.com/cornel-stack/tech-explainer-videos/releases/download/t24-llm-1/t24-llm-youtube-kit.zip) |
+| T25 | How ChatGPT Works | How It Works | _rendering…_ | | |
+| T26 | Every USB Type | Every X | _rendering…_ | | |
+| T27 | Every API Authentication Method | Every X | _building…_ | | |
 | T28 | How a CPU Works | How It Works | _planned_ | | |
 | T29 | Every Wi-Fi Standard | Every X | _planned_ | | |
 | T30 | Every Monitor Refresh Rate | Every X | _planned_ | | |
