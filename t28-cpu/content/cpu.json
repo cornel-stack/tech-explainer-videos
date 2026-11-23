@@ -1,0 +1,118 @@
+{
+  "id": "t28-cpu",
+  "title": "How a CPU Works",
+  "series": "How It Works",
+  "keyNoun": "CPU",
+  "promise": "How a CPU really works, from the ground up — transistors to logic gates to the clock-driven fetch-decode-execute loop, caches, pipelines and cores — so a chip flicking switches billions of times a second finally makes sense.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "arch", "label": "Computer architecture references (Patterson & Hennessy; von Neumann model)", "url": "https://en.wikipedia.org/wiki/Central_processing_unit" },
+    { "id": "ref", "label": "Digital logic & microarchitecture references (gates, pipelines, caches)", "url": "https://en.wikipedia.org/wiki/Instruction_cycle" }
+  ],
+  "youtube": {
+    "titles": [
+      "How a CPU Works — From Transistors to Fetch-Decode-Execute",
+      "How a CPU Actually Works (Transistors, Clock, Cores Explained)",
+      "How a CPU Works Under the Hood — the Brain of Your Computer",
+      "How a CPU Works — Switches Flicking a Billion Times a Second"
+    ],
+    "primaryTitle": "How a CPU Works — From Transistors to Fetch-Decode-Execute",
+    "tags": [
+      "how a cpu works", "cpu explained", "how processors work", "fetch decode execute",
+      "transistors logic gates", "cpu clock speed", "what is a cpu", "cpu cores explained",
+      "cpu cache", "pipelining", "computer architecture", "how computers work",
+      "tech explained", "how it works", "microprocessor"
+    ],
+    "hashtags": ["#cpu", "#hardware", "#computers", "#tech", "#howitworks"],
+    "pinnedComment": "The whole chip in one line: a CPU is billions of transistor switches wired into logic gates, driven by a clock, running one loop — fetch an instruction, decode it, execute it, repeat — billions of times a second. Caches keep data close, pipelines overlap steps, and cores do it all in parallel. 👇 What CPU are you watching this on? Subscribe — 'Every Wi-Fi Standard' is next.",
+    "hook": "The CPU is the brain of every computer — and it feels like pure magic. But strip it all away and it's shockingly simple: a mountain of tiny switches, a metronome, and one little loop repeated billions of times a second."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "narration": "The C-P-U — the central processing unit — is the brain of every computer, phone and console on Earth. A modern one holds tens of billions of components, and does billions of things every second, which makes it feel like absolute magic. But here is the wonderful secret: underneath, it is shockingly simple. It is really just a giant pile of microscopic switches, a metronome keeping time, and one tiny loop, repeated faster than you can possibly imagine. So let's build a C-P-U from the ground up — from a single switch, all the way to the chip running this very video.",
+      "beats": [ { "cue": "brain", "mark": "b" }, { "cue": "switches", "mark": "s" }, { "cue": "loop", "mark": "l" } ]
+    },
+
+    {
+      "kind": "stage", "id": "transistor", "name": "It's Just Switches", "manim": "transistor", "icon": "hub", "accent": "#35E08A",
+      "narration": "At the very bottom, a C-P-U is built from one thing, repeated billions of times: the transistor. A transistor is simply a microscopic electronic switch — it's either on, or off. One, or zero. That's it. Now, wire a handful of these switches together in clever patterns, and you get logic gates: tiny circuits that make decisions. An AND gate turns on only if both its inputs are on; an OR gate, if either is. From these dead-simple gates, you can build up every single operation a computer performs. Everything your C-P-U does is, ultimately, billions of these switches flicking on and off.",
+      "specs": [
+        { "label": "Transistor", "value": "a microscopic on/off switch", "cue": "switch", "source": "ref" },
+        { "label": "Combine into", "value": "logic gates (AND, OR, NOT)", "cue": "gates", "source": "ref" },
+        { "label": "Scale", "value": "tens of billions per chip", "cue": "billions", "source": "arch" }
+      ],
+      "verdict": "A CPU is billions of transistor switches wired into decision-making logic gates."
+    },
+    {
+      "kind": "stage", "id": "binary", "name": "Everything Is Numbers", "manim": "binary", "icon": "server", "accent": "#2DD4BF",
+      "narration": "Because every switch is just on or off, a C-P-U only understands two symbols: one and zero — binary. But that's enough for anything. A group of these bits represents a number; numbers represent letters, colours, pixels, sound. And crucially, the program itself — the list of instructions — is ALSO just numbers, stored in memory, right alongside the data. That single idea, that code and data live together as numbers, is the von Neumann model, and it's the blueprint nearly every computer still follows today. To a C-P-U, it is all just patterns of ones and zeros.",
+      "specs": [
+        { "label": "Understands", "value": "only 1s and 0s (binary)", "cue": "binary", "source": "ref" },
+        { "label": "Encodes", "value": "numbers, text, pixels, sound", "cue": "numbers", "source": "ref" },
+        { "label": "Key idea", "value": "code & data together (von Neumann)", "cue": "neumann", "source": "arch" }
+      ],
+      "verdict": "It only knows 1s and 0s — and the program itself is just more numbers in memory."
+    },
+    {
+      "kind": "stage", "id": "clock", "name": "The Clock Keeps Time", "manim": "clock", "icon": "clock", "accent": "#FFB020",
+      "narration": "All those billions of switches need to work in perfect lockstep — and that's the job of the clock. The clock is a crystal that ticks at a staggering, relentless rate, and on every single tick, the whole C-P-U takes exactly one tiny step forward, together. This is what gigahertz means: a three-gigahertz C-P-U ticks three BILLION times every second. The faster the clock, the more steps per second, the faster it computes. It is the metronome that drives the entire machine — the heartbeat that keeps every part marching in time.",
+      "specs": [
+        { "label": "The clock", "value": "ticks billions of times/sec", "cue": "ticks", "source": "arch" },
+        { "label": "GHz", "value": "3 GHz = 3 billion ticks/sec", "cue": "gigahertz", "source": "arch" },
+        { "label": "Role", "value": "the metronome for every step", "cue": "metronome", "source": "ref" }
+      ],
+      "verdict": "A clock ticks billions of times a second — each tick, the whole CPU steps forward once."
+    },
+    {
+      "kind": "stage", "id": "cycle", "name": "Fetch, Decode, Execute", "manim": "cycle", "icon": "fanout", "accent": "#35E08A",
+      "narration": "Now the heart of it all: the instruction cycle, which the C-P-U repeats endlessly. Step one, FETCH — grab the next instruction from memory. Step two, DECODE — the control unit works out what that instruction actually means: add these, compare those, move this. Step three, EXECUTE — do it. Then it fetches the very next instruction, and goes again. Fetch, decode, execute — over, and over, and over. That humble three-step loop, running billions of times a second, is quite literally everything a computer does. Every app, every game, every A-I — all of it, is this loop.",
+      "specs": [
+        { "label": "Fetch", "value": "get the next instruction", "cue": "fetch", "source": "arch" },
+        { "label": "Decode", "value": "work out what it means", "cue": "decode", "source": "arch" },
+        { "label": "Execute", "value": "do it — then repeat", "cue": "execute", "source": "arch" }
+      ],
+      "verdict": "The whole job is one loop: fetch an instruction, decode it, execute it, repeat."
+    },
+    {
+      "kind": "stage", "id": "alu", "name": "Registers & the ALU", "manim": "alu", "icon": "hub", "accent": "#B06BFF",
+      "narration": "So where does the actual work happen? Two places. First, registers — a tiny handful of ultra-fast storage slots, right inside the C-P-U, holding the few numbers it's working on this very instant. They are the fastest memory in the entire machine. Second, the A-L-U, the arithmetic logic unit — this is the true calculator at the core. It takes the values from the registers and performs the real operations: add, subtract, compare, AND, OR. The control unit directs the traffic; the A-L-U does the maths; the registers hold the numbers. That small team, together, is the engine room of the C-P-U.",
+      "specs": [
+        { "label": "Registers", "value": "a few ultra-fast slots inside", "cue": "registers", "source": "arch" },
+        { "label": "ALU", "value": "the calculator: add, compare, etc.", "cue": "arithmetic", "source": "arch" },
+        { "label": "Control unit", "value": "directs the traffic", "cue": "control", "source": "arch" }
+      ],
+      "verdict": "Registers hold the live numbers; the ALU does the maths; the control unit directs."
+    },
+    {
+      "kind": "stage", "id": "cache", "name": "Cache, Pipelines & Cores", "manim": "cache", "icon": "fanout", "accent": "#2DD4BF",
+      "narration": "A raw loop would spend all its time just waiting for slow memory — so modern C-P-Us use three brilliant tricks. First, cache: small pools of very fast memory, L1, L2, L3, sitting right on the chip, holding the data it's likely to need next, so it rarely has to wait for distant R-A-M. Second, the pipeline: like an assembly line, it starts fetching the next instruction before the current one has finished — overlapping the steps to stay busy. And third, multiple cores: several complete C-P-Us on one chip, genuinely doing different tasks at the same time. Cache, pipeline, cores — this is how a chip gets truly fast.",
+      "specs": [
+        { "label": "Cache", "value": "fast on-chip memory (L1/L2/L3)", "cue": "cache", "source": "ref" },
+        { "label": "Pipeline", "value": "overlap steps like a production line", "cue": "pipeline", "source": "ref" },
+        { "label": "Cores", "value": "many CPUs doing tasks at once", "cue": "cores", "source": "arch" }
+      ],
+      "verdict": "Cache keeps data close, pipelines overlap steps, and cores run tasks in parallel."
+    },
+    {
+      "kind": "stage", "id": "modern", "name": "The Whole Chip", "manim": "modern", "icon": "check", "accent": "#E8C24A",
+      "narration": "So, zoom all the way back out. A modern C-P-U is tens of billions of transistor switches, etched onto a sliver of silicon smaller than a fingernail, wired into logic gates, driven by a clock ticking billions of times a second, running that fetch-decode-execute loop across several cores at once, fed by layers of cache, and cleverly guessing what comes next with branch prediction and pipelines. It feels like magic. But it is, truly, just switches — flicking on and off, in staggering numbers, at staggering speed, following one simple loop. That is the brain of every computer you will ever use.",
+      "specs": [
+        { "label": "On", "value": "silicon smaller than a fingernail", "cue": "silicon", "source": "arch" },
+        { "label": "Still", "value": "just switches + one loop", "cue": "switches", "source": "arch" },
+        { "label": "Result", "value": "the brain of every computer", "cue": "brain", "source": "arch" }
+      ],
+      "verdict": "Billions of switches + a clock + one loop across many cores — that's the whole chip."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "Every Wi-Fi Standard Explained",
+      "question": "What CPU are you watching this on?",
+      "narration": "So that's a C-P-U, from the ground up: a transistor is a switch, switches make gates, gates make decisions, a clock drives the beat, and the whole thing runs one endless loop — fetch, decode, execute — fed by cache and spread across cores. There is no magic in there at all; just an astonishing number of simple things, happening astonishingly fast. Understand this one loop, and you understand the engine behind literally everything digital. Next, we step off the chip and into the air: every Wi-Fi standard, finally explained. If this made the brain make sense, subscribe. So tell me — what C-P-U are you watching this on?",
+      "beats": [ { "cue": "Wi-Fi", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "watching", "mark": "ask" } ]
+    }
+  ]
+}
