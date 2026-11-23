@@ -31,6 +31,7 @@ from manim import (
     DOWN,
     rate_functions,
     interpolate_color,
+    ManimColor,
 )
 
 # --- palette -----------------------------------------------------------------
@@ -128,14 +129,17 @@ class Walls(Scene):
         # Walls to cross, by x-boundary (vertical wall) that a ring passes.
         vwall_x = midx
 
+        # ManimColor wrappers — interpolate_color needs colour objects, not hex str.
+        c_green, c_amber, c_coral = ManimColor(GREEN), ManimColor(AMBER), ManimColor(CORAL)
+
         def signal_color(strength):
             # strength in [0,1]: green -> amber -> coral as it weakens
             if strength > 0.55:
                 f = (1.0 - strength) / 0.45
-                return interpolate_color(GREEN, AMBER, np.clip(f, 0, 1))
+                return interpolate_color(c_green, c_amber, float(np.clip(f, 0, 1)))
             else:
                 f = (0.55 - strength) / 0.55
-                return interpolate_color(AMBER, CORAL, np.clip(f, 0, 1))
+                return interpolate_color(c_amber, c_coral, float(np.clip(f, 0, 1)))
 
         # expanding rings that fade with distance + step down past the wall
         N_RINGS = 6
