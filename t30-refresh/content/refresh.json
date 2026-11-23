@@ -1,0 +1,150 @@
+{
+  "id": "t30-refresh",
+  "title": "Every Monitor Refresh Rate Explained",
+  "series": "Every X",
+  "keyNoun": "refresh rate",
+  "promise": "Every monitor refresh rate from 60Hz to 540Hz — what the numbers really mean, where the smoothness you can actually feel stops, why VRR matters, and the catch nobody mentions: your frame rate has to keep up.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#B06BFF",
+  "sources": [
+    { "id": "disp", "label": "Display & panel references (VESA, refresh-rate / response-time explainers)", "url": "https://en.wikipedia.org/wiki/Refresh_rate" },
+    { "id": "ref", "label": "Monitor testing & VRR references (G-Sync / FreeSync, motion clarity)", "url": "https://www.vesa.org/" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Monitor Refresh Rate Explained — 60Hz to 540Hz",
+      "Every Refresh Rate Explained — and When You Stop Noticing",
+      "Every Monitor Refresh Rate (60, 120, 144, 240, 360Hz) Explained",
+      "Every Monitor Refresh Rate Explained — Why Higher Isn't Always Better"
+    ],
+    "primaryTitle": "Every Monitor Refresh Rate Explained — 60Hz to 540Hz",
+    "tags": [
+      "refresh rate explained", "60hz vs 144hz", "120hz vs 60hz", "240hz", "360hz",
+      "monitor refresh rate", "hz explained", "gsync freesync", "vrr explained",
+      "gaming monitor", "frame rate vs refresh rate", "best refresh rate", "tech explained", "how it works"
+    ],
+    "hashtags": ["#monitor", "#gaming", "#pcgaming", "#tech", "#howitworks"],
+    "pinnedComment": "The one catch nobody mentions: a 240Hz monitor only shows 240 fps if your GPU actually produces 240 frames. Refresh rate is the monitor's capacity; frame rate is what you feed it — and the lower of the two wins. Biggest jump you'll ever feel is 60 → 120. 👇 What refresh rate are you on? That's the whole 30-video series — thank you for watching. Subscribe for season two!",
+    "hook": "60Hz, 144Hz, 240Hz, even 540Hz — monitor refresh rates keep climbing, and the marketing says bigger is always better. But where does the smoothness you can actually feel stop — and what's the catch they never mention?"
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "ladder",
+      "narration": "Sixty hertz, one-hundred-and-forty-four, two-forty, and now even five-hundred-and-forty — monitor refresh rates just keep climbing, and the marketing insists that bigger is always, always better. But what does that number actually mean? Where does the extra smoothness you can genuinely feel stop paying off? And what is the one huge catch that the spec sheets never, ever mention? So let's run through every refresh rate, from sixty all the way up, explain exactly what each one gives you — and reveal the frame-rate trap that makes half of these numbers meaningless on their own.",
+      "beats": [ { "cue": "climbing", "mark": "c" }, { "cue": "smoothness", "mark": "s" }, { "cue": "catch", "mark": "ca" } ]
+    },
+
+    {
+      "kind": "item", "id": "hz60", "name": "60 Hz", "launched": "THE BASELINE", "cat": "16.7 ms / frame", "accent": "#C9CDD4",
+      "wifi": { "code": "60 Hz", "brand": "the baseline", "speed": "16.7 ms per frame", "bands": "2.4", "frac": 0.11 },
+      "rate": { "hz": 60, "ms": "16.7 ms", "frac": 0.11, "use": "the default for decades" },
+      "narration": "Sixty hertz means the screen redraws itself sixty times every second — a fresh image every sixteen-point-seven milliseconds. For decades, this was simply THE standard, for every T-V, laptop and office monitor on Earth, and for everyday work, browsing and video, it is still perfectly fine. It's completely smooth for a movie. But put a sixty hertz screen next to a faster one, scrolling a page or moving a mouse, and suddenly it looks… a little bit choppy. It's the floor that everything else is measured against.",
+      "specs": [
+        { "label": "Means", "value": "60 redraws per second", "cue": "sixty", "source": "disp" },
+        { "label": "Frame time", "value": "16.7 ms per frame", "cue": "milliseconds", "source": "disp" },
+        { "label": "Fine for", "value": "work, browsing, video", "cue": "browsing", "source": "ref" }
+      ],
+      "verdict": "60 redraws/sec — the decades-old baseline; perfectly fine for everyday use."
+    },
+    {
+      "kind": "item", "id": "hz75", "name": "75 Hz", "launched": "THE CHEAP BUMP", "cat": "13.3 ms / frame", "accent": "#8C8E92",
+      "wifi": { "code": "75 Hz", "brand": "the small step", "speed": "13.3 ms per frame", "bands": "2.4", "frac": 0.14 },
+      "rate": { "hz": 75, "ms": "13.3 ms", "frac": 0.14, "use": "a free-ish small upgrade" },
+      "narration": "Seventy-five hertz is the small, cheap step up you'll find on many budget monitors. It's twenty-five percent more frames than sixty, so there's a mild improvement in smoothness — just noticeable, if you look for it. Honestly, it's less a deliberate tier and more a slight, low-cost bump that many entry-level screens happen to offer. Nice to have for free, but it is nowhere near the leap that's coming next. A small sip, not the real upgrade.",
+      "specs": [
+        { "label": "Means", "value": "75 frames per second", "cue": "frames", "source": "disp" },
+        { "label": "Vs 60", "value": "a mild, just-noticeable bump", "cue": "noticeable", "source": "ref" },
+        { "label": "Found on", "value": "many budget monitors", "cue": "budget", "source": "ref" }
+      ],
+      "verdict": "A mild 25% bump over 60 — a cheap nice-to-have, not the real leap."
+    },
+    {
+      "kind": "item", "id": "hz120", "name": "120 Hz", "launched": "THE SMOOTHNESS CLIFF", "cat": "8.3 ms / frame", "accent": "#2DD4BF",
+      "wifi": { "code": "120 Hz", "brand": "the cliff", "speed": "8.3 ms per frame", "bands": "5", "frac": 0.24 },
+      "rate": { "hz": 120, "ms": "8.3 ms", "frac": 0.24, "use": "the jump everyone feels" },
+      "narration": "One-hundred-and-twenty hertz is the big one — the single jump that absolutely everyone notices instantly. Double the frames of sixty, and the whole system feels transformed: scrolling turns to glass, cursors glide, games feel dramatically more fluid and responsive. This is why modern phones, and consoles, made such a fuss about going one-twenty. If you only ever make one upgrade from sixty hertz, make it to around here. The jump from sixty to one-twenty is the most dramatic one you will ever feel.",
+      "specs": [
+        { "label": "Means", "value": "double 60 — 120 fps", "cue": "double", "source": "disp" },
+        { "label": "Feel", "value": "the most dramatic jump", "cue": "dramatic", "source": "ref" },
+        { "label": "Now on", "value": "modern phones & consoles", "cue": "phones", "source": "ref" }
+      ],
+      "verdict": "Double 60 — the single most noticeable jump; phones & consoles chase it."
+    },
+    {
+      "kind": "item", "id": "hz144", "name": "144 Hz", "launched": "THE GAMER STANDARD", "cat": "6.9 ms / frame", "accent": "#35E08A",
+      "wifi": { "code": "144 Hz", "brand": "the sweet spot", "speed": "6.9 ms per frame", "bands": "5", "frac": 0.3 },
+      "rate": { "hz": 144, "ms": "6.9 ms", "frac": 0.3, "use": "the gaming sweet spot" },
+      "narration": "One-hundred-and-forty-four hertz has been the beloved gold standard for P-C gaming for years, and it's where most gaming monitors still live. It's noticeably crisper again than one-twenty, and it hits a genuine sweet spot: the smoothness is fantastic, and the price has become very reasonable. For the vast majority of gamers, one-forty-four is the practical target — plenty fast to feel incredible, without paying a fortune chasing numbers you may not even be able to perceive.",
+      "specs": [
+        { "label": "Means", "value": "144 fps · 6.9 ms", "cue": "forty-four", "source": "disp" },
+        { "label": "Status", "value": "the PC gaming gold standard", "cue": "standard", "source": "ref" },
+        { "label": "Why", "value": "great smoothness, fair price", "cue": "price", "source": "ref" }
+      ],
+      "verdict": "The PC-gaming gold standard — crisp, affordable, the practical sweet spot."
+    },
+    {
+      "kind": "item", "id": "hz240", "name": "240 Hz", "launched": "COMPETITIVE", "cat": "4.2 ms / frame", "accent": "#FFB020",
+      "wifi": { "code": "240 Hz", "brand": "esports", "speed": "4.2 ms per frame", "bands": "5", "frac": 0.45 },
+      "rate": { "hz": 240, "ms": "4.2 ms", "frac": 0.45, "use": "competitive shooters" },
+      "narration": "Two-hundred-and-forty hertz is where we enter competitive, esports territory. The jump from one-forty-four is real, but it is far subtler — this is the start of diminishing returns, where each extra frame buys you less and less visible smoothness. The genuine benefit here is less about looking pretty, and more about latency: the image updates so fast that the game feels instantaneous under your hand. For serious players of fast shooters, that tiny edge is worth it. For everyone else, it's gilding the lily.",
+      "specs": [
+        { "label": "Means", "value": "240 fps · 4.2 ms", "cue": "forty", "source": "disp" },
+        { "label": "Benefit", "value": "latency, not looks", "cue": "latency", "source": "ref" },
+        { "label": "For", "value": "competitive esports players", "cue": "esports", "source": "ref" }
+      ],
+      "verdict": "Esports territory — subtler smoothness, but a real latency edge for shooters."
+    },
+    {
+      "kind": "item", "id": "hz360", "name": "360–540 Hz", "launched": "THE BLEEDING EDGE", "cat": "2.8 → 1.9 ms", "accent": "#FF5C47",
+      "wifi": { "code": "360–540 Hz", "brand": "the ceiling", "speed": "under 2 ms per frame", "bands": "6", "frac": 0.95 },
+      "rate": { "hz": 540, "ms": "1.9 ms", "frac": 0.95, "use": "pro esports only" },
+      "narration": "Then there's the absolute bleeding edge: three-hundred-and-sixty, four-eighty, even five-hundred-and-forty hertz. These exist almost purely for professional esports, where a sponsored player chasing a split-second advantage will take any edge at all. But for a normal human, the difference between, say, two-forty and five-forty is extraordinarily hard to actually perceive. You are deep into the land of hard diminishing returns, paying a steep premium for frames your eyes and brain can barely register. Impressive engineering — but overkill for almost everyone.",
+      "specs": [
+        { "label": "Means", "value": "up to 540 fps · under 2 ms", "cue": "forty", "source": "disp" },
+        { "label": "For", "value": "professional esports only", "cue": "professional", "source": "ref" },
+        { "label": "Reality", "value": "hard diminishing returns", "cue": "diminishing", "source": "ref" }
+      ],
+      "verdict": "The ceiling — real only for pros; for everyone else, diminishing returns."
+    },
+    {
+      "kind": "item", "id": "vrr", "name": "VRR — G-Sync / FreeSync", "launched": "VARIABLE", "cat": "NO TEARING", "accent": "#B06BFF",
+      "wifi": { "code": "VRR", "brand": "G-Sync / FreeSync", "speed": "matches your GPU", "bands": "5", "frac": 0.6 },
+      "rate": { "hz": 0, "ms": "adaptive", "frac": 0.6, "use": "syncs screen to GPU" },
+      "narration": "Now, more important than any single big number: variable refresh rate, which you'll know as G-Sync or FreeSync. Normally, if your graphics card and your monitor fall out of sync, you get ugly screen tearing, or stutter. V-R-R fixes this completely, by making the monitor's refresh rate flex, in real time, to exactly match whatever your G-P-U is producing, frame for frame. The result is perfectly smooth, tear-free motion, even when your frame rate is bouncing around. Honestly, for real-world gaming, V-R-R often matters MORE than squeezing out those last few hertz.",
+      "specs": [
+        { "label": "Fixes", "value": "screen tearing & stutter", "cue": "tearing", "source": "ref" },
+        { "label": "How", "value": "refresh flexes to match the GPU", "cue": "match", "source": "ref" },
+        { "label": "Matters", "value": "often more than raw Hz", "cue": "more", "source": "ref" }
+      ],
+      "verdict": "Flexes refresh to match your GPU — kills tearing; often matters more than raw Hz."
+    },
+    {
+      "kind": "item", "id": "truth", "name": "Refresh ≠ Frame Rate", "launched": "THE CATCH", "cat": "THE TRAP", "accent": "#E8C24A",
+      "wifi": { "code": "Hz ≠ fps", "brand": "the lower one wins", "speed": "GPU must keep up", "bands": "5", "frac": 0.35 },
+      "rate": { "hz": -1, "ms": "lower wins", "frac": 0.35, "use": "feed it or waste it" },
+      "narration": "And here's the catch they never print on the box. The refresh rate is only the monitor's CAPACITY — the most frames it CAN show. The frame rate, measured in F-P-S, is how many frames your computer actually PRODUCES. And the one that wins is always the lower of the two. A glorious two-forty hertz monitor, fed just sixty frames per second by a weak graphics card, shows you sixty. You are not getting two-forty-anything. So a fast monitor and a fast G-P-U are a package deal — buy a high refresh rate, and you absolutely must have the horsepower to feed it, or you've simply wasted your money.",
+      "specs": [
+        { "label": "Refresh", "value": "what the monitor CAN show", "cue": "capacity", "source": "disp" },
+        { "label": "Frame rate", "value": "what the GPU DOES produce", "cue": "produces", "source": "disp" },
+        { "label": "Rule", "value": "the lower of the two wins", "cue": "lower", "source": "ref" }
+      ],
+      "verdict": "Refresh is capacity, fps is reality — the lower wins; feed it or waste it."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "tearing",
+      "narration": "Put it together, and here's the honest buyer's guide. The jump from sixty to one-twenty hertz is the one everyone feels — make that upgrade first. One-forty-four is the gamer's sweet spot. Two-forty and beyond is for competitors chasing latency, deep in diminishing returns. V-R-R, G-Sync or FreeSync, kills tearing and often matters more than the headline number. And above all, remember the trap: a high refresh rate is worthless unless your graphics card can actually produce the frames to fill it. Match the monitor to the machine — and to your eyes.",
+      "beats": [ { "cue": "guide", "mark": "g" }, { "cue": "sweet", "mark": "s" }, { "cue": "trap", "mark": "t" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "the whole series — thank you for watching",
+      "question": "What refresh rate are you on right now?",
+      "narration": "So that's every refresh rate, from the humble sixty-hertz baseline to the five-hundred-and-forty hertz bleeding edge. The takeaways are simple: sixty to one-twenty is the leap you'll truly feel; one-forty-four is the sweet spot; beyond that is for the competitive few; V-R-R is quietly brilliant; and the refresh rate is only ever as good as the frame rate feeding it. Match the lock to the value, the band to the room, the monitor to the machine — it's the same honest lesson, every time. And with that, that is our whole series — every piece of tech, explained. Thank you, genuinely, for watching all of it. So tell me, one last time — what refresh rate are you reading this on?",
+      "beats": [ { "cue": "series", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "reading", "mark": "ask" } ]
+    }
+  ]
+}
