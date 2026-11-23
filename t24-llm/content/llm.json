@@ -1,0 +1,118 @@
+{
+  "id": "t24-llm",
+  "title": "How LLMs Actually Work",
+  "series": "How It Works",
+  "keyNoun": "LLM",
+  "promise": "How large language models really work — tokens, embeddings, attention and a next-word prediction loop — built up one layer at a time, so the magic of ChatGPT finally makes mechanical sense.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#B06BFF",
+  "sources": [
+    { "id": "paper", "label": "‘Attention Is All You Need’ (Vaswani et al., 2017) — the Transformer", "url": "https://arxiv.org/abs/1706.03762" },
+    { "id": "ref", "label": "LLM & deep-learning references (Karpathy lectures, model technical reports)", "url": "https://en.wikipedia.org/wiki/Large_language_model" }
+  ],
+  "youtube": {
+    "titles": [
+      "How LLMs Actually Work — Tokens, Attention & Next-Word Prediction",
+      "How Large Language Models Really Work (No Hype, No Maths)",
+      "How LLMs Work Under the Hood — Why ChatGPT Is Just Predicting Words",
+      "How LLMs Actually Work — the Transformer Explained Simply"
+    ],
+    "primaryTitle": "How LLMs Actually Work — Tokens, Attention & Next-Word Prediction",
+    "tags": [
+      "how llms work", "how large language models work", "how chatgpt works",
+      "transformer explained", "attention mechanism", "tokens embeddings", "next word prediction",
+      "ai explained", "neural network", "machine learning", "llm explained simply",
+      "what is an llm", "how ai works", "tech explained", "how it works"
+    ],
+    "hashtags": ["#ai", "#llm", "#machinelearning", "#chatgpt", "#howitworks"],
+    "pinnedComment": "The one-sentence version: an LLM is a giant next-word predictor — text → tokens → vectors → attention layers → a probability for every possible next token → sample one → repeat. No understanding, no database — just staggeringly good pattern completion. 👇 What finally made it click for you? Subscribe — 'How ChatGPT Works' is next.",
+    "hook": "LLMs feel like magic — they write, code, reason, and hold a conversation. But underneath, there's no understanding and no database of answers. It's one almost absurdly simple idea, scaled up beyond comprehension: predicting the next word."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "narration": "Large language models — the tech behind ChatGPT — genuinely feel like magic. They write essays, they code, they reason, they hold a real conversation. So it is tempting to imagine something in there that truly understands you, or a giant database of pre-written answers. There is neither. Underneath, an LLM is doing one, almost absurdly simple thing — just scaled up beyond human comprehension: it is predicting the next word. That's it. So let's open it up, and build the whole machine piece by piece — tokens, vectors, attention, and prediction — until the magic turns into something you can actually understand.",
+      "beats": [ { "cue": "magic", "mark": "m" }, { "cue": "database", "mark": "db" }, { "cue": "predicting", "mark": "pr" } ]
+    },
+
+    {
+      "kind": "stage", "id": "predict", "name": "It's a Next-Word Predictor", "manim": "predict", "icon": "hub", "accent": "#B06BFF",
+      "narration": "Here is the single most important idea, so let's get it straight away. At its core, an LLM is a next-word predictor. You give it some text, and all it does is calculate the most likely word to come next. 'The sky is…' — and it predicts 'blue'. Then here's the trick: it adds that word to the text, and predicts the next one. And again, and again. That loop — predict a word, append it, repeat — is how it writes entire essays, one word at a time. Everything else we'll cover is just the staggeringly clever machinery that makes that one prediction shockingly good.",
+      "specs": [
+        { "label": "Core job", "value": "predict the next word", "cue": "predictor", "source": "ref" },
+        { "label": "The loop", "value": "predict → append → repeat", "cue": "loop", "source": "ref" },
+        { "label": "Result", "value": "whole essays, one word at a time", "cue": "essays", "source": "ref" }
+      ],
+      "verdict": "An LLM just predicts the next word, appends it, and repeats — that's the whole loop."
+    },
+    {
+      "kind": "stage", "id": "tokens", "name": "Text Becomes Tokens", "manim": "tokens", "icon": "fanout", "accent": "#2DD4BF",
+      "narration": "A model can't see letters — it only does maths. So the first step is to chop your text into tokens. A token is a common chunk of text: sometimes a whole word, often a piece of one. 'Running' might split into 'run' and 'ning'. There's a fixed vocabulary of maybe a hundred thousand tokens, and each one is simply assigned a number — an I-D. So your sentence becomes a list of numbers. This is also, by the way, exactly what you're paying for when an A-I charges 'per token' — and why it sometimes miscounts the letters in a word: it never actually sees the letters at all.",
+      "specs": [
+        { "label": "A token", "value": "a chunk of text (often part-word)", "cue": "chunk", "source": "ref" },
+        { "label": "Vocabulary", "value": "~100k tokens, each a number", "cue": "number", "source": "ref" },
+        { "label": "So", "value": "it's billed & thinks in tokens", "cue": "token", "source": "ref" }
+      ],
+      "verdict": "Text is split into tokens — chunks turned into numbers; the model never sees letters."
+    },
+    {
+      "kind": "stage", "id": "embed", "name": "Numbers Become Meaning", "manim": "embed", "icon": "server", "accent": "#35E08A",
+      "narration": "A token I-D on its own is meaningless — it's just an index. So each token gets turned into an embedding: a long list of numbers, a vector, that represents its meaning. Picture a vast, high-dimensional map of meaning, where every token is a point. And the beautiful part: tokens with similar meanings end up physically close together on that map. 'King' sits near 'queen'; 'Paris' sits near 'France'. Relationships even become directions you can do maths on — the classic example: king, minus man, plus woman, lands you right next to queen. This map of meaning is learned, and it's where the model's 'knowledge' really lives.",
+      "specs": [
+        { "label": "Embedding", "value": "a token → a vector of meaning", "cue": "vector", "source": "ref" },
+        { "label": "Map", "value": "similar meanings sit close together", "cue": "close", "source": "ref" },
+        { "label": "Maths", "value": "king − man + woman ≈ queen", "cue": "queen", "source": "ref" }
+      ],
+      "verdict": "Each token becomes a vector on a map of meaning — similar words sit close."
+    },
+    {
+      "kind": "stage", "id": "attention", "name": "Attention: Reading Context", "manim": "attention", "icon": "hub", "accent": "#FFB020",
+      "narration": "Now the breakthrough that made all of this possible — attention. The problem: a word's meaning depends entirely on its context. In 'river bank' versus 'savings bank', 'bank' means totally different things. Attention is the mechanism that lets each token look at all the other tokens around it, and decide which ones matter for its own meaning. For 'bank', it learns to pay close attention to 'river' or 'savings' and update itself accordingly. Every token does this, for every other token, all at once, in parallel — that's what the 'T' in GPT, the Transformer, actually refers to. This one idea, from a two-thousand-seventeen paper literally titled 'Attention Is All You Need', is what unlocked modern A-I.",
+      "specs": [
+        { "label": "Problem", "value": "meaning depends on context", "cue": "context", "source": "paper" },
+        { "label": "Attention", "value": "each token weighs all the others", "cue": "attention", "source": "paper" },
+        { "label": "The 'T'", "value": "the Transformer (2017)", "cue": "transformer", "source": "paper" }
+      ],
+      "verdict": "Attention lets every token weigh all the others for context — the Transformer's core."
+    },
+    {
+      "kind": "stage", "id": "layers", "name": "A Deep Stack, Then a Guess", "manim": "layers", "icon": "fanout", "accent": "#2DD4BF",
+      "narration": "That attention step isn't done once — it's stacked, dozens of times, into deep layers. Each layer lets the tokens refine their understanding a little more: early layers catch grammar and simple patterns, while deeper layers build up to abstract ideas, tone, and reasoning. After passing up through the whole stack, the model takes the very last token's final vector and converts it into a probability for every single token in its vocabulary — a hundred thousand little odds of 'what comes next'. Then it samples one, usually a likely one, with a dash of randomness — that's the 'temperature' setting — so it doesn't say the exact same thing every time. And then the whole loop runs again.",
+      "specs": [
+        { "label": "Depth", "value": "dozens of attention layers", "cue": "layers", "source": "ref" },
+        { "label": "Output", "value": "odds for every possible token", "cue": "probability", "source": "ref" },
+        { "label": "Temperature", "value": "randomness when sampling", "cue": "temperature", "source": "ref" }
+      ],
+      "verdict": "Dozens of layers refine meaning, then output a probability for each next token — sample one."
+    },
+    {
+      "kind": "stage", "id": "training", "name": "How It Learns", "manim": "training", "icon": "clock", "accent": "#FF5C47",
+      "narration": "But where do all those weights — the embeddings, the attention patterns — actually come from? Training. First, pre-training: the model is fed a staggering amount of text, much of the public internet, and plays one simple game, trillions of times — cover the next word, guess it, check the real answer, and nudge billions of internal numbers to be a tiny bit less wrong. Do that at an unimaginable scale, and it quietly absorbs grammar, facts, and reasoning. Then, a second phase — fine-tuning, with human feedback — teaches the raw predictor to actually be a helpful, safe assistant, rather than just autocompleting the web. Raw knowledge first; good behaviour second.",
+      "specs": [
+        { "label": "Pre-training", "value": "guess the next word, trillions of times", "cue": "guess", "source": "ref" },
+        { "label": "On", "value": "much of the public internet", "cue": "internet", "source": "ref" },
+        { "label": "Then", "value": "fine-tune with human feedback", "cue": "feedback", "source": "ref" }
+      ],
+      "verdict": "Pre-train by guessing the next word on the internet; then fine-tune to be helpful."
+    },
+    {
+      "kind": "stage", "id": "limits", "name": "Why It's Brilliant — and Wrong", "manim": "limits", "icon": "cross", "accent": "#E8C24A",
+      "narration": "So now the quirks make perfect sense. Why does it hallucinate — confidently invent things? Because it is not looking anything up; it is predicting plausible-sounding text, and sometimes the most plausible-sounding thing is simply false. Why doesn't it know today's news? Because its knowledge is frozen at the moment training ended. And why is it sometimes bad at simple maths? Because it's pattern-matching what an answer looks like, not truly calculating. An LLM is not a mind, and not a search engine. It is a breathtakingly powerful pattern-completer — and once you hold that firmly in your head, you can use it brilliantly, and never be fooled by it.",
+      "specs": [
+        { "label": "Hallucination", "value": "predicts plausible, not true", "cue": "plausible", "source": "ref" },
+        { "label": "Stale", "value": "knowledge frozen at training time", "cue": "frozen", "source": "ref" },
+        { "label": "Truth", "value": "a pattern-completer, not a mind", "cue": "mind", "source": "ref" }
+      ],
+      "verdict": "Hallucination, stale facts, shaky maths — all because it predicts, it doesn't understand."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "How ChatGPT Works",
+      "question": "What finally made LLMs click for you?",
+      "narration": "So that's a large language model, with the lid off. Your words become tokens, tokens become vectors on a vast map of meaning, attention lets every word read its context, a deep stack of layers refines it all, and out comes a single prediction — the next token — over and over. No understanding, no magic, no database — just next-word prediction, trained on the internet and scaled past the point of intuition. It is simple, and it is astonishing, at the very same time. Next, we build directly on this to answer the question everyone asks: how ChatGPT turns this raw predictor into a genuinely helpful assistant. If this made the black box click, subscribe. So tell me — what finally made LLMs make sense for you?",
+      "beats": [ { "cue": "ChatGPT", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "sense", "mark": "ask" } ]
+    }
+  ]
+}
