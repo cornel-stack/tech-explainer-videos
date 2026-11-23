@@ -1,0 +1,182 @@
+{
+  "id": "t12-win",
+  "title": "Every Version of Windows Explained",
+  "series": "Every X",
+  "keyNoun": "Windows",
+  "promise": "Forty years of Windows, every iconic desktop drawn from scratch, with an honest verdict on each — the good, the bad, and Windows ME.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "ms", "label": "Microsoft — Windows version history & lifecycle pages", "url": "https://learn.microsoft.com/en-us/lifecycle/products/" },
+    { "id": "share", "label": "StatCounter / Steam Hardware Survey — OS share over time", "url": "https://gs.statcounter.com/os-version-market-share/windows" },
+    { "id": "hist", "label": "Contemporary reviews & retrospectives (Ars Technica, PCMag archives)", "url": "https://arstechnica.com/gadgets/" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Version of Windows Explained — The Good, the Bad, and Windows ME",
+      "Every Version of Windows Explained (1985 → Windows 11)",
+      "Every Windows Ranked by History: Loved, Hated, and ME",
+      "Every Version of Windows Explained — 40 Years in 11 Minutes"
+    ],
+    "primaryTitle": "Every Version of Windows Explained — The Good, the Bad, and Windows ME",
+    "tags": [
+      "every version of windows", "windows history", "windows explained", "windows me",
+      "windows xp", "windows vista", "windows 7", "windows 8", "windows 95", "windows 11",
+      "worst windows", "best windows", "windows versions ranked", "tech nostalgia",
+      "history of windows", "tech explained"
+    ],
+    "hashtags": ["#windows", "#microsoft", "#techhistory", "#nostalgia", "#tech"],
+    "pinnedComment": "The pattern fans swear by: Windows alternates good, bad, good, bad — 98 good, ME dud, XP legend, Vista flop, 7 beloved, 8 mess, 10 solid. 👇 Which Windows was your FIRST? Subscribe — 'Every Dead Operating System' is next.",
+    "hook": "For 40 years one OS has run most of the world's computers — and its history is a rollercoaster of triumphs and total disasters. Let's walk every major version, draw each iconic desktop, and hand out an honest verdict: the good, the bad, and Windows ME."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "timeline",
+      "narration": "For forty years, one operating system has sat on the vast majority of the world's computers — and its history is a wild rollercoaster of triumphs and absolute disasters. From the clunky first shell bolted on top of D-O-S, to the legendary ninety-five and X-P, to the ones everybody tried very hard to forget. So let's walk through every major version of Windows, draw each iconic desktop from scratch, and hand out an honest verdict: the good, the bad, and the disasters.",
+      "beats": [ { "cue": "forty", "mark": "f" }, { "cue": "good", "mark": "g" }, { "cue": "disasters", "mark": "d" } ]
+    },
+    {
+      "kind": "interlude",
+      "manim": "timeline",
+      "narration": "Before we start, the shape of the whole story on one line. Windows began in nineteen eighty-five, and a new version has landed roughly every three to six years since. Watch the rhythm: long, dominant reigns — ninety-five, X-P, seven, ten — punctuated by short-lived flops that everyone escaped as fast as they possibly could. Forty years, a dozen major releases, and one company that has somehow stayed on most of the planet's screens the entire time.",
+      "beats": [ { "cue": "eighty", "mark": "e" }, { "cue": "rhythm", "mark": "r" } ]
+    },
+
+    {
+      "kind": "item", "id": "win1", "name": "Windows 1.0", "launched": "1985", "cat": "THE BEGINNING", "status": "meh", "skin": "retro", "icon": "terminal", "accent": "#FFB020",
+      "narration": "Windows started here, in nineteen eighty-five: Windows one-point-oh. It wasn't even a real operating system — it was a graphical shell sitting on top of M-S-DOS, and you still dropped to a command line for most things. Its big idea was windows you could see side by side, but they couldn't even overlap — they only tiled, edge to edge. It sold poorly, and reviewers were thoroughly unimpressed. But the seed was planted: a mouse, menus, and a screen you point at instead of type at.",
+      "specs": [
+        { "label": "Released", "value": "1985 · a DOS shell", "cue": "eighty", "source": "ms" },
+        { "label": "The idea", "value": "tiled on-screen windows", "cue": "tiled", "source": "hist" },
+        { "label": "Reception", "value": "sold poorly", "cue": "poorly", "source": "hist" }
+      ],
+      "verdict": "Where it all began — clumsy, but the mouse-and-menus seed."
+    },
+    {
+      "kind": "item", "id": "win31", "name": "Windows 3.1", "launched": "1992", "cat": "THE FIRST HIT", "status": "loved", "skin": "retro", "icon": "terminal", "accent": "#35E08A",
+      "narration": "Skip ahead to Windows three-point-one, in nineteen ninety-two — the first version people actually wanted. Windows could now overlap, it had TrueType fonts for proper printing, and it shipped with the game that ate a billion office hours: Solitaire. This is where Windows went mainstream, selling millions and becoming the default face of the personal computer. It still rode on top of D-O-S underneath, but for most people, three-point-one was simply what a computer looked like.",
+      "specs": [
+        { "label": "Released", "value": "1992 · still on DOS", "cue": "ninety", "source": "ms" },
+        { "label": "New", "value": "overlapping windows + fonts", "cue": "overlap", "source": "hist" },
+        { "label": "Legacy", "value": "Windows goes mainstream", "cue": "mainstream", "source": "hist" }
+      ],
+      "verdict": "The first hit — Solitaire, fonts, and a billion lost office hours."
+    },
+    {
+      "kind": "item", "id": "win95", "name": "Windows 95", "launched": "1995", "cat": "THE ICON", "status": "loved", "skin": "win9x", "icon": "doors", "accent": "#35E08A",
+      "narration": "And then, the icon. Windows ninety-five, in nineteen ninety-five — arguably the most important software release ever made. It introduced the things you still use every single day: the Start button, the taskbar, the notification tray, and long file names. People literally queued at midnight to buy it, and the Rolling Stones' 'Start Me Up' blasted over the launch. Under the hood it finally blended D-O-S and Windows into one thirty-two-bit system. Ninety-five didn't just update Windows — it defined what a desktop is.",
+      "specs": [
+        { "label": "Released", "value": "1995 · 32-bit", "cue": "midnight", "source": "ms" },
+        { "label": "Invented", "value": "Start button + taskbar", "cue": "Start", "source": "hist" },
+        { "label": "Launch", "value": "people queued at midnight", "cue": "queued", "source": "hist" }
+      ],
+      "verdict": "The most important release ever — it invented the desktop you use."
+    },
+    {
+      "kind": "item", "id": "win98", "name": "Windows 98", "launched": "1998", "cat": "SOLID", "status": "loved", "skin": "win9x", "icon": "doors", "accent": "#35E08A",
+      "narration": "Windows ninety-eight was the quieter, sensible follow-up: ninety-five, but it actually worked. It baked in U-S-B support that finally made plug-and-play real, it bundled Internet Explorer deep into the system — which would later trigger a huge antitrust case — and it polished the rough edges. It wasn't exciting, but it was stable and widely loved, especially the Second Edition. For a lot of people, ninety-eight is the warm, nostalgic sound of a dial-up modem screeching to life.",
+      "specs": [
+        { "label": "Released", "value": "1998 (SE in 1999)", "cue": "ninety", "source": "ms" },
+        { "label": "New", "value": "real USB plug-and-play", "cue": "USB", "source": "hist" },
+        { "label": "Baggage", "value": "IE bundled → antitrust", "cue": "antitrust", "source": "hist" }
+      ],
+      "verdict": "95 that actually worked — stable, beloved, and very dial-up."
+    },
+    {
+      "kind": "item", "id": "winme", "name": "Windows ME", "launched": "2000", "cat": "THE DISASTER", "status": "hated", "skin": "win9x", "icon": "cross", "accent": "#FF5C47",
+      "narration": "Now, the disaster. Windows M-E — Millennium Edition, two thousand — is routinely called one of the worst operating systems ever made. Rushed out for home users while the serious engineering went into Windows two thousand, it was famously unstable, crashing and freezing constantly. It ripped out real D-O-S access, breaking loads of older software and games, and added almost nothing anyone actually wanted. Most people's memory of M-E is the Blue Screen of Death. It lasted barely a year before everyone fled to X-P.",
+      "specs": [
+        { "label": "Released", "value": "2000 · for home users", "cue": "thousand", "source": "ms" },
+        { "label": "Problem", "value": "crashed constantly", "cue": "unstable", "source": "hist" },
+        { "label": "Verdict", "value": "‘worst Windows ever’", "cue": "worst", "source": "hist" }
+      ],
+      "verdict": "The infamous dud — rushed, unstable, and gone within a year."
+    },
+    {
+      "kind": "item", "id": "win2k", "name": "Windows 2000", "launched": "2000", "cat": "THE PRO’S CHOICE", "status": "loved", "skin": "nt", "icon": "server", "accent": "#35E08A",
+      "narration": "Released the very same year, but a completely different animal: Windows two thousand. This one was built on the rock-solid N-T engine, aimed squarely at businesses and professionals — and it was superb. Stable, secure, and clean, it quietly became the favourite of I-T departments and power users everywhere. It's the unglamorous hero of this whole list: while home users suffered through M-E, the people who knew better were quietly running two thousand. Its N-T core is the direct ancestor of every version of Windows since.",
+      "specs": [
+        { "label": "Released", "value": "2000 · NT core", "cue": "thousand", "source": "ms" },
+        { "label": "For", "value": "business & power users", "cue": "businesses", "source": "hist" },
+        { "label": "Legacy", "value": "ancestor of modern Windows", "cue": "ancestor", "source": "hist" }
+      ],
+      "verdict": "The quiet hero — the stable NT core every modern Windows is built on."
+    },
+    {
+      "kind": "item", "id": "winxp", "name": "Windows XP", "launched": "2001", "cat": "THE LEGEND", "status": "loved", "skin": "luna", "icon": "doors", "accent": "#35E08A",
+      "narration": "Then came the legend: Windows X-P, two thousand and one. It did something genuinely clever — it finally merged the rock-solid N-T core of two thousand with the friendly, colourful look of the home line. The result was the famous green-and-blue Luna theme, and that impossibly serene 'Bliss' wallpaper of a single green hill. X-P was so good, and so beloved, that people simply refused to let go — Microsoft supported it for almost thirteen years, and some machines still run it today. For many, X-P is just peak Windows.",
+      "specs": [
+        { "label": "Released", "value": "2001 · NT + consumer", "cue": "one", "source": "ms" },
+        { "label": "Look", "value": "Luna theme, ‘Bliss’ hill", "cue": "Bliss", "source": "hist" },
+        { "label": "Lifespan", "value": "supported ~13 years", "cue": "thirteen", "source": "ms" }
+      ],
+      "verdict": "Peak Windows — so loved it ran 13 years and refuses to die."
+    },
+    {
+      "kind": "item", "id": "winvista", "name": "Windows Vista", "launched": "2007", "cat": "THE BLOAT", "status": "hated", "skin": "aero", "icon": "cloud", "accent": "#FF5C47",
+      "narration": "After X-P's long reign came the crash: Windows Vista, two thousand and seven. It looked stunning — the new 'Aero' glass theme was genuinely beautiful — but underneath it was a mess. It was heavy and slow, so bloated that most existing P-Cs couldn't run it well, hardware drivers were broken everywhere, and the new security pop-ups nagged you constantly. People hated it, and millions actively downgraded straight back to X-P. Vista's one redeeming feature: it did the painful groundwork that quietly made the next version great.",
+      "specs": [
+        { "label": "Released", "value": "2007 · Aero glass", "cue": "seven", "source": "ms" },
+        { "label": "Problem", "value": "bloated, slow, broke drivers", "cue": "bloated", "source": "hist" },
+        { "label": "Result", "value": "millions downgraded to XP", "cue": "downgraded", "source": "share" }
+      ],
+      "verdict": "Beautiful and broken — the groundwork for a hit nobody could run."
+    },
+    {
+      "kind": "item", "id": "win7", "name": "Windows 7", "launched": "2009", "cat": "THE REDEMPTION", "status": "loved", "skin": "aero", "icon": "cloud", "accent": "#35E08A",
+      "narration": "The redemption: Windows seven, two thousand and nine. It was, essentially, Vista fixed — the same beautiful Aero look, but fast, stable, and light enough to run on normal hardware. It refined the taskbar into the 'superbar' you could pin your programs to, and it simply got out of your way. Seven was an instant, massive hit, and became the new X-P: so trusted that businesses clung to it for well over a decade. If you ask people their favourite Windows, seven and X-P are the two names you always hear.",
+      "specs": [
+        { "label": "Released", "value": "2009 · Vista, fixed", "cue": "nine", "source": "ms" },
+        { "label": "New", "value": "the pinnable ‘superbar’", "cue": "superbar", "source": "hist" },
+        { "label": "Legacy", "value": "the new XP — beloved", "cue": "favourite", "source": "hist" }
+      ],
+      "verdict": "The redemption — Vista made fast. The other everyone-loved-it Windows."
+    },
+    {
+      "kind": "item", "id": "win8", "name": "Windows 8", "launched": "2012", "cat": "WHERE’S START?", "status": "hated", "skin": "metro", "icon": "hub", "accent": "#FF5C47",
+      "narration": "Then Microsoft tried to be bold, and it backfired hard. Windows eight, two thousand and twelve, was built for a touchscreen future that most desktop users simply didn't live in. The headline change: it killed the Start button, and replaced the whole menu with a full-screen grid of colourful tiles designed for fingers, not a mouse. On a normal P-C it was jarring and confusing, and the backlash was enormous. Microsoft partly walked it back with eight-point-one, bringing the Start button back. A brave idea, aimed squarely at the wrong audience.",
+      "specs": [
+        { "label": "Released", "value": "2012 · touch-first", "cue": "twelve", "source": "ms" },
+        { "label": "The sin", "value": "killed the Start button", "cue": "killed", "source": "hist" },
+        { "label": "Fix", "value": "8.1 brought it back", "cue": "back", "source": "hist" }
+      ],
+      "verdict": "The brave misfire — a touch OS forced onto a billion mouse users."
+    },
+    {
+      "kind": "item", "id": "win10", "name": "Windows 10", "launched": "2015", "cat": "THE LAST ONE?", "status": "loved", "skin": "flat", "icon": "doors", "accent": "#35E08A",
+      "narration": "Windows ten, two thousand and fifteen, was the apology — and the reset. It brought the Start menu back properly, blending the familiar list with a few live tiles, and it worked smoothly on both desktops and tablets. Microsoft even called it 'the last version of Windows,' promising to just keep updating it forever as a service. It became hugely popular and ran on over a billion devices. The 'last Windows ever' claim didn't quite survive — but ten absolutely earned its place as a safe, solid default.",
+      "specs": [
+        { "label": "Released", "value": "2015 · the reset", "cue": "fifteen", "source": "ms" },
+        { "label": "Reach", "value": "1+ billion devices", "cue": "billion", "source": "share" },
+        { "label": "The promise", "value": "‘the last Windows’", "cue": "last", "source": "hist" }
+      ],
+      "verdict": "The apology that stuck — Start menu back, a billion-device default."
+    },
+    {
+      "kind": "item", "id": "win11", "name": "Windows 11", "launched": "2021", "cat": "ROUNDED CORNERS", "status": "meh", "skin": "flat11", "icon": "doors", "accent": "#FFB020",
+      "narration": "And where we are now: Windows eleven, two thousand twenty-one. Despite being called the last Windows ever, here it is. The changes are mostly cosmetic — a centred taskbar, rounded corners, frosted 'Mica' panels — plus deep A-I and Copilot features bolted in. The controversial part is what it demands: a modern security chip called T-P-M two-point-oh, which locked millions of otherwise perfectly fine, older P-Cs out of the upgrade entirely. It's fine, it's polished, it's divisive — a glow-up that quietly left a lot of hardware behind.",
+      "specs": [
+        { "label": "Released", "value": "2021 · centred, rounded", "cue": "twenty", "source": "ms" },
+        { "label": "Demands", "value": "a TPM 2.0 security chip", "cue": "chip", "source": "hist" },
+        { "label": "The catch", "value": "locked out older PCs", "cue": "locked", "source": "hist" }
+      ],
+      "verdict": "The polished, divisive glow-up that left old hardware behind."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "tocktick",
+      "narration": "And here's the pattern fans absolutely swear by: the Windows 'tick-tock' curse. Line them all up, and a spooky rhythm appears — a great one, then a dud, then a great one again. Ninety-eight, good. M-E, a disaster. X-P, legendary. Vista, hated. Seven, beloved. Eight, a mess. Ten, solid. It's not a real law, of course — but it has held up so consistently that when a brand-new Windows lands, people genuinely brace themselves, trying to guess which kind they're about to get.",
+      "beats": [ { "cue": "curse", "mark": "c" }, { "cue": "rhythm", "mark": "r" } ]
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every Dead Operating System",
+      "question": "Which version of Windows was your first?",
+      "narration": "So that's the Windows dynasty: forty years, from a clumsy D-O-S shell to a centred taskbar, lurching between the legends everyone loved and the duds everyone fled. The lesson the pattern teaches? When a brand-new Windows launches, maybe wait for the reviews. Next time, we visit the operating systems that didn't survive at all — every dead operating system, and exactly what killed each one. If this hit your nostalgia, subscribe. So tell me — which version of Windows was your very first?",
+      "beats": [ { "cue": "dead", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "first", "mark": "ask" } ]
+    }
+  ]
+}
