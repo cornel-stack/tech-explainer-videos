@@ -1,0 +1,167 @@
+{
+  "id": "t15-ddr",
+  "title": "Every Type of RAM Explained",
+  "series": "Every X",
+  "keyNoun": "RAM",
+  "promise": "Every type of memory drawn to scale — the five DDR generations and their shifting notch, plus the laptop, phone, graphics and cache cousins beyond the desktop.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    { "id": "jedec", "label": "JEDEC — DDR SDRAM standards (pins, voltage, speed)", "url": "https://www.jedec.org/standards-documents/technology-focus-areas/main-memory-ddr3-ddr4-sdram" },
+    { "id": "vendor", "label": "Module & chip vendor spec sheets (Micron, Samsung, SK Hynix)", "url": "https://www.micron.com/products/memory" },
+    { "id": "arch", "label": "Memory architecture references (SRAM, HBM, ECC)", "url": "https://en.wikipedia.org/wiki/Dynamic_random-access_memory" }
+  ],
+  "youtube": {
+    "titles": [
+      "Every Type of RAM Explained: DDR1 to DDR5 in 11 Minutes",
+      "Every Type of RAM Explained — DDR, LPDDR, GDDR, HBM & SRAM",
+      "DDR1 to DDR5 + Every Other Type of RAM Explained",
+      "Every Type of RAM Explained — and Why the Notch Moves Every Time"
+    ],
+    "primaryTitle": "Every Type of RAM Explained: DDR1 to DDR5 in 11 Minutes",
+    "tags": [
+      "every type of ram", "ddr1 ddr2 ddr3 ddr4 ddr5", "ram explained", "ddr5 explained",
+      "lpddr", "gddr", "hbm", "sram vs dram", "ecc memory", "so-dimm", "ram generations",
+      "why won't my ram fit", "ram notch", "memory types", "pc building", "tech explained"
+    ],
+    "hashtags": ["#ram", "#ddr5", "#memory", "#pcbuilding", "#tech"],
+    "pinnedComment": "The rule that saves you grief: your RAM and your motherboard must be the SAME DDR generation. The notch moves every time on purpose — it's a physical lock so you can't fry a stick at the wrong voltage. 👇 What's in your machine? Subscribe — 'How a CPU Works' is next.",
+    "hook": "That stick of RAM is more interesting than it looks: the notch is in a very particular place, the pins a very particular number — get the wrong one and it won't even fit the slot. Let's decode every type of memory, from DDR1 to DDR5 and the whole family beyond the desktop."
+  },
+
+  "segments": [
+    {
+      "kind": "intro",
+      "manim": "ladder",
+      "narration": "That stick of R-A-M in your computer is far more interesting than it looks. The notch is in one very particular place, the pins are a very particular number, and get the wrong one — it won't even physically fit the slot. So let's decode every type of memory: the five generations of D-D-R, from two thousand to today — each one faster, cooler, and deliberately incompatible with the last — and then the whole family beyond the desktop: the laptop stick, the soldered phone memory, the graphics-card speed demon, and the blazing cache hiding inside your C-P-U.",
+      "beats": [ { "cue": "notch", "mark": "n" }, { "cue": "generations", "mark": "g" }, { "cue": "family", "mark": "f" } ]
+    },
+
+    {
+      "kind": "item", "id": "ddr1", "name": "DDR1", "launched": "2000", "cat": "DESKTOP · DIMM", "icon": "server", "accent": "#2DD4BF", "stick": { "form": "dimm", "pins": 184, "notch": 0.40, "chips": 8 },
+      "narration": "We start the ladder in the year two thousand, with the original D-D-R — now called D-D-R-1. 'D-D-R' stands for double data rate: it moves data on both the up and the down of each clock tick, doubling the throughput of the older S-D-R-A-M. A desktop stick has one hundred eighty-four pins, runs at two-point-five volts, and tops out around three gigabytes a second. Modest by today's standards — but it set the template that every single generation since has followed.",
+      "specs": [
+        { "label": "Module", "value": "184-pin DIMM", "cue": "hundred", "source": "jedec" },
+        { "label": "Voltage", "value": "2.5 V", "cue": "volts", "source": "jedec" },
+        { "label": "Bandwidth", "value": "up to ~3.2 GB/s", "cue": "gigabytes", "source": "vendor" }
+      ],
+      "verdict": "The original double-data-rate stick — the template for everything after."
+    },
+    {
+      "kind": "item", "id": "ddr2", "name": "DDR2", "launched": "2003", "cat": "DESKTOP · DIMM", "icon": "server", "accent": "#2DD4BF", "stick": { "form": "dimm", "pins": 240, "notch": 0.56, "chips": 8 },
+      "narration": "Three years later came D-D-R-2. The pin count jumps to two hundred and forty, the voltage drops to one-point-eight, and clever buffering roughly doubles the bandwidth again, to around eight gigabytes a second. And here's the crucial detail you can actually see with your eyes: the notch — that little gap in the gold pins — sits in a different spot than on D-D-R-1. That is completely deliberate. It's a physical key, so you literally cannot push a D-D-R-2 stick into a D-D-R-1 slot.",
+      "specs": [
+        { "label": "Module", "value": "240-pin (notch moved)", "cue": "forty", "source": "jedec" },
+        { "label": "Voltage", "value": "1.8 V", "cue": "voltage", "source": "jedec" },
+        { "label": "Bandwidth", "value": "up to ~8 GB/s", "cue": "gigabytes", "source": "vendor" }
+      ],
+      "verdict": "More pins, less voltage, a moved notch — and twice the speed."
+    },
+    {
+      "kind": "item", "id": "ddr3", "name": "DDR3", "launched": "2007", "cat": "DESKTOP · DIMM", "icon": "server", "accent": "#2DD4BF", "stick": { "form": "dimm", "pins": 240, "notch": 0.47, "chips": 8 },
+      "narration": "D-D-R-3 arrived in two thousand and seven, and had an astonishingly long life — it powered P-Cs for the better part of a decade. It keeps two hundred and forty pins, but drops to one-point-five volts and pushes bandwidth up to around seventeen gigabytes a second. Now, note the trap: D-D-R-2 and D-D-R-3 both have two hundred and forty pins, so they look almost identical — but the notch is in a different place, so they still will not fit each other's slots. Always check the notch.",
+      "specs": [
+        { "label": "Module", "value": "240-pin (notch moved)", "cue": "forty", "source": "jedec" },
+        { "label": "Voltage", "value": "1.5 V", "cue": "volts", "source": "jedec" },
+        { "label": "Bandwidth", "value": "up to ~17 GB/s", "cue": "seventeen", "source": "vendor" }
+      ],
+      "verdict": "A decade-long workhorse — same pin count as DDR2, but a different key."
+    },
+    {
+      "kind": "item", "id": "ddr4", "name": "DDR4", "launched": "2014", "cat": "DESKTOP · DIMM", "icon": "server", "accent": "#35E08A", "stick": { "form": "dimm", "pins": 288, "notch": 0.50, "chips": 8, "curved": true },
+      "narration": "D-D-R-4, from twenty fourteen, was the mainstream standard for years, and still fills millions of machines today. Pins climb to two hundred and eighty-eight, voltage falls again, to one-point-two, and bandwidth reaches the mid-twenties of gigabytes per second. D-D-R-4 also has a subtly curved bottom edge, slightly higher in the middle, which makes it easier to insert and seat evenly. Same shape family as before — but, you guessed it, a brand-new notch position all of its own.",
+      "specs": [
+        { "label": "Module", "value": "288-pin, curved edge", "cue": "eighty", "source": "jedec" },
+        { "label": "Voltage", "value": "1.2 V", "cue": "voltage", "source": "jedec" },
+        { "label": "Bandwidth", "value": "up to ~25 GB/s", "cue": "gigabytes", "source": "vendor" }
+      ],
+      "verdict": "The long-running mainstream — 288 pins, a curved edge, lower power."
+    },
+    {
+      "kind": "item", "id": "ddr5", "name": "DDR5", "launched": "2020", "cat": "DESKTOP · DIMM", "icon": "server", "accent": "#35E08A", "stick": { "form": "dimm", "pins": 288, "notch": 0.57, "chips": 8, "pmic": true },
+      "narration": "And the current flagship: D-D-R-5, from twenty twenty. It also carries two hundred and eighty-eight pins, but it's a big architectural leap. Each stick is split into two independent thirty-two-bit sub-channels for better efficiency, the voltage drops to just one-point-one, and the power-management chip that used to live on the motherboard now sits right on the stick itself. Bandwidth explodes past thirty-eight, and up beyond sixty gigabytes a second. And there's a new notch again, of course — so no, your D-D-R-4 will not fit.",
+      "specs": [
+        { "label": "Module", "value": "288-pin · 2 sub-channels", "cue": "eighty", "source": "jedec" },
+        { "label": "Voltage", "value": "1.1 V · on-stick PMIC", "cue": "voltage", "source": "jedec" },
+        { "label": "Bandwidth", "value": "~38 → 67+ GB/s", "cue": "thirty", "source": "vendor" }
+      ],
+      "verdict": "The current flagship — split channels, on-board power, and huge bandwidth."
+    },
+
+    {
+      "kind": "interlude",
+      "manim": "keying",
+      "narration": "Let's make that notch rule unmistakable, because it trips people up constantly. Every single D-D-R generation deliberately moves the notch to a new position. It is a physical lock. You cannot force a D-D-R-4 stick into a D-D-R-5 board, or a D-D-R-3 into a D-D-R-4 — the key simply will not line up, and that is entirely on purpose, to stop you frying a stick at the wrong voltage. So the first rule of buying R-A-M: your memory and your motherboard must be the same D-D-R generation. No adapters, no exceptions.",
+      "beats": [ { "cue": "notch", "mark": "n" }, { "cue": "generation", "mark": "g" } ]
+    },
+
+    {
+      "kind": "item", "id": "sodimm", "name": "SO-DIMM", "launched": "laptops", "cat": "LAPTOP · DIMM", "icon": "laptop", "accent": "#FFB020", "stick": { "form": "sodimm", "pins": 260, "notch": 0.42, "chips": 8 },
+      "narration": "Same D-D-R chips, different shape. A So-D-I-M-M — a small-outline D-I-M-M — is the stubby stick made for laptops and mini-P-Cs, where a full-length desktop module simply won't fit. It's roughly half the length, with its own pin count — a D-D-R-4 So-D-I-M-M has two hundred and sixty pins. It clips in flat, rather than standing upright. Same underlying technology and the same speeds as its desktop cousin — just neatly folded into a much smaller space.",
+      "specs": [
+        { "label": "For", "value": "laptops & mini PCs", "cue": "laptops", "source": "vendor" },
+        { "label": "Module", "value": "260-pin (DDR4), half-length", "cue": "sixty", "source": "jedec" },
+        { "label": "Under the hood", "value": "same DDR chips & speeds", "cue": "cousin", "source": "arch" }
+      ],
+      "verdict": "Desktop DDR, laptop-sized — clips in flat to save space."
+    },
+    {
+      "kind": "item", "id": "lpddr", "name": "LPDDR", "launched": "mobile", "cat": "MOBILE · SOLDERED", "icon": "phone", "accent": "#FF5C47", "stick": { "form": "soldered", "chips": 2 },
+      "narration": "L-P-D-D-R — low-power D-D-R — is the memory in your phone, your tablet, and most thin-and-light laptops, including Apple's M-series. It's engineered obsessively for battery life, sipping far less power than desktop D-D-R. But here's the catch: to save space and power, it is soldered directly onto the mainboard — there is no slot, and no stick. That makes it faster to reach the chip, but completely non-upgradable. The R-A-M you buy on day one is the R-A-M you are keeping forever.",
+      "specs": [
+        { "label": "For", "value": "phones, tablets, thin laptops", "cue": "phone", "source": "vendor" },
+        { "label": "Edge", "value": "sips power for battery life", "cue": "battery", "source": "arch" },
+        { "label": "Catch", "value": "soldered — not upgradable", "cue": "soldered", "source": "arch" }
+      ],
+      "verdict": "Battery-first memory, soldered down — what you buy is what you keep."
+    },
+    {
+      "kind": "item", "id": "gddr", "name": "GDDR", "launched": "graphics", "cat": "GRAPHICS", "icon": "hub", "accent": "#B06BFF", "stick": { "form": "gpu", "chips": 8 },
+      "narration": "G-D-D-R — graphics D-D-R — is a specialised cousin, built for one job: feeding a G-P-U. A graphics card has to shovel an enormous amount of data for every single frame, so G-D-D-R, like today's G-D-D-R-6, trades the low latency of regular R-A-M for raw, massive bandwidth — hundreds of gigabytes a second. The chips are soldered in a ring right around the G-P-U on the card, on a very wide bus. It's the same core D-D-R idea, but tuned entirely for throughput, over absolutely everything else.",
+      "specs": [
+        { "label": "For", "value": "graphics cards (GPUs)", "cue": "GPU", "source": "vendor" },
+        { "label": "Edge", "value": "massive bandwidth, wide bus", "cue": "bandwidth", "source": "arch" },
+        { "label": "Example", "value": "GDDR6 — 100s of GB/s", "cue": "hundreds", "source": "vendor" }
+      ],
+      "verdict": "DDR tuned purely for bandwidth — soldered around the GPU."
+    },
+    {
+      "kind": "item", "id": "hbm", "name": "HBM", "launched": "2015", "cat": "AI · DATA CENTER", "icon": "server", "accent": "#B06BFF", "stick": { "form": "stack" },
+      "narration": "When even G-D-D-R isn't enough, there's H-B-M — high-bandwidth memory. Instead of spreading chips flat across a board, H-B-M stacks the memory dies vertically, in a tower, and places them right next to the processor on a shared silicon base called an interposer. Short connections, plus a gigantic bus, give it bandwidth measured in terabytes a second. It is expensive and complex, so you'll only find it where money is no object: the A-I accelerators, like Nvidia's H-100, that train the large models.",
+      "specs": [
+        { "label": "Design", "value": "3D-stacked dies on interposer", "cue": "stacks", "source": "arch" },
+        { "label": "Bandwidth", "value": "terabytes per second", "cue": "terabytes", "source": "vendor" },
+        { "label": "Found in", "value": "AI accelerators (H100)", "cue": "accelerators", "source": "arch" }
+      ],
+      "verdict": "Memory stacked in 3D for terabytes/sec — the RAM of AI chips."
+    },
+    {
+      "kind": "item", "id": "ecc", "name": "ECC Memory", "launched": "servers", "cat": "SERVER · RELIABILITY", "icon": "check", "accent": "#E8C24A", "stick": { "form": "dimm", "pins": 288, "notch": 0.50, "chips": 9, "ecc": true },
+      "narration": "E-C-C — error-correcting code — memory is about one single thing: never being wrong. Cosmic rays and electrical noise can occasionally flip a bit in R-A-M, which for your gaming P-C means a rare crash, but for a bank or a hospital server could mean quietly corrupted data. So E-C-C adds an extra memory chip that stores check-bits, letting it detect and silently fix single-bit errors on the fly. You pay a little more money, and a tiny bit of speed, in exchange for memory you can genuinely trust.",
+      "specs": [
+        { "label": "Adds", "value": "a 9th chip of check-bits", "cue": "extra", "source": "arch" },
+        { "label": "Does", "value": "fixes single-bit flips live", "cue": "flip", "source": "arch" },
+        { "label": "For", "value": "servers & workstations", "cue": "server", "source": "vendor" }
+      ],
+      "verdict": "An extra chip that catches bit-flips — memory you can trust."
+    },
+    {
+      "kind": "item", "id": "sram", "name": "SRAM — the Cache", "launched": "in the CPU", "cat": "THE CPU CACHE", "icon": "hub", "accent": "#35E08A", "stick": { "form": "onchip" },
+      "narration": "Finally, the fastest R-A-M of all — one you can't buy as a stick, because it lives inside your C-P-U. Everything so far has been D-R-A-M, built from leaky capacitors that need constant refreshing. S-R-A-M — static R-A-M — instead stores each bit in six transistors locked in a stable loop. No capacitor, no refresh, so it's dramatically faster — but each bit takes far more space, and far more money. That is why there's only a tiny amount of it, used as the C-P-U's L1, L2, and L3 cache: the small, blazing-fast scratchpad right beside the cores.",
+      "specs": [
+        { "label": "One bit", "value": "6 transistors, no capacitor", "cue": "transistors", "source": "arch" },
+        { "label": "Edge", "value": "no refresh → the fastest RAM", "cue": "refresh", "source": "arch" },
+        { "label": "Used as", "value": "the CPU's L1/L2/L3 cache", "cue": "cache", "source": "arch" }
+      ],
+      "verdict": "The fastest RAM there is — tiny, pricey, hiding in your CPU as cache."
+    },
+
+    {
+      "kind": "outro",
+      "nextVideo": "How a CPU Works",
+      "question": "What type of RAM is in your machine?",
+      "narration": "So that's memory, from the humble D-D-R-1 stick to the terabyte-a-second stacks inside an A-I supercomputer. The through-line: it is nearly all D-R-A-M — leaky capacitors in a grid — just packaged for a hundred different jobs, and the one rule that saves you real grief is to match the notch. We even ended up inside the processor, with S-R-A-M cache — which is the perfect place to go next: how a C-P-U actually works, four billion transistors in a single clock tick. If this demystified the stick, subscribe. So tell me — what type of R-A-M is living in your machine?",
+      "beats": [ { "cue": "CPU", "mark": "next" }, { "cue": "subscribe", "mark": "cta" }, { "cue": "machine", "mark": "ask" } ]
+    }
+  ]
+}
