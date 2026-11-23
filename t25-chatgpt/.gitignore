@@ -1,0 +1,10 @@
+node_modules/
+build/
+.remotion/
+out/
+render-input.json
+public/audio/
+public/manim/*.mp4
+public/manim/durations.json
+public/coco/
+.DS_Store

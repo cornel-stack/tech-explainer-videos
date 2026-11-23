@@ -1,0 +1,306 @@
+{
+  "id": "t25-chatgpt",
+  "title": "How ChatGPT Works",
+  "series": "How It Works",
+  "keyNoun": "ChatGPT",
+  "promise": "How ChatGPT turns a raw next-word predictor into a helpful assistant — the chat format, fine-tuning, human feedback (RLHF), the hidden system prompt, and the tools that keep it current.",
+  "voice": "en-US-BrianNeural",
+  "accent": "#35E08A",
+  "sources": [
+    {
+      "id": "rlhf",
+      "label": "InstructGPT / RLHF (Ouyang et al., 2022) — training assistants from human feedback",
+      "url": "https://arxiv.org/abs/2203.02155"
+    },
+    {
+      "id": "ref",
+      "label": "Model technical reports & documentation (system prompts, tools, context)",
+      "url": "https://en.wikipedia.org/wiki/ChatGPT"
+    }
+  ],
+  "youtube": {
+    "titles": [
+      "How ChatGPT Works — From Next-Word Predictor to Helpful Assistant",
+      "How ChatGPT Actually Works (RLHF, System Prompts & Tools Explained)",
+      "How ChatGPT Works Under the Hood — Why It Feels So Human",
+      "How ChatGPT Works — the Training That Turns an LLM Into an Assistant"
+    ],
+    "primaryTitle": "How ChatGPT Works — From Next-Word Predictor to Helpful Assistant",
+    "tags": [
+      "how chatgpt works",
+      "chatgpt explained",
+      "rlhf",
+      "how ai chatbots work",
+      "system prompt",
+      "fine tuning",
+      "reinforcement learning human feedback",
+      "how gpt works",
+      "chatgpt under the hood",
+      "ai assistant",
+      "context window",
+      "openai",
+      "how ai works",
+      "tech explained",
+      "how it works"
+    ],
+    "hashtags": [
+      "#chatgpt",
+      "#ai",
+      "#llm",
+      "#machinelearning",
+      "#howitworks"
+    ],
+    "pinnedComment": "The leap nobody sees: a raw LLM just autocompletes text — it is NOT an assistant. ChatGPT = base model + a chat format + fine-tuning on example chats + RLHF (learning from human preferences) + a hidden system prompt + tools for fresh info. That stack is what makes it feel helpful. 👇 What do you actually use ChatGPT for? Subscribe — 'Every USB Type' is next.",
+    "hook": "ChatGPT feels like it understands you. But under the hood it's the same next-word predictor we just met — wrapped in a few clever training tricks that transform a rambling autocomplete into something that feels like a helpful, well-behaved assistant."
+  },
+  "segments": [
+    {
+      "kind": "intro",
+      "narration": "We just saw that a large language model is, at heart, a next-word predictor trained on the internet. But a raw model like that is not ChatGPT. On its own, it doesn't answer questions — it just mindlessly continues text. Ask it 'what is the capital of France?' and it might happily reply with ten more questions, because that's the kind of text it saw. So how do we get from that rambling autocomplete to the helpful, polite assistant you actually talk to? That gap is bridged by a few genuinely clever training tricks. So let's build ChatGPT on top of the raw model, and see exactly what turns a predictor into an assistant.",
+      "beats": [
+        {
+          "cue": "predictor",
+          "mark": "p"
+        },
+        {
+          "cue": "assistant",
+          "mark": "a"
+        },
+        {
+          "cue": "tricks",
+          "mark": "t"
+        }
+      ]
+    },
+    {
+      "kind": "stage",
+      "id": "base",
+      "name": "Start: the Raw Model",
+      "manim": "base",
+      "icon": "hub",
+      "accent": "#B06BFF",
+      "narration": "We begin with the base model — the giant next-word predictor from pre-training, which has read much of the internet and soaked up grammar, facts and reasoning. It is astonishingly knowledgeable, but completely unruly: it has no idea it's supposed to be a helpful assistant. It will happily continue a joke, mimic a forum argument, or ignore your question entirely — because it's just predicting plausible text, not trying to help you. All that raw capability is in there. It just needs to be tamed, and pointed in the right direction.",
+      "specs": [
+        {
+          "label": "Is",
+          "value": "the pre-trained next-word predictor",
+          "cue": "predictor",
+          "source": "ref"
+        },
+        {
+          "label": "Knows",
+          "value": "grammar, facts, reasoning",
+          "cue": "reasoning",
+          "source": "ref"
+        },
+        {
+          "label": "But",
+          "value": "unruly — not yet an assistant",
+          "cue": "unruly",
+          "source": "ref"
+        }
+      ],
+      "verdict": "The base model is brilliant but unruly — raw capability, no idea it should help."
+    },
+    {
+      "kind": "stage",
+      "id": "format",
+      "name": "Teaching It to Chat",
+      "manim": "format",
+      "icon": "fanout",
+      "accent": "#2DD4BF",
+      "narration": "The first trick is a simple, clever reframing: turn the conversation itself into text the model can predict. Every chat is formatted with special markers and roles — a system message, then alternating user and assistant turns. The model's whole job becomes: given everything so far, predict the ASSISTANT's next turn. So 'answering you' is really just 'predicting what a helpful assistant would say next'. It's still pure next-word prediction — we've just arranged the text so that the thing it naturally predicts is a reply to you.",
+      "specs": [
+        {
+          "label": "Format",
+          "value": "system · user · assistant turns",
+          "cue": "roles",
+          "source": "ref"
+        },
+        {
+          "label": "Job",
+          "value": "predict the assistant's next turn",
+          "cue": "assistant",
+          "source": "ref"
+        },
+        {
+          "label": "So",
+          "value": "still just next-word prediction",
+          "cue": "prediction",
+          "source": "ref"
+        }
+      ],
+      "verdict": "Frame the chat as roles; answering = predicting the assistant's next turn."
+    },
+    {
+      "kind": "stage",
+      "id": "sft",
+      "name": "Fine-Tuning on Good Answers",
+      "manim": "sft",
+      "icon": "check",
+      "accent": "#FFB020",
+      "narration": "Next, supervised fine-tuning. Human experts write thousands of example conversations showing exactly how a great assistant should respond — helpful, clear, honest, safe. The model is then trained further on these examples, nudging it away from 'random internet text' and toward 'behaving like this'. This is where it learns the actual job: follow instructions, answer the question, adopt that polite, helpful tone. It's like an apprenticeship — the model watches thousands of ideal answers, and learns to imitate them.",
+      "specs": [
+        {
+          "label": "Data",
+          "value": "humans write ideal answers",
+          "cue": "experts",
+          "source": "rlhf"
+        },
+        {
+          "label": "Trains it to",
+          "value": "follow instructions, be helpful",
+          "cue": "instructions",
+          "source": "rlhf"
+        },
+        {
+          "label": "Like",
+          "value": "an apprenticeship by example",
+          "cue": "apprenticeship",
+          "source": "ref"
+        }
+      ],
+      "verdict": "Fine-tune on human-written ideal answers — it learns to follow instructions."
+    },
+    {
+      "kind": "stage",
+      "id": "rlhf",
+      "name": "RLHF: Learning From Preference",
+      "manim": "rlhf",
+      "icon": "fanout",
+      "accent": "#35E08A",
+      "narration": "Now the secret sauce — reinforcement learning from human feedback, or R-L-H-F. Writing perfect answers is slow, but humans are great at a simpler task: comparing. So the model generates several answers, and people just pick which one is better. Those thousands of comparisons train a second model — a 'reward model' — that learns to score any answer the way a human would. Then the assistant is tuned to maximise that score: produce answers the reward model rates highly. This feedback loop is what sands off the rough edges, and makes ChatGPT feel genuinely helpful, and aligned with what we want.",
+      "specs": [
+        {
+          "label": "Humans",
+          "value": "just pick the better answer",
+          "cue": "comparing",
+          "source": "rlhf"
+        },
+        {
+          "label": "Builds",
+          "value": "a reward model that scores replies",
+          "cue": "reward",
+          "source": "rlhf"
+        },
+        {
+          "label": "Then",
+          "value": "tune to maximise that score",
+          "cue": "maximise",
+          "source": "rlhf"
+        }
+      ],
+      "verdict": "RLHF: humans rank answers → a reward model → tune the assistant to score high."
+    },
+    {
+      "kind": "stage",
+      "id": "context",
+      "name": "The System Prompt & Memory",
+      "manim": "context",
+      "icon": "server",
+      "accent": "#B06BFF",
+      "narration": "At runtime, two more pieces matter. First, a hidden system prompt — instructions you never see, invisibly placed before your message, setting the rules: 'You are a helpful assistant, today's date is…, don't do X'. Second, the context window: the model has no memory between messages, so the ENTIRE conversation is fed back in every single time, as text. That window is finite — a fixed number of tokens — which is exactly why, in a very long chat, it starts to 'forget' the beginning: the oldest text simply falls out of the window. Its only memory is what currently fits inside that window.",
+      "specs": [
+        {
+          "label": "System prompt",
+          "value": "hidden rules set before you",
+          "cue": "hidden",
+          "source": "ref"
+        },
+        {
+          "label": "Context window",
+          "value": "the whole chat, re-fed each time",
+          "cue": "window",
+          "source": "ref"
+        },
+        {
+          "label": "So",
+          "value": "it 'forgets' past the token limit",
+          "cue": "forget",
+          "source": "ref"
+        }
+      ],
+      "verdict": "A hidden system prompt sets the rules; the context window is its only memory."
+    },
+    {
+      "kind": "stage",
+      "id": "tools",
+      "name": "Tools, Browsing & Guardrails",
+      "manim": "tools",
+      "icon": "cross",
+      "accent": "#FFB020",
+      "narration": "A trained model is frozen and can hallucinate — so modern ChatGPT doesn't work alone. It's given tools. It can browse the web for current information, run code to actually calculate rather than guess, and look things up in documents — that's retrieval. The model learns to recognise when it needs a tool, call it, and weave the real result into its answer. On top sits a layer of safety guardrails — separate checks and training that make it refuse genuinely harmful requests. So the ChatGPT you use is not one model; it's a whole system, with the language model as its reasoning engine at the centre.",
+      "specs": [
+        {
+          "label": "Tools",
+          "value": "browse, run code, retrieve docs",
+          "cue": "browse",
+          "source": "ref"
+        },
+        {
+          "label": "Fixes",
+          "value": "stale facts & shaky maths",
+          "cue": "calculate",
+          "source": "ref"
+        },
+        {
+          "label": "Plus",
+          "value": "safety guardrails on top",
+          "cue": "guardrails",
+          "source": "ref"
+        }
+      ],
+      "verdict": "Tools (browse, code, retrieval) + guardrails turn the model into a full system."
+    },
+    {
+      "kind": "stage",
+      "id": "honest",
+      "name": "The Honest Picture",
+      "manim": "honest",
+      "icon": "check",
+      "accent": "#E8C24A",
+      "narration": "So here's the honest picture. ChatGPT is a base model that knows almost everything, taught to chat, fine-tuned on ideal answers, polished with human feedback, steered by a hidden prompt, and armed with tools. That stack is genuinely remarkable — and it has a cost. RLHF makes it agreeable, which can tip into sycophancy — telling you what you want to hear. It can still be confidently wrong. And it will always sound certain, whether it's right or not. Use it as a brilliant, lightning-fast, slightly over-eager assistant — never as an oracle — and you'll get the very best out of it.",
+      "specs": [
+        {
+          "label": "It is",
+          "value": "a whole trained-and-tooled system",
+          "cue": "stack",
+          "source": "ref"
+        },
+        {
+          "label": "Watch for",
+          "value": "sycophancy & confident errors",
+          "cue": "sycophancy",
+          "source": "rlhf"
+        },
+        {
+          "label": "Use as",
+          "value": "an assistant, never an oracle",
+          "cue": "oracle",
+          "source": "ref"
+        }
+      ],
+      "verdict": "A brilliant trained system — just agreeable and confidently wrong; not an oracle."
+    },
+    {
+      "kind": "outro",
+      "nextVideo": "Every USB Type Explained",
+      "question": "What do you actually use ChatGPT for?",
+      "narration": "So that's ChatGPT, demystified. Underneath the friendly chat is the same next-word predictor — but wrapped in a brilliant stack: a chat format, fine-tuning on ideal answers, reinforcement learning from human feedback, a hidden system prompt, and a toolbox for the things a frozen model can't do alone. None of it is understanding, exactly — but assembled together, it's close enough to be genuinely, world-changingly useful. Next, we come right back down to earth with something you touch every single day, and still get wrong: every USB type, finally untangled. If this made the assistant make sense, subscribe. So tell me — what do you actually use ChatGPT for?",
+      "beats": [
+        {
+          "cue": "USB",
+          "mark": "next"
+        },
+        {
+          "cue": "subscribe",
+          "mark": "cta"
+        },
+        {
+          "cue": "use",
+          "mark": "ask"
+        }
+      ]
+    }
+  ]
+}

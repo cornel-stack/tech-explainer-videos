@@ -1,0 +1,206 @@
+name: Render T25 — How ChatGPT Works
+
+on:
+  push:
+    branches: [main, t25-chatgpt]
+    paths:
+      - "t25-chatgpt/**"
+      - ".github/workflows/t25-render.yml"
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Content JSON (relative to t25-chatgpt/)"
+        required: true
+        default: "content/chatgpt.json"
+
+env:
+  SHARDS: 8
+  PROJECT: t25-chatgpt
+  SCRIPT: ${{ github.event.inputs.script || 'content/chatgpt.json' }}
+
+jobs:
+  scenes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render Manim scenes (official image)
+        run: |
+          mkdir -p t25-chatgpt/public/manim
+          docker run --rm --user root -v "$PWD/t25-chatgpt":/work -w /work \
+            manimcommunity/manim:stable python pipeline/render_manim.py \
+            || echo "::warning::Manim render failed; some scenes fall back"
+          touch t25-chatgpt/public/manim/keep.txt
+      - name: Measure Manim clip durations (host ffprobe — reliable)
+        run: |
+          which ffprobe || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+          sudo chown -R "$(id -u):$(id -g)" t25-chatgpt/public/manim
+          cd t25-chatgpt/public/manim
+          python3 - <<'PY'
+          import json, glob, os, subprocess
+          out = {}
+          for f in sorted(glob.glob("*.mp4")):
+              name = os.path.splitext(f)[0]
+              try:
+                  d = subprocess.check_output(
+                      ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                       "-of", "default=noprint_wrappers=1:nokey=1", f], text=True).strip()
+                  out[name] = round(float(d), 3)
+              except Exception as e:
+                  print("warn", f, e)
+          json.dump(out, open("durations.json", "w"), indent=2)
+          print("durations.json ->", out)
+          PY
+      - uses: actions/upload-artifact@v4
+        with: { name: scenes, path: t25-chatgpt/public/manim, retention-days: 1 }
+
+  prep:
+    needs: scenes
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:noble
+    defaults:
+      run:
+        shell: bash
+        working-directory: t25-chatgpt
+    outputs:
+      id: ${{ steps.vid.outputs.id }}
+      total: ${{ steps.frames.outputs.total }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python deps
+        run: |
+          curl -sSL https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+          python3 /tmp/get-pip.py --break-system-packages
+          for a in 1 2 3 4; do
+            python3 -m pip install --break-system-packages --no-cache-dir --retries 5 --timeout 60 -r requirements.txt && break
+            echo "pip retry $a"; sleep 10
+          done
+      - uses: actions/cache@v4
+        with:
+          path: t25-chatgpt/node_modules
+          key: nm-t25-${{ hashFiles('t25-chatgpt/package-lock.json') }}
+      - run: npm install --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - name: Get Manim clips
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with: { name: scenes, path: t25-chatgpt/public/manim }
+      - run: python3 pipeline/synth.py "$SCRIPT"
+      - run: python3 pipeline/build_outputs.py
+      - id: vid
+        run: echo "id=$(python3 -c "import json;print(json.load(open('render-input.json'))['id'])")" >> "$GITHUB_OUTPUT"
+      - name: Render clickbait thumbnails + build YouTube upload kit
+        run: |
+          mkdir -p out/youtube
+          npx remotion still ThumbA "out/youtube/THUMBNAIL-A.png" --props=render-input.json
+          npx remotion still ThumbB "out/youtube/THUMBNAIL-B.png" --props=render-input.json
+          cp "out/youtube/THUMBNAIL-A.png" "out/${{ steps.vid.outputs.id }}.png"
+          python3 pipeline/build_youtube_kit.py "$SCRIPT"
+      - id: frames
+        run: echo "total=$(python3 -c "import json;print(json.load(open('render-input.json'))['totalFrames'])")" >> "$GITHUB_OUTPUT"
+      - name: Bundle everything the shards need
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle
+          retention-days: 1
+          include-hidden-files: true
+          path: |
+            t25-chatgpt/render-input.json
+            t25-chatgpt/public
+            t25-chatgpt/out
+
+  render:
+    needs: prep
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:noble
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+        working-directory: t25-chatgpt
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: t25-chatgpt/node_modules
+          key: nm-t25-${{ hashFiles('t25-chatgpt/package-lock.json') }}
+      - run: npm install --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - uses: actions/download-artifact@v4
+        with: { name: bundle, path: t25-chatgpt }
+      - name: Render frame range for this shard
+        run: |
+          N=${SHARDS}; total=${{ needs.prep.outputs.total }}; shard=${{ matrix.shard }}
+          step=$(( (total + N - 1) / N ))
+          start=$(( shard * step )); end=$(( start + step - 1 ))
+          if [ "$end" -ge "$total" ]; then end=$(( total - 1 )); fi
+          mkdir -p out
+          if [ "$start" -gt "$end" ]; then echo "empty shard $shard"; exit 0; fi
+          echo "shard $shard: frames $start-$end of $total"
+          npx remotion render Video "out/part-$(printf '%02d' $shard).mp4" \
+            --props=render-input.json --frames=$start-$end --concurrency=100% --gl=swangle
+      - uses: actions/upload-artifact@v4
+        with:
+          name: part-${{ matrix.shard }}
+          path: t25-chatgpt/out/part-*.mp4
+          retention-days: 1
+          if-no-files-found: ignore
+
+  finish:
+    needs: [prep, render]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Ensure ffmpeg (apt — reliable, no flaky download action)
+        run: which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+      - name: Get the bundle
+        uses: actions/download-artifact@v4
+        with: { name: bundle, path: t25-chatgpt }
+      - name: Get all rendered parts
+        uses: actions/download-artifact@v4
+        with: { pattern: part-*, path: t25-chatgpt/parts, merge-multiple: true }
+      - name: Concatenate parts -> final MP4
+        run: |
+          cd t25-chatgpt
+          id=${{ needs.prep.outputs.id }}
+          : > /tmp/list.txt
+          for f in $(ls parts/part-*.mp4 | sort -V); do echo "file '$PWD/$f'" >> /tmp/list.txt; done
+          echo "parts:"; cat /tmp/list.txt
+          ffmpeg -hide_banner -loglevel error -f concat -safe 0 -i /tmp/list.txt -c copy "out/$id.mp4"
+          ls -la "out/$id.mp4"
+      - name: Zip the YouTube upload kit (labelled folder)
+        run: |
+          cd t25-chatgpt/out
+          zip -r "${{ needs.prep.outputs.id }}-youtube-kit.zip" youtube
+          ls -la youtube
+      - name: Publish as Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: t25-chatgpt-${{ github.run_number }}
+          name: "How ChatGPT Works — build ${{ github.run_number }}"
+          body: |
+            Automated 1080p60 render of `t25-chatgpt/${{ env.SCRIPT }}`.
+            A "How It Works" explainer across 7 stages showing how a raw next-word
+            predictor becomes a helpful assistant: the base model, the chat format
+            (roles), supervised fine-tuning on ideal answers, RLHF (preferences ->
+            reward model -> tune), the hidden system prompt + context window, tools
+            (browse/code/retrieval) + guardrails, and the honest picture. A 3D
+            chat-orb hero (three.js) + 7 Manim scenes — no logos. Sourced (InstructGPT/RLHF).
+          files: |
+            t25-chatgpt/out/${{ needs.prep.outputs.id }}.mp4
+            t25-chatgpt/out/${{ needs.prep.outputs.id }}.png
+            t25-chatgpt/out/${{ needs.prep.outputs.id }}-youtube-kit.zip
+            t25-chatgpt/out/youtube/THUMBNAIL-A.png
+            t25-chatgpt/out/youtube/THUMBNAIL-B.png
+            t25-chatgpt/out/captions.srt
+            t25-chatgpt/out/chapters.txt
+            t25-chatgpt/out/description.txt
+      - run: |
+          echo "### Render complete :clapper:" >> "$GITHUB_STEP_SUMMARY"
+          echo "https://github.com/${{ github.repository }}/releases/tag/t25-chatgpt-${{ github.run_number }}" >> "$GITHUB_STEP_SUMMARY"
